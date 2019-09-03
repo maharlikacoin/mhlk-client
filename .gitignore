@@ -20,3 +20,6 @@ Homestead.json
 /public/fonts
 /public/images
 /public/css
+/public/mix-manifest.json
+*-lock.json
+/.idea
