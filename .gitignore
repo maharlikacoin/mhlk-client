@@ -17,4 +17,6 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 /public/js
+/public/fonts
+/public/images
 /public/css
