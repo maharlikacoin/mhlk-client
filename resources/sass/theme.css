@@ -1,7 +1,50 @@
-/*!
-Template :	ICOCrypto @by Softnio
-Theme	 :  Default
-Version	 :	1.0.0
-Updated	 :	06.11.2019
-*/
-/*! WRITE YOUR CUSTOM STYLE **/
+.btn {
+    color:white!important;
+}
+.btn:hover {
+    color: #ffffff!important;
+}
+.btn-grad {
+    background-image: linear-gradient(to right, #800000 0%, #ff5050 100%);
+}
+.btn-grad:before {
+    background-image: linear-gradient(to right, #ff5050 0%, #800000 100%);
+}
+.bg-theme-grad {
+    background-image: linear-gradient(90deg, #A67C00 0%, #BF9B30 100%);
+}
+.tc-light p, .tc-light a:not(.btn) p, .tc-light .list, .tc-light a:not(.btn) .list {
+    color: #f8f9fa;
+}
+.bg-theme {
+    background-color: #A67C00;
+}
+.bg-theme-alt {
+    background-color: #BF9B30;
+}
+.tc-light .input-line, .tc-light a:not(.btn) .input-line {
+    color: #fff;
+    border-bottom-color: #f6be26;
+}
+.tc-light .wgs-title, .tc-light a:not(.btn) .wgs-title {
+    color: #ffffff;
+}
+.tc-light .contact-icon, .tc-light a:not(.btn) .contact-icon {
+    color: #a67c00;
+}
+.contact-list li a {
+    margin-right: 1em;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    height: 36px;
+    width: 36px;
+    line-height: 36px;
+    text-align: center;
+}
+.tc-light a:not(.btn):hover {
+    color: #a67c00 !important;
+}
+.is-transparent .banner {
+    padding-top: 0px;
+}
