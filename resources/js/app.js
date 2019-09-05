@@ -1,32 +1,27 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import Transactions from './components/Transactions';
+import MaharlikaTile from './components/MaharlikaTile';
+import EtherTile from './components/EtherTile';
+import UserSidebar from './components/UserSidebar';
+import numeral from 'numeral';
+import numFormat from 'vue-filter-number-format';
 
-require('./bootstrap');
+Vue.filter('numberFormat', numFormat(numeral));
+Vue.filter('trimAddress', function (value) {
+    let text = value.replace(/(<([^>]+)>)/ig, '');
+    return text.substring(0, 7) + '...' + text.substr(value.length - 4 );
+});
 
-window.Vue = require('vue');
+Vue.filter('upperAddress', (text) => {
+    return text.slice(0,2) + text.slice(3, 22).toUpperCase() + text.slice(23, text.length).toUpperCase();
+});
+Vue.use(moment);
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
+new Vue({
     el: '#app',
+    components: {
+        Transactions,
+        MaharlikaTile,
+        EtherTile,
+        UserSidebar
+    }
 });
