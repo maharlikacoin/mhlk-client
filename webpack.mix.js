@@ -12,9 +12,14 @@ const mix = require('laravel-mix');
  */
 
 mix
-    .js('resources/js/app.js', 'public/js/app.js')
+    .js([
+        'resources/js/bootstrap.js',
+        'resources/js/app.js',
+    ], 'public/js/app.js')
     .sass('resources/sass/app.scss', 'public/css/app.css')
     .copy('resources/images/favicon.png', 'public/images/favicon.png')
+    .copy('resources/images/eth-qr.png', 'public/images/eth-qr.png')
+    .copy('resources/images/profile.png', 'public/images/profile.png')
     .copy('resources/images/maharlika-full-logo-white.png', 'public/images/logo-full-white.png')
     .copy('resources/images/maharlika-full-logo-white.png', 'public/images/logo-full-white2x.png')
     .copy('resources/images/maharlika-full-logo-colored.png', 'public/images/logo.png')
