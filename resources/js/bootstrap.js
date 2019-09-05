@@ -1,5 +1,6 @@
 window._ = require('lodash');
-
+window.Vue = require('vue');
+window.moment = require('vue-moment');
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -22,7 +23,7 @@ try {
     require('select2');
     require('chart.js');
     require('toastr');
-
+    require('./vendors/gentian-pro');
     require('./vendors/jquery.scrollify');
 } catch (e) {}
 
