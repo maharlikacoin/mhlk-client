@@ -3,6 +3,7 @@
         <b-container fluid>
             <!-- Main table element -->
             <b-table id="transactionsTable"
+                     responsive
                      :busy="isBusy"
                      show-empty
                      stacked="md"
@@ -15,7 +16,7 @@
                      :sort-desc.sync="sortDesc"
                      :sort-direction="sortDirection"
                      @filtered="onFiltered">
-                <template slot="hash" slot-scope="row">
+              <template slot="hash" slot-scope="row">
                     <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
                 </template>
                 <template slot="timestamp" slot-scope="row">{{ row.value | moment }}</template>
@@ -142,13 +143,22 @@
                 let url = `${this.apiBaseUrl}module=${this.module}&action=${this.action}&contractaddress=${this.contractAddress}&address=${this.address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=${this.apikey}`;
 
                 this.isBusy = true;
-                etherscan.account.tokentx(this.address, this.contractAddress, 1, 'latest',2, 2, 'desc')
-                // axios.get(url)
+                // etherscan.account.tokentx(this.address, this.contractAddress, 1, 'latest',2, 2, 'desc')
+                axios.get(url)
                     .then(response => {
-                        console.log(response.result);
-                        let data = response.result;
+                        let data = response.data.result;
                         this.totalRows = data.length;
-                        this.items = data;
+
+                        console.log(data);
+                        this.items = data.map( ({hash, timeStamp, to, from, value}) => {
+                            return {
+                                hash: hash,
+                                timeStamp: timeStamp,
+                                to: to,
+                                from: from,
+                                value: value
+                            }
+                        })
                     })
                     .catch(error => {
                         console.log(error);
