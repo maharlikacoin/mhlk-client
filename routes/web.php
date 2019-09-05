@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome.index');
+})->name('test');
+
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
 Route::middleware('authWallet')->group(function() {
