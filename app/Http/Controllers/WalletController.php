@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WalletController extends Controller
 {
@@ -23,5 +24,10 @@ class WalletController extends Controller
     public function logout() {
         session()->flush();
         return redirect()->route('test');
+    }
+
+    public function contract() {
+        $contract = json_decode(Storage::get('MaharlikaCoin.json'));
+        return response()->json($contract->abi);
     }
 }
