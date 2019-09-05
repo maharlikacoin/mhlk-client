@@ -17,8 +17,9 @@
                                 <div class="banner-caption cpn tc-light">
                                     <div class="cpn-head">
                                         <h1 class="title">
-                                            Decentralizing<br>The World's Most Basic Resources through a
-                                            <span class="font-weight-bold">Shared Resource-based Economy</span>
+                                            Decentralizing The World's <br>
+                                            Most Basic Resources through <br>
+                                            a <span class="font-weight-bold">Shared Resource-based Economy</span>
                                         </h1>
                                     </div>
                                     <div class="cpn-text">
