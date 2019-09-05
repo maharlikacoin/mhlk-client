@@ -13,7 +13,13 @@
 
 Route::get('/', function () {
     return view('welcome');
+Route::post('wallet', 'WalletController@login')->name('wallet.login');
+
+Route::middleware('authWallet')->group(function() {
+    Route::get('wallet', 'WalletController@index')->name('wallet');
+    Route::get('wallet/logout', 'WalletController@logout')->name('wallet.logout');
 });
+
 
 Auth::routes();
 
