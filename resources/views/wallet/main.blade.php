@@ -1,4 +1,4 @@
-<div class="user-wraper">
+<div class="user-wraper flex-grow-1">
     <div class="container">
         <div class="d-flex">
             <div class="user-sidebar">

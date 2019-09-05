@@ -14,8 +14,8 @@
     @stack('styles')
 </head>
 
-<body class="user-dashboard no-touch" style="background-color: #e9ecef;">
-<div id="app">
+<body style="background-color: #e9ecef;">
+<div id="app" class="d-flex mx-auto flex-column h-screen">
     @yield('contents')
 </div>
 <!-- JavaScript -->

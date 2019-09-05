@@ -58,3 +58,24 @@
 .ath-container {
     width: 100%;
 }
+.topbar {
+    position:relative;
+}
+.user-wraper {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+.h-screen {
+    height: 100vh;
+}
+.bg-shape {
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-image: url(/images/shape-b.png?5d6060e…);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 60%;
+    position: absolute !important;
+}

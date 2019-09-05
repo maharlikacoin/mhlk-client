@@ -1,4 +1,4 @@
-<footer class="nk-footer bg-theme-grad mt-5">
+<footer class="nk-footer bg-theme-grad">
     <!-- // -->
     <section class="section section-footer section-l tc-light bg-transparent" style="padding-top:50px; padding-bottom:0;">
 
@@ -58,5 +58,5 @@
         </div>
 
     </section>
-    <div class="nk-ovm shape-b"></div>
+    <div class="shape-b bg-shape"></div>
 </footer>
