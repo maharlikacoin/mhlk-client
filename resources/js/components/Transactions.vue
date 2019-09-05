@@ -4,19 +4,33 @@
                  :items="items"
                  :fields="fields">
             <!-- We are using utility class `text-nowrap` to help illustrate horizontal scrolling -->
+            <!-- value -->
+            <template slot="value" slot-scope="row">
+                <div v-html="reduceSizeDecimal(row.value/100)"></div>
+            </template>
+            <!-- from address -->
+            <template slot="from" slot-scope="row">
+                <a :href="addressBaseUrl+row.value" target="_blank" v-if="address.toLowerCase() !== (row.value).toLowerCase()">
+                    {{ row.value | trimAddress | upperAddress }}
+                </a>
+                <div v-else>{{ row.value | trimAddress | upperAddress }}</div>
+            </template>
+            <!-- to address -->
+            <template slot="to" slot-scope="row">
+                <a :href="addressBaseUrl+row.value" target="_blank" v-if="address.toLowerCase() !== (row.value).toLowerCase()">
+                    {{ row.value | trimAddress | upperAddress  }}
+                </a>
+                <div v-else>{{ row.value | trimAddress | upperAddress }}</div>
+            </template>
+
+            <!-- date -->
+            <template slot="timeStamp" slot-scope="row">{{ Number(row.value) | moment("from", true) }}</template>
+            <!-- hash -->
             <template slot="hash" slot-scope="row">
                 <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
             </template>
-            <template slot="timestamp" slot-scope="row">{{ row.value | moment }}</template>
-            <template slot="from" slot-scope="row">
-                <a :href="addressBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
-            </template>
-            <template slot="to" slot-scope="row">
-                <a :href="addressBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
-            </template>
-            <template slot="value" slot-scope="row">
-                {{ row.value/100 | numberFormat('0,000.00') }}
-            </template>
+
+
         </b-table>
     </div>
 </template>
@@ -70,11 +84,11 @@
                 pageOptions: [ 5, 10, 15 ],
                 items: [],
                 fields: [
-                    { key: 'hash', label: 'Reference', sortable: true, sortDirection: 'desc' },
-                    { key: 'timeStamp', label: 'Date', sortable: true, sortDirection: 'desc'  },
+                    { key: 'value', label: 'Amount (MHLK)', sortable: true, sortDirection: 'desc'  },
                     { key: 'from', label: 'From', sortable: true, sortDirection: 'desc'  },
                     { key: 'to', label: 'To', sortable: true, sortDirection: 'desc'  },
-                    { key: 'value', label: 'Amount', sortable: true, sortDirection: 'desc'  },
+                    { key: 'timeStamp', label: 'Date', sortable: true, sortDirection: 'desc'  },
+                    { key: 'hash', label: 'Reference', sortable: true, sortDirection: 'desc' }
                 ],
                 currentPage: 1,
                 perPage: 7,
@@ -83,15 +97,23 @@
                 sortDesc: true,
                 sortDirection: 'desc',
                 modal: {
-                    _hash: '',
-                    _timestamp: '',
-                    _from: '',
-                    _to: '',
-                    _value: '',
+                    hash: '',
+                    timestamp: '',
+                    from: '',
+                    to: '',
+                    value: '',
                 },
             }
         },
         methods: {
+            reduceSizeDecimal(number) {
+                number = numeral(number).format('0,000.00');
+                let stringNumber = number.toString(),
+                    wholeNumber = stringNumber.slice(0, stringNumber.length-3),
+                    decimals = stringNumber.slice(stringNumber.length-3, stringNumber.length);
+
+                return `<p>${wholeNumber}<span style='font-size:10px; color:#8b939a;display: initial;'>${decimals}</span></p>`;
+            },
             info (row, index, button) {
                 let item = row.item;
                 this.modal._hash = item.hash;
@@ -121,14 +143,13 @@
                         let data = response.data.result;
                         this.totalRows = data.length;
 
-                        console.log(data);
-                        this.items = data.map( ({hash, timeStamp, to, from, value}) => {
+                        this.items = data.map( ({hash, timeStamp, from, to, value}) => {
                             return {
-                                hash: hash,
-                                timeStamp: timeStamp,
+                                value: value,
+                                from, from,
                                 to: to,
-                                from: from,
-                                value: value
+                                timeStamp: timeStamp,
+                                hash: hash,
                             }
                         })
                     })
