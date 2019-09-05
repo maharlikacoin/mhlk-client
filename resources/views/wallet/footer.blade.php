@@ -28,7 +28,7 @@
                                 <ul class="wgs-links">
                                     <li><a href="#">About Us</a></li>
                                     <li><a href="#">Meet Our Team</a></li>
-                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="mailto:support@maharlikacoin.com">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
