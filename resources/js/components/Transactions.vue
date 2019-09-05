@@ -1,51 +1,23 @@
 <template>
     <div>
-        <b-container fluid>
-            <!-- Main table element -->
-            <b-table id="transactionsTable"
-                     responsive
-                     :busy="isBusy"
-                     show-empty
-                     stacked="md"
-                     :items="items"
-                     :fields="fields"
-                     :current-page="currentPage"
-                     :per-page="perPage"
-                     :filter="filter"
-                     :sort-by.sync="sortBy"
-                     :sort-desc.sync="sortDesc"
-                     :sort-direction="sortDirection"
-                     @filtered="onFiltered">
-              <template slot="hash" slot-scope="row">
-                    <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
-                </template>
-                <template slot="timestamp" slot-scope="row">{{ row.value | moment }}</template>
-                <template slot="from" slot-scope="row">
-                    <a :href="addressBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
-                </template>
-                <template slot="to" slot-scope="row">
-                    <a :href="addressBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
-                </template>
-                <template slot="value" slot-scope="row">
-                    {{ row.value/100 | numberFormat('0,000.00') }}
-                </template>
-            </b-table>
-
-            <!--<b-row>-->
-                <!--<b-col md="1" class="my-1">-->
-                    <!--<b-pagination-->
-                        <!--:per-page="perPage"-->
-                        <!--:total-rows="totalRows"-->
-                        <!--v-model="currentPage" class="my-0"-->
-                    <!--/>-->
-                <!--</b-col>-->
-            <!--</b-row>-->
-
-            <!-- Info modal -->
-            <b-modal id="modal" @hide="resetModal" :title="modal.title" ok-only >
-                Transaction Information
-            </b-modal>
-        </b-container>
+        <b-table responsive
+                 :items="items"
+                 :fields="fields">
+            <!-- We are using utility class `text-nowrap` to help illustrate horizontal scrolling -->
+            <template slot="hash" slot-scope="row">
+                <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
+            </template>
+            <template slot="timestamp" slot-scope="row">{{ row.value | moment }}</template>
+            <template slot="from" slot-scope="row">
+                <a :href="addressBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
+            </template>
+            <template slot="to" slot-scope="row">
+                <a :href="addressBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
+            </template>
+            <template slot="value" slot-scope="row">
+                {{ row.value/100 | numberFormat('0,000.00') }}
+            </template>
+        </b-table>
     </div>
 </template>
 
