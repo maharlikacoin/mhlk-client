@@ -17,7 +17,7 @@
     color: #f8f9fa;
 }
 .bg-theme {
-    background-color: #A67C00;
+    background-color: #a67c01;
 }
 .bg-theme-alt {
     background-color: #BF9B30;
@@ -47,4 +47,14 @@
 }
 .is-transparent .banner {
     padding-top: 0px;
+}
+.tile-primary {
+    background: #b9932e;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+.ath-container {
+    width: 100%;
 }
