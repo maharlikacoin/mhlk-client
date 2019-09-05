@@ -142,9 +142,11 @@
                 let url = `${this.apiBaseUrl}module=${this.module}&action=${this.action}&contractaddress=${this.contractAddress}&address=${this.address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=${this.apikey}`;
 
                 this.isBusy = true;
-                axios.get(url)
+                etherscan.account.tokentx(this.address, this.contractAddress, 1, 'latest',2, 2, 'desc')
+                // axios.get(url)
                     .then(response => {
-                        let data = response.data.result;
+                        console.log(response.result);
+                        let data = response.result;
                         this.totalRows = data.length;
                         this.items = data;
                     })
