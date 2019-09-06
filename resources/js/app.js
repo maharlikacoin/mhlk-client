@@ -18,9 +18,6 @@ Vue.filter('reduceSizeDecimal', (number) => {
 
     return wholeNumber + `<span style'font-size:10px'>${decimals}</span>`;
 });
-Vue.filter('upperAddress', (text) => {
-    return text.slice(0,2) + text.slice(3, 22).toUpperCase() + text.slice(23, text.length).toUpperCase();
-});
 Vue.use(require('vue-moment'));
 
 new Vue({

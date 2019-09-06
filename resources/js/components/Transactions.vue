@@ -11,23 +11,23 @@
             <!-- from address -->
             <template slot="from" slot-scope="row">
                 <a :href="addressBaseUrl+row.value" target="_blank" v-if="address.toLowerCase() !== (row.value).toLowerCase()">
-                    {{ row.value | trimAddress | upperAddress }}
+                    {{ row.value | trimAddress }}
                 </a>
-                <div v-else>{{ row.value | trimAddress | upperAddress }}</div>
+                <div v-else>{{ row.value | trimAddress }}</div>
             </template>
             <!-- to address -->
             <template slot="to" slot-scope="row">
                 <a :href="addressBaseUrl+row.value" target="_blank" v-if="address.toLowerCase() !== (row.value).toLowerCase()">
-                    {{ row.value | trimAddress | upperAddress  }}
+                    {{ row.value | trimAddress  }}
                 </a>
-                <div v-else>{{ row.value | trimAddress | upperAddress }}</div>
+                <div v-else>{{ row.value | trimAddress }}</div>
             </template>
 
             <!-- date -->
             <template slot="timeStamp" slot-scope="row">{{ Number(row.value) | moment("from", true) }}</template>
             <!-- hash -->
             <template slot="hash" slot-scope="row">
-                <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress | upperAddress }}</a>
+                <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress }}</a>
             </template>
 
 
