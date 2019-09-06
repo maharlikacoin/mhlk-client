@@ -8,7 +8,8 @@
                         <div class="contact-wrap split split-left split-lg-left bg-white">
                             <h5 class="title title-md">Contact Us</h5>
 
-                            <form class="nk-form-submit" action="form/contact.php" method="post">
+                            <form class="nk-form-submit">
+                                @csrf
                                 <div class="field-item">
                                     <input id="name" name="name" type="text" class="input-line required">
                                     <label for="name" class="field-label field-label-line">Your Name</label>
@@ -24,7 +25,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <button type="submit" class="btn btn-lg btn-grad">Submit</button>
+                                        <a href="{{ route('welcome') }}" class="btn btn-lg btn-grad">Submit</a>
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="form-results"></div>
@@ -105,8 +106,9 @@
                             <h6 class="wgs-title">Legal</h6>
                             <div class="wgs-body">
                                 <ul class="wgs-links">
-                                    <li><a href="#">Disclaimer</a></li>
-                                    <li><a href="/whitepaper">Whitepaper</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Whitepaper</a></li>
                                 </ul>
                             </div>
                         </div>
