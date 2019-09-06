@@ -37,7 +37,7 @@
                                             </div>
                                         @endif
                                         <ul class="cpn-links">
-                                            <li><a class="link" href="#">Create your Wallet</a></li>
+                                            {{--<li><a class="link" href="#">Create your Wallet</a></li>--}}
                                         </ul>
                                     </div>
                                 </div>
