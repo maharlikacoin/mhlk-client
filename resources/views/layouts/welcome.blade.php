@@ -8,7 +8,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/images/favicon.png">
     <!-- Site Title  -->
-    <title>Maharlika Coin - For humanity, especially the Filipino people</title>
+    <title>Maharlika Coin - For humanity, Especially the Filipino People</title>
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
