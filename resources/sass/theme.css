@@ -82,3 +82,6 @@
 .btn.disabled, .btn:disabled {
     cursor: not-allowed;
 }
+.input-bordered:disabled {
+    background: #e9ecef;
+}
