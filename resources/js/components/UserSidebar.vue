@@ -7,7 +7,8 @@
         <ul class="btn-grp guttar-10px">
             <li><a href="#" class="btn btn-grad">TRANSFER</a></li>
             <li>
-                <b-button id="toggle-button" class="btn btn-grad" @click="toggleModal">Transfer</b-button>
+                <b-button id="toggle-button" class="btn btn-grad" :class="{ 'disable': !transferable}"
+                          :disabled="!transferable" @click="toggleModal">Transfer</b-button>
             </li>
         </ul>
 
@@ -17,19 +18,21 @@
             </a>
             <div class="ath-container m-0">
                 <div class="ath-body">
-                    <h5 class="ath-heading title">Transfer</h5>
+                    <h5 class="ath-heading title">
+                        Transfer <span style='color:#a67c00;display: initial;font-weight: bold;'>MHLK</span>
+                    </h5>
 
                     <!-- transfer to -->
                     <div class="field-item">
                         <div class="field-wrap">
-                            <b-form-input v-model="transferTo" :state="isNotOwnAddress" id="transfer-address"
-                                          name="address" :disabled="busy"
-                                          class="input-bordered" required placeholder="Address you want to transfer to">
+                            <b-form-input v-model="transferTo" :state="isValidAddress"
+                                          id="transfer-address" name="address" :disabled="busy" class="input-bordered"
+                                          required placeholder="Address you want to transfer to">
                             </b-form-input>
-                            <b-form-invalid-feedback :state="isNotOwnAddress">
-                                You cannot transfer to your account.
+                            <b-form-invalid-feedback :state="isValidAddress">
+                                Please put a valid Ethereum address.
                             </b-form-invalid-feedback>
-                            <b-form-valid-feedback :state="isNotOwnAddress">
+                            <b-form-valid-feedback :state="isValidAddress">
                                 Nice!
                             </b-form-valid-feedback>
                         </div>
@@ -38,11 +41,12 @@
                     <!-- amount -->
                     <div class="field-item">
                         <div class="field-wrap">
-                            <b-form-input v-model="amount" :state="isValidAmount" id="transfer-amount" name="amount"
-                                          class="input-bordered" required placeholder="Amount of MHLK">
+                            <b-form-input v-model="amount" :state="isValidAmount" id="transfer-amount"
+                                          name="amount" type="number" class="input-bordered"
+                                          required placeholder="Amount of MHLK">
                             </b-form-input>
                             <b-form-invalid-feedback :state="isValidAmount">
-                                Amount must be greater than 0.
+                                Amount (MHLK) must be greater than 0.
                             </b-form-invalid-feedback>
                             <b-form-valid-feedback :state="isValidAmount">
                                 Looks Good.
@@ -54,15 +58,15 @@
                     <div class="field-item">
                         <div class="field-wrap">
                             <textarea class="input-bordered" name="address" v-model="privateKey"
-                                   :disabled="notAllowed || busy"
+                                   :disabled="!allowedPrivateKeyField"
                                       placeholder="Your private Key"></textarea>
                         </div>
                     </div>
 
-                        <!-- trnasfer button -->
-                    <button class="btn btn-grad w-100" :class="{ 'disabled': busy}" @click="transfer(amount)"
-                            :disable="busy"
-                            v-html="buttonLoading"></button>
+                    <!-- transfer button -->
+                    <b-button class="btn btn-grad w-100" :class="{ 'disable': busy }"
+                              :disabled="!submittable" @click="transfer(amount)"
+                              v-html="buttonLoading"></b-button>
                     <span v-show="busy" v-html="status"></span>
                 </div>
             </div>
@@ -90,18 +94,34 @@
         },
         beforeCreate() {
         computed: {
-            notAllowed() {
-                return this.amount === 0 || this.amount === null || this.transferTo === '' || this.transferTo === null;
+		    submittable() {
+                return this.transferable &&
+                    this.allowedPrivateKeyField &&
+                    this.privateKey !== '';
+            },
+		    transferable() {
+                return this.balances.ether > 0;
+            },
+            allowedPrivateKeyField() {
+                return  this.isValidAmount &&
+                    this.isValidAddress &&
+                    !this.busy &&
+                    (Number(this.amount) !== 0 || Number(this.amount) !== null);
             },
             isValidAmount() {
-                return this.amount > 0 && this.amount < this.balance;
+                return Number(this.amount) > 0 && Number(this.amount) < this.balances.coin;
             },
-            isNotOwnAddress() {
-                return String(this.transferTo).toLowerCase() !== String(this.address).toLowerCase();
+            isValidAddress() {
+		        let transferTo = String(this.transferTo);
+		        return !this.isOwnAddress &&  (transferTo !== '');
+            },
+            isOwnAddress() {
+                return String(this.transferTo).toLowerCase() === String(this.address).toLowerCase();
             },
         },
         data() {
             return {
+                decimals: 2,
                 amount: 0,
                 provider: 'https://ethshared.bdnodes.net?auth=uampStnJT55ABaYvG3HEg2qUFlQcgLZED9Tgw7o1GSQ',
                 contractAddress: '0xE3D0a162fCc5c02C9448274D7C58E18e1811385f',
@@ -119,7 +139,10 @@
                 module: 'account',
                 action: 'tokenbalance',
                 etherscanApikey: 'GEPXM3N11F476EMB8FCXG2XVK89Y5PKMFK',
-                balance: 0
+                balances: {
+                    coin: 0,
+                    ether: 0
+                }
             }
         },
         methods: {
@@ -147,11 +170,95 @@
                 return new this.web3.eth.Contract(this.contractAbi, this.contractAddress, {from: this.address});
             },
             transfer(amount) {
+		        if (!this.transferable) return;
                 this.busy = true;
                 this.buttonLoading = '<i class="fas fa-spinner fa-spin"></i>';
                 this.status = 'Status: <span style="color:#ffc107">transacting...</span>';
                 this.getContractAbi();
 
+                // set amount
+                amount = amount*this.decimals;
+                let hexAmount = this.web3.utils.toHex(amount);
+
+                // get transaction count, later will used as nonce
+                this.web3.eth.getTransactionCount(this.address)
+                    .then((v) => {
+                        console.log('Start Trsnaction', `nonce: ${v}`);
+                        this.count = v;
+                    });
+
+                // set your private key here, we'll sign the transaction below
+                let _privateKey = new Buffer(this.privateKey, 'hex');
+
+                // set contract
+                let maharlikaCoin = this.maharlikaContract();
+
+                this.transact(this.web3, maharlikaCoin, hexAmount, _privateKey);
+
+                // check the balance
+                maharlikaCoin.methods
+                    .balanceOf(this.address)
+                    .call()
+                    .then((balance) => {
+                        console.log('balance: '+balance);
+                    });
+            },
+            getContractAbi() {
+                axios.get(this.contractAbiUrl)
+                    .then(response => {
+                        this.contractAbi = response.data;
+                    })
+            },
+            transact(web3, contract, amount, privateKey) {
+                let rawTransaction = {
+                    "from": this.address,
+                    "gasPrice":web3.utils.toHex(2 * 1e10),
+                    "gasLimit":web3.utils.toHex(8000000),
+                    "to": this.contractAddress,
+                    "value":"0x0",
+                    "data": contract.methods.transfer(this.transferTo, amount).encodeABI(),
+                    "nonce":web3.utils.toHex(this.count)
+                };
+
+                //sign transaction
+                let transaction = new Tx(rawTransaction, { chain: 'mainnet', hardfork: 'petersburg' });
+                transaction.sign(privateKey);
+
+                // send transaction
+                web3.eth
+                    .sendSignedTransaction(`0x${transaction.serialize().toString('hex')}`)
+                    .then(response => {
+                        console.log('Successfully Transact', response);
+                        this.status = 'Status: <span style="color:#28a745">Successfully Transferred MHLK</span>';
+                        this.resetButtonLoading();
+                    })
+                    .catch(err => {
+                        if(this.tries < 3){
+                            this.transfer(amount);
+                            console.log('Failed to transact:' +err);
+                            console.log('tries: ' + this.tries);
+                            this.tries++;
+                        }
+                        else {
+                            this.status = 'Status: <span style="color:#dc3545">Failed transferring token</span>';
+                            this.resetButtonLoading();
+                        }
+                    });
+            },
+            getCoinBalance() {
+                this.maharlikaContract().methods.balanceOf(this.address)
+                    .call().then(coinBalance => this.balances.coin = coinBalance);
+
+            },
+            async getEtherBalance() {
+		        let weiBalance = await this.web3.eth.getBalance(this.address);
+                this.balances.ether = this.web3.utils.fromWei(weiBalance, 'ether');
+            }
+        },
+        mounted() {
+		    this.web3 = this.connectToProvider();
+		    this.getCoinBalance();
+		    this.getEtherBalance();
         }
 	}
 </script>
