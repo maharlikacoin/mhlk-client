@@ -17,7 +17,7 @@ class AuthWallet
     {
         // if session does not exists
         if (!session('authAddress')) {
-            return redirect()->route('test');
+            return redirect()->route('welcome');
         }
         return $next($request);
     }

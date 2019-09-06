@@ -23,7 +23,7 @@ class WalletController extends Controller
 
     public function logout() {
         session()->flush();
-        return redirect()->route('test');
+        return redirect()->route('welcome');
     }
 
     public function contract() {

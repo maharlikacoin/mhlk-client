@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome.index');
-})->name('test');
+})->name('welcome');
 
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
