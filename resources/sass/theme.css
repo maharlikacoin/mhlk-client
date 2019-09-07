@@ -85,3 +85,14 @@
 .input-bordered:disabled {
     background: #e9ecef;
 }
+.currency-symbol {
+    font-size: 12px !important;
+    color: #212529 !important;
+    margin-left: 5px;
+    display: initial !important;
+}
+.currency-decimals {
+    font-size:10px !important;
+    color:#8b939a !important;
+    display: initial !important;
+}

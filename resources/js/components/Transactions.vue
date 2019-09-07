@@ -24,7 +24,7 @@
             </template>
 
             <!-- date -->
-            <template slot="timeStamp" slot-scope="row">{{ Number(row.value) | moment("from", true) }}</template>
+            <template slot="timeStamp" slot-scope="row">{{ row.value | moment("from") }}</template>
             <!-- hash -->
             <template slot="hash" slot-scope="row">
                 <a :href="transactionBaseUrl+row.value" target="_blank">{{ row.value | trimAddress }}</a>
@@ -84,7 +84,7 @@
                 pageOptions: [ 5, 10, 15 ],
                 items: [],
                 fields: [
-                    { key: 'value', label: 'Amount (MHLK)', sortable: true, sortDirection: 'desc'  },
+                    { key: 'value', label: 'Amount', sortable: true, sortDirection: 'desc'  },
                     { key: 'from', label: 'From', sortable: true, sortDirection: 'desc'  },
                     { key: 'to', label: 'To', sortable: true, sortDirection: 'desc'  },
                     { key: 'timeStamp', label: 'Date', sortable: true, sortDirection: 'desc'  },
@@ -112,7 +112,11 @@
                     wholeNumber = stringNumber.slice(0, stringNumber.length-3),
                     decimals = stringNumber.slice(stringNumber.length-3, stringNumber.length);
 
-                return `<p>${wholeNumber}<span style='font-size:10px; color:#8b939a;display: initial;'>${decimals}</span></p>`;
+                return `<p>
+                        ${wholeNumber}
+                        <span class="currency-decimals">${decimals}</span>
+                        <span class="currency-symbol">MHLK</span>
+                    </p>`;
             },
             info (row, index, button) {
                 let item = row.item;
@@ -148,7 +152,7 @@
                                 value: value,
                                 from, from,
                                 to: to,
-                                timeStamp: timeStamp,
+                                timeStamp: new Date(timeStamp*1000),
                                 hash: hash,
                             }
                         })
@@ -175,5 +179,4 @@
 </script>
 
 <style scoped>
-
 </style>
