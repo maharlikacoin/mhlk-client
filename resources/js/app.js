@@ -2,6 +2,7 @@ import Transactions from './components/Transactions';
 import MaharlikaTile from './components/MaharlikaTile';
 import EtherTile from './components/EtherTile';
 import UserSidebar from './components/UserSidebar';
+import UserDropdown from './components/UserDropdown';
 import numFormat from 'vue-filter-number-format';
 
 window.numeral = require('numeral');
@@ -26,6 +27,7 @@ new Vue({
         Transactions,
         MaharlikaTile,
         EtherTile,
-        UserSidebar
+        UserSidebar,
+        UserDropdown
     }
 });
