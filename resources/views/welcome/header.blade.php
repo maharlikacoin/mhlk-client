@@ -25,9 +25,11 @@
                                     </div>
                                     <div class="cpn-text">
                                         <p>The <span class="font-weight-bolder">Maharlika Coin (MHLK)</span> was created
-                                            to distribute the value of resources to
-                                            the people and selected organizations directly benefiting them to ensure
-                                            transparency and corporate governance.
+                                            to distribute the value of natural
+                                            resources directly to the people and selected organizations to ensure that
+                                            Humanity has a stake in the protection and conservation of our planet. We
+                                            invite everyone to use the MHLK to advocate best practices for our natural
+                                            resources and ensure world peace.
                                         </p>
                                     </div>
                                     <div class="cpn-action">
