@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome.index');
 })->name('welcome');
 
+Route::post('contact-us', 'WelcomeController@contactUs')->name('contact-us');
+
 Route::get('/whitepaper', function() {
     return response()->file(storage_path('app/whitepaper.pdf'));
 })->name('whitepaper');

@@ -628,37 +628,37 @@ NioApp = function (NioApp, $, window, document) {
 	NioApp.components.docReady.push(NioApp.Plugins.validform);
 
 	// Form Validation !Plugin @v1.0
-	NioApp.Plugins.submitform = function () {
-		var $form = $('.nk-form-submit');
-
-        if( !$().validate && !$().ajaxSubmit ) {
-            console.log('jQuery Form and Form Validate not Defined.');
-            return true;
-        }
-
-        if ($form.exists()) {
-            $form.each(function(){
-                var $self = $(this), _result = $self.find('.form-results');
-                $self.validate({
-                    ignore: [],
-                    invalidHandler: function () { _result.slideUp(400); },
-                    submitHandler: function(form) {
-                    _result.slideUp(400);
-                    $(form).ajaxSubmit({
-                        target: _result, dataType: 'json',
-                        success: function(data) {
-                            var type = (data.result==='error') ? 'alert-danger' : 'alert-success';
-                            _result.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + type ).html(data.message).slideDown(400);
-                            if (data.result !== 'error') { $(form).clearForm().find('input').removeClass('input-focused'); }
-                        }
-                    });
-                    }
-                });
-                $self.find('.select').on('change', function() { $(this).valid(); });
-            });
-        }
-	};
-	NioApp.components.docReady.push(NioApp.Plugins.submitform);
+	// NioApp.Plugins.submitform = function () {
+	// 	var $form = $('.nk-form-submit');
+    //
+    //     if( !$().validate && !$().ajaxSubmit ) {
+    //         console.log('jQuery Form and Form Validate not Defined.');
+    //         return true;
+    //     }
+    //
+    //     if ($form.exists()) {
+    //         $form.each(function(){
+    //             var $self = $(this), _result = $self.find('.form-results');
+    //             $self.validate({
+    //                 ignore: [],
+    //                 invalidHandler: function () { _result.slideUp(400); },
+    //                 submitHandler: function(form) {
+    //                 _result.slideUp(400);
+    //                 $(form).ajaxSubmit({
+    //                     target: _result, dataType: 'json',
+    //                     success: function(data) {
+    //                         var type = (data.result==='error') ? 'alert-danger' : 'alert-success';
+    //                         _result.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + type ).html(data.message).slideDown(400);
+    //                         if (data.result !== 'error') { $(form).clearForm().find('input').removeClass('input-focused'); }
+    //                     }
+    //                 });
+    //                 }
+    //             });
+    //             $self.find('.select').on('change', function() { $(this).valid(); });
+    //         });
+    //     }
+	// };
+	// NioApp.components.docReady.push(NioApp.Plugins.submitform);
 
 	// Parallax !Plugin @v1.0
 	NioApp.Plugins.parallax = function () {

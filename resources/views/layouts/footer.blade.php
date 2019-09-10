@@ -8,7 +8,7 @@
                         <div class="contact-wrap split split-left split-lg-left bg-white">
                             <h5 class="title title-md">Contact Us</h5>
 
-                            <form class="nk-form-submit">
+                            <form method="POST" action="{{ route('contact-us') }}">
                                 @csrf
                                 <div class="field-item">
                                     <input id="name" name="name" type="text" class="input-line required">
@@ -25,10 +25,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <a href="{{ route('welcome') }}" class="btn btn-lg btn-grad">Submit</a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="form-results"></div>
+                                        <button class="btn btn-lg btn-grad" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </form>
