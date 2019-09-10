@@ -6,8 +6,9 @@
 
         @include('welcome.main')
 
-        @include('welcome.footer')
+        @include('layouts.footer')
     </div>
 
     @include('welcome.login')
+    <div class="preloader"><span class="spinner spinner-round"></span></div>
 @endsection

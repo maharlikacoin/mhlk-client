@@ -6,8 +6,9 @@
             <!-- Block @s -->
             <div class="nk-block block-footer">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-4 mb-4 mb-sm-0">
-                        <div class="wgs wgs-menu">
+                    <!-- Community -->
+                    <div class="col-lg-3 col-sm-12 mb-4 mb-sm-0">
+                        <div class="wgs wgs-menu d-flex flex-column w-100 align-items-center">
                             <h6 class="wgs-title">Be a part of our community</h6>
                             <div class="wgs-body">
                                 <ul class="social-links">
@@ -21,33 +22,39 @@
                             </div>
                         </div>
                     </div><!-- .col -->
-                    <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
+
+                    <div class="col-lg-4 col-sm-12 mb-4 mb-sm-0 d-flex justify-content-around">
+                        <!-- Company -->
                         <div class="wgs wgs-menu">
                             <h6 class="wgs-title">Company</h6>
                             <div class="wgs-body">
                                 <ul class="wgs-links">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Meet Our Team</a></li>
+                                    <li><a href="{{ route('about-us') }}">About Us</a></li>
+                                    <li><a href="{{ route('team') }}">Meet Our Team</a></li>
                                     <li><a href="mailto:support@maharlikacoin.com">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div><!-- .col -->
-                    <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
+                        <!-- Legal -->
                         <div class="wgs wgs-menu">
                             <h6 class="wgs-title">Legal</h6>
                             <div class="wgs-body">
                                 <ul class="wgs-links">
-                                    <li><a href="#">Disclaimer</a></li>
+                                    <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
+                                    <li><a href="{{ route('privacy') }}">Privacy</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div><!-- .col -->
-                    <div class="col-lg-5 mb-4 mb-lg-0 order-lg-first">
+
+                    <!-- Copyright -->
+                    <div class="col-lg-5 mb-4 mb-lg-0 order-lg-first text-center">
                         <div class="wgs wgs-text">
                             <div class="wgs-body">
                                 <a href="./" class="wgs-logo">
-                                    <img src="/images/logo-full-white.png" srcset="/images/logo-full-white2x.png 2x" alt="logo">
+                                    <img src="/images/logo-full-white.png"
+                                         style="width:15em;"
+                                         srcset="/images/logo-full-white2x.png 2x" alt="logo">
                                 </a>
                                 <p>Copyright © 2019 Formula Green Foundation <br>All rights reserved. </p>
                             </div>
