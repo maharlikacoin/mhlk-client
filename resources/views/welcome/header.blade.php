@@ -6,30 +6,35 @@
                 <div class="banner-wrap">
                     <div class="container">
                         <div class="row align-items-center justify-content-center">
-                            <div class="col-lg-5 order-lg-last">
+                            <div class="col-lg-4 order-lg-last">
                                 <div class="banner-gfx banner-gfx-re-s1">
                                     <div class="row align-items-center justify-content-center">
-                                        <img style="width: 30em;" src="/images/maharlika-logo-white.png" alt="Maharlika Coin">
+                                        <img class="logo-width-sm logo-width-lg" src="/images/maharlika-logo-white.png"
+                                             alt="Maharlika Coin">
                                     </div>
                                 </div>
                             </div><!-- .col -->
-                            <div class="col-lg-7 col-sm-10 text-center text-lg-left">
+                            <div class="col-lg-8 col-sm-10 text-center text-lg-left">
                                 <div class="banner-caption cpn tc-light">
                                     <div class="cpn-head">
                                         <h1 class="title">
-                                            Decentralizing The World's <br>
-                                            Most Basic Resources through <br>
-                                            a <span class="font-weight-bold">Shared Resource-based Economy</span>
+                                            The World's First <br>
+                                            <strong>Resource-Based Economy Cryptocurrency</strong><br>
+                                            Advocating A Dividend System <br>For Humanity
                                         </h1>
                                     </div>
                                     <div class="cpn-text">
-                                        <p>The <span class="font-weight-bolder">Maharlika Coin (MHLK)</span> was created and designed to bring assets and
-                                            basic resources together for the benefit of humanity and world peace.</p>
+                                        <p>The <span class="font-weight-bolder">Maharlika Coin (MHLK)</span> was created
+                                            to distribute the value of resources to
+                                            the people and selected organizations directly benefiting them to ensure
+                                            transparency and corporate governance.
+                                        </p>
                                     </div>
                                     <div class="cpn-action">
                                         @if(!session('authAddress'))
                                             <div class="cpn-btns">
-                                                <a class="btn btn-grad" href="#" data-toggle="modal" data-target="#login-popup">Access your Wallet</a>
+                                                <a class="btn btn-grad" href="#" data-toggle="modal"
+                                                   data-target="#login-popup">Access your Wallet</a>
                                             </div>
                                         @else
                                             <div class="cpn-btns">
@@ -37,7 +42,7 @@
                                             </div>
                                         @endif
                                         <ul class="cpn-links">
-                                            {{--<li><a class="link" href="#">Create your Wallet</a></li>--}}
+                                            <create-wallet></create-wallet>
                                         </ul>
                                     </div>
                                 </div>
