@@ -6,26 +6,25 @@
             <!-- Block @s -->
             <div class="nk-block nk-block-about">
                 <div class="row align-items-center gutter-vr-30px pdb-l">
-                    <div class="col-lg-6">
-                        <div class="nk-block-text">
-                            <h2 class="title"><span class="font-weight-lighter">About</span> The Maharlika Coin</h2>
-                            <p>Deployed by the  <strong>Formula Green Foundation (FGF)</strong>, The Maharlika Coin (MHLK) was created as
-                                a mode of trade used to fully develop a “Shared Resources Economy.” FGF believes that
-                                the most critical resources for humanity, such as energy, water, food, shelter, and livelihood,
-                                should be shared through the best of human capital, starting with the development of fusion
-                                energy and the availability of basic water. Recognizing the crucial role that the health of
-                                our oceans and coral reef diversity play in the sustainability of the world's food supply,
-                                Formula Green also supports both non-profit organizations and technology startups engaged
-                                in ocean conservation technology and programs.Backed by global resources, MHLK will be accessible
-                                to millions of people with the ability to transact and utilize the coin on our growing ecosystem
-                                built on partnerships worldwide.</p>
+                    <div class="col-lg-5 order-lg-last">
+                        <div class="text-right text-center-sm">
+                            <img src="/images/maharlika-coin-gold.png" alt="MHLK">
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        {{--<div class="nk-block-video">--}}
-                        {{--<img src="images/video/a.png" alt="video">--}}
-                        {{--<a href="https://www.youtube.com/watch?v=SSo_EIwHSd4" class="nk-block-video-play video-popup btn-play btn-play-light"><em class="fas fa-play"></em></a>--}}
-                        {{--</div>--}}
+                    <div class="col-lg-7">
+                        <div class="nk-block-text">
+                            <h2 class="title"><span class="font-weight-lighter text-about-sm">About</span> The Maharlika Coin</h2>
+                            <p class="text-justify">
+                                The Maharlika Coin (MHLK) is <strong>the world’s first asset-backed, wealth distribution
+                                cryptocurrency</strong>. Issued by the Swiss-based Formula Green Foundation in partnership
+                                with the Maharlika Trust, the use of MHLK advocates a “Resource-Based Economy or Shared
+                                Resources Economy” for Humanity where we believe that the world’s basic resources should
+                                be protected for the people and by the people. The key clusters which provide the value
+                                of MHLK encompass key advocacies which protect and manage our water supply, the
+                                transition and use of Fusion Energy, ocean & reefs conservation, key minerals, ensuring
+                                our food supply, and most of all, human capital.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div><!-- .block @e -->
