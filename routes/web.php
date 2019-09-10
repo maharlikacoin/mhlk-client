@@ -16,7 +16,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/whitepaper', function() {
-    return response()->file(storage_path('app\whitepaper.pdf'));
+    return response()->file(storage_path('app/whitepaper.pdf'));
 })->name('whitepaper');
 
 Route::get('/about-us', function() {
