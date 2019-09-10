@@ -1,9 +1,14 @@
+import Welcome from './components/welcome/index';
 import Transactions from './components/Transactions';
 import MaharlikaTile from './components/MaharlikaTile';
 import EtherTile from './components/EtherTile';
 import UserSidebar from './components/UserSidebar';
-import UserDropdown from './components/UserDropdown';
+import UserDropdownMobile from './components/UserDropdownMobile';
+import UserDropdownDesktop from './components/UserDropdownDesktop';
 import numFormat from 'vue-filter-number-format';
+import { BButton, BModal } from 'bootstrap-vue';
+import CreateWallet from './components/CreateWallet';
+import VueClipboard from 'vue-clipboard2';
 
 window.numeral = require('numeral');
 
@@ -13,21 +18,32 @@ Vue.filter('trimAddress', function (value) {
     return text.substring(0, 7) + '...' + text.substr(value.length - 4 );
 });
 Vue.filter('reduceSizeDecimal', (number) => {
+    number = numeral(number).format('0,000.00');
     let stringNumber = number.toString(),
         wholeNumber = stringNumber.slice(0, stringNumber.length-3),
         decimals = stringNumber.slice(stringNumber.length-3, stringNumber.length);
 
-    return wholeNumber + `<span style'font-size:10px'>${decimals}</span>`;
+    return `<p>
+                ${wholeNumber}<span class="currency-decimals">${decimals}</span>
+                <span class="currency-symbol">MHLK</span>
+            </p>`;
 });
+VueClipboard.config.autoSetContainer = true;
 Vue.use(require('vue-moment'));
+Vue.use(VueClipboard);
 
 new Vue({
     el: '#app',
     components: {
+        Welcome,
+        BButton,
+        BModal,
         Transactions,
         MaharlikaTile,
         EtherTile,
         UserSidebar,
-        UserDropdown
+        UserDropdownMobile,
+        UserDropdownDesktop,
+        CreateWallet
     }
 });
