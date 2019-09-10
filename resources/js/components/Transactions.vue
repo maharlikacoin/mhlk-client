@@ -6,7 +6,7 @@
             <!-- We are using utility class `text-nowrap` to help illustrate horizontal scrolling -->
             <!-- value -->
             <template slot="value" slot-scope="row">
-                <div v-html="reduceSizeDecimal(row.value/100)"></div>
+                <div v-html="$options.filters.reduceSizeDecimal(row.value/100)"></div>
             </template>
             <!-- from address -->
             <template slot="from" slot-scope="row">
