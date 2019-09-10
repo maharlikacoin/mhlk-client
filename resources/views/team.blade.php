@@ -33,10 +33,17 @@
                 <div class="nk-block nk-block-team-featured team-featured">
                     <div class="row align-items-center">
                         <div class="col-lg-5 mb-4 mb-lg-0 text-center">
-                            <div class="team-featured-photo tc-light mb-3">
-                                <img src="/images/team/01-paul.jpg" alt="Paul Monozca" style="border-radius: 4px;">
+                            <div class="team-photo team-photo-sm">
+                                <img src="/images/team/01-paul.jpg" alt="Mr. Paul Infante Moñozca">
+                                <ul class="team-social">
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/paul-infante-mo%C3%B1ozca-99185347/" target="_blank">
+                                            <em class="fab fa-linkedin-in"></em>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <h5 class="">
+                            <h5 class="mt-4">
                                 Mr. Paul Infante Moñozca
                             </h5>
                         </div>
@@ -83,6 +90,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/02-demitri.jpg" alt="Mr. Demitri Hopkins">
                                     <a href="#team-popup-2" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/demitri-hopkins-54260a106" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Demitri Hopkins</h5>
                                 <span class="team-position">Director for Fusion Energy</span>
@@ -124,6 +138,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/03-simon.jpg" alt="Mr. Simon Thomas ">
                                     <a href="#team-popup-3" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Simon Thomas </h5>
                                 <span class="team-position">Director for Finance</span>
@@ -164,6 +185,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/04-rich.jpg" alt="Mr. Richard Cabael">
                                     <a href="#team-popup-4" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/richcabael" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Richard Cabael</h5>
                                 <span class="team-position">Director for Corporate Development</span>
@@ -210,6 +238,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/05-allen.jpg" alt="Mr. Allen Mascenon">
                                     <a href="#team-popup-5" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/allenmascenon" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Allen Mascenon</h5>
                                 <span class="team-position">Director for Ecosystems</span>
@@ -253,6 +288,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/06-ern.jpg" alt="Mr. Ern Andrew Gregorio">
                                     <a href="#team-popup-6" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/eacgregorio/" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Ern Gregorio</h5>
                                 <span class="team-position">Head of Technology</span>
@@ -294,6 +336,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/07-dennis.jpg" alt="Mr. Denis Lucindo">
                                     <a href="#team-popup-7" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/denis-lucindo-649a117" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Denis Lucindo</h5>
                                 <span class="team-position">Director for Shared Resources</span>
@@ -337,6 +386,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/08-arnold.jpg" alt="Mr. Arnold Alafriz">
                                     <a href="#team-popup-8" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Arnold Alafriz</h5>
                                 <span class="team-position">Director for Special Projects</span>
@@ -351,6 +407,13 @@
                                     <div class="col-md-6">
                                         <div class="team-photo">
                                             <img src="/images/team/08-arnold.jpg" alt="Mr. Arnold Alafriz">
+                                            <ul class="team-social">
+                                                <li>
+                                                    <a href="https://www.linkedin.com/in/arnie-alafriz-564637145" target="_blank">
+                                                        <em class="fab fa-linkedin-in"></em>
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
@@ -382,6 +445,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/09-steven.jpg" alt="Mr. Steven Yamaji">
                                     <a href="#team-popup-9" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/steven-s-yamaji-4609a01" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Steven Yamaji</h5>
                                 <span class="team-position">Director for Digital Assets</span>
@@ -439,6 +509,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/10-ruslana.jpg" alt="Madam Ruslana Golunova">
                                     <a href="#team-popup-10" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/ruslana-golunova-b38b577a" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Madam Ruslana Golunova</h5>
                                 <span
@@ -484,6 +561,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/11-ilya.jpg" alt="Mr. Iliya Bugaev">
                                     <a href="#team-popup-11" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Iliya Bugaev</h5>
                                 <span class="team-position">Digital Assets</span>
@@ -531,6 +615,13 @@
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/12-dennis.jpg" alt="Mr. Dennis Duran">
                                     <a href="#team-popup-12" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Dennis Duran</h5>
                                 <span class="team-position">General Manager for Operations</span>
