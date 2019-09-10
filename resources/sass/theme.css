@@ -244,3 +244,17 @@ button.btn.btn-sm.clipboard-button:focus {
     color: black;
 }
 
+.team-social li a {
+    background: #ff5050;
+    box-shadow: 0 2px 15px 0 #ff505080;
+}
+.team-social li a:hover {
+    background: maroon;
+    box-shadow: 0 2px 15px 0 rgba(128, 0, 0, 0.51);
+}
+.team-show {
+    background: rgba(166, 124, 0, 0.27);
+}
+.mfp-close-btn-in .mfp-close:hover {
+    color: #dc3545!important;
+}
