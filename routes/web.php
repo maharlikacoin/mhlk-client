@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome.index');
 })->name('welcome');
 
+Route::get('/whitepaper', function() {
+    return response()->file(storage_path('app\whitepaper.pdf'));
+})->name('whitepaper');
+
 Route::get('/about-us', function() {
     return view('us');
 })->name('about-us');

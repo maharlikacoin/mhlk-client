@@ -42,6 +42,7 @@
                                 <ul class="wgs-links">
                                     <li><a href="{{ route('terms') }}">Terms & Conditions</a></li>
                                     <li><a href="{{ route('privacy') }}">Privacy</a></li>
+                                    <li><a href="{{ route('whitepaper') }}" target="_blank">Whitepaper</a></li>
                                 </ul>
                             </div>
                         </div>
