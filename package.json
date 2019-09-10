@@ -30,6 +30,7 @@
         "dotenv": "^8.1.0",
         "ethereumjs-tx": "^2.1.1",
         "ethereumjs-util": "^6.1.0",
+        "ethereumjs-wallet": "^0.6.3",
         "etherscan-api": "^10.0.2",
         "flag-icon-css": "^3.3.0",
         "fs": "0.0.1-security",
@@ -41,8 +42,10 @@
         "particles": "^0.3.1",
         "select2": "^4.0.10",
         "toastr": "^2.1.4",
+        "vue-clipboard2": "^0.3.1",
         "vue-filter-number-format": "^2.0.0",
         "vue-moment": "^4.0.0",
+        "vue-on-clickout": "^1.0.8",
         "web3": "^1.2.1"
     }
 }
