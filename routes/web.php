@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome.index');
 })->name('welcome');
 
+Route::get('/team', function() {
+    return view('team');
+})->name('team');
+
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
 Route::middleware('authWallet')->group(function() {
