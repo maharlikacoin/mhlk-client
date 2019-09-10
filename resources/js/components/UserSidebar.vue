@@ -19,7 +19,7 @@
             <div class="ath-container m-0">
 
                 <div style="float: right; position: relative;">
-                    <i class="fas fa-circle live" :class="[ {  'text-green': isConnected },'text-red']"></i>
+                    <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
                     <span style="color: rgb(108, 117, 125); float: right;">mainnet</span>
                 </div>
 
@@ -33,10 +33,10 @@
                         <div class="field-wrap">
                             <b-form-input v-model="transferTo" :state="isValidAddress"
                                           id="transfer-address" name="address" :disabled="busy" class="input-bordered"
-                                          required placeholder="Address you want to transfer to">
+                                          required placeholder="Wallet address you want to transfer to">
                             </b-form-input>
                             <b-form-invalid-feedback :state="isValidAddress">
-                                Please put a valid Ethereum address.
+                                Only a valid Ethereum wallet address can be entered.
                             </b-form-invalid-feedback>
                             <b-form-valid-feedback :state="isValidAddress">
                                 Nice!
@@ -204,7 +204,7 @@
 		        let hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
                 this.rawTransaction = {
                     "from": this.address,
-                    "gasPrice":web3.utils.toHex(2 * 1e10),
+                    "gasPrice":web3.utils.toHex(5 * 1e10),
                     "gasLimit":web3.utils.toHex(8000000),
                     "to": this.contractAddress,
                     "value":"0x0",
@@ -278,44 +278,4 @@
 	}
 </script>
 <style scoped>
-    .text-red {
-        color: #dc3545;
-    }
-    .text-green {
-        color: #28a745;
-    }
-    .live {
-        font-size: 10px;
-        margin-right: 5px;
-    }
-    .modal-close{
-        box-shadow: 0 0 0 0 rgba(65, 80, 118, 0.2);
-    }
-    a.modal-close {
-        color: #564100;
-    }
-    a.modal-close:hover {
-        color: #a67c00;;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .modal-content .modal-close .fa, .modal-content .modal-close .ti {
-        font-size: 20px;
-        height: 40px;
-        width: 40px;
-        background: transparent;
-        border-radius: 50%;
-        color: inherit;
-        text-shadow: none;
-        display: block;
-        transition: all 0s;
-        font-weight: inherit;
-    }
-    @media (min-width: 660px) {
-        .modal-content .modal-close {
-            height: 40px;
-            width: 40px;
-        }
-    }
-
 </style>
