@@ -204,8 +204,8 @@
 		        let hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
                 this.rawTransaction = {
                     "from": this.address,
-                    "gasPrice":web3.utils.toHex(5 * 1e10),
-                    "gasLimit":web3.utils.toHex(8000000),
+                    "gasPrice":web3.utils.toHex(19 * 1e9),
+                    "gasLimit":web3.utils.toHex(100000),
                     "to": this.contractAddress,
                     "value":"0x0",
                     "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
