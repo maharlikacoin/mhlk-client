@@ -14,6 +14,7 @@
                     </div>
                     <div class="user-dropdown">
                         <ul class="user-dropdown-links">
+                            <li><a href="/"><i class="ti ti-home"></i>Home</a></li>
                             <li><a :href="route"><i class="ti ti-power-off"></i>Logout</a></li>
                         </ul>
                     </div>
