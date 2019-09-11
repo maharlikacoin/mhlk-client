@@ -20,7 +20,7 @@
 
                 <div style="float: right; position: relative;">
                     <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
-                    <span style="color: rgb(108, 117, 125); float: right;">mainnet</span>
+                    <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
                 </div>
 
                 <div class="ath-body">
@@ -71,7 +71,7 @@
                     </div>
 
                     <!-- transfer button -->
-                    <b-button class="btn btn-grad w-100" :class="{ 'disable': busy }"
+                    <b-button class="btn btn-grad w-100" :class="{ 'disable': !submittable }"
                               :disabled="!submittable" @click="transfer"
                               v-html="buttonLoading"></b-button>
                     <span v-show="busy" v-html="status"></span>
@@ -133,38 +133,57 @@
         data() {
             return {
                 decimals: 2,
-                provider: 'https://ethshared.bdnodes.net?auth=uampStnJT55ABaYvG3HEg2qUFlQcgLZED9Tgw7o1GSQ',
-                contractAddress: '0xE3D0a162fCc5c02C9448274D7C58E18e1811385f',
+
+                chain: 'kovan',
+                config: {
+                    mainnet: {
+                        provider: 'https://ethshared.bdnodes.net?auth=uampStnJT55ABaYvG3HEg2qUFlQcgLZED9Tgw7o1GSQ',
+                        contractAddress: '0xE3D0a162fCc5c02C9448274D7C58E18e1811385f',
+                    },
+                    ropsten: {
+                        provider: 'https://ropstenshared.bdnodes.net/?auth=M0olBBbNBAhkVrlZLFmlN93AF_BonbAOiHAaFr4wjr0',
+                        contractAddress: '',
+                    },
+                    kovan: {
+                        provider: 'https://kovan.infura.io/v3/befbc2de01464c24b2d9012752e5877e',
+                        contractAddress: '0x66cD341f464d7c7555Cee3305e68F75AfFBb1F96',
+                    }
+                },
+                usedConfig: null,
                 contractAbiUrl: '/wallet/contract',
                 contractAbi: [],
-                amount: 0,
+
                 transferTo: '',
+                amount: 0,
                 privateKey: '',
+
                 count: 0,
                 buttonLoading: 'Send MHLK',
                 busy: false,
                 tries: 0,
                 status: 'Status: Idle',
+
                 web3: null,
-                etherScanApiBaseUrl: 'https://api.etherscan.io/api?',
-                module: 'account',
-                action: 'tokenbalance',
-                etherscanApikey: 'GEPXM3N11F476EMB8FCXG2XVK89Y5PKMFK',
                 balances: {
                     coin: 0,
                     ether: 0
                 },
-                chain: 'mainnet',
+                // chain: 'mainnet',
                 rawTransaction: null,
+                transacting: false,
             }
         },
         methods: {
 		    resetButtonLoading() {
+
+		        this.transacting = false;
 		        this.buttonLoading = 'Send MHLK';
                 this.tries = 0;
                 setTimeout(() => {
                         this.status = 'Status: Idle';
-                        this.busy = !this.busy;
+                        this.busy = false;
+                        this.transferTo = '';
+                        this.amount = 0;
                     }, 2000)
             },
             resetModal() {
@@ -178,35 +197,39 @@
 
             getContractAbi() {
                 return axios.get(this.contractAbiUrl)
-                    .then(response => this.contractAbi = response.data)
+                    .then(response => this.contractAbi = response.data )
             },
             connectToProvider() {
-                let nodeProvider = new Web3.providers.HttpProvider(this.provider);
+                let nodeProvider = new Web3.providers.HttpProvider(this.usedConfig.provider);
                 return new Web3(nodeProvider);
             },
             maharlikaContract() {
-                return new this.web3.eth.Contract(this.contractAbi, this.contractAddress, {from: this.address});
+                return new this.web3.eth.Contract(this.contractAbi, this.usedConfig.contractAddress, {from: this.address});
             },
             transfer() {
                 console.log('Start Transaction');
-                if (!this.transferrable) return;
+                if (!this.submittable) return;
                 this.busy = true;
                 this.buttonLoading = '<i class="fas fa-spinner fa-spin"></i>';
                 this.status = 'Status: <span style="color:#ffc107">transacting...</span>';
 
                 this.getNonce()
                     .then(() => {
+                        if(this.transacting) {
+                            console.log('you are still transacting');
+                            return;
+                        }
                         this.transact(this.web3, this.maharlikaContract());
-
                     });
             },
             transact(web3, contract) {
-		        let hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
+                this.transacting = true;
+                let hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
                 this.rawTransaction = {
                     "from": this.address,
                     "gasPrice":web3.utils.toHex(19 * 1e9),
                     "gasLimit":web3.utils.toHex(100000),
-                    "to": this.contractAddress,
+                    "to": this.usedConfig.contractAddress,
                     "value":"0x0",
                     "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
                     "nonce":web3.utils.toHex(this.count)
@@ -229,20 +252,18 @@
                         this.count++;
                         this.resetButtonLoading();
 
-                        this.maharlikaContract().methods.balanceOf(this.address)
-                            .call()
-                            .then( balance => console.log(balance/10**this.decimals));
+                        this.getCoinBalance();
+                        console.log(this.balances.coin);
                     })
                     .catch(err => {
+                        console.log(err);
                         if(this.tries < 3){
                             console.log('Failed to transact:' +err);
                             console.log('tries: ' + this.tries);
                             this.tries++;
                             this.count++;
-                            this.transact(
-                                this.web3,
-                                this.maharlikaContract()
-                            );
+
+                            this.transact(this.web3, this.maharlikaContract());
                         }
                         else {
                             this.status = 'Status: <span style="color:#dc3545">Failed transferring token</span>';
@@ -269,6 +290,7 @@
             }
         },
         mounted() {
+            this.usedConfig = (this.config[this.chain]);
             this.getContractAbi().then(() => {
                 this.web3 = this.connectToProvider();
                 this.getCoinBalance();
