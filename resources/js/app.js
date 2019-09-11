@@ -5,9 +5,8 @@ import EtherTile from './components/EtherTile';
 import UserSidebar from './components/UserSidebar';
 import UserDropdownMobile from './components/UserDropdownMobile';
 import UserDropdownDesktop from './components/UserDropdownDesktop';
-import numFormat from 'vue-filter-number-format';
-import { BButton, BModal } from 'bootstrap-vue';
 import CreateWallet from './components/CreateWallet';
+import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
 
 window.numeral = require('numeral');
@@ -36,8 +35,6 @@ new Vue({
     el: '#app',
     components: {
         Welcome,
-        BButton,
-        BModal,
         Transactions,
         MaharlikaTile,
         EtherTile,
