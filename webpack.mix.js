@@ -25,6 +25,7 @@ mix
     .copy('resources/images/maharlika-full-logo-colored.png', 'public/images/logo.png')
     .copy('resources/images/maharlika-full-logo-colored.png', 'public/images/logo2x.png')
     .copy('resources/images/maharlika-logo-white.png', 'public/images/maharlika-logo-white.png')
+    .copy('resources/images/maharlika-coin-gold.png', 'public/images/maharlika-coin-gold.png')
     .copy('resources/images/fgf-logo.png', 'public/images/fgf-logo.png')
     .copyDirectory('resources/images/team', 'public/images/team');
 
