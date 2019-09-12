@@ -30,4 +30,8 @@ class WalletController extends Controller
         $contract = json_decode(Storage::get('MaharlikaCoin.json'));
         return response()->json($contract->abi);
     }
+
+    public function wallet() {
+        return session('authAddress');
+    }
 }

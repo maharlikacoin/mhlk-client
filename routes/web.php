@@ -37,10 +37,12 @@ Route::get('/privacy-policy', function() {
     return view('privacy');
 })->name('privacy');
 
+
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
 Route::middleware('authWallet')->group(function() {
     Route::get('wallet', 'WalletController@index')->name('wallet');
+    Route::get('wallet/session', 'WalletController@wallet')->name('wallet.session');
     Route::get('wallet/contract', 'WalletController@contract')->name('wallet.contract');
     Route::get('wallet/logout', 'WalletController@logout')->name('wallet.logout');
 });
