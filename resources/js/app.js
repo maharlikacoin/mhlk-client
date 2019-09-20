@@ -8,6 +8,7 @@ import UserDropdownDesktop from './components/UserDropdownDesktop';
 import CreateWallet from './components/CreateWallet';
 import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
+import PerfectScrollbar from "vue2-perfect-scrollbar";
 
 window.numeral = require('numeral');
 
@@ -27,6 +28,8 @@ Vue.filter('reduceSizeDecimal', (number) => {
                 <span class="currency-symbol">MHLK</span>
             </p>`;
 });
+
+Vue.use(PerfectScrollbar);
 VueClipboard.config.autoSetContainer = true;
 Vue.use(require('vue-moment'));
 Vue.use(VueClipboard);
