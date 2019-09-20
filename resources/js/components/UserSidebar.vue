@@ -12,13 +12,13 @@
             </li>
         </ul>
 
-        <b-modal ref="transfer-modal" @hide="resetModal" hide-header hide-footer no-close-on-backdrop>
+        <b-modal ref="transfer-modal" @hide="resetModal" hide-header hide-footer no-close-on-backdrop centered>
             <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close" @click="toggleModal">
                 <em class="ti ti-close"></em>
             </a>
             <div class="ath-container m-0">
 
-                <div style="float: right; position: relative;">
+                <div class="relative text-right mr-5">
                     <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
                     <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
                 </div>
@@ -31,7 +31,7 @@
                     <!-- transfer to -->
                     <div class="field-item">
                         <div class="field-wrap">
-                            <b-form-input v-model="transferTo" :state="isValidAddress"
+                            <b-form-input v-model="transferTo" :state="isValidAddress" @change="resetStatus()"
                                           id="transfer-address" name="address" :disabled="busy" class="input-bordered"
                                           required placeholder="Wallet address you want to transfer to">
                             </b-form-input>
@@ -47,7 +47,7 @@
                     <!-- amount -->
                     <div class="field-item">
                         <div class="field-wrap">
-                            <b-form-input v-model="amount" :state="isValidAmount"
+                            <b-form-input v-model="amount" :state="isValidAmount" @change="resetStatus()"
                                           id="transfer-amount" name="amount" :disabled="busy" type="number"
                                           class="input-bordered"
                                           required placeholder="Amount of MHLK">
@@ -70,11 +70,31 @@
                         </div>
                     </div>
 
+                    <!-- estimated cost -->
+                    <div class="field-item" v-if="transactionFee">
+                        <a href="#" v-show="!toggleTransactionInfo"
+                           @click="toggleTransactionInfo = !toggleTransactionInfo">
+                            Show more information
+                        </a>
+                        <a href="#" v-show="toggleTransactionInfo"
+                           @click="toggleTransactionInfo = !toggleTransactionInfo">
+                            Hide
+                        </a>
+                        <div v-if="toggleTransactionInfo">
+                            <div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>
+                            <div>Gas Limit: {{ gas.limit }}</div>
+                        </div>
+                        <div>
+                            Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH
+                            ( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )
+                        </div>
+                    </div>
+
                     <!-- transfer button -->
                     <b-button class="btn btn-grad w-100" :class="{ 'disable': !submittable }"
                               :disabled="!submittable" @click="transfer"
                               v-html="buttonLoading"></b-button>
-                    <span v-show="busy" v-html="status"></span>
+                    <span v-html="status"></span>
                 </div>
             </div>
         </b-modal>
@@ -101,16 +121,24 @@
         },
         beforeCreate() {
         computed: {
-		    submittable() {
-                return this.transferrable &&
-                    this.isConnected &&
-                    this.allowedPrivateKeyField &&
-                    this.privateKey !== '';
+            transactionFee() {
+                if (this.submittable &&  !this.isGasLimitZero) return (this.gas.selected/1e18) * this.gas.limit;
+                else return 0;
+            },
+            submittable() {
+                if( this.transferrable && this.isConnected && this.allowedPrivateKeyField && this.privateKey !== ''){
+                    if (this.isGasLimitZero) this.estimateGasLimit();
+                    else return true
+                }
+                else return false;
+            },
+            isGasLimitZero() {
+                return this.gas.limit === 0 || this.gas.limit === null;
             },
             isConnected() {
                 return this.web3 !== null;
             },
-		    transferrable() {
+            transferrable() {
                 return this.balances.ether > 0;
             },
             allowedPrivateKeyField() {
@@ -123,18 +151,19 @@
                 return Number(this.amount) > 0 && Number(this.amount) < this.balances.coin;
             },
             isValidAddress() {
-		        let transferTo = String(this.transferTo);
-		        return !this.isOwnAddress &&  (transferTo !== '');
+                let transferTo = String(this.transferTo);
+                return !this.isOwnAddress && this.web3 !== null && this.web3.utils.isAddress(transferTo);
+
             },
             isOwnAddress() {
                 return String(this.transferTo).toLowerCase() === String(this.address).toLowerCase();
-            },
+            }
         },
         data() {
             return {
                 decimals: 2,
 
-                chain: 'kovan',
+                chain: 'mainnet',
                 config: {
                     mainnet: {
                         provider: 'https://ethshared.bdnodes.net?auth=uampStnJT55ABaYvG3HEg2qUFlQcgLZED9Tgw7o1GSQ',
@@ -155,6 +184,7 @@
 
                 transferTo: '',
                 amount: 0,
+                hexAmount: '',
                 privateKey: '',
 
                 count: 0,
@@ -163,6 +193,17 @@
                 tries: 0,
                 status: 'Status: Idle',
 
+                gas: {
+                    selected: null,
+                    prices: {
+                        fastest: 0,
+                        fast: 0,
+                        average: 0,
+                        slow: 0,
+                        slowest: 0,
+                    },
+                    limit: 0
+                },
                 web3: null,
                 balances: {
                     coin: 0,
@@ -171,25 +212,34 @@
                 // chain: 'mainnet',
                 rawTransaction: null,
                 transacting: false,
+                toggleTransactionInfo: false,
+                ethPrice: {
+                    usd: 0
+                }
             }
         },
         methods: {
+		    resetStatus() {
+		        this.status = 'Status: New Transaction'
+            },
+            resetFields() {
+                setTimeout(() => {
+                    this.transferTo = '';
+                    this.amount = 0;
+                }, 2000)
+            },
 		    resetButtonLoading() {
-
 		        this.transacting = false;
 		        this.buttonLoading = 'Send MHLK';
                 this.tries = 0;
-                setTimeout(() => {
-                        this.status = 'Status: Idle';
-                        this.busy = false;
-                        this.transferTo = '';
-                        this.amount = 0;
-                    }, 2000)
+                this.busy = false;
             },
             resetModal() {
                 this.amount = 0;
                 this.transferTo = '';
                 this.privateKey = '';
+                this.resetStatus();
+                this.resetButtonLoading();
             },
             toggleModal() {
                 this.$refs['transfer-modal'].toggle('#toggle-button')
@@ -220,18 +270,22 @@
                             return;
                         }
                         this.transact(this.web3, this.maharlikaContract());
+                    })
+                    .catch(err => {
+                        this.status = 'Status: <span style="color:#dc3545">Please check your public and private keys</span>';
+                        this.resetButtonLoading();
+                        console.log(err.message)
                     });
             },
             transact(web3, contract) {
                 this.transacting = true;
-                let hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
                 this.rawTransaction = {
                     "from": this.address,
-                    "gasPrice":web3.utils.toHex(19 * 1e9),
-                    "gasLimit":web3.utils.toHex(100000),
+                    "gasPrice":web3.utils.toHex(this.gas.selected),
+                    "gasLimit":web3.utils.toHex(this.gas.limit),
                     "to": this.usedConfig.contractAddress,
                     "value":"0x0",
-                    "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
+                    "data": contract.methods.transfer(this.transferTo, this.hexAmount).encodeABI(),
                     "nonce":web3.utils.toHex(this.count)
                 };
 
@@ -251,25 +305,51 @@
                         this.status = 'Status: <span style="color:#28a745">Successfully Transferred MHLK</span>';
                         this.count++;
                         this.resetButtonLoading();
+                        this.resetFields();
 
                         this.getCoinBalance();
                         console.log(this.balances.coin);
                     })
                     .catch(err => {
-                        console.log(err);
-                        if(this.tries < 3){
-                            console.log('Failed to transact:' +err);
-                            console.log('tries: ' + this.tries);
-                            this.tries++;
-                            this.count++;
-
-                            this.transact(this.web3, this.maharlikaContract());
-                        }
-                        else {
-                            this.status = 'Status: <span style="color:#dc3545">Failed transferring token</span>';
-                            this.resetButtonLoading();
-                        }
+                        console.log(err.message);
+                        this.status = 'Status: <span style="color:#dc3545">Failed transferring token. Check your private and public keys</span>';
+                        this.resetButtonLoading();
                     });
+            },
+            getDollarPrice() {
+                delete axios.defaults.headers.common["X-Requested-With"];
+		        axios.get('https://api.etherscan.io/api?module=stats&action=ethprice')
+                    .then(response => {
+                        this.ethPrice.usd = response.data.result.ethusd;
+                        console.log(this.ethPrice.usd)
+                    })
+            },
+            getGasPrices() {
+                delete axios.defaults.headers.common["X-Requested-With"];
+		        axios.get('https://ethgasstation.info/json/ethgasAPI.json')
+                    .then(response => {
+                        let data = response.data;
+                        this.gas.prices = {
+                            fastest: data.fastest * 1e8,
+                            fast: data.fast * 1e8,
+                            average: data.average * 1e8,
+                            slow: data.safeLow * 1e8,
+                            slowest: data.safeLowWait * 1e8,
+                        };
+
+                        this.gas.selected = this.gas.prices.fastest;
+                    })
+            },
+            estimateGasLimit() {
+                this.hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
+
+                this.maharlikaContract().methods
+                    .transfer(this.transferTo, this.hexAmount)
+                    .estimateGas({ from: this.address})
+                    .then(limit => {
+                        this.gas.limit = limit;
+                    })
+                    .catch(err => console.log(err));
             },
             getNonce() {
                 // get transaction count, later will used as nonce
@@ -284,20 +364,24 @@
                     .call().then(coinBalance => this.balances.coin = coinBalance/10**this.decimals);
 
             },
-            async getEtherBalance() {
-		        let weiBalance = await this.web3.eth.getBalance(this.address);
-                this.balances.ether = this.web3.utils.fromWei(weiBalance, 'ether');
+            getEtherBalance() {
+                this.web3.eth.getBalance(this.address)
+                    .then(balance => {
+                        this.balances.ether = this.web3.utils.fromWei(balance, 'ether');
+                    });
             }
         },
         mounted() {
             this.usedConfig = (this.config[this.chain]);
+            this.getDollarPrice();
+            this.getGasPrices();
             this.getContractAbi().then(() => {
                 this.web3 = this.connectToProvider();
                 this.getCoinBalance();
                 this.getEtherBalance();
             });
         }
-	}
+    }
 </script>
 <style scoped>
 </style>
