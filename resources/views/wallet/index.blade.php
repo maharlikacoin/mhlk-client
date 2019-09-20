@@ -10,5 +10,11 @@
         address="{{ session('authAddress') }}"
     ></wallet-main>
 
-    @include('wallet.footer')
+    <wallet-footer
+        about-us="{{ route('about-us') }}"
+        team="{{ route('team') }}"
+        terms: {{ route('terms') }}
+        privacy: {{ route('privacy') }}
+        whitepaper: {{ route('whitepaper') }}
+    ></wallet-footer>
 @endsection

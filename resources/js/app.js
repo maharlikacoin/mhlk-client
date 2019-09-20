@@ -1,5 +1,7 @@
 import WalletHeader from './components/wallet/WalletHeader';
 import WalletMain from './components/wallet/main/index';
+import WalletFooter from './components/wallet/footer/index';
+
 import Welcome from './components/welcome/index';
 import CreateWallet from './components/CreateWallet';
 import numFormat from 'vue-filter-number-format';
@@ -35,6 +37,7 @@ new Vue({
     components: {
         WalletHeader,
         WalletMain,
+        WalletFooter,
         Welcome,
         CreateWallet
     }
