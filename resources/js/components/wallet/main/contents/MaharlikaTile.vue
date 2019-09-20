@@ -10,7 +10,7 @@
 
 <script>
 	export default {
-		name: "MaharlikaTile",
+		name: "ContentsMaharlikaTile",
         props: {
             address: String
         },

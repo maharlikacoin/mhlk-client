@@ -1,9 +1,6 @@
 import WalletHeader from './components/wallet/WalletHeader';
+import WalletMain from './components/wallet/main/index';
 import Welcome from './components/welcome/index';
-import Transactions from './components/Transactions';
-import MaharlikaTile from './components/MaharlikaTile';
-import EtherTile from './components/EtherTile';
-import UserSidebar from './components/UserSidebar';
 import CreateWallet from './components/CreateWallet';
 import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
@@ -37,11 +34,8 @@ new Vue({
     el: '#app',
     components: {
         WalletHeader,
+        WalletMain,
         Welcome,
-        Transactions,
-        MaharlikaTile,
-        EtherTile,
-        UserSidebar,
         CreateWallet
     }
 });

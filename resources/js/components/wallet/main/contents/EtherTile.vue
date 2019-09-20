@@ -10,7 +10,7 @@
 
 <script>
 	export default {
-		name: "EtherTile",
+		name: "ContentsEtherTile",
         props: {
             address: String
         },

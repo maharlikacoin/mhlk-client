@@ -65,7 +65,7 @@
                     <div class="field-item">
                         <div class="field-wrap">
                             <textarea class="input-bordered" name="address" v-model="privateKey"
-                                   :disabled="!allowedPrivateKeyField"
+                                      :disabled="!allowedPrivateKeyField"
                                       placeholder="Your private Key"></textarea>
                         </div>
                     </div>
@@ -107,17 +107,17 @@
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
-		name: "UserSidebar",
+        name: "SidebarIndex",
         components: {
             BFormInvalidFeedback,
             BFormValidFeedback,
-		    BModal,
+            BModal,
             BButton,
             BFormInput,
             BForm
         },
         props: {
-		    address: String
+            address: String
         },
         beforeCreate() {
         computed: {
@@ -219,8 +219,8 @@
             }
         },
         methods: {
-		    resetStatus() {
-		        this.status = 'Status: New Transaction'
+            resetStatus() {
+                this.status = 'Status: New Transaction'
             },
             resetFields() {
                 setTimeout(() => {
@@ -228,9 +228,9 @@
                     this.amount = 0;
                 }, 2000)
             },
-		    resetButtonLoading() {
-		        this.transacting = false;
-		        this.buttonLoading = 'Send MHLK';
+            resetButtonLoading() {
+                this.transacting = false;
+                this.buttonLoading = 'Send MHLK';
                 this.tries = 0;
                 this.busy = false;
             },
@@ -318,7 +318,7 @@
             },
             getDollarPrice() {
                 delete axios.defaults.headers.common["X-Requested-With"];
-		        axios.get('https://api.etherscan.io/api?module=stats&action=ethprice')
+                axios.get('https://api.etherscan.io/api?module=stats&action=ethprice')
                     .then(response => {
                         this.ethPrice.usd = response.data.result.ethusd;
                         console.log(this.ethPrice.usd)
@@ -326,7 +326,7 @@
             },
             getGasPrices() {
                 delete axios.defaults.headers.common["X-Requested-With"];
-		        axios.get('https://ethgasstation.info/json/ethgasAPI.json')
+                axios.get('https://ethgasstation.info/json/ethgasAPI.json')
                     .then(response => {
                         let data = response.data;
                         this.gas.prices = {
@@ -353,7 +353,7 @@
             },
             getNonce() {
                 // get transaction count, later will used as nonce
-		        return this.web3.eth.getTransactionCount(this.address)
+                return this.web3.eth.getTransactionCount(this.address)
                     .then((v) => {
                         this.count = v;
                         console.log(`nonce: ${this.count}`);

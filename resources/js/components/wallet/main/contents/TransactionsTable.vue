@@ -36,39 +36,15 @@
 </template>
 
 <script>
-    import bContainer from 'bootstrap-vue/es/components/layout/container';
-    import bRow from 'bootstrap-vue/es/components/layout/row';
-    import bCol from 'bootstrap-vue/es/components/layout/col';
-    import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group';
-    import bFormInput from 'bootstrap-vue/es/components/form-input/form-input';
-    import bFormSelect from 'bootstrap-vue/es/components/form-select/form-select';
-    import bInputGroup from 'bootstrap-vue/es/components/input-group/input-group';
-    import bInputGroupAppend from 'bootstrap-vue/es/components/input-group/input-group-append';
-    import bTable from 'bootstrap-vue/es/components/table/table';
-    import bPagination from 'bootstrap-vue/es/components/pagination/pagination';
-    import bButton from 'bootstrap-vue/es/components/button/button';
-    import bCard from 'bootstrap-vue/es/components/card/card';
-    import bModal from 'bootstrap-vue/es/components/modal/modal';
+    import { BTable  } from 'bootstrap-vue';
 
     export default {
-        name: "Transactions",
+        name: "ContentsTransactionsTable",
         props: {
             address: String
         },
         components: {
-            bContainer,
-            bRow,
-            bCol,
-            bFormGroup,
-            bFormInput,
-            bFormSelect,
-            bInputGroup,
-            bInputGroupAppend,
-            bTable,
-            bPagination,
-            bButton,
-            bCard,
-            bModal,
+            BTable
         },
         data () {
             return {
