@@ -123,7 +123,7 @@
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
-		name: "mobile",
+		name: "DropdownMobile",
         components: {
             BFormInvalidFeedback,
             BFormValidFeedback,

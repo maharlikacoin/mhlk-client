@@ -27,7 +27,7 @@
 
 <script>
 	export default {
-		name: "desktop",
+		name: "DropdownDesktop",
         props: {
 		    logout: String,
             address: String
