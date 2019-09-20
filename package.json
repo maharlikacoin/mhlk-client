@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.0.0-rc.28",
+        "browserslist": "^4.7.0",
         "chart.js": "^2.8.0",
         "dotenv": "^8.1.0",
         "ethereumjs-tx": "^2.1.1",
@@ -51,5 +52,11 @@
         "vue-qrcode-reader": "^2.0.4",
         "vuelidate": "^0.7.4",
         "web3": "^1.2.1"
-    }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8",
+        "Chrome > 40"
+    ]
 }
