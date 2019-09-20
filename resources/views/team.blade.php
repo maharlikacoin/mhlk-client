@@ -58,7 +58,7 @@
                                     Foundation. His other interests include property, financial technology, food &
                                     beverage, and sports. Awarded the Singapore Sports Inspiration Award by the
                                     Singapore government and given various recognitions for his advocacy on
-                                    philanthrocapitalism, he also held multinational positions in such global companies
+                                    philanthrocapitalism, he also held multinational positions in such global companies such
                                     as PricewaterhouseCoopers, Siemens, and the Quaker Oats Company with roles in
                                     corporate finance, business development and brand communications during his 20-year
                                     career in Singapore. He continuously serves as a Director for Philanthropy for
