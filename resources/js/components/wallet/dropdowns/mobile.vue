@@ -110,7 +110,7 @@
                 <div class="gaps-1x"></div>
                 <ul class="user-dropdown-links">
                     <li><a href="/"><i class="ti ti-home"></i>Home</a></li>
-                    <li><a :href="route"><i class="ti ti-power-off"></i>Logout</a></li>
+                    <li><a :href="logout"><i class="ti ti-power-off"></i>Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -123,7 +123,7 @@
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
-		name: "UserDropdown",
+		name: "mobile",
         components: {
             BFormInvalidFeedback,
             BFormValidFeedback,
@@ -133,7 +133,7 @@
             BForm
         },
         props: {
-		    route: String,
+		    logout: String,
             address: String
         },
         computed: {

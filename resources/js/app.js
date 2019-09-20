@@ -1,10 +1,9 @@
+import WalletHeader from './components/wallet/WalletHeader';
 import Welcome from './components/welcome/index';
 import Transactions from './components/Transactions';
 import MaharlikaTile from './components/MaharlikaTile';
 import EtherTile from './components/EtherTile';
 import UserSidebar from './components/UserSidebar';
-import UserDropdownMobile from './components/UserDropdownMobile';
-import UserDropdownDesktop from './components/UserDropdownDesktop';
 import CreateWallet from './components/CreateWallet';
 import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
@@ -37,13 +36,12 @@ Vue.use(VueClipboard);
 new Vue({
     el: '#app',
     components: {
+        WalletHeader,
         Welcome,
         Transactions,
         MaharlikaTile,
         EtherTile,
         UserSidebar,
-        UserDropdownMobile,
-        UserDropdownDesktop,
         CreateWallet
     }
 });

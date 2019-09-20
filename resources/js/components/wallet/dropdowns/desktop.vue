@@ -15,7 +15,7 @@
                     <div class="user-dropdown">
                         <ul class="user-dropdown-links">
                             <li><a href="/"><i class="ti ti-home"></i>Home</a></li>
-                            <li><a :href="route"><i class="ti ti-power-off"></i>Logout</a></li>
+                            <li><a :href="logout"><i class="ti ti-power-off"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -27,9 +27,9 @@
 
 <script>
 	export default {
-		name: "UserDropdownDesktop",
+		name: "desktop",
         props: {
-		    route: String,
+		    logout: String,
             address: String
         },
         data() {

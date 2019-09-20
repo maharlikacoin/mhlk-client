@@ -1,7 +1,10 @@
 @extends('layouts.wallet')
 
 @section('contents')
-    @include('wallet.topbar')
+    <wallet-header
+        address="{{ session('authAddress') }}"
+        logout="{{ route('wallet.logout') }}"
+    ></wallet-header>
 
     @include('wallet.main')
 
