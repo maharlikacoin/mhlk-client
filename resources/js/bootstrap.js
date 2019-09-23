@@ -1,7 +1,6 @@
 window._ = require('lodash');
 window.Vue = require('vue');
 window.etherscan = require('etherscan-api').init('GEPXM3N11F476EMB8FCXG2XVK89Y5PKMFK');
-window.Web3 = require('web3');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
