@@ -7,6 +7,7 @@ import CreateWallet from './components/CreateWallet';
 import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
 import PerfectScrollbar from "vue2-perfect-scrollbar";
+import VueGtm from 'vue-gtm';
 
 window.numeral = require('numeral');
 
@@ -27,6 +28,12 @@ Vue.filter('reduceSizeDecimal', (number) => {
             </p>`;
 });
 
+Vue.use(VueGtm, {
+    id: 'GTM-MPF64Q7',
+    enabled: true,
+    debug: true,
+    loadScript: true
+});
 Vue.use(PerfectScrollbar);
 VueClipboard.config.autoSetContainer = true;
 Vue.use(require('vue-moment'));
