@@ -102,8 +102,7 @@
 </template>
 
 <script>
-	export default {
-    import { BForm, BFormInput, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue'
+    import { BForm, BFormInput, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue';
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
@@ -119,7 +118,6 @@
         props: {
             address: String
         },
-        beforeCreate() {
         computed: {
             transactionFee() {
                 if (this.submittable &&  !this.isGasLimitZero) return (this.gas.selected/1e18) * this.gas.limit;
