@@ -5,7 +5,6 @@
         </div>
         <h6 class="user-name">{{ address | trimAddress }}</h6>
         <ul class="btn-grp guttar-10px">
-            <li><a href="#" class="btn btn-grad">TRANSFER</a></li>
             <li>
                 <b-button id="toggle-button" class="btn btn-grad" :class="{ 'disable': !transferrable}"
                           :disabled="!transferrable" @click="toggleModal">Transfer</b-button>
