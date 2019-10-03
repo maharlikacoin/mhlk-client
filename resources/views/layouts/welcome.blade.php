@@ -11,7 +11,7 @@
     <title>Maharlika Coin - For humanity, Especially the Filipino People</title>
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-
+    <script data-ad-client="ca-pub-1747538166059459" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body class="nk-body body-wider bg-light mode-onepage">
