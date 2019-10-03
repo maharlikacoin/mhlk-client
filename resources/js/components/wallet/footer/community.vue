@@ -27,6 +27,11 @@
                 </ul>
                 <ul class="social-links">
                     <li>
+                        <a href="https://www.youtube.com/channel/UCS3wH4WzTQ1_cdFcdK6NphQ" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
                         <a href="https://www.reddit.com/user/maharlikacoin" target="_blank">
                             <i class="fab fa-reddit-square"></i>
                         </a>
@@ -39,11 +44,6 @@
                     <li>
                         <a href="https://linkedin.com/company/maharlika-coin" target="_blank">
                             <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://maharlikacoin.slack.com" target="_blank">
-                            <i class="fab fa-slack"></i>
                         </a>
                     </li>
                 </ul>
