@@ -142,9 +142,11 @@
                 else return 0;
             },
             submittable() {
-                if( this.transferrable && this.isConnected && this.allowedPrivateKeyField && this.privateKey !== ''){
-                    if (this.isGasLimitZero) this.estimateGasLimit();
-                    else return true
+                if( this.transferrable && this.isConnected && this.allowedPrivateKeyField && this.privateKey !== '' &&
+                    this.web3 !== null && this.maharlikaContract !== null ){
+                    this.estimateGasLimit(this.web3, this.maharlikaContract());
+
+                    return true;
                 }
                 else return false;
             },
@@ -200,7 +202,6 @@
 
                 transferTo: '',
                 amount: 0,
-                hexAmount: '',
                 privateKey: '',
 
                 count: 0,
@@ -302,13 +303,14 @@
             },
             transact(web3, contract) {
                 this.transacting = true;
+                let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
                 this.rawTransaction = {
                     "from": this.address,
                     "gasPrice":web3.utils.toHex(this.gas.selected),
                     "gasLimit":web3.utils.toHex(this.gas.limit),
                     "to": this.usedConfig.contractAddress,
                     "value":"0x0",
-                    "data": contract.methods.transfer(this.transferTo, this.hexAmount).encodeABI(),
+                    "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
                     "nonce":web3.utils.toHex(this.count)
                 };
 
@@ -363,11 +365,11 @@
                         this.gas.selected = this.gas.prices.fastest;
                     })
             },
-            estimateGasLimit() {
-                this.hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
+            estimateGasLimit(web3, contract) {
+                let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
 
                 this.maharlikaContract().methods
-                    .transfer(this.transferTo, this.hexAmount)
+                    .transfer(this.transferTo, hexAmount)
                     .estimateGas({ from: this.address})
                     .then(limit => {
                         this.gas.limit = limit;
