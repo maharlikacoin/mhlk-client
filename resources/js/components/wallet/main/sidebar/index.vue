@@ -163,7 +163,7 @@
                 chain: 'mainnet',
                 config: {
                     mainnet: {
-                        provider: 'https://ethshared.bdnodes.net?auth=uampStnJT55ABaYvG3HEg2qUFlQcgLZED9Tgw7o1GSQ',
+                        provider: 'https://ethshared.bdnodes.net?auth=trtq2YNHtEU2rvJabEwqcV4BEE1M8lnpOrEV6EICHT4',
                         contractAddress: '0xE3D0a162fCc5c02C9448274D7C58E18e1811385f',
                     },
                     ropsten: {
