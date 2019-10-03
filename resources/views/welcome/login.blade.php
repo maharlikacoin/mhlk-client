@@ -10,7 +10,7 @@
                         @csrf
                         <div class="field-item">
                             <div class="field-wrap">
-                                <input type="text" class="input-bordered" name="address" placeholder="Your Public Key" required>
+                                <input type="text" class="input-bordered" name="address" placeholder="Your wallet address (public key)" required>
                             </div>
                         </div>
                         <button class="btn btn-grad w-100">Login</button>

@@ -17,7 +17,7 @@
                         <div class="field-wrap">
                             <div class="input-group">
                                 <input class="input-bordered form-control" name="address" v-model="keys.public"
-                                       disabled placeholder="Copy your created wallet address"/>
+                                       disabled placeholder="Copy your created wallet address (public key)"/>
                                 <div class="input-group-append">
                                     <button class="btn btn-sm clipboard-button"
                                             :class="{ 'disabled': keys.public === ''}"
@@ -37,7 +37,7 @@
                         <div class="field-wrap">
                             <div class="input-group">
                             <textarea class="input-bordered form-control" name="privateKey" v-model="keys.private"
-                                      disabled placeholder="Copy your generated closed key"></textarea>
+                                      disabled placeholder="Copy your generated private key"></textarea>
                                 <div class="input-group-append">
                                     <button class="btn btn-sm clipboard-button"
                                             :class="{ 'disabled': keys.private === '' }"
