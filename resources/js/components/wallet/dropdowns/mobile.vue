@@ -368,7 +368,7 @@
             estimateGasLimit(web3, contract) {
                 let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
 
-                this.maharlikaContract().methods
+                contract.methods
                     .transfer(this.transferTo, hexAmount)
                     .estimateGas({ from: this.address})
                     .then(limit => {
