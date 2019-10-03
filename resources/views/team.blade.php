@@ -231,7 +231,9 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
+                    </div><!-- .row -->
 
+                    <div class="row justify-content-center">
                         <!-- Mr. Allen Mascenon   -->
                         <div class="col-md-3 col-6">
                             <div class="team">
@@ -379,65 +381,18 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
+                    </div>
+                </div>
+                <!-- Block @r -->
+            </div>
+        </section>
+        <!-- // -->
+        <section class="section section-l section-team bg-light">
 
-                        <!-- Mr. Arnold Alafriz   -->
-                        <div class="col-md-3 col-6">
-                            <div class="team">
-                                <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/08-arnold.jpg" alt="Mr. Arnold Alafriz">
-                                    <a href="#team-popup-8" class="team-show content-popup"></a>
-                                    <ul class="team-social">
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <em class="fab fa-linkedin-in"></em>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="team-name title title-sm">Mr. Arnold Alafriz</h5>
-                                <span class="team-position">Director for Special Projects</span>
-                                <br>
-                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
-                                <span class="flag-size-md flag-icon flag-icon-ca"></span>
-                            </div>
-                            <!-- Start .team-profile  -->
-                            <div id="team-popup-8" class="team-popup mfp-hide">
-                                <a title="Close" class="mfp-close">×</a>
-                                <div class="row align-items-start">
-                                    <div class="col-md-6">
-                                        <div class="team-photo">
-                                            <img src="/images/team/08-arnold.jpg" alt="Mr. Arnold Alafriz">
-                                            <ul class="team-social">
-                                                <li>
-                                                    <a href="https://www.linkedin.com/in/arnie-alafriz-564637145" target="_blank">
-                                                        <em class="fab fa-linkedin-in"></em>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div><!-- .col  -->
-                                    <div class="col-md-6">
-                                        <div class="team-popup-info pl-md-3">
-                                            <h3 class="team-name title title-lg pt-4">
-                                                Mr. Arnold Alafriz
-                                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
-                                                <span class="flag-size-md flag-icon flag-icon-ca"></span>
-                                            </h3>
-                                            <p class="team-position">Director for Special Projects</p>
-                                            <p class="text-justify">Arnie is a finance professional and handles in Belt
-                                                & Road Initiatives with China. He has interests in aquaculture, food &
-                                                beverage and tourism. He previously held various positions for such
-                                                multinational banks as Bankers Trust (Hongkong and Singapore), Banque
-                                                Paribas (Singapore) and RBC Dominion Securities (Canada) with a role in
-                                                securities trading, debt and capital markets, and portfolio management
-                                                during his career. He currently also serves as director for Symbiotic
-                                                Holdings Corporation and the Coral World Park Undersea Resorts Inc.
-                                            </p>
-                                        </div>
-                                    </div><!-- .col  -->
-                                </div><!-- .row  -->
-                            </div><!-- .team-profile  -->
-                        </div><!-- .col -->
+            <div class="container">
+                <!-- Block @s -->
+                <div class="nk-block nk-block-team-list team-list">
+                    <div class="row justify-content-center">
 
                         <!-- Mr. Steven Yamaji   -->
                         <div class="col-md-3 col-6">
@@ -490,18 +445,6 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
-                    </div><!-- .row -->
-                </div>
-                <!-- Block @r -->
-            </div>
-        </section>
-        <!-- // -->
-        <section class="section section-l section-team bg-light">
-
-            <div class="container">
-                <!-- Block @s -->
-                <div class="nk-block nk-block-team-list team-list">
-                    <div class="row justify-content-center">
 
                         <!-- Madam Ruslana Golunova  -->
                         <div class="col-md-3 col-6">
