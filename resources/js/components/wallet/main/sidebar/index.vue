@@ -147,7 +147,7 @@
                     (Number(this.amount) !== 0 || Number(this.amount) !== null);
             },
             isValidAmount() {
-                return Number(this.amount) > 0 && Number(this.amount) < this.balances.coin;
+                return Number(this.amount) > 0 && Number(this.amount) <= this.balances.coin;
             },
             isValidAddress() {
                 let transferTo = String(this.transferTo);
