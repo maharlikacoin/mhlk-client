@@ -9,7 +9,8 @@
                             <div class="col-lg-4 order-lg-last">
                                 <div class="banner-gfx banner-gfx-re-s1">
                                     <div class="row align-items-center justify-content-center">
-                                        <img class="logo-width-sm logo-width-lg" src="/images/maharlika-logo-white.png"
+                                        <img class="logo"
+                                             src="/images/maharlika-logo-white.png"
                                              alt="Maharlika Coin">
                                     </div>
                                 </div>

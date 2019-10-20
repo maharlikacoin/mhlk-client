@@ -187,37 +187,107 @@ a.modal-close:hover {
     color: white!important;
     border-color: white;
 }
-@media (min-width: 660px) {
+
+/* Maharlika Coin Logo */
+.logo {
+    width: 35em;
+    margin-right: 5em;
+}
+
+@media only screen and (max-width: 1520px) {
+    .logo {
+        margin-right: 9em;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .logo {
+        width: 25em;
+    }
+}
+@media only screen and (max-width: 1366px) {
+    .logo {
+        margin-right: 10em;
+    }
+}
+@media only screen and (max-width: 1260px) {
+    .logo {
+        margin-right: 15em;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    .logo {
+        margin-right: 0;
+        margin-left: 10em;
+    }
+}
+@media only screen and (max-width: 1150px) {
+    .logo {
+        margin-left: 7em;
+    }
+}
+@media only screen and (max-width: 1120px) {
+    .logo {
+        width: 23em;
+    }
+}
+@media only screen and (max-width: 1050px) {
+    .logo {
+        margin-left: 5em;
+    }
+}
+@media only screen and (max-width: 1050px) {
+    .logo {
+        width:20em;
+        margin-left: 4em;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .logo {
+        margin-right: 5em;
+        width: 21em;
+    }
+}
+
+/* About Maharlika Coin */
+.title-sm {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem
+}
+.text-about-sm {
+    font-size: 23px;
+}
+.text-center-sm {
+    text-align: center !important;
+}
+@media only screen and (max-width: 330px) {
+    .title-sm {
+        display: -ms-flexbox!important;
+        display: -webkit-box!important;
+        display: flex!important;
+        justify-content: center;
+        font-size: 25px;
+        margin-bottom: 1.25rem;
+    }
+    .text-about-sm {
+        font-size: 20px;
+        align-self: center;
+    }
+}
+
+@media only screen and (min-width: 660px) {
     .modal-content .modal-close {
         height: 40px;
         width: 40px;
     }
 }
 
-@media(max-width: 1000px) {
-    .text-center-sm {
-        text-align: center !important;
-    }
-    .text-about-sm {
-        font-size: 23px;
-    }
-}
-
-@media (min-width: 576px) {
+@media only screen and (min-width: 576px) {
     .btn.btn-grad-transparent {
         padding: 14px 30px;
     }
 }
-@media(min-width: 1500px) {
-    .logo-width-lg {
-        width: 30em;
-    }
-}
-@media (max-width: 1500px) {
-    .logo-width-sm {
-        width: 21em;
-    }
-}
+
 .text-red {
     color: #dc3545;
 }

@@ -13,14 +13,16 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="nk-block-text">
-                            <h2 class="title"><span class="font-weight-lighter text-about-sm">About</span> The Maharlika Coin</h2>
+                            <h2 class="title title-sm">
+                                <span class="font-weight-lighter text-about-sm mr-2">About</span> Maharlika Coin
+                            </h2>
                             <p class="text-justify">
                                 The Maharlika Coin (MHLK) is <strong>the world’s first asset-backed, wealth distribution
                                 cryptocurrency</strong>. Issued by the Swiss-based Formula Green Foundation in partnership
                                 with the Maharlika Trust, the use of MHLK advocates a “Resource-Based Economy or Shared
                                 Resources Economy” for Humanity where we believe that the world’s basic resources should
                                 be protected for the people and by the people. The key clusters which provide the value
-                                of MHLK encompass key advocacies which protect and manage our water supply, the
+                                of MHLK encompass key advocacy which protect and manage our water supply, the
                                 transition and use of Fusion Energy, ocean & reefs conservation, key minerals, ensuring
                                 our food supply, and most of all, human capital.
                             </p>
