@@ -85,7 +85,7 @@
                     <div class="row justify-content-center">
 
                         <!-- Mr. Demitri Hopkins -->
-                        <div class="col-md-3 col-6">
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/02-demitri.jpg" alt="Mr. Demitri Hopkins">
@@ -133,7 +133,7 @@
                         </div><!-- .col -->
 
                         <!-- Mr. Simon Thomas  -->
-                        <div class="col-md-3 col-6">
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/03-simon.jpg" alt="Mr. Simon Thomas ">
@@ -180,7 +180,7 @@
                         </div><!-- .col -->
 
                         <!-- Mr. Richard Cabael   -->
-                        <div class="col-md-3 col-6">
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/04-rich.jpg" alt="Mr. Richard Cabael">
@@ -231,11 +231,9 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
-                    </div><!-- .row -->
 
-                    <div class="row justify-content-center">
                         <!-- Mr. Allen Mascenon   -->
-                        <div class="col-md-3 col-6">
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/05-allen.jpg" alt="Mr. Allen Mascenon">
@@ -284,11 +282,11 @@
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
 
-                        <!-- Mr. Ern Andrew Gregorio  -->
-                        <div class="col-md-3 col-6">
+                        <!-- Mr. Ern Gregorio  -->
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/06-ern.jpg" alt="Mr. Ern Andrew Gregorio">
+                                    <img src="/images/team/06-ern.jpg" alt="Mr. Ern Gregorio">
                                     <a href="#team-popup-6" class="team-show content-popup"></a>
                                     <ul class="team-social">
                                         <li>
@@ -308,7 +306,7 @@
                                 <div class="row align-items-start">
                                     <div class="col-md-6">
                                         <div class="team-photo">
-                                            <img src="/images/team/06-ern.jpg" alt="Mr. Ern Andrew Gregorio">
+                                            <img src="/images/team/06-ern.jpg" alt="Mr. Ern Gregorio">
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
@@ -333,7 +331,7 @@
                         </div><!-- .col -->
 
                         <!-- Mr. Denis Lucindo  -->
-                        <div class="col-md-3 col-6">
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
                                     <img src="/images/team/07-dennis.jpg" alt="Mr. Denis Lucindo">
@@ -381,229 +379,11 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
-                    </div>
-                </div>
-                <!-- Block @r -->
-            </div>
-        </section>
-        <!-- // -->
-        <section class="section section-l section-team bg-light">
+                    </div><!-- .row -->
 
-            <div class="container">
-                <!-- Block @s -->
-                <div class="nk-block nk-block-team-list team-list">
                     <div class="row justify-content-center">
 
-                        <!-- Mr. Steven Yamaji   -->
-                        <div class="col-md-3 col-6">
-                            <div class="team">
-                                <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/09-steven.jpg" alt="Mr. Steven Yamaji">
-                                    <a href="#team-popup-9" class="team-show content-popup"></a>
-                                    <ul class="team-social">
-                                        <li>
-                                            <a href="https://www.linkedin.com/in/steven-s-yamaji-4609a01" target="_blank">
-                                                <em class="fab fa-linkedin-in"></em>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="team-name title title-sm">Mr. Steven Yamaji</h5>
-                                <span class="team-position">Director for Digital Assets</span>
-                                <br>
-                                <span class="flag-size-md flag-icon flag-icon-jp bordered"></span>
-                                <span class="flag-size-md flag-icon flag-icon-us"></span>
-                            </div>
-                            <!-- Start .team-profile  -->
-                            <div id="team-popup-9" class="team-popup mfp-hide">
-                                <a title="Close" class="mfp-close">×</a>
-                                <div class="row align-items-start">
-                                    <div class="col-md-6">
-                                        <div class="team-photo">
-                                            <img src="/images/team/09-steven.jpg" alt="Mr. Steven Yamaji">
-                                        </div>
-                                    </div><!-- .col  -->
-                                    <div class="col-md-6">
-                                        <div class="team-popup-info pl-md-3">
-                                            <h3 class="team-name title title-lg pt-4">
-                                                Mr. Steven Yamaji
-                                                <span class="flag-size-md flag-icon flag-icon-jp bordered"></span>
-                                                <span class="flag-size-md flag-icon flag-icon-us"></span>
-                                            </h3>
-                                            <p class="team-position">Director for Digital Assets</p>
-                                            <p class="text-justify">Steven is the Digital Assets Lead tasked to ensure
-                                                that FGC’s resources are decentralized through blockchain and
-                                                asset-backed cryptocurrency technology. Based in Silicon Valley for
-                                                close to 30 years, he founded the Blockchain Initiative Silicon Valley
-                                                (BCI SV) company, promoting collaboration between the United States
-                                                various Asian countries on blockchain technology. Previous to his career
-                                                handling blockchain, he was an executive with Nippon Steel Corporation
-                                                in Tokyo, Japan.
-                                            </p>
-                                        </div>
-                                    </div><!-- .col  -->
-                                </div><!-- .row  -->
-                            </div><!-- .team-profile  -->
-                        </div><!-- .col -->
-
-                        <!-- Madam Ruslana Golunova  -->
-                        <div class="col-md-3 col-6">
-                            <div class="team">
-                                <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/10-ruslana.jpg" alt="Madam Ruslana Golunova">
-                                    <a href="#team-popup-10" class="team-show content-popup"></a>
-                                    <ul class="team-social">
-                                        <li>
-                                            <a href="https://www.linkedin.com/in/ruslana-golunova-b38b577a" target="_blank">
-                                                <em class="fab fa-linkedin-in"></em>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="team-name title title-sm">Madam Ruslana Golunova</h5>
-                                <span
-                                    class="team-position">Product Development & Service Delivery – Digital Assets</span>
-                                <br>
-                                <span class="flag-size-md flag-icon flag-icon-ru bordered"></span>
-                                <span class="flag-size-md flag-icon flag-icon-us"></span>
-                            </div>
-                            <!-- Start .team-profile  -->
-                            <div id="team-popup-10" class="team-popup mfp-hide">
-                                <a title="Close" class="mfp-close">×</a>
-                                <div class="row align-items-start">
-                                    <div class="col-md-6">
-                                        <div class="team-photo">
-                                            <img src="/images/team/10-ruslana.jpg" alt="Madam Ruslana Golunova">
-                                        </div>
-                                    </div><!-- .col  -->
-                                    <div class="col-md-6">
-                                        <div class="team-popup-info pl-md-3">
-                                            <h3 class="team-name title title-lg pt-4">
-                                                Madam Ruslana Golunova
-                                                <br>
-                                                <span class="flag-size-md flag-icon flag-icon-ru bordered"></span>
-                                                <span class="flag-size-md flag-icon flag-icon-us"></span>
-                                            </h3>
-                                            <p class="team-position">Product Development & Service Delivery – Digital Assets</p>
-                                            <p class="text-justify">
-                                                Ruslana leads product development and service delivery options in a
-                                                global role for FGC. She specializes in education and systems across
-                                                blockchain technologies. She sits in a senior position with the
-                                                Blockchain Initiative Silicon Valley (BCI SV) and provides collaboration
-                                                between Russia, the US and Asia on various programs.
-                                            </p>
-                                        </div>
-                                    </div><!-- .col  -->
-                                </div><!-- .row  -->
-                            </div><!-- .team-profile  -->
-                        </div><!-- .col -->
-
-                        <!-- Mr. Iliya Bugaev -->
-                        <div class="col-md-3 col-6">
-                            <div class="team">
-                                <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/11-ilya.jpg" alt="Mr. Iliya Bugaev">
-                                    <a href="#team-popup-11" class="team-show content-popup"></a>
-                                    <ul class="team-social">
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <em class="fab fa-linkedin-in"></em>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="team-name title title-sm">Mr. Iliya Bugaev</h5>
-                                <span class="team-position">Digital Assets</span>
-                                <br><span class="flag-size-md flag-icon flag-icon-ru bordered"></span>
-                            </div>
-                            <!-- Start .team-profile  -->
-                            <div id="team-popup-11" class="team-popup mfp-hide">
-                                <a title="Close" class="mfp-close">×</a>
-                                <div class="row align-items-start">
-                                    <div class="col-md-6">
-                                        <div class="team-photo">
-                                            <img src="/images/team/11-ilya.jpg" alt="Mr. Iliya Bugaev">
-                                        </div>
-                                    </div><!-- .col  -->
-                                    <div class="col-md-6">
-                                        <div class="team-popup-info pl-md-3">
-                                            <h3 class="team-name title title-lg pt-4">
-                                                Mr. Iliya Bugaev
-                                                <span class="flag-size-md flag-icon flag-icon-ru bordered"></span>
-                                            </h3>
-                                            <p class="team-position">Digital Assets</p>
-                                            <p class="text-justify">
-                                                Iliya is a data-driven architect with special focus on Distributed
-                                                Ledger Technology (DLT) solutions with artificial intelligence (A.I.)
-                                                and machine learning (ML) reinforcement for data security. He has worked
-                                                on philanthropy-driven initiatives in social science and humanity
-                                                together with financial institutions, telecoms, and IT clients. He is
-                                                recognized in the top 5 in the academic field of economic cybernetics in
-                                                the Ukraine. He was a member of the working committee of the Digital
-                                                Economy of the Russian Federation and his team was awarded by Ethereum
-                                                founder Vitalik Buterin as the “Best Blockchain Development Team” in
-                                                Russia for CPA network on Smart Contracts. Iliya is considered one of
-                                                the top 100 in the world for the development of complex socially
-                                                significant IT projects.
-                                            </p>
-                                        </div>
-                                    </div><!-- .col  -->
-                                </div><!-- .row  -->
-                            </div><!-- .team-profile  -->
-                        </div><!-- .col -->
-
-                        <!-- Mr. Dennis Duran -->
-                        <div class="col-md-3 col-6">
-                            <div class="team">
-                                <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/12-dennis.jpg" alt="Mr. Dennis Duran">
-                                    <a href="#team-popup-12" class="team-show content-popup"></a>
-                                    <ul class="team-social">
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <em class="fab fa-linkedin-in"></em>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="team-name title title-sm">Mr. Dennis Duran</h5>
-                                <span class="team-position">General Manager for Operations</span>
-                                <br>
-                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
-                            </div>
-                            <!-- Start .team-profile  -->
-                            <div id="team-popup-12" class="team-popup mfp-hide">
-                                <a title="Close" class="mfp-close">×</a>
-                                <div class="row align-items-start">
-                                    <div class="col-md-6">
-                                        <div class="team-photo">
-                                            <img src="/images/team/12-dennis.jpg" alt="Mr. Dennis Duran">
-                                        </div>
-                                    </div><!-- .col  -->
-                                    <div class="col-md-6">
-                                        <div class="team-popup-info pl-md-3">
-                                            <h3 class="team-name title title-lg pt-4">
-                                                Mr. Dennis Duran
-                                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
-                                            </h3>
-                                            <p class="team-position">General Manager for Operations</p>
-                                            <p class="text-justify">Tasked to head overall corporate development, Rich
-                                                has prior interests in
-                                                technology and consumer good startups. He is behind the development,
-                                                launch, and distribution of several liquor brands with presence in the
-                                                Philippines, the Netherlands and the United States. Rich previously held
-                                                positions with various technology companies in Silicon Valley, CA. He
-                                                has provided value in organizational structure, product development,
-                                                partnerships/alliances and has negotiated acquisitions and leveraged
-                                                buy-outs.
-                                            </p>
-                                        </div>
-                                    </div><!-- .col  -->
-                                </div><!-- .row  -->
-                            </div><!-- .team-profile  -->
-                        </div><!-- .col -->
-
-                    </div><!-- .row -->
+                    </div>
                 </div>
                 <!-- Block @r -->
             </div>
