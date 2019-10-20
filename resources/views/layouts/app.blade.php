@@ -8,7 +8,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/images/favicon.png">
     <!-- Site Title  -->
-    <title>@yield('title') - Maharlika Coin</title>
+    <title>@yield('title') - Maharlika Coin (MHLK)</title>
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
