@@ -10,7 +10,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://medium.com/@maharlikacoin" target="_blank">
+                        <a href="https://medium.com/maharlika-coin" target="_blank">
                             <i class="fab fa-medium"></i>
                         </a>
                     </li>
@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://t.me/themaharlikacoin" target="_blank">
+                        <a href="https://t.me/maharlikacoin" target="_blank">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                     </li>
