@@ -9,6 +9,8 @@ app/storage/
 
 # Laravel 5 & Lumen specific
 public/storage
+!/storage/app/MaharlikaCoin.json
+!/storage/app/whitepaper.pdf
 public/hot
 storage/*.key
 .env
@@ -19,8 +21,6 @@ Homestead.json
 *-lock.json
 *.lock
 .idea/*
-public/js/app.js
-public/css/app.css
 !/public/css/app.css
 !/public/js/app.js
 
