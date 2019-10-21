@@ -1,3 +1,5 @@
 *
 !public/
 !.gitignore
+!MaharlikaCoin.json
+!whitepaper.pdf
