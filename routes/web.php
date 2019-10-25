@@ -47,7 +47,4 @@ Route::middleware('authWallet')->group(function() {
     Route::get('wallet/logout', 'WalletController@logout')->name('wallet.logout');
 });
 
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
