@@ -2,5 +2,6 @@
 {{ $message }}
 
 Thanks,<br>
-{{ $name }}
+{{ $name }}<br>
+{{ $email }}
 @endcomponent

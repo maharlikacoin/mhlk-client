@@ -10,8 +10,7 @@ class WelcomeController extends Controller
 {
     public function contactUs(Request $request) {
 
-        Mail::to(env('MAIL_FROM_ADDRESS'))
-            ->send(new ContactUs($request));
+        Mail::send(new ContactUs($request));
 
         return redirect()->route('welcome');
     }
