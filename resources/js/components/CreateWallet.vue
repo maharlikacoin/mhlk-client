@@ -100,7 +100,7 @@
             create() {
                 let myWallet = wallet.generate();
                 this.keys.public = myWallet.getAddressString();
-                this.keys.private = myWallet.getPrivateKeyString();
+                this.keys.private = myWallet.getPrivateKeyString().substring(2);
             }
         }
     }
