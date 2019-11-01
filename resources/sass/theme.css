@@ -203,6 +203,10 @@ a.modal-close:hover {
     .logo {
         width: 25em;
     }
+    .header-curved-mask {
+        -webkit-transform: skew(0);
+        transform: skew(0) !important;
+    }
 }
 @media only screen and (max-width: 1366px) {
     .logo {
