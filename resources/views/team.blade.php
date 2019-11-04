@@ -89,8 +89,7 @@
                                                 career in Singapore. He continuously serves as a Director - Philanthropy
                                                 for
                                                 European and Emirati royal family offices, respectively, and advocates a
-                                                shared
-                                                resources economy for humanity.
+                                                resource based economy for humanity.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -189,8 +188,8 @@
                                             <p class="team-position">Director - Ecosystems</p>
                                             <p class="text-justify">Allen is FGC’s Ecosystems Leader tasked to ensure
                                                 that humanity as a
-                                                whole enjoy a dividend system in this era of advocating a shared
-                                                resources economy. He is behind one of the largest bill payment systems
+                                                whole enjoy a dividend system in this era of advocating a resource based
+                                                economy. He is behind one of the largest bill payment systems
                                                 in the Philippines with over 1,500 franchises nationwide and expanding
                                                 global operations. He has been recognized by the Business Initiative
                                                 Directions Convention in Geneva, Switzerland for his efforts focused on
@@ -243,9 +242,8 @@
                                                 well as implementing best practices on several other natural resource
                                                 and infrastructure investments. He has also held executive positions in
                                                 food and media companies. Denis is focused on the 'Resource Based
-                                                Economy'
-                                                initiative of FGC in partnership with various institutions worldwide.
-
+                                                Economy' initiative of FGC in partnership with various institutions
+                                                worldwide.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -441,14 +439,14 @@
                                             <p class="team-position">Director - Global Grants</p>
                                             <p class="text-justify">Don is FGC / FGF’s Global Grants leader and oversees
                                                 the adoption of FGF’s digital assets program (Maharlika Coin – MHLK) to
-                                                over 1Billion people and over 2000 organizations which impact humanity
-                                                as a whole. Don’s responsibilities include ensuring that organizations
-                                                which look after the needs of women, children, minorities, refugees,
-                                                indigenous people and victims of natural disasters benefit from the
-                                                efforts of FGC / FGF in Fusion energy, minerals and natural resources.
-                                                Don works with individuals and organizations worldwide who are committed
-                                                to a common cause to ensure world peace thru advocacy of a Resource
-                                                Based Economy.
+                                                over 1Billion people and over 2000 organizations in selected countries
+                                                which impact humanity as a whole. Don’s responsibilities include
+                                                ensuring that organizations which look after the needs of women,
+                                                children, minorities, refugees, indigenous people and victims of natural
+                                                disasters benefit from the efforts of FGC / FGF in Fusion energy,
+                                                minerals and natural resources. Don works with individuals and
+                                                organizations worldwide who are committed to a common cause to ensure
+                                                world peace thru the advocacy of a Resource Based Economy.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -606,7 +604,7 @@
                                                 represents FGC in public speaking engagements and also produces a yearly
                                                 awards event in conjunction with the United Nations which recognizes the
                                                 best of human capital which change the world we live in. David is an
-                                                alumnus of University of California Berkeley and Harvard University.
+                                                alumnus of the University of California Berkeley and Harvard University.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -649,7 +647,7 @@
                                             <p class="team-position">Director - Nanotechnology</p>
                                             <p class="text-justify">Chris heads the use of nanotechnology with
                                                 collaborative functions in Artificial Intelligence and Fusion with FGC’s
-                                                resource based economy (RBE) program. Responsible for inventing multiple
+                                                Resource Based Economy (RBE) program. Responsible for inventing multiple
                                                 patents in the nanotechnology industry for gas / hydrogen related
                                                 extraction and water purification uses by the US Special Forces, Rural
                                                 Africa, Disaster Relief and ISS projects, he advocates the use of his
@@ -789,7 +787,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mdm. Ruslana Golunova</h5>
-                                <span class="team-position">Directory - Product Development, Digital Assets</span>
+                                <span class="team-position">Director - Product Development, Digital Assets</span>
                                 <br>
                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                 <span class="flag-size-md flag-icon flag-icon-ru"></span>
@@ -811,7 +809,7 @@
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                                 <span class="flag-size-md flag-icon flag-icon-ru"></span>
                                             </h3>
-                                            <p class="team-position">Directory - Product Development, Digital Assets</p>
+                                            <p class="team-position">Director - Product Development, Digital Assets</p>
                                             <p class="text-justify">Ruslana leads product development and service
                                                 delivery options in a global role for FGC. She specializes in education
                                                 and systems across blockchain technologies. She sits in a senior
