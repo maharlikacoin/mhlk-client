@@ -26,155 +26,71 @@
 
 @section('content')
     <main class="nk-pages">
-        <section class="section section-l section-team bg-light">
-
-            <div class="container">
-                <!-- Block @s -->
-                <div class="nk-block nk-block-team-featured team-featured">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 mb-4 mb-lg-0 text-center">
-                            <div class="team-photo team-photo-sm">
-                                <img src="/images/team/01-paul.jpg" alt="Mr. Paul Infante Moñozca">
-                                <ul class="team-social">
-                                    <li>
-                                        <a href="https://www.linkedin.com/in/paul-infante-mo%C3%B1ozca-99185347/"
-                                           target="_blank">
-                                            <em class="fab fa-linkedin-in"></em>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h5 class="mt-4">
-                                Mr. Paul Infante Moñozca
-                            </h5>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="team-featured-cont">
-                                <h2 class="title title-lg title-dark">
-                                    Executive Chairman & CEO
-                                    <span class="flag-size-md flag-icon flag-icon-ph"></span>
-                                </h2>
-                                <p class="text-justify">Paul is the chairman of the European-based Maharlika Trust and
-                                    the Dr. AB Moñozca
-                                    Foundation. His other interests include property, financial technology, food &
-                                    beverage, and sports. Awarded the Singapore Sports Inspiration Award by the
-                                    Singapore government and given various recognitions for his advocacy on
-                                    philanthrocapitalism, he also held multinational positions in such global companies
-                                    such
-                                    as PricewaterhouseCoopers, Siemens, and the Quaker Oats Company with roles in
-                                    corporate finance, business development and brand communications during his 20-year
-                                    career in Singapore. He continuously serves as a Director for Philanthropy for
-                                    European and Emirati royal family offices, respectively, and advocates a shared
-                                    resources economy for humanity.</p>
-                            </div>
-                        </div>
-                    </div><!-- .row -->
-                </div>
-                <!-- Block @e -->
-            </div>
-
-        </section>
-        <!-- First 6 members -->
         <section class="section section-l section-team bg-light-alt">
-
             <div class="container">
                 <!-- Section Head @s -->
                 <div class="section-head text-center wide-auto">
                     <h2 class="title title-lg title-dark">Our People</h2>
                 </div><!-- .section-head @e -->
-                <!-- Block @s -->
+
                 <div class="nk-block nk-block-team-list team-list">
                     <div class="row justify-content-center">
-
-                        <!-- Mr. Demitri Hopkins -->
+                        <!-- Mr. Paul Infante Moñozca   -->
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/02-demitri.jpg" alt="Mr. Demitri Hopkins">
-                                    <a href="#team-popup-2" class="team-show content-popup"></a>
+                                    <img src="/images/team/01-paul.jpg" alt="Mr. Paul Infante Moñozca">
+                                    <a href="#team-popup-1" class="team-show content-popup"></a>
                                     <ul class="team-social">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/demitri-hopkins-54260a106"
+                                            <a href="https://www.linkedin.com/in/paul-infante-mo%C3%B1ozca-99185347"
                                                target="_blank">
                                                 <em class="fab fa-linkedin-in"></em>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h5 class="team-name title title-sm">Mr. Demitri Hopkins</h5>
-                                <span class="team-position">Director for Fusion Energy</span>
-                                <br><span class="flag-size-md flag-icon flag-icon-us"></span>
+                                <h5 class="team-name title title-sm">Mr. Paul Infante Moñozca</h5>
+                                <span class="team-position">Executive Chairman & CEO</span>
+                                <br>
+                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
                             </div>
                             <!-- Start .team-profile  -->
-                            <div id="team-popup-2" class="team-popup mfp-hide">
+                            <div id="team-popup-1" class="team-popup mfp-hide">
                                 <a title="Close" class="mfp-close">×</a>
                                 <div class="row align-items-start">
                                     <div class="col-md-6">
                                         <div class="team-photo">
-                                            <img src="/images/team/02-demitri.jpg" alt="Mr. Demitri Hopkins">
+                                            <img src="/images/team/01-paul.jpg" alt="Mr. Paul Infante Moñozca">
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
                                         <div class="team-popup-info pl-md-3">
                                             <h3 class="team-name title title-lg pt-4">
-                                                Mr. Demitri Hopkins
-                                                <span class="flag-size-md flag-icon flag-icon-us"></span>
+                                                Mr. Paul Infante Moñozca
+                                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
                                             </h3>
-                                            <p class="team-position">Director for Fusion Energy</p>
-                                            <p class="text-justify">Demitri heads the Fusion Program of FGC together
-                                                with a select group of
-                                                scientists. He is a 25-year old physics and mathematical savant and an
-                                                advocate of fusion energy. He co-founded AGNI Energy Inc. which is
-                                                developing a modular fusion reactor which design combines the stability
-                                                of magnetic containment with beam to target inertial fusion. His vision
-                                                is to power humanity and explore new worlds through fusion energy for
-                                                space exploration and travel.</p>
-                                        </div>
-                                    </div><!-- .col  -->
-                                </div><!-- .row  -->
-                            </div><!-- .team-profile  -->
-                        </div><!-- .col -->
-
-                        <!-- Mr. Simon Thomas  -->
-                        <div class="col-md-3 col-sm-6 col-6">
-                            <div class="team">
-                                <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/03-simon.jpg" alt="Mr. Simon Thomas ">
-                                    <a href="#team-popup-3" class="team-show content-popup"></a>
-                                    <ul class="team-social">
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <em class="fab fa-linkedin-in"></em>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="team-name title title-sm">Mr. Simon Thomas </h5>
-                                <span class="team-position">Director for Finance</span>
-                                <br><span class="flag-size-md flag-icon flag-icon-gb"></span>
-                            </div>
-                            <!-- Start .team-profile  -->
-                            <div id="team-popup-3" class="team-popup mfp-hide">
-                                <a title="Close" class="mfp-close">×</a>
-                                <div class="row align-items-start">
-                                    <div class="col-md-6">
-                                        <div class="team-photo">
-                                            <img src="/images/team/03-simon.jpg" alt="Mr. Simon Thomas ">
-                                        </div>
-                                    </div><!-- .col  -->
-                                    <div class="col-md-6">
-                                        <div class="team-popup-info pl-md-3">
-                                            <h3 class="team-name title title-lg pt-4">
-                                                Mr. Simon Thomas
-                                                <span class="flag-size-md flag-icon flag-icon-gb"></span>
-                                            </h3>
-                                            <p class="team-position">Director for Finance</p>
-                                            <p class="text-justify">Simon has been a finance professional for the past
-                                                30 years and heads
-                                                mergers & acquisitions (M&A) with overall corporate finance functions
-                                                for FGC. He has had a close working relationship with a diverse range of
-                                                family offices and funds all over the world and specializes in
-                                                structured finance, bonds and fixed income instruments.
+                                            <p class="team-position">Executive Chairman & CEO</p>
+                                            <p class="text-justify">Paul is the chairman of the European-based Maharlika
+                                                Trust and
+                                                the Dr. AB Moñozca
+                                                Foundation. His other interests include property, financial technology,
+                                                food &
+                                                beverage, and sports. Awarded the Singapore Sports Inspiration Award by
+                                                the
+                                                Singapore government and given various recognitions for his advocacy on
+                                                philanthrocapitalism, he also held multinational positions in such
+                                                global companies
+                                                such
+                                                as PricewaterhouseCoopers, Siemens, and the Quaker Oats Company with
+                                                roles in
+                                                corporate finance, business development and brand communications during
+                                                his 20-year
+                                                career in Singapore. He continuously serves as a Director - Philanthropy
+                                                for
+                                                European and Emirati royal family offices, respectively, and advocates a
+                                                shared
+                                                resources economy for humanity.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -197,7 +113,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Richard Cabael</h5>
-                                <span class="team-position">Director for Corporate Development</span>
+                                <span class="team-position">COO, Director - Corporate Development</span>
                                 <br>
                                 <span class="flag-size-md flag-icon flag-icon-ph"></span>
                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
@@ -218,10 +134,11 @@
                                                 <span class="flag-size-md flag-icon flag-icon-ph"></span>
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                             </h3>
-                                            <p class="team-position">Director for Corporate Development</p>
-                                            <p class="text-justify">Tasked to head overall corporate development, Rich
+                                            <p class="team-position">COO, Director - Corporate Development</p>
+                                            <p class="text-justify">Tasked to head overall corporate development and
+                                                operations for FGC, Rich
                                                 has prior interests in
-                                                technology and consumer good startups. He is behind the development,
+                                                technology and consumer good startups. He was behind the development,
                                                 launch, and distribution of several liquor brands with presence in the
                                                 Philippines, the Netherlands and the United States. Rich previously held
                                                 positions with various technology companies in Silicon Valley, CA. He
@@ -250,7 +167,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Allen Mascenon</h5>
-                                <span class="team-position">Director for Ecosystems</span>
+                                <span class="team-position">Director - Ecosystems</span>
                                 <br>
                                 <span class="flag-size-md flag-icon flag-icon-ph"></span>
                             </div>
@@ -269,7 +186,7 @@
                                                 Mr. Allen Mascenon
                                                 <span class="flag-size-md flag-icon flag-icon-ph"></span>
                                             </h3>
-                                            <p class="team-position">Director for Ecosystems</p>
+                                            <p class="team-position">Director - Ecosystems</p>
                                             <p class="text-justify">Allen is FGC’s Ecosystems Leader tasked to ensure
                                                 that humanity as a
                                                 whole enjoy a dividend system in this era of advocating a shared
@@ -284,6 +201,66 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
+
+                        <!-- Mr. Denis Lucindo  -->
+                        <div class="col-md-3 col-sm-6 col-6">
+                            <div class="team">
+                                <div class="team-photo team-photo-sm">
+                                    <img src="/images/team/07-dennis.jpg" alt="Mr. Denis Lucindo">
+                                    <a href="#team-popup-7" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/denis-lucindo-649a117" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h5 class="team-name title title-sm">Mr. Denis Lucindo</h5>
+                                <span class="team-position">Director - Strategic Development</span>
+                                <br><span class="flag-size-md flag-icon flag-icon-ph"></span>
+                            </div>
+                            <!-- Start .team-profile  -->
+                            <div id="team-popup-7" class="team-popup mfp-hide">
+                                <a title="Close" class="mfp-close">×</a>
+                                <div class="row align-items-start">
+                                    <div class="col-md-6">
+                                        <div class="team-photo">
+                                            <img src="/images/team/07-dennis.jpg" alt="Mr. Denis Lucindo">
+                                        </div>
+                                    </div><!-- .col  -->
+                                    <div class="col-md-6">
+                                        <div class="team-popup-info pl-md-3">
+                                            <h3 class="team-name title title-lg pt-4">
+                                                Mr. Denis Lucindo
+                                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
+                                            </h3>
+                                            <p class="team-position">Director - Strategic Development</p>
+                                            <p class="text-justify">Denis has been a strategy, business development, and
+                                                M&A professional for the past 20 years. He was previously with Metro
+                                                Pacific Investments Corporation, the Philippine arm of Hong Kong listed
+                                                First Pacific Corporation. He led the acquisition of Philex Mining as
+                                                well as implementing best practices on several other natural resource
+                                                and infrastructure investments. He has also held executive positions in
+                                                food and media companies. Denis is focused on the 'Resource Based
+                                                Economy'
+                                                initiative of FGC in partnership with various institutions worldwide.
+
+                                            </p>
+                                        </div>
+                                    </div><!-- .col  -->
+                                </div><!-- .row  -->
+                            </div><!-- .team-profile  -->
+                        </div><!-- .col -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-l section-team bg-light">
+
+            <div class="container">
+                <div class="nk-block nk-block-team-list team-list">
+                    <div class="row justify-content-center">
 
                         <!-- Mr. Ern Gregorio  -->
                         <div class="col-md-3 col-sm-6 col-6">
@@ -333,49 +310,94 @@
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
 
-                        <!-- Mr. Denis Lucindo  -->
+                        <!-- Mr. Demitri Hopkins -->
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/07-dennis.jpg" alt="Mr. Denis Lucindo">
-                                    <a href="#team-popup-7" class="team-show content-popup"></a>
+                                    <img src="/images/team/02-demitri.jpg" alt="Mr. Demitri Hopkins">
+                                    <a href="#team-popup-2" class="team-show content-popup"></a>
                                     <ul class="team-social">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/denis-lucindo-649a117" target="_blank">
+                                            <a href="https://www.linkedin.com/in/demitri-hopkins-54260a106"
+                                               target="_blank">
                                                 <em class="fab fa-linkedin-in"></em>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h5 class="team-name title title-sm">Mr. Denis Lucindo</h5>
-                                <span class="team-position">Director for Shared Resources</span>
-                                <br><span class="flag-size-md flag-icon flag-icon-ph"></span>
+                                <h5 class="team-name title title-sm">Mr. Demitri Hopkins</h5>
+                                <span class="team-position">Director - Fusion Energy</span>
+                                <br><span class="flag-size-md flag-icon flag-icon-us"></span>
                             </div>
                             <!-- Start .team-profile  -->
-                            <div id="team-popup-7" class="team-popup mfp-hide">
+                            <div id="team-popup-2" class="team-popup mfp-hide">
                                 <a title="Close" class="mfp-close">×</a>
                                 <div class="row align-items-start">
                                     <div class="col-md-6">
                                         <div class="team-photo">
-                                            <img src="/images/team/07-dennis.jpg" alt="Mr. Denis Lucindo">
+                                            <img src="/images/team/02-demitri.jpg" alt="Mr. Demitri Hopkins">
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
                                         <div class="team-popup-info pl-md-3">
                                             <h3 class="team-name title title-lg pt-4">
-                                                Mr. Denis Lucindo
-                                                <span class="flag-size-md flag-icon flag-icon-ph"></span>
+                                                Mr. Demitri Hopkins
+                                                <span class="flag-size-md flag-icon flag-icon-us"></span>
                                             </h3>
-                                            <p class="team-position">Director for Shared Resources</p>
-                                            <p class="text-justify">Denis has been a strategy, business development, and
-                                                M&A professional for the past 20 years. He was previously with Metro
-                                                Pacific Investments Corporation, the Philippine arm of Hong Kong listed
-                                                First Pacific Corporation. He led the acquisition of Philex Mining as
-                                                well as implementing best practices on several other natural resource
-                                                and infrastructure investments. He has also held executive positions in
-                                                food and media companies. Denis leads the 'Shared Resources Economy'
-                                                initiative of FGC in partnership with various institutions worldwide.
+                                            <p class="team-position">Director - Fusion Energy</p>
+                                            <p class="text-justify">Demitri heads the Fusion Program of FGC together
+                                                with a select group of
+                                                scientists. He is a 25-year old physics and mathematical savant and an
+                                                advocate of fusion energy. He oversees the development of FGC's modular
+                                                fusion reactor which design combines the stability
+                                                of magnetic containment with beam to target inertial fusion. His vision
+                                                is to power humanity and explore new worlds through fusion energy for
+                                                space exploration and travel.</p>
+                                        </div>
+                                    </div><!-- .col  -->
+                                </div><!-- .row  -->
+                            </div><!-- .team-profile  -->
+                        </div><!-- .col -->
 
+                        <!-- Mr. Simon Thomas  -->
+                        <div class="col-md-3 col-sm-6 col-6">
+                            <div class="team">
+                                <div class="team-photo team-photo-sm">
+                                    <img src="/images/team/03-simon.jpg" alt="Mr. Simon Thomas ">
+                                    <a href="#team-popup-3" class="team-show content-popup"></a>
+                                    <ul class="team-social">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <em class="fab fa-linkedin-in"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h5 class="team-name title title-sm">Mr. Simon Thomas </h5>
+                                <span class="team-position">Director - Finance</span>
+                                <br><span class="flag-size-md flag-icon flag-icon-gb"></span>
+                            </div>
+                            <!-- Start .team-profile  -->
+                            <div id="team-popup-3" class="team-popup mfp-hide">
+                                <a title="Close" class="mfp-close">×</a>
+                                <div class="row align-items-start">
+                                    <div class="col-md-6">
+                                        <div class="team-photo">
+                                            <img src="/images/team/03-simon.jpg" alt="Mr. Simon Thomas ">
+                                        </div>
+                                    </div><!-- .col  -->
+                                    <div class="col-md-6">
+                                        <div class="team-popup-info pl-md-3">
+                                            <h3 class="team-name title title-lg pt-4">
+                                                Mr. Simon Thomas
+                                                <span class="flag-size-md flag-icon flag-icon-gb"></span>
+                                            </h3>
+                                            <p class="team-position">Director - Finance</p>
+                                            <p class="text-justify">Simon has been a finance professional for the past
+                                                30 years and heads overall corporate finance functions
+                                                for FGC. He has a close working relationship with a diverse range of
+                                                family offices and funds all over the world and specializes in
+                                                structured finance, bonds and fixed income instruments.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -398,7 +420,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Donald Sanchez</h5>
-                                <span class="team-position">Executive Director, Global Grants</span>
+                                <span class="team-position">Director - Global Grants</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-us"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -416,7 +438,7 @@
                                                 Mr. Donald Sanchez
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                             </h3>
-                                            <p class="team-position">Executive Director, Global Grants</p>
+                                            <p class="team-position">Director - Global Grants</p>
                                             <p class="text-justify">Don is FGC / FGF’s Global Grants leader and oversees
                                                 the adoption of FGF’s digital assets program (Maharlika Coin – MHLK) to
                                                 over 1Billion people and over 2000 organizations which impact humanity
@@ -433,6 +455,17 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- First 6 members -->
+        <section class="section section-l section-team bg-light-alt">
+
+            <div class="container">
+                <!-- Block @s -->
+                <div class="nk-block nk-block-team-list team-list">
+                    <div class="row justify-content-center">
 
                         <!-- Mr. Thomas Shibli  -->
                         <div class="col-md-3 col-sm-6 col-6">
@@ -449,7 +482,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Thomas Shibli</h5>
-                                <span class="team-position">Executive Director, Digital Assets</span>
+                                <span class="team-position">Director - Digital Assets</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-ch"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -467,7 +500,7 @@
                                                 Mr. Thomas Shibli
                                                 <span class="flag-size-md flag-icon flag-icon-ch"></span>
                                             </h3>
-                                            <p class="team-position">Executive Director, Digital Assets</p>
+                                            <p class="team-position">Director - Digital Assets</p>
                                             <p class="text-justify">Thomas is FGC’s Digital Assets Leader and oversees
                                                 the adoption of our digital assets program using the asset-backed
                                                 cryptocurrency (“Maharlika Coin -MHLK”) worldwide. Thomas handles
@@ -483,18 +516,6 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
-                    </div><!-- .row -->
-                </div>
-                <!-- Block @r -->
-            </div>
-        </section>
-
-        <!-- Next 6 members -->
-        <section class="section section-l section-team bg-light">
-            <div class="container">
-                <!-- Block @s -->
-                <div class="nk-block nk-block-team-list team-list">
-                    <div class="row justify-content-center">
                         <!-- Mr. Keith Spears  -->
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
@@ -559,7 +580,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. David C. Traub</h5>
-                                <span class="team-position">Executive Director, Philanthropy Alliance</span>
+                                <span class="team-position">Director - Philanthropy Alliances</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-us"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -577,9 +598,9 @@
                                                 Mr. David C. Traub
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                             </h3>
-                                            <p class="team-position">Executive Director, Philanthropy Alliance</p>
+                                            <p class="team-position">Director - Philanthropy Alliances</p>
                                             <p class="text-justify">David is Formula Green Corporation (FGC) and Formula
-                                                Green Foundation’s (FGF) Philanthropy Alliance Leader tasked to
+                                                Green Foundation’s (FGF) Philanthropy Alliances Leader tasked to
                                                 identify, create and manage key alliances and partners to advocate the
                                                 use of Fusion Energy and support FGC’s digital assets program. David
                                                 represents FGC in public speaking engagements and also produces a yearly
@@ -607,7 +628,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Christopher H. Cooper</h5>
-                                <span class="team-position">Executive Director, Nanotechnology</span>
+                                <span class="team-position">Director - Nanotechnology</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-us"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -625,7 +646,7 @@
                                                 Mr. Christopher H. Cooper
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                             </h3>
-                                            <p class="team-position">Executive Director, Nanotechnology</p>
+                                            <p class="team-position">Director - Nanotechnology</p>
                                             <p class="text-justify">Chris heads the use of nanotechnology with
                                                 collaborative functions in Artificial Intelligence and Fusion with FGC’s
                                                 resource based economy (RBE) program. Responsible for inventing multiple
@@ -640,6 +661,18 @@
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
+                    </div><!-- .row -->
+                </div>
+                <!-- Block @r -->
+            </div>
+        </section>
+
+        <!-- Next 6 members -->
+        <section class="section section-l section-team bg-light">
+            <div class="container">
+                <!-- Block @s -->
+                <div class="nk-block nk-block-team-list team-list">
+                    <div class="row justify-content-center">
                         <!-- Mr. Alberto D. Santos -->
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
@@ -655,7 +688,8 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Alberto D. Santos</h5>
-                                <span class="team-position">Executive Director, Natural Resources & Environment Compliance</span>
+                                <span
+                                    class="team-position">Director - Natural Resources & Environmental Compliance</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-ph"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -673,8 +707,18 @@
                                                 Mr. Alberto D. Santos
                                                 <span class="flag-size-md flag-icon flag-icon-ph"></span>
                                             </h3>
-                                            <p class="team-position">Executive Director, Natural Resources & Environment Compliance</p>
-                                            <p class="text-justify">Alberto (“Talby”) heads FGC’s acquisition and joint-venture (JV) initiatives for natural resources and environment compliance requirements in line with FGC’s conservation efforts. Talby is tasked to identify and monitor key Philanthropic concessions worldwide and works closely with various governments and Philanthropic organizations which are part of the Maharlika alliance to ensure Humanity plays a role and benefits from key resources. Talby has handled projects in the same capacity with some of the largest organizations in Asia such as the Asian Development Bank, the Subic Bay Metropolitan Authority and the office of the President of the Philippines.
+                                            <p class="team-position">Director - Natural Resources & Environmental
+                                                Compliance</p>
+                                            <p class="text-justify">Alberto (“Talby”) heads FGC’s acquisition and
+                                                joint-venture (JV) initiatives for natural resources and environment
+                                                compliance requirements in line with FGC’s conservation efforts. Talby
+                                                is tasked to identify and monitor key Philanthropic concessions
+                                                worldwide and works closely with various governments and Philanthropic
+                                                organizations which are part of the Maharlika alliance to ensure
+                                                Humanity plays a role and benefits from key resources. Talby has handled
+                                                projects in the same capacity with some of the largest organizations in
+                                                Asia such as the Asian Development Bank, the Subic Bay Metropolitan
+                                                Authority and the office of the President of the Philippines.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -696,7 +740,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Chris Traub</h5>
-                                <span class="team-position">Executive Director, Human Capital</span>
+                                <span class="team-position">Director - Human Capital</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-us"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -714,19 +758,27 @@
                                                 Mr. Chris Traub
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                             </h3>
-                                            <p class="team-position">Executive Director, Human Capital</p>
-                                            <p class="text-justify">Chris is FGC’s Human Capital Leader which oversees the best and brightest are deployed for the various initiatives of the Formula Green Foundation (FGF) and its global 10million strong Official Maharlika Movement across artificial intelligence (AI), finance, technology, high-tech agriculture, high-tech aquaculture, media & entertainment and security.  Chris has spent his career in a senior capacity in executive search and human resources. Chris is bilingual in English and Mandarin and is a representative to the Forbes and World Economic Forum conferences.
+                                            <p class="team-position">Director - Human Capital</p>
+                                            <p class="text-justify">Chris is FGC’s Human Capital Leader which oversees
+                                                the best and brightest are deployed for the various initiatives of the
+                                                Formula Green Foundation (FGF) and its global 10million strong Official
+                                                Maharlika Movement across artificial intelligence (AI), finance,
+                                                technology, high-tech agriculture, high-tech aquaculture, media &
+                                                entertainment and security. Chris has spent his career in a senior
+                                                capacity in executive search and human resources. Chris is bilingual in
+                                                English and Mandarin and is a representative to the Forbes and World
+                                                Economic Forum conferences.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
                                 </div><!-- .row  -->
                             </div><!-- .team-profile  -->
                         </div><!-- .col -->
-                        <!-- Madam Ruslana Golunova -->
+                        <!-- Mdm. Ruslana Golunova -->
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/16-ruslana.jpg" alt="Madam Ruslana Golunova">
+                                    <img src="/images/team/16-ruslana.jpg" alt="Mdm. Ruslana Golunova">
                                     <a href="#team-popup-16" class="team-show content-popup"></a>
                                     <ul class="team-social">
                                         <li>
@@ -736,8 +788,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h5 class="team-name title title-sm">Madam Ruslana Golunova</h5>
-                                <span class="team-position">Director, Product Development & Service Delivery – Digital Assets</span>
+                                <h5 class="team-name title title-sm">Mdm. Ruslana Golunova</h5>
+                                <span class="team-position">Directory - Product Development, Digital Assets</span>
                                 <br>
                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                 <span class="flag-size-md flag-icon flag-icon-ru"></span>
@@ -748,19 +800,24 @@
                                 <div class="row align-items-start">
                                     <div class="col-md-6">
                                         <div class="team-photo">
-                                            <img src="/images/team/16-ruslana.jpg" alt="Madam Ruslana Golunova">
+                                            <img src="/images/team/16-ruslana.jpg" alt="Mdm. Ruslana Golunova">
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
                                         <div class="team-popup-info pl-md-3">
                                             <h3 class="team-name title title-lg pt-4">
-                                                Madam Ruslana Golunova
+                                                Mdm. Ruslana Golunova
                                                 <br>
                                                 <span class="flag-size-md flag-icon flag-icon-us"></span>
                                                 <span class="flag-size-md flag-icon flag-icon-ru"></span>
                                             </h3>
-                                            <p class="team-position">Director, Product Development & Service Delivery – Digital Assets</p>
-                                            <p class="text-justify">Ruslana leads product development and service delivery options in a global role for FGC. She specializes in education and systems across blockchain technologies. She sits in a senior position with the Blockchain Initiative Silicon Valley (BCI SV) and provides collaboration between Russia, the US and Asia on various programs.
+                                            <p class="team-position">Directory - Product Development, Digital Assets</p>
+                                            <p class="text-justify">Ruslana leads product development and service
+                                                delivery options in a global role for FGC. She specializes in education
+                                                and systems across blockchain technologies. She sits in a senior
+                                                position with the Blockchain Initiative Silicon Valley (BCI SV) and
+                                                provides collaboration between Russia, the US and Asia on various
+                                                programs.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -782,7 +839,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Iliya Bugaev</h5>
-                                <span class="team-position">Director for Digital Assets</span>
+                                <span class="team-position">Director - Digital Assets</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-ru"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -800,8 +857,19 @@
                                                 Mr. Iliya Bugaev
                                                 <span class="flag-size-md flag-icon flag-icon-ru"></span>
                                             </h3>
-                                            <p class="team-position">Director for Digital Assets</p>
-                                            <p class="text-justify">Iliya is a data-driven architect with special focus on Distributed Ledger Technology (DLT) solutions with artificial intelligence (A.I.) and machine learning (ML) reinforcement for data security. He has worked on philanthropy-driven initiatives in social science and humanity together with financial institutions, telecoms, and IT clients. He is recognized in the top 5 in the academic field of economic cybernetics in the Ukraine. He was a member of the working committee of the Digital Economy of the Russian Federation and his team was awarded by Ethereum founder Vitalik Buterin as the “Best Blockchain Development Team” in Russia for CPA network on Smart Contracts. Iliya is considered one of the top 100 in the world for the development of complex socially significant IT projects.
+                                            <p class="team-position">Director - Digital Assets</p>
+                                            <p class="text-justify">Iliya is a data-driven architect with special focus
+                                                on Distributed Ledger Technology (DLT) solutions with artificial
+                                                intelligence (A.I.) and machine learning (ML) reinforcement for data
+                                                security. He has worked on philanthropy-driven initiatives in social
+                                                science and humanity together with financial institutions, telecoms, and
+                                                IT clients. He is recognized in the top 5 in the academic field of
+                                                economic cybernetics in the Ukraine. He was a member of the working
+                                                committee of the Digital Economy of the Russian Federation and his team
+                                                was awarded by Ethereum founder Vitalik Buterin as the “Best Blockchain
+                                                Development Team” in Russia for CPA network on Smart Contracts. Iliya is
+                                                considered one of the top 100 in the world for the development of
+                                                complex socially significant IT projects.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
