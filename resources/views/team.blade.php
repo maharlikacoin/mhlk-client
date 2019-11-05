@@ -615,7 +615,7 @@
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/12-christopher.jpg" alt="Mr. Christopher H. Cooper">
+                                    <img src="/images/team/12-cooper.jpg" alt="Mr. Christopher H. Cooper">
                                     <a href="#team-popup-12" class="team-show content-popup"></a>
                                     <ul class="team-social">
                                         <li>
@@ -635,7 +635,7 @@
                                 <div class="row align-items-start">
                                     <div class="col-md-6">
                                         <div class="team-photo">
-                                            <img src="/images/team/12-christopher.jpg" alt="Mr. Christopher H. Cooper">
+                                            <img src="/images/team/12-cooper.jpg" alt="Mr. Christopher H. Cooper">
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
