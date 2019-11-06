@@ -71,25 +71,19 @@
                                                 <span class="flag-size-md flag-icon flag-icon-ph"></span>
                                             </h3>
                                             <p class="team-position">Executive Chairman & CEO</p>
-                                            <p class="text-justify">Paul is the chairman of the European-based Maharlika
-                                                Trust and
-                                                the Dr. AB Moñozca
-                                                Foundation. His other interests include property, financial technology,
-                                                food &
-                                                beverage, and sports. Awarded the Singapore Sports Inspiration Award by
-                                                the
-                                                Singapore government and given various recognitions for his advocacy on
-                                                philanthrocapitalism, he also held multinational positions in such
-                                                global companies
-                                                such
-                                                as PricewaterhouseCoopers, Siemens, and the Quaker Oats Company with
-                                                roles in
-                                                corporate finance, business development and brand communications during
-                                                his 20-year
-                                                career in Singapore. He continuously serves as a Director - Philanthropy
-                                                for
-                                                European and Emirati royal family offices, respectively, and advocates a
-                                                resource based economy for humanity.
+                                            <p class="text-justify">Paul is the Executive Chairman of the European-based
+                                                Maharlika Trust and the Dr. AB Moñozca Foundation. His other interests
+                                                include property, FINTECH, retail, F&B and sports. Awarded various
+                                                recognitions for his advocacy on philanthrocapitalism and is a recipient
+                                                of the Singapore Sports Inspirational Award, he also held multinational
+                                                positions in such global companies such as Quaker Oats Co., Siemens and
+                                                PricewaterhouseCoopers (PwC) with roles in brand communications,
+                                                business development and corporate finance during his 20-year career in
+                                                Singapore. He was a prime mover in fund transfer systems in Asia and
+                                                also serves as chairman of the 10-million strong Maharlika Movement. He
+                                                continuously serves as a Director for Philanthropy handling European and
+                                                Emirati royal family offices, respectively, and advocates a resource
+                                                based economy for humanity.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
@@ -390,12 +384,11 @@
                                                 Mr. Simon Thomas
                                                 <span class="flag-size-md flag-icon flag-icon-gb"></span>
                                             </h3>
-                                            <p class="team-position">Director - Finance</p>
+                                            <p class="team-position">Director - Structured Finance</p>
                                             <p class="text-justify">Simon has been a finance professional for the past
-                                                30 years and heads overall corporate finance functions
-                                                for FGC. He has a close working relationship with a diverse range of
+                                                30 years. He has a close working relationship with a diverse range of
                                                 family offices and funds all over the world and specializes in
-                                                structured finance, bonds and fixed income instruments.
+                                                structured finance which includes bonds and fixed income instruments.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
