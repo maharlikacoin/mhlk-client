@@ -19,17 +19,16 @@
                                 <div class="cpn-head">
                                     <h1 class="title">
                                         The World's First <br>
-                                        <strong>Resource-Based Economy Cryptocurrency</strong><br>
-                                        Advocating A Dividend System <br>For Humanity
+                                        <strong>Asset-Backed Cryptocurrency</strong><br>
+                                        advocating a Resource Based Economy for Humanity.
                                     </h1>
                                 </div>
                                 <div class="cpn-text">
                                     <p>The <span class="font-weight-bolder">Maharlika Coin (MHLK)</span> was created
-                                        to distribute the value of natural
-                                        resources directly to the people and selected organizations to ensure that
-                                        Humanity has a stake in the protection and conservation of our planet. We
-                                        invite everyone to use the MHLK to advocate best practices for our natural
-                                        resources and ensure world peace.
+                                        to distribute the value of natural resources and selected philanthropic assets
+                                        directly to the people and organizations to ensure that Humanity has a stake in
+                                        the protection and conservation of our planet. We invite everyone to use the
+                                        MHLK to advocate best practices for world peace.
                                     </p>
                                 </div>
                                 <div class="cpn-action">
