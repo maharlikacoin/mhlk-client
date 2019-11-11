@@ -45,6 +45,7 @@
                                     <ul class="cpn-links">
                                         <create-wallet></create-wallet>
                                     </ul>
+                                    <a class="btn btn-services" href="https://grants.maharlikacoin.com">Other Services</a>
                                 </div>
                             </div>
                         </div><!-- .col -->
