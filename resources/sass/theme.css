@@ -358,3 +358,13 @@ button.btn.btn-sm.clipboard-button:focus {
 h5.team-name.title.title-sm {
     font-size:inherit;
 }
+a.btn.btn-services:hover {
+    color: white!important;
+}
+
+a.btn.btn-services {
+    color: maroon!important;
+    min-width: 120px;
+    max-width: 100%;
+    width: 15em;
+}
