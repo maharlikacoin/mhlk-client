@@ -45,7 +45,7 @@
                                         <div class="blog-content text-justify height-2em">
                                             The <span class="font-weight-bold">Formula Green Foundation (FGF)</span> is
                                             a Swiss-based entity mandated by the
-                                            Formula Green Corporation (FGC) and it’s key shareholder, the Maharlika
+                                            Formula Green Corporation (FGC) and its key shareholder, the Maharlika
                                             Trust, to implement the world’s first Wealth Distribution Platform (WDP) via
                                             blockchain and cryptocurrency. Our goal is to fulfill the key aspect of
                                             enabling Philanthropic funds to reach individual and corporate beneficiaries
