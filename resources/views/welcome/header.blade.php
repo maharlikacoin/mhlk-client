@@ -32,20 +32,24 @@
                                     </p>
                                 </div>
                                 <div class="cpn-action">
-                                    @if(!session('authAddress'))
+                                    <div class="d-flex flex-column alignment-items">
                                         <div class="cpn-btns">
-                                            <a class="btn btn-grad" href="#" data-toggle="modal"
-                                               data-target="#login-popup">Access your Wallet</a>
+                                            <a class="btn btn-lg btn-grad grant" href="http://grants.maharlikacoin.com">Grants</a>
                                         </div>
-                                    @else
-                                        <div class="cpn-btns">
-                                            <a class="btn btn-grad" href="/wallet">Go back to your Wallet</a>
+                                        @if(!session('authAddress'))
+                                            <div class="cpn-btns">
+                                                <a class="btn btn-lg btn-grad-transparent" href="#" data-toggle="modal"
+                                                   data-target="#login-popup">Access your Wallet</a>
+                                            </div>
+                                        @else
+                                            <div class="cpn-btns">
+                                                <a class="btn btn-lg btn-grad-transparent" href="/wallet">
+                                                    Go back to your Wallet</a>
+                                            </div>
+                                        @endif
+                                            <create-wallet></create-wallet>
                                         </div>
-                                    @endif
-                                    <ul class="cpn-links">
-                                        <create-wallet></create-wallet>
-                                    </ul>
-                                    <a class="btn btn-services" href="http://grants.maharlikacoin.com">Grants</a>
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- .col -->

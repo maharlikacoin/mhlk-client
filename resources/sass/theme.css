@@ -179,6 +179,7 @@ a.modal-close:hover {
     border: 1px solid #dee2e6;
 }
 .btn-grad-transparent {
+    width: 15em;
     color: #800000!important;
     background: transparent;
     border: 1px solid #800000;
@@ -290,6 +291,9 @@ a.modal-close:hover {
     .btn.btn-grad-transparent {
         padding: 14px 30px;
     }
+    .btn.btn-grad-borderless{
+        padding: 14px 30px;
+    }
 }
 
 .text-red {
@@ -358,13 +362,33 @@ button.btn.btn-sm.clipboard-button:focus {
 h5.team-name.title.title-sm {
     font-size:inherit;
 }
-a.btn.btn-services:hover {
+a.btn.btn-grad-borderless:hover {
     color: white!important;
 }
 
-a.btn.btn-services {
+a.btn.btn-grad-borderless{
+    border-color: rgba(143, 10, 10, 0.27);
     color: maroon!important;
     min-width: 120px;
     max-width: 100%;
     width: 15em;
+}
+.grant {
+    width: 15em;
+}
+.alignment-items {
+    -webkit-box-align: start!important;
+    align-items: start!important;
+}
+
+@media (max-width: 991px) {
+    .alignment-items {
+        -webkit-box-align: center!important;
+        -ms-flex-align: center!important;
+        align-items: center!important;
+    }
+}
+
+.cpn-btns {
+    padding-top: 10px !important;
 }
