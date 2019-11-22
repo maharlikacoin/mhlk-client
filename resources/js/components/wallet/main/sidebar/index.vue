@@ -31,8 +31,8 @@
                     <div class="field-item">
                         <div class="field-wrap">
                             <b-form-input v-model="transferTo" :state="isValidAddress" @change="resetStatus()"
-                                          id="transfer-address" name="address" :disabled="busy" class="input-bordered"
-                                          required placeholder="Wallet address you want to transfer to">
+                                          name="address" :disabled="busy" class="input-bordered" required
+                                          placeholder="Wallet address you want to transfer to">
                             </b-form-input>
                             <b-form-invalid-feedback :state="isValidAddress">
                                 Only a valid Ethereum wallet address can be entered.
@@ -47,8 +47,7 @@
                     <div class="field-item">
                         <div class="field-wrap">
                             <b-form-input v-model="amount" :state="isValidAmount" @change="resetStatus()"
-                                          id="transfer-amount" name="amount" :disabled="busy" type="number"
-                                          class="input-bordered"
+                                          name="amount" :disabled="busy" type="number" class="input-bordered"
                                           required placeholder="Amount of MHLK">
                             </b-form-input>
                             <b-form-invalid-feedback :state="isValidAmount">
@@ -63,9 +62,15 @@
                     <!-- private key -->
                     <div class="field-item">
                         <div class="field-wrap">
-                            <textarea class="input-bordered" name="address" v-model="privateKey"
-                                      :disabled="!allowedPrivateKeyField"
-                                      placeholder="Your private Key"></textarea>
+                            <b-form-textarea v-model="privateKey" :state="isValidPrivateKey" class="input-bordered"
+                                             name="address" :disabled="busy" required placeholder="Your private Key">
+                            </b-form-textarea>
+                            <b-form-invalid-feedback :state="isValidPrivateKey">
+                                Private key must contain 64 characters
+                            </b-form-invalid-feedback>
+                            <b-form-valid-feedback :state="isValidPrivateKey">
+                                Perfect.
+                            </b-form-valid-feedback>
                         </div>
                     </div>
 
@@ -101,7 +106,7 @@
 </template>
 
 <script>
-    import { BForm, BFormInput, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue';
+    import { BForm, BFormInput, BFormTextarea, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue';
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
@@ -111,6 +116,7 @@
             BFormValidFeedback,
             BModal,
             BButton,
+            BFormTextarea,
             BFormInput,
             BForm
         },
@@ -144,7 +150,14 @@
                 return  this.isValidAmount &&
                     this.isValidAddress &&
                     !this.busy &&
-                    (Number(this.amount) !== 0 || Number(this.amount) !== null);
+                    this.hasAmount;
+            },
+            isValidPrivateKey() {
+                let key = this.privateKey;
+                return key.length !== 0 && key.length === 64 ;
+            },
+            hasAmount() {
+                return (Number(this.amount) !== 0 || Number(this.amount) !== null);
             },
             isValidAmount() {
                 return Number(this.amount) > 0 && Number(this.amount) <= this.balances.coin;
@@ -379,6 +392,13 @@
                 this.getCoinBalance();
                 this.getEtherBalance();
             });
+        },
+        watch: {
+            privateKey: function(value) {
+                let firstTwoCharacters = value.substring(0, 2);
+                if(firstTwoCharacters === '0x')
+                    this.privateKey = value.slice(2);
+            }
         }
     }
 </script>
