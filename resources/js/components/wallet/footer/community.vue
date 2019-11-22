@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://t.me/maharlikacoin" target="_blank">
+                        <a href="https://t.me/themaharlikacoin" target="_blank">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                     </li>
