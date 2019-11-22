@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Team @stop
+@section('title') Our Team @stop
 @section('banner')
     <div class="header-banner bg-theme-grad has-ovm">
         <div class="nk-banner">
@@ -11,7 +11,7 @@
                             <div class="col-xl-6 col-lg-9">
                                 <div class="banner-caption cpn tc-light text-center">
                                     <div class="cpn-head">
-                                        <h2 class="title ttu">Team</h2>
+                                        <h2 class="title ttu">Our Team</h2>
                                     </div>
                                 </div>
                             </div>
