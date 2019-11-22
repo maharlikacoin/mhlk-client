@@ -1,6 +1,8 @@
 <template>
-    <li>
-        <a class="btn btn-grad-transparent" href="#" @click="showModal = !showModal">Create your Wallet</a>
+    <div>
+        <div class="cpn-btns">
+            <a class="btn btn-lg btn-grad-borderless shadow-none" href="#" @click="showModal = !showModal">Create Wallet</a>
+        </div>
 
         <b-modal ref="create-wallet-modal" @hide="resetModal" v-model="showModal"
                  centered hide-header hide-footer no-close-on-backdrop>
@@ -61,7 +63,7 @@
                 </div>
             </div>
         </b-modal>
-    </li>
+    </div>
 </template>
 
 <script>
