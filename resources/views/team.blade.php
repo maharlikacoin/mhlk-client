@@ -458,11 +458,11 @@
                 <div class="nk-block nk-block-team-list team-list">
                     <div class="row justify-content-center">
 
-                        <!-- Mr. Thomas Shibli  -->
+                        <!-- Mr. Thomas Schibli -->
                         <div class="col-md-3 col-sm-6 col-6">
                             <div class="team">
                                 <div class="team-photo team-photo-sm">
-                                    <img src="/images/team/09-thomas.jpg" alt="Mr. Thomas Shibli">
+                                    <img src="/images/team/09-thomas.jpg" alt="Mr. Thomas Schibli">
                                     <a href="#team-popup-9" class="team-show content-popup"></a>
                                     <ul class="team-social">
                                         <li>
@@ -472,7 +472,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <h5 class="team-name title title-sm">Mr. Thomas Shibli</h5>
+                                <h5 class="team-name title title-sm">Mr. Thomas Schibli</h5>
                                 <span class="team-position">Director - Digital Assets</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-ch"></span>
                             </div>
@@ -482,13 +482,13 @@
                                 <div class="row align-items-start">
                                     <div class="col-md-6">
                                         <div class="team-photo">
-                                            <img src="/images/team/09-thomas.jpg" alt="Mr. Thomas Shibli">
+                                            <img src="/images/team/09-thomas.jpg" alt="Mr. Thomas Schibli">
                                         </div>
                                     </div><!-- .col  -->
                                     <div class="col-md-6">
                                         <div class="team-popup-info pl-md-3">
                                             <h3 class="team-name title title-lg pt-4">
-                                                Mr. Thomas Shibli
+                                                Mr. Thomas Schibli
                                                 <span class="flag-size-md flag-icon flag-icon-ch"></span>
                                             </h3>
                                             <p class="team-position">Director - Digital Assets</p>
@@ -830,7 +830,7 @@
                                     </ul>
                                 </div>
                                 <h5 class="team-name title title-sm">Mr. Iliya Bugaev</h5>
-                                <span class="team-position">Director - Digital Assets</span>
+                                <span class="team-position">Associate Director - Digital Assets</span>
                                 <br><span class="flag-size-md flag-icon flag-icon-ru"></span>
                             </div>
                             <!-- Start .team-profile  -->
@@ -848,7 +848,7 @@
                                                 Mr. Iliya Bugaev
                                                 <span class="flag-size-md flag-icon flag-icon-ru"></span>
                                             </h3>
-                                            <p class="team-position">Director - Digital Assets</p>
+                                            <p class="team-position">Associate Director - Digital Assets</p>
                                             <p class="text-justify">Iliya is a data-driven architect with special focus
                                                 on Distributed Ledger Technology (DLT) solutions with artificial
                                                 intelligence (A.I.) and machine learning (ML) reinforcement for data
@@ -858,9 +858,7 @@
                                                 economic cybernetics in the Ukraine. He was a member of the working
                                                 committee of the Digital Economy of the Russian Federation and his team
                                                 was awarded by Ethereum founder Vitalik Buterin as the “Best Blockchain
-                                                Development Team” in Russia for CPA network on Smart Contracts. Iliya is
-                                                considered one of the top 100 in the world for the development of
-                                                complex socially significant IT projects.
+                                                Development Team” in Russia for CPA network on Smart Contracts.
                                             </p>
                                         </div>
                                     </div><!-- .col  -->
