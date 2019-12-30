@@ -18,7 +18,9 @@ class WalletController extends Controller
 
     public function login(Request $request) {
         session(['authAddress' => $request->address]);
-        return view('wallet.index');
+        return response()->json([
+            "url" => route('wallet')
+        ]);
     }
 
     public function logout() {
