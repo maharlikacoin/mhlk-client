@@ -42,7 +42,6 @@
 </template>
 
 <script>
-    import { BFormInvalidFeedback } from 'bootstrap-vue'
     import {ValidationObserver, ValidationProvider, setInteractionMode} from 'vee-validate'
 
     setInteractionMode('lazy');
@@ -60,9 +59,6 @@
     }
 	export default {
 		name: "ContactUs",
-        components: {
-            BFormInvalidFeedback
-        },
         data() {
 		    return initialState()
         },
