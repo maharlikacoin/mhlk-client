@@ -9,6 +9,9 @@ import VueClipboard from 'vue-clipboard2';
 import PerfectScrollbar from "vue2-perfect-scrollbar";
 import VueGtm from 'vue-gtm';
 
+import './vendors/vee-validate';
+import './vendors/vue-sweetalert2'
+
 window.numeral = require('numeral');
 
 Vue.filter('numberFormat', numFormat(numeral));
