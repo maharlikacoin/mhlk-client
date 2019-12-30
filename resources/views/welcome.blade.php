@@ -16,9 +16,9 @@
 
 <body class="nk-body body-wider bg-light mode-onepage">
 <div id="app">
-    @yield('contents')
+    <welcome-index is-logged-in="{{ session('authAddress') }}"></welcome-index>
 </div>
-    <!-- JavaScript -->
-    <script src="{{ mix('/js/app.js') }}"></script>
+<!-- JavaScript -->
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

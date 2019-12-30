@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome.index');
+    return view('welcome');
 })->name('welcome');
 
 Route::post('contact-us', 'WelcomeController@contactUs')->name('contact-us');

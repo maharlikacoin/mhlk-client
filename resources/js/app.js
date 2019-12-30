@@ -2,8 +2,8 @@ import WalletHeader from './components/wallet/WalletHeader';
 import WalletMain from './components/wallet/main/index';
 import WalletFooter from './components/wallet/footer/index';
 
-import Welcome from './components/welcome/index';
-import CreateWallet from './components/CreateWallet';
+import WelcomeIndex from './components/welcome/index';
+
 import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
 import PerfectScrollbar from "vue2-perfect-scrollbar";
@@ -45,7 +45,6 @@ new Vue({
         WalletHeader,
         WalletMain,
         WalletFooter,
-        Welcome,
-        CreateWallet
+        WelcomeIndex,
     }
 });

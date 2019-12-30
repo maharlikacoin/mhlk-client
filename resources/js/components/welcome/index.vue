@@ -1,0 +1,33 @@
+<template>
+    <div>
+        <div class="nk-wrap">
+            <header-component :is-logged-in="isLoggedIn"></header-component>
+            <main-component></main-component>
+            <footer-component></footer-component>
+        </div>
+
+        <div class="preloader"><span class="spinner spinner-round"></span></div>
+    </div>
+</template>
+
+<script>
+    import HeaderComponent from './HeaderComponent';
+    import MainComponent from './MainComponent';
+    import FooterComponent from './FooterComponent';
+
+	export default {
+		name: "index",
+        props: {
+		    isLoggedIn: Boolean,
+        },
+        components: {
+            HeaderComponent,
+            MainComponent,
+            FooterComponent,
+        }
+	}
+</script>
+
+<style scoped>
+
+</style>
