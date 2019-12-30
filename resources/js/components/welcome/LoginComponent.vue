@@ -6,8 +6,8 @@
                     data-dismiss="modal" aria-label="Close" @reset="resetModal" @click="closeModal">
                 <em class="ti ti-close"></em>
             </button>
-            <div class="ath-container m-0">
-                <h2 class="pt-4 pb-5 text-center">Welcome to <span class="text-gold">Maharlika Coin</span></h2>
+            <div class="ath-container p-4">
+                <h2 class="pt-2 pb-5 text-center">Welcome to <span class="text-gold">Maharlika Coin</span></h2>
                 <v-observer ref="observerLoginForm" v-slot="{ invalid }"  tag="form" @submit.prevent="access">
 
                     <v-provider vid="publicKey" name="Wallet Address" rules="required|ethereumAddress" tag="div" mode="aggressive"
