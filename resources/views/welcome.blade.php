@@ -16,7 +16,7 @@
 
 <body class="nk-body body-wider bg-light mode-onepage">
 <div id="app">
-    <welcome-index is-logged-in="{{ session('authAddress') }}"></welcome-index>
+    <welcome-index :is-logged-in="!!'{{ session('authAddress') }}'"></welcome-index>
 </div>
 <!-- JavaScript -->
 <script src="{{ mix('/js/app.js') }}"></script>

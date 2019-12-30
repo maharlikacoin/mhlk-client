@@ -16,7 +16,7 @@
     import FooterComponent from './FooterComponent';
 
 	export default {
-		name: "index",
+		name: "WelcomeIndex",
         props: {
 		    isLoggedIn: Boolean,
         },

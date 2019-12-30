@@ -44,8 +44,8 @@
                                                 <a class="btn btn-lg btn-grad grant" href="http://grants.maharlikacoin.com">Grants</a>
                                             </div>
 
-                                            <login-modal v-if="isLoggedIn"></login-modal>
-                                            <div class="cpn-btns" v-if="!isLoggedIn">
+                                            <login-modal v-if="!isLoggedIn"></login-modal>
+                                            <div class="cpn-btns" v-if="isLoggedIn">
                                                 <a class="btn btn-lg btn-grad-transparent" href="/wallet">Your Wallet</a>
                                             </div>
 
