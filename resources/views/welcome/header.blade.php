@@ -43,8 +43,7 @@
                                             </div>
                                         @else
                                             <div class="cpn-btns">
-                                                <a class="btn btn-lg btn-grad-transparent" href="/wallet">
-                                                    Go back to your Wallet</a>
+                                                <a class="btn btn-lg btn-grad-transparent" href="/wallet">Your Wallet</a>
                                             </div>
                                         @endif
                                             <create-wallet></create-wallet>
