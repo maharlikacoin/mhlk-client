@@ -1,58 +1,31 @@
 <template>
     <div>
         <div class="cpn-btns">
-            <a class="btn btn-lg btn-grad-borderless shadow-none" href="#" @click="showModal = !showModal">Create Wallet</a>
+            <button class="btn btn-lg btn-grad-borderless shadow-none" @click="showModal = !showModal">Create Wallet</button>
         </div>
 
         <b-modal ref="create-wallet-modal" @hide="resetModal" v-model="showModal"
                  centered hide-header hide-footer no-close-on-backdrop>
-            <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close" @click="showModal = false">
+            <button class="modal-close" @click="showModal = false">
                 <em class="ti ti-close"></em>
-            </a>
+            </button>
             <div class="ath-container m-0">
 
                 <div class="ath-body pad-0">
-                    <h5 class="ath-heading title">Create Wallet</h5>
+                    <h5 class="ath-heading title py-4">Create Wallet</h5>
 
-                    <!-- private key -->
-                    <div class="field-item">
-                        <div class="field-wrap">
-                            <div class="input-group">
-                                <input class="input-bordered form-control" name="address" v-model="keys.public"
-                                       disabled placeholder="Copy your created wallet address (public key)"/>
-                                <div class="input-group-append">
-                                    <button class="btn btn-sm clipboard-button"
-                                            :class="{ 'disabled': keys.public === ''}"
-                                            :disabled="keys.public === ''"
-                                            v-clipboard:copy="keys.public"
-                                            v-clipboard:success="onCopy"
-                                            v-clipboard:error="onError">
-                                        <i class="fas fa-copy clipboard-icon"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="field-item input-focused">
+                        <button id="publicKey" class="key input-line text-left" v-clipboard:copy="keys.public"
+                                v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.public }}
+                        </button>
+                        <label for="publicKey" class="field-label field-label-line">Wallet Address (Public Key)</label>
                     </div>
 
-                    <!-- private key -->
-                    <div class="field-item">
-                        <div class="field-wrap">
-                            <div class="input-group">
-                            <textarea class="input-bordered form-control" name="privateKey" v-model="keys.private"
-                                      disabled placeholder="Copy your generated private key"></textarea>
-                                <div class="input-group-append">
-                                    <button class="btn btn-sm clipboard-button"
-                                            :class="{ 'disabled': keys.private === '' }"
-                                            :disabled="keys.private === ''"
-                                            v-clipboard:copy="keys.private"
-                                            v-clipboard:success="onCopy"
-                                            v-clipboard:error="onError">
-                                        <i class="fas fa-copy clipboard-icon"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="field-item input-focused">
+                        <button id="privateKey" class="key input-line text-left" v-clipboard:copy="keys.private"
+                                v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.private }}
+                        </button>
+                        <label for="privateKey" class="field-label field-label-line">Wallet Key (Private Key)</label>
                     </div>
 
                     <!-- Create button -->
@@ -80,7 +53,7 @@
             return {
                 showModal: false,
                 busy: false,
-                buttonLoading: 'Create Wallet',
+                buttonLoading: 'Create',
                 keys: {
                     public: '',
                     private: ''
@@ -109,16 +82,35 @@
 </script>
 
 <style scoped>
-    button.btn.btn-sm.clipboard-button:focus {
-        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.05);
+
+    button.key {
+        outline-color: transparent;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.1);
+        padding: 30px 15px 15px;
+        color: #415076;
     }
-    .clipboard-button {
-        min-width: 45px;
-        border: 1px solid #d3e0f3;
-        width: 10px !important;
+
+    button.key + label {
+        padding-left: 15px;
+        padding-top: 3px;
+        top: 0;
     }
-    .clipboard-icon {
-        margin: 0;
-        color: black;
+
+    .input-line:focus {
+        border-bottom-color: #ffc107;
+    }
+    .modal-close {
+        border: 0;
+        color: #564100;
+    }
+    .modal-close:hover{
+        color: #a67c00;
+        text-decoration: none;
+        text-decoration-style: initial;
+        text-decoration-color: initial;
+        font-weight: 700;
     }
 </style>
