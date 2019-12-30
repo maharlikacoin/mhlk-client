@@ -195,6 +195,11 @@ a.modal-close:hover {
     margin-right: 5em;
 }
 
+@media only screen and (max-width: 1880px) {
+    .header-curved-mask {
+        height: 57em!important;
+    }
+}
 @media only screen and (max-width: 1520px) {
     .logo {
         margin-right: 9em;
@@ -205,6 +210,7 @@ a.modal-close:hover {
         width: 25em;
     }
     .header-curved-mask {
+        height: 57em!important;
         -webkit-transform: skew(0);
         transform: skew(0) !important;
     }
@@ -252,6 +258,9 @@ a.modal-close:hover {
         margin-right: 5em;
         width: 21em;
     }
+    .header-curved-mask {
+        height: 70em!important;
+    }
 }
 
 /* About Maharlika Coin */
@@ -265,6 +274,15 @@ a.modal-close:hover {
 .text-center-sm {
     text-align: center !important;
 }
+
+@media only screen and (max-width: 400px) {
+    .header-curved-mask {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        height: 75em!important;
+    }
+}
+
 @media only screen and (max-width: 330px) {
     .title-sm {
         display: -ms-flexbox!important;
@@ -277,6 +295,11 @@ a.modal-close:hover {
     .text-about-sm {
         font-size: 20px;
         align-self: center;
+    }
+    .header-curved-mask {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        height: 75em!important;
     }
 }
 
@@ -297,88 +320,93 @@ a.modal-close:hover {
 }
 
 .text-red {
-    color: #dc3545;
+color: #dc3545;
 }
 .text-green {
-    color: #28a745;
+color: #28a745;
 }
 .live-indicator {
-    font-size: 10px;
-    margin-right: 5px;
+font-size: 10px;
+margin-right: 5px;
 }
 .right {
-    float:right;
+float:right;
 }
 button.btn.btn-sm.clipboard-button:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.05);
+box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.05);
 }
 .clipboard-button {
-    min-width: 45px;
-    border: 1px solid #d3e0f3;
-    width: 10px !important;
+min-width: 45px;
+border: 1px solid #d3e0f3;
+width: 10px !important;
 }
 .clipboard-icon {
-    margin: 0;
-    color: black;
+margin: 0;
+color: black;
 }
 
 .team-social li a {
-    background: #ff5050;
-    box-shadow: 0 2px 15px 0 #ff505080;
+background: #ff5050;
+box-shadow: 0 2px 15px 0 #ff505080;
 }
 .team-social li a:hover {
-    background: maroon;
-    box-shadow: 0 2px 15px 0 rgba(128, 0, 0, 0.51);
+background: maroon;
+box-shadow: 0 2px 15px 0 rgba(128, 0, 0, 0.51);
 }
 .team-show {
-    background: rgba(166, 124, 0, 0.27);
+background: rgba(166, 124, 0, 0.27);
 }
 .mfp-close-btn-in .mfp-close:hover {
-    color: #dc3545!important;
+color: #dc3545!important;
 }
 
 .header-curved-mask {
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-bottom-left-radius: 180px;
-    background-color: white;
-    transform: skew(13deg, 5deg);
-    transform-origin: top right;
-    position: absolute;
+height: 55em;
+bottom: 0;
+top: 0;
+left: -55px;
+right: 0;
+border-bottom-left-radius: 180px;
+border-bottom-right-radius: 180px;
+background-color: #fff;
+-webkit-transform: skew(0deg,4deg);
+transform: skew(0deg,4deg);
+-webkit-transform-origin: top right;
+transform-origin: top right;
+position: absolute;
+box-shadow: 10px 10px 5px #8080802b;
 }
 .header-polka-mask {
-    background-image: url('/images/shape-a.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
+background-image: url('/images/shape-a.png');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 50% 50%;
 }
 
 .z-1 {
-    z-index: 1!important;
+z-index: 1!important;
 }
 
 h5.team-name.title.title-sm {
-    font-size:inherit;
+font-size:inherit;
 }
 a.btn.btn-grad-borderless:hover {
-    color: white!important;
+color: white!important;
 }
 
 a.btn.btn-grad-borderless{
-    border-color: rgba(143, 10, 10, 0.27);
-    color: maroon!important;
-    min-width: 120px;
-    max-width: 100%;
-    width: 15em;
+border-color: rgba(143, 10, 10, 0.27);
+color: maroon!important;
+min-width: 120px;
+max-width: 100%;
+width: 15em;
 }
 .grant {
-    width: 15em;
+width: 15em;
 }
 .alignment-items {
-    -webkit-box-align: start!important;
-    align-items: start!important;
+-webkit-box-align: start!important;
+align-items: start!important;
 }
 
 @media (max-width: 991px) {
@@ -390,5 +418,5 @@ a.btn.btn-grad-borderless{
 }
 
 .cpn-btns {
-    padding-top: 10px !important;
+padding-top: 10px !important;
 }
