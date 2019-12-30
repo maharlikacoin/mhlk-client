@@ -1,5 +1,18 @@
 import {  required, min, max, email, alpha, alpha_num, alpha_spaces } from 'vee-validate/dist/rules';
-import { extend } from 'vee-validate'
+import { extend } from 'vee-validate';
+import { utils } from 'ethers';
+
+extend( 'ethereumAddress', {
+    validate: (value) => {
+        try {
+            utils.getAddress(value);
+            return true;
+        }catch(e) {
+            return false
+        }
+    },
+    message: '"{_value_}" is not a valid wallet address'
+});
 
 extend('unique', {
     validate: (value, {table, column}) => {
