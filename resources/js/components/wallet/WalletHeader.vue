@@ -51,7 +51,11 @@
         },
         props: {
 		    address: String,
-            logout: String
+        },
+        data() {
+		    return {
+		        logout: '/wallet/logout'
+            }
         }
 	}
 </script>

@@ -8,13 +8,18 @@
                 <div class="nk-block block-footer">
                     <div class="row">
                         <!-- Community -->
-                        <community></community>
+                        <div class="col-lg-3 col-sm-12 mb-4 mb-sm-0">
+                            <div class="wgs wgs-menu d-flex flex-column w-100 align-items-center">
+                                <community></community>
+                            </div>
+                        </div><!-- .col -->
+
 
                         <div class="col-lg-4 col-sm-12 mb-4 mb-sm-0 d-flex justify-content-around">
                             <!-- Company -->
-                            <company :about-us="aboutUs" :team="team"></company>
+                            <company></company>
                             <!-- Legal -->
-                            <legal :terms="terms" :privacy="privacy" :whitepaper="whitepaper"></legal>
+                            <legal></legal>
                         </div><!-- .col -->
 
                         <!-- Copyright -->
@@ -30,10 +35,10 @@
 </template>
 
 <script>
-    import Community from './community';
-    import Company from './company';
-    import Legal from './legal';
-    import Copyright from './copyright';
+    import Community from '../partials/footer/community';
+    import Company from '../partials/footer/company';
+    import Legal from '../partials/footer/legal';
+    import Copyright from '../partials/footer/copyright';
 
 	export default {
 		name: "WalletFooter",
@@ -42,13 +47,6 @@
             Company,
             Legal,
             Copyright
-        },
-        props: {
-            aboutUs: String,
-            team: String,
-            terms: String,
-            privacy: String,
-            whitepaper: String,
         }
 	}
 </script>

@@ -1,6 +1,6 @@
 import WalletHeader from './components/wallet/WalletHeader';
 import WalletMain from './components/wallet/main/index';
-import WalletFooter from './components/wallet/footer/index';
+import WalletFooter from './components/wallet/FooterComponent';
 
 import WelcomeIndex from './components/welcome/index';
 
