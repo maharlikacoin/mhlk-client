@@ -23,7 +23,7 @@
                 </v-provider>
 
                 <!-- message -->
-                <v-provider vid="message" name="Message" rules="required|min:150" tag="div"
+                <v-provider vid="message" name="Message" rules="required|min:150" tag="div" mode="aggressive"
                             v-slot="{ errors, valid }" class="field-item">
                     <textarea v-model="form.message" id="message" name="message" class="input-line input-textarea required"
                            :class="{ 'border-danger' : errors.length }"></textarea>
