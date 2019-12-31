@@ -54,7 +54,6 @@
         "vue-on-clickout": "^1.0.8",
         "vue-qrcode-reader": "^2.0.4",
         "vue-recaptcha": "^1.3.0",
-        "vue-recaptcha-v3": "^1.8.0",
         "vue-sweetalert2": "^2.1.5",
         "vue2-perfect-scrollbar": "^1.2.1",
         "vuelidate": "^0.7.4",
