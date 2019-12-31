@@ -28,8 +28,16 @@
                         <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
                     </v-provider>
 
+                    <!-- recaptcha -->
+                    <div class="pb-4">
+                        <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
+                                       ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
+                        <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
+                    </div>
+
                     <div class="small text-danger pb-5" v-if="account.error">{{ account.message }}</div>
-                    <button class="btn btn-grad w-100" :class="{ 'disabled': invalid || busy }" :disabled="invalid || busy" v-html="button"></button>
+                    <button class="btn btn-grad w-100" :class="{ 'disabled': invalid || busy || !recaptcha.verified }"
+                            :disabled="invalid || busy || !recaptcha.verified" v-html="button"></button>
                 </v-observer>
             </div>
         </b-modal><!-- .modal @e -->
@@ -42,6 +50,7 @@
     import { BModal } from 'bootstrap-vue';
     import { utils } from 'ethers';
     import { ValidationObserver, ValidationProvider} from 'vee-validate';
+    import VueRecaptcha from 'vue-recaptcha'
 
     Vue.component('VObserver', ValidationObserver);
     Vue.component('VProvider', ValidationProvider);
@@ -63,13 +72,18 @@
                 message: 'Try again. Please be cautious, your account may get locked after massive multiple retries'
             },
             button: 'Access',
-            busy: false
+            busy: false,
+            recaptcha: {
+                verified: false,
+                message: ''
+            }
         }
     }
 	export default {
 		name: "LoginComponent",
         components: {
-		    BModal
+		    BModal,
+            VueRecaptcha
         },
         data() {
 		    return initialState()
@@ -82,6 +96,10 @@
                 field.isFocused = field.key !== '';
             },
 		    access() {
+                if(!this.recaptcha.verified) {
+                    this.recaptcha.message = 'Please let us know that you are not a Robot.';
+                    return;
+                }
 		       this.verify(this)
             },
             verify: _.debounce((vm) => {
@@ -114,6 +132,10 @@
             closeModal() {
 		        this.resetModal();
                 this.showModal = false;
+            },
+            verifyRecaptcha() {
+                this.recaptcha.message = '';
+                this.recaptcha.verified = true;
             }
         }
 	}
