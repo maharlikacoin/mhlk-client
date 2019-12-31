@@ -28,8 +28,16 @@
                         <label for="privateKey" class="field-label field-label-line">Wallet Key (Private Key)</label>
                     </div>
 
+                    <!-- recaptcha -->
+                    <div class="pb-4">
+                        <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
+                                       ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
+                        <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
+                    </div>
+
                     <!-- Create button -->
-                    <b-button class="btn btn-grad w-100" :class="{ 'disable': busy }" @click="create"
+                    <b-button class="btn btn-grad w-100" :class="{ 'disabled': busy || !recaptcha.verified }"
+                              @click="create" :disabled="busy || !recaptcha.verified"
                               v-html="buttonLoading"></b-button>
 
                     <span v-show="busy" v-html="status"></span>
@@ -42,12 +50,14 @@
 <script>
     import {BModal, BButton} from 'bootstrap-vue';
     import wallet from 'ethereumjs-wallet';
+    import VueRecaptcha from 'vue-recaptcha'
 
     export default {
         name: "CreateWallet",
         components: {
             BModal,
             BButton,
+            VueRecaptcha
         },
         data() {
             return {
@@ -58,7 +68,11 @@
                     public: '',
                     private: ''
                 },
-                status: 'Please wait ...'
+                status: 'Please wait ...',
+                recaptcha: {
+                    verified: false,
+                    message: ''
+                }
             }
         },
         methods: {
@@ -73,9 +87,21 @@
                 this.keys.private = '';
             },
             create() {
+                if(!this.recaptcha.verified) {
+                    this.recaptcha.message = 'Please let us know that you are not a Robot.';
+                    return;
+                }
+
                 let myWallet = wallet.generate();
                 this.keys.public = myWallet.getAddressString();
                 this.keys.private = myWallet.getPrivateKeyString().substring(2);
+                this.$refs.createRecaptcha.reset();
+                this.recaptcha.message = '';
+                this.recaptcha.verified = false;
+            },
+            verifyRecaptcha() {
+                this.recaptcha.message = '';
+                this.recaptcha.verified = true;
             }
         }
     }
