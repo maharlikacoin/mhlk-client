@@ -5,7 +5,7 @@
                 <a href="./" class="wgs-logo">
                     <img src="/images/logo-full-white.png" style="width:15em;" srcset="/images/logo-full-white2x.png 2x" alt="logo">
                 </a>
-                <p>Copyright © 2019 Formula Green Foundation <br>All rights reserved. </p>
+                <p>Copyright © {{ year }} Formula Green Foundation <br>All rights reserved. </p>
             </div>
         </div>
     </div><!-- .col -->
@@ -13,7 +13,12 @@
 
 <script>
 	export default {
-		name: "copyright"
+		name: "copyright",
+        data() {
+		    return {
+		        year: new Date().getFullYear()
+            }
+        }
 	}
 </script>
 
