@@ -1,7 +1,7 @@
 <template>
     <div class="user-box d-none d-lg-block" style="padding:30px;">
         <div class="user-image">
-            <img src="/images/eth-qr.png" alt="adddress">
+            <qrcode-vue :value="address"></qrcode-vue>
         </div>
         <h6 class="user-name">{{ address | trimAddress }}</h6>
         <ul class="btn-grp guttar-10px">
@@ -107,11 +107,13 @@
 
 <script>
     import { BForm, BFormInput, BFormTextarea, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue';
+    import QrcodeVue from 'qrcode.vue'
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
         name: "SidebarIndex",
         components: {
+            QrcodeVue,
             BFormInvalidFeedback,
             BFormValidFeedback,
             BModal,
