@@ -1,120 +1,137 @@
 <template>
-    <div class="dropdown topbar-action-item topbar-action-user">
-        <a href="#" data-toggle="dropdown" @click="toggleDropdown">
-            <img class="icon" src="/images/profile.png" alt="thumb">
-        </a>
-        <div class="dropdown-menu dropdown-menu-right show" v-show="showDropdown" x-placement="bottom-end">
-            <div class="user-dropdown">
-                <div class="user-dropdown-head">
-                    <h6 class="user-name">
-                        <a href="#">{{ address | trimAddress }}</a>
-                    </h6>
+    <div class="topbar-md d-lg-none">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+
+                <!-- site-logo -->
+                <div class="site-logo">
+                    <a href="/" class="site-brand">
+                        <img src="images/logo.png" alt="logo" srcset="images/logo2x.png 2x" style="width:15em;">
+                    </a>
                 </div>
-                <div class="user-dropdown-balance">
-                    <h6>MHLK Balance</h6>
-                    <h1 class="tile-info color-dark" v-html="$options.filters.reduceSizeDecimal(balances.coin)"></h1>
-                </div>
-                <ul class="user-dropdown-btns btn-grp guttar-10px">
-                    <li>
-                        <b-button id="toggle-button2" class="btn btn-grad" :class="{ 'disable': !transferrable}"
-                                  :disabled="!transferrable" @click="toggleModal">Transfer</b-button>
 
-                        <b-modal ref="transfer-modal2" @hide="resetModal" hide-header hide-footer no-close-on-backdrop centered>
-                            <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close" @click="toggleModal">
-                                <em class="ti ti-close"></em>
-                            </a>
-                            <div class="ath-container m-0">
+                <!-- action -->
+                <div class="dropdown topbar-action-item topbar-action-user">
+                    <a href="#" data-toggle="dropdown" @click="toggleDropdown">
+                        <img class="icon" src="/images/profile.png" alt="thumb">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right show" v-show="showDropdown" x-placement="bottom-end">
+                        <div class="user-dropdown">
+                            <div class="user-dropdown-head">
+                                <h6 class="user-name">
+                                    <a href="#">{{ address | trimAddress }}</a>
+                                </h6>
+                            </div>
+                            <div class="user-dropdown-balance">
+                                <h6>MHLK Balance</h6>
+                                <h1 class="tile-info color-dark" v-html="$options.filters.reduceSizeDecimal(balances.coin)"></h1>
+                            </div>
+                            <ul class="user-dropdown-btns btn-grp guttar-10px">
+                                <li>
+                                    <b-button id="toggle-button2" class="btn btn-grad" :class="{ 'disable': !transferrable}"
+                                              :disabled="!transferrable" @click="toggleModal">Transfer</b-button>
 
-                                <div class="relative text-right mr-5">
-                                    <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
-                                    <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
-                                </div>
+                                    <b-modal ref="transfer-modal2" @hide="resetModal" hide-header hide-footer no-close-on-backdrop centered>
+                                        <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close" @click="toggleModal">
+                                            <em class="ti ti-close"></em>
+                                        </a>
+                                        <div class="ath-container m-0">
 
-                                <div class="ath-body">
-                                    <h5 class="ath-heading title">
-                                        Transfer <span style='color:#a67c00;display: initial;font-weight: bold;'>MHLK</span>
-                                    </h5>
+                                            <div class="relative text-right mr-5">
+                                                <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
+                                                <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
+                                            </div>
 
-                                    <!-- transfer to -->
-                                    <div class="field-item">
-                                        <div class="field-wrap">
-                                            <b-form-input v-model="transferTo" :state="isValidAddress" @change="resetStatus()"
-                                                          id="transfer-address" name="address" :disabled="busy" class="input-bordered"
-                                                          required placeholder="Wallet address you want to transfer to">
-                                            </b-form-input>
-                                            <b-form-invalid-feedback :state="isValidAddress">
-                                                Only a valid Ethereum wallet address can be entered.
-                                            </b-form-invalid-feedback>
-                                            <b-form-valid-feedback :state="isValidAddress">
-                                                Nice!
-                                            </b-form-valid-feedback>
-                                        </div>
-                                    </div>
+                                            <div class="ath-body">
+                                                <h5 class="ath-heading title">
+                                                    Transfer <span style='color:#a67c00;display: initial;font-weight: bold;'>MHLK</span>
+                                                </h5>
 
-                                    <!-- amount -->
-                                    <div class="field-item">
-                                        <div class="field-wrap">
-                                            <b-form-input v-model="amount" :state="isValidAmount" @change="resetStatus()"
-                                                          id="transfer-amount" name="amount" :disabled="busy" type="number"
-                                                          class="input-bordered"
-                                                          required placeholder="Amount of MHLK">
-                                            </b-form-input>
-                                            <b-form-invalid-feedback :state="isValidAmount">
-                                                Amount (MHLK) must be greater than 0.
-                                            </b-form-invalid-feedback>
-                                            <b-form-valid-feedback :state="isValidAmount">
-                                                Looks Good.
-                                            </b-form-valid-feedback>
-                                        </div>
-                                    </div>
+                                                <!-- transfer to -->
+                                                <div class="field-item">
+                                                    <div class="field-wrap">
+                                                        <b-form-input v-model="transferTo" :state="isValidAddress" @change="resetStatus()"
+                                                                      id="transfer-address" name="address" :disabled="busy" class="input-bordered"
+                                                                      required placeholder="Wallet address you want to transfer to">
+                                                        </b-form-input>
+                                                        <b-form-invalid-feedback :state="isValidAddress">
+                                                            Only a valid Ethereum wallet address can be entered.
+                                                        </b-form-invalid-feedback>
+                                                        <b-form-valid-feedback :state="isValidAddress">
+                                                            Nice!
+                                                        </b-form-valid-feedback>
+                                                    </div>
+                                                </div>
 
-                                    <!-- private key -->
-                                    <div class="field-item">
-                                        <div class="field-wrap">
+                                                <!-- amount -->
+                                                <div class="field-item">
+                                                    <div class="field-wrap">
+                                                        <b-form-input v-model="amount" :state="isValidAmount" @change="resetStatus()"
+                                                                      id="transfer-amount" name="amount" :disabled="busy" type="number"
+                                                                      class="input-bordered"
+                                                                      required placeholder="Amount of MHLK">
+                                                        </b-form-input>
+                                                        <b-form-invalid-feedback :state="isValidAmount">
+                                                            Amount (MHLK) must be greater than 0.
+                                                        </b-form-invalid-feedback>
+                                                        <b-form-valid-feedback :state="isValidAmount">
+                                                            Looks Good.
+                                                        </b-form-valid-feedback>
+                                                    </div>
+                                                </div>
+
+                                                <!-- private key -->
+                                                <div class="field-item">
+                                                    <div class="field-wrap">
                             <textarea class="input-bordered" name="address" v-model="privateKey"
                                       :disabled="!allowedPrivateKeyField"
                                       placeholder="Your private Key"></textarea>
-                                        </div>
-                                    </div>
+                                                    </div>
+                                                </div>
 
-                                    <!-- estimated cost -->
-                                    <div class="field-item" v-if="transactionFee">
-                                        <a class="status" href="#" v-show="!toggleTransactionInfo"
-                                           @click="toggleTransactionInfo = !toggleTransactionInfo">
-                                            Show more information
-                                        </a>
-                                        <a class="status" href="#" v-show="toggleTransactionInfo"
-                                           @click="toggleTransactionInfo = !toggleTransactionInfo">
-                                            Hide
-                                        </a>
-                                        <div v-if="toggleTransactionInfo">
-                                            <div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>
-                                            <div>Gas Limit: {{ gas.limit }}</div>
-                                        </div>
-                                        <div>
-                                            Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH
-                                            ( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )
-                                        </div>
-                                    </div>
+                                                <!-- estimated cost -->
+                                                <div class="field-item" v-if="transactionFee">
+                                                    <a class="status" href="#" v-show="!toggleTransactionInfo"
+                                                       @click="toggleTransactionInfo = !toggleTransactionInfo">
+                                                        Show more information
+                                                    </a>
+                                                    <a class="status" href="#" v-show="toggleTransactionInfo"
+                                                       @click="toggleTransactionInfo = !toggleTransactionInfo">
+                                                        Hide
+                                                    </a>
+                                                    <div v-if="toggleTransactionInfo">
+                                                        <div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>
+                                                        <div>Gas Limit: {{ gas.limit }}</div>
+                                                    </div>
+                                                    <div>
+                                                        Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH
+                                                        ( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )
+                                                    </div>
+                                                </div>
 
-                                    <!-- transfer button -->
-                                    <b-button class="btn btn-grad w-100" :class="{ 'disable': !submittable }"
-                                              :disabled="!submittable" @click="transfer"
-                                              v-html="buttonLoading"></b-button>
-                                    <span v-html="status"></span>
-                                </div>
-                            </div>
-                        </b-modal>
-                    </li>
-                </ul>
-                <div class="gaps-1x"></div>
-                <ul class="user-dropdown-links">
-                    <li><a href="/"><i class="ti ti-home"></i>Home</a></li>
-                    <li><a :href="logout"><i class="ti ti-power-off"></i>Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+                                                <!-- transfer button -->
+                                                <b-button class="btn btn-grad w-100" :class="{ 'disable': !submittable }"
+                                                          :disabled="!submittable" @click="transfer"
+                                                          v-html="buttonLoading"></b-button>
+                                                <span v-html="status"></span>
+                                            </div>
+                                        </div>
+                                    </b-modal>
+                                </li>
+                            </ul>
+                            <div class="gaps-1x"></div>
+                            <ul class="user-dropdown-links">
+                                <li><a href="/"><i class="ti ti-home"></i>Home</a></li>
+                                <li><a :href="logout"><i class="ti ti-power-off"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- .toggle-action -->
+            </div><!-- .container -->
+        </div><!-- .container -->
+    </div><!-- .topbar-md -->
 
 </template>
 
