@@ -107,7 +107,6 @@
 
 <script>
     import { BForm, BFormInput, BFormTextarea, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue';
-    import QrcodeVue from 'qrcode.vue'
     import VueQr from 'vue-qr'
     let Tx = require('ethereumjs-tx').Transaction;
 
@@ -115,7 +114,6 @@
         name: "SidebarIndex",
         components: {
             VueQr,
-            QrcodeVue,
             BFormInvalidFeedback,
             BFormValidFeedback,
             BModal,
