@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @contextmenu.prevent="">
         <div class="nk-wrap">
             <header-component :is-logged-in="isLoggedIn"></header-component>
             <main-component></main-component>
