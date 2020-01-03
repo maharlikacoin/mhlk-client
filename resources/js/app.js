@@ -1,7 +1,5 @@
-import WalletHeader from './components/wallet/WalletHeader';
-import WalletMain from './components/wallet/main/index';
-import WalletFooter from './components/wallet/FooterComponent';
-
+// components
+import WalletIndex from './components/wallet/index';
 import WelcomeIndex from './components/welcome/index';
 
 import numFormat from 'vue-filter-number-format';
@@ -45,9 +43,7 @@ Vue.use(VueClipboard);
 new Vue({
     el: '#app',
     components: {
-        WalletHeader,
-        WalletMain,
-        WalletFooter,
+        WalletIndex,
         WelcomeIndex,
-    }
+    },
 });

@@ -16,11 +16,7 @@
 
 <body style="background-color: #e9ecef;">
 <div id="app" class="d-flex mx-auto flex-column h-screen">
-    <wallet-header address="{{ session('authAddress') }}"></wallet-header>
-
-    <wallet-main address="{{ session('authAddress') }}"></wallet-main>
-
-    <wallet-footer></wallet-footer>
+    <wallet-index address="{{ session('authAddress') }}"></wallet-index>
 </div>
 <!-- JavaScript -->
 <script src="{{ mix('/js/app.js') }}"></script>
