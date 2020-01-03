@@ -6,8 +6,7 @@
         </div>
         <h6 class="user-name">{{ address | trimAddress }}</h6>
         <ul class="btn-grp guttar-10px">
-            <li>
-                <b-button id="toggle-button" class="btn btn-grad" :class="{ 'disable': !transferrable}"
+            <li><b-button id="toggle-button" class="btn btn-grad" :class="{ 'disable': !transferrable}"
                           :disabled="!transferrable" @click="toggleModal">Transfer</b-button>
             </li>
         </ul>
@@ -258,7 +257,8 @@
                 this.resetButtonLoading();
             },
             toggleModal() {
-                this.$refs['transfer-modal'].toggle('#toggle-button')
+                if(!this.transferrable)
+                    this.$refs['transfer-modal'].toggle('#toggle-button')
             },
 
             getContractAbi() {
