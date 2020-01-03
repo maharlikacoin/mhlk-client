@@ -144,7 +144,7 @@
                 return this.web3 !== null;
             },
             transferrable() {
-                return this.balances.ether > 0;
+                return this.balances.ether > 0 && this.balances.coin > 0;
             },
             allowedPrivateKeyField() {
                 return  this.isValidAmount &&
