@@ -15,14 +15,14 @@
                     <h5 class="ath-heading title py-4">Create Wallet</h5>
 
                     <div class="field-item input-focused">
-                        <button id="publicKey" class="key input-line text-left" v-clipboard:copy="keys.public"
+                        <button id="publicKey" class="key input-line text-left text-wrap" v-clipboard:copy="keys.public"
                                 v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.public }}
                         </button>
                         <label for="publicKey" class="field-label field-label-line">Wallet Address (Public Key)</label>
                     </div>
 
                     <div class="field-item input-focused">
-                        <button id="privateKey" class="key input-line text-left" v-clipboard:copy="keys.private"
+                        <button id="privateKey" class="key input-line text-left text-wrap" v-clipboard:copy="keys.private"
                                 v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.private }}
                         </button>
                         <label for="privateKey" class="field-label field-label-line">Wallet Key (Private Key)</label>
@@ -138,5 +138,8 @@
         text-decoration-style: initial;
         text-decoration-color: initial;
         font-weight: 700;
+    }
+    .text-wrap {
+        word-wrap: break-word;
     }
 </style>
