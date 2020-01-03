@@ -18,9 +18,7 @@
                     <div class="dropdown-menu dropdown-menu-right show" v-show="showDropdown" x-placement="bottom-end">
                         <div class="user-dropdown">
                             <div class="user-dropdown-head">
-                                <h6 class="user-name">
-                                    <a href="#">{{ address | trimAddress }}</a>
-                                </h6>
+                                <h6><a href="#">{{ address | trimAddress }}</a></h6>
                             </div>
                             <div class="user-dropdown-balance">
                                 <h6>MHLK Balance</h6>
