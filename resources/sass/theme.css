@@ -143,6 +143,17 @@ a.modal-close:hover {
     text-decoration: none;
     font-weight: bold;
 }
+button.modal-close {
+    border: 0;
+    color: #564100;
+}
+button.modal-close:hover{
+    color: #a67c00;
+    text-decoration: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    font-weight: 700;
+}
 .modal-content .modal-close .fa, .modal-content .modal-close .ti {
     font-size: 20px;
     height: 40px;

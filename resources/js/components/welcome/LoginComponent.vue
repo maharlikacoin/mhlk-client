@@ -148,15 +148,4 @@
     .text-gold {
         color: #dcb251;
     }
-    .modal-close {
-        border: 0;
-        color: #564100;
-    }
-    .modal-close:hover{
-        color: #a67c00;
-        text-decoration: none;
-        text-decoration-style: initial;
-        text-decoration-color: initial;
-        font-weight: 700;
-    }
 </style>
