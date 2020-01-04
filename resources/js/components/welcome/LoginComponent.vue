@@ -1,9 +1,9 @@
 <template>
     <div class="cpn-btns">
-        <button class="btn btn-lg btn-grad-transparent" @click="showModal = !showModal">Access your Wallet</button>
+        <button class="btn btn-lg btn-grad-transparent" @click="showModal = true">Access your Wallet</button>
         <b-modal ref="login-modal" v-model="showModal" centered hide-header hide-footer no-close-on-backdrop>
             <button class="modal-close"
-                    data-dismiss="modal" aria-label="Close" @reset="resetModal" @click="closeModal">
+                    data-dismiss="modal" aria-label="Close" @reset="resetModal" @click="showModal = false">
                 <em class="ti ti-close"></em>
             </button>
             <div class="ath-container p-4">
@@ -128,10 +128,6 @@
             resetModal() {
                 Object.assign(this.$data, initialState());
                 requestAnimationFrame(() => this.$refs.observer.reset());
-            },
-            closeModal() {
-		        this.resetModal();
-                this.showModal = false;
             },
             verifyRecaptcha() {
                 this.recaptcha.message = '';
