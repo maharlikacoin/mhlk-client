@@ -431,3 +431,7 @@ font-size:inherit;
 .cpn-btns {
 padding-top: 10px !important;
 }
+
+.pointer {
+    cursor:pointer;
+}

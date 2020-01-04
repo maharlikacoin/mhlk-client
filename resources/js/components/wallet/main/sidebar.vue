@@ -66,9 +66,6 @@
     .user-image img {
         width: 130px;
     }
-    .pointer {
-        cursor:pointer;
-    }
     .outline-0:focus {
         outline: 0;
     }
