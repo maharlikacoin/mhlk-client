@@ -45,6 +45,7 @@
         "select2": "^4.0.10",
         "toastr": "^2.1.4",
         "vee-validate": "^3.2.1",
+        "vue-autonumeric": "^1.2.6",
         "vue-clipboard2": "^0.3.1",
         "vue-filter-number-format": "^2.0.0",
         "vue-gtm": "^2.2.0",
