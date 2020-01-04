@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import Sidebar from './sidebar/index';
+    import Sidebar from './sidebar';
     import MaharlikaTile from './contents/MaharlikaTile';
     import EtherTile from './contents/EtherTile';
     import TransactionsTable from './contents/TransactionsTable';
