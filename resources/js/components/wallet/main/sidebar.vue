@@ -32,15 +32,7 @@
         },
         computed: {
             transferrable() {
-                return this.balances.ether > 0 && this.balances.coin > 0
-            }
-        },
-        data() {
-            return {
-                balances: {
-                    ether: 0,
-                    coin: 0
-                }
+                return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin
             }
         },
         methods: {
@@ -53,12 +45,6 @@
             onError(){
                 alert('Failed to copy. Try again.');
             }
-        },
-        mounted() {
-            this.$store.subscribe((mutation) => {
-                if(mutation.type === 'SETETHER') this.balances.ether = mutation.payload;
-                if(mutation.type === 'SETCOIN') this.balances.coin = mutation.payload;
-            });
         }
     }
 </script>
