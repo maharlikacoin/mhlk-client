@@ -19,8 +19,8 @@
                 <div class="field-item">
                     <div class="field-wrap">
                         <b-form-input v-model="transferTo" :state="isValidAddress" @change="resetStatus()"
-                                      id="transfer-address" name="address" :disabled="busy" class="input-bordered"
-                                      required placeholder="Wallet address you want to transfer to">
+                                      name="address" :disabled="busy" class="input-bordered" required
+                                      placeholder="Wallet address you want to transfer to">
                         </b-form-input>
                         <b-form-invalid-feedback :state="isValidAddress">
                             Only a valid Ethereum wallet address can be entered.
@@ -35,8 +35,7 @@
                 <div class="field-item">
                     <div class="field-wrap">
                         <b-form-input v-model="amount" :state="isValidAmount" @change="resetStatus()"
-                                      id="transfer-amount" name="amount" :disabled="busy" type="number"
-                                      class="input-bordered"
+                                      name="amount" :disabled="busy" type="number" class="input-bordered"
                                       required placeholder="Amount of MHLK">
                         </b-form-input>
                         <b-form-invalid-feedback :state="isValidAmount">
@@ -51,9 +50,15 @@
                 <!-- private key -->
                 <div class="field-item">
                     <div class="field-wrap">
-                            <textarea class="input-bordered" name="address" v-model="privateKey"
-                                      :disabled="!allowedPrivateKeyField"
-                                      placeholder="Your private Key"></textarea>
+                        <b-form-textarea v-model="privateKey" :state="isValidPrivateKey" class="input-bordered"
+                                         name="address" :disabled="busy" required placeholder="Your private Key">
+                        </b-form-textarea>
+                        <b-form-invalid-feedback :state="isValidPrivateKey">
+                            Private key must contain 64 characters
+                        </b-form-invalid-feedback>
+                        <b-form-valid-feedback :state="isValidPrivateKey">
+                            Perfect.
+                        </b-form-valid-feedback>
                     </div>
                 </div>
 
@@ -88,7 +93,7 @@
 </template>
 
 <script>
-    import { BForm, BFormInput, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue'
+    import { BForm, BFormInput, BFormTextarea, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue'
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
@@ -98,6 +103,7 @@
             BFormValidFeedback,
             BModal,
             BButton,
+            BFormTextarea,
             BFormInput,
             BForm
         },
@@ -110,9 +116,15 @@
                 else return 0;
             },
             submittable() {
-                if( this.transferrable && this.isConnected && this.allowedPrivateKeyField && this.privateKey !== ''){
-                    if (this.isGasLimitZero) this.estimateGasLimit();
-                    else return true
+                if( this.transferrable &&
+                    this.isConnected &&
+                    this.allowedPrivateKeyField &&
+                    this.privateKey !== '' &&
+                    this.web3 !== null &&
+                    this.maharlikaContract !== null ){
+
+                    this.estimateGasLimit(this.web3, this.maharlikaContract());
+                    return true;
                 }
                 else return false;
             },
@@ -123,13 +135,20 @@
                 return this.web3 !== null;
             },
             transferrable() {
-                return this.balances.ether > 0;
+                return this.balances.ether > 0 && this.balances.coin > 0;
             },
             allowedPrivateKeyField() {
                 return  this.isValidAmount &&
                     this.isValidAddress &&
                     !this.busy &&
-                    (Number(this.amount) !== 0 || Number(this.amount) !== null);
+                    this.hasAmount;
+            },
+            isValidPrivateKey() {
+                let key = this.privateKey;
+                return key.length !== 0 && key.length === 64 ;
+            },
+            hasAmount() {
+                return (Number(this.amount) !== 0 || Number(this.amount) !== null);
             },
             isValidAmount() {
                 return Number(this.amount) > 0 && Number(this.amount) < this.balances.coin;
@@ -147,7 +166,7 @@
             return {
                 decimals: 2,
 
-                chain: 'kovan',
+                chain: 'mainnet',
                 config: {
                     mainnet: {
                         provider: 'https://ethshared.bdnodes.net?auth=trtq2YNHtEU2rvJabEwqcV4BEE1M8lnpOrEV6EICHT4',
@@ -177,7 +196,14 @@
                 status: 'Status: Idle',
 
                 gas: {
-                    price: 33 * 1e9,
+                    selected: null,
+                    prices: {
+                        fastest: 0,
+                        fast: 0,
+                        average: 0,
+                        slow: 0,
+                        slowest: 0,
+                    },
                     limit: 0
                 },
                 web3: null,
@@ -188,6 +214,10 @@
                 // chain: 'mainnet',
                 rawTransaction: null,
                 transacting: false,
+                toggleTransactionInfo: false,
+                ethPrice: {
+                    usd: 0
+                },
             }
         },
         methods: {
@@ -213,7 +243,10 @@
                 this.resetStatus();
                 this.resetButtonLoading();
             },
-
+            toggleModal() {
+                if(!this.transferrable)
+                    this.$refs.transferModal.toggle('#toggle-button')
+            },
             getContractAbi() {
                 return axios.get(this.contractAbiUrl)
                     .then(response => this.contractAbi = response.data )
@@ -248,13 +281,14 @@
             },
             transact(web3, contract) {
                 this.transacting = true;
+                let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
                 this.rawTransaction = {
                     "from": this.address,
                     "gasPrice":web3.utils.toHex(this.gas.selected),
                     "gasLimit":web3.utils.toHex(this.gas.limit),
                     "to": this.usedConfig.contractAddress,
                     "value":"0x0",
-                    "data": contract.methods.transfer(this.transferTo, this.hexAmount).encodeABI(),
+                    "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
                     "nonce":web3.utils.toHex(this.count)
                 };
 
@@ -309,11 +343,11 @@
                         this.gas.selected = this.gas.prices.fastest;
                     })
             },
-            estimateGasLimit() {
-                this.hexAmount = this.web3.utils.toHex(this.amount * 10**this.decimals);
+            estimateGasLimit(web3, contract) {
+                let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
 
-                this.maharlikaContract().methods
-                    .transfer(this.transferTo, this.hexAmount)
+                contract.methods
+                    .transfer(this.transferTo, hexAmount)
                     .estimateGas({ from: this.address})
                     .then(limit => {
                         this.gas.limit = limit;
@@ -349,6 +383,13 @@
                 this.getCoinBalance();
                 this.getEtherBalance();
             });
+        },
+        watch: {
+            privateKey: function(value) {
+                let firstTwoCharacters = value.substring(0, 2);
+                if(firstTwoCharacters === '0x')
+                    this.privateKey = value.slice(2);
+            }
         }
     }
 </script>
