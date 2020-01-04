@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import MHLK from '../core/MaharlikaContract'
+import MHLK from './core/MaharlikaContract'
 import { utils, providers, Contract } from "ethers";
 
 Vue.use(Vuex);
@@ -28,6 +28,9 @@ export default new Vuex.Store({
         balances: {
             ether: 0,
             coin: 0
+        },
+        modal: {
+            transfer: false
         }
     },
     mutations: {
@@ -36,7 +39,8 @@ export default new Vuex.Store({
         SETBALANCEETHER(state, ether) { state.balances.ether = ether },
         SETPROVIDER(state, provider) { state.provider = provider },
         SETETHER(state, ether) { state.balances.ether = ether },
-        SETCOIN(state, coin) { state.balances.coin = coin }
+        SETCOIN(state, coin) { state.balances.coin = coin },
+        TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status}
     },
     actions: {
         changeNetwork({commit}, network) {
@@ -63,8 +67,9 @@ export default new Vuex.Store({
         updateCoin({commit, state}, address) {
             let decimals = 2;
             state.maharlika.balanceOf(address)
-                .then((balance) => commit('SETCOIN', balance/10**decimals))
-        }
+                .then((balance) => commit('SETCOIN', 1/10**decimals))
+        },
+        toggleTransferModal({commit}, status) { commit('TOGGLETRANSFERMODAL', status) }
     },
     getters: {
         getConfiguration: state => {return state.config},
@@ -72,6 +77,7 @@ export default new Vuex.Store({
         getProvider: state => {return state.provider},
         maharlika: state => {return state.maharlika},
         getEther: state => {return state.balances.ether},
-        getCoin: state => {return state.balances.coin}
+        getCoin: state => {return state.balances.coin},
+        isShownTransferModal: state => {return state.modal.transfer}
     }
 })

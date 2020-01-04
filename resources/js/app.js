@@ -9,7 +9,7 @@ import PerfectScrollbar from "vue2-perfect-scrollbar";
 import VueGtm from 'vue-gtm';
 import './vendors/vee-validate';
 import './vendors/vue-sweetalert2'
-import store from './store/ethereum'
+import store from './store'
 
 window.numeral = require('numeral');
 
