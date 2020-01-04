@@ -1,4 +1,4 @@
-import {  required, min, max, email, alpha, alpha_num, alpha_spaces, numeric } from 'vee-validate/dist/rules';
+import {  required, min, max, email, alpha, alpha_num, alpha_spaces, regex} from 'vee-validate/dist/rules';
 import { extend } from 'vee-validate';
 import { utils } from 'ethers';
 
@@ -41,9 +41,17 @@ extend('lengthBetween', {
     message: 'The {_field_} length must be between {min} and {max} alphanumeric characters'
 });
 
-extend("numeric", {
-    ...numeric,
-    message: '{_field_} is required'
+extend("numeric_decimal", {
+    ...regex,
+    message: '{_field_} should be numbers',
+});
+
+extend("greater_than", {
+    validate(value, {to}) {
+        return value > to // value not equal to
+    },
+    params: ['to'],
+    message: 'The {_field_} must be greater than {to}'
 });
 
 extend("required", {
