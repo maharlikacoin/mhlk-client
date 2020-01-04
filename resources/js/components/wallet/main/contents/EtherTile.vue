@@ -14,34 +14,11 @@
         props: {
             address: String
         },
-        data() {
-            return {
-                apiBaseUrl: 'https://api.etherscan.io/api?',
-                module: 'account',
-                action: 'balance',
-                apikey: 'GEPXM3N11F476EMB8FCXG2XVK89Y5PKMFK',
-                balance: 0
+        computed: {
+		    balance() {
+		        return this.$store.getters.getEther;
             }
-        },
-        methods: {
-            getEtherBalance() {
-                // etherscan does not require x-requested-with
-                delete axios.defaults.headers.common["X-Requested-With"];
-                let url = `${this.apiBaseUrl}module=${this.module}&action=${this.action}&address=${this.address}&tag=latest&apikey=${this.apikey}`;
-
-                axios.get(url)
-                    .then(response => {
-                        this.balance = response.data.result/1000000000000000000;
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        this.balance = 0;
-                    });
-            }
-        },
-        mounted() {
-            this.getEtherBalance();
-        },
+        }
 	}
 </script>
 
