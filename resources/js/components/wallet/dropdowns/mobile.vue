@@ -18,7 +18,7 @@
                     <div class="dropdown-menu dropdown-menu-right show" v-show="showDropdown" x-placement="bottom-end">
                         <div class="user-dropdown">
                             <div class="user-dropdown-head">
-                                <h6><a href="#">{{ address | trimAddress }}</a></h6>
+                                <h6><a :href="etherscanBaseUrl + address" target="_blank">{{ address | trimAddress }}</a></h6>
                             </div>
                             <div class="user-dropdown-balance">
                                 <h6>MHLK Balance</h6>
@@ -149,7 +149,8 @@
         },
         props: {
 		    logout: String,
-            address: String
+            address: String,
+            etherscanBaseUrl: String
         },
         computed: {
             transactionFee() {

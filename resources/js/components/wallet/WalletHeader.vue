@@ -1,10 +1,10 @@
 <template>
     <div class="topbar">
         <!-- mobile -->
-        <user-dropdown-mobile :logout="logout" :address="address"></user-dropdown-mobile>
+        <user-dropdown-mobile :logout="logout" :address="address" :etherscanBaseUrl="etherscanBaseUrl"></user-dropdown-mobile>
 
         <!-- desktop -->
-        <user-dropdown-desktop :logout="logout" :address="address"></user-dropdown-desktop>
+        <user-dropdown-desktop :logout="logout" :address="address" :etherscanBaseUrl="etherscanBaseUrl"></user-dropdown-desktop>
     </div>
     <!-- TopBar End -->
 </template>
@@ -24,7 +24,8 @@
         },
         data() {
 		    return {
-		        logout: '/wallet/logout'
+		        logout: '/wallet/logout',
+                etherscanBaseUrl: 'https://etherscan.io/address/'
             }
         }
 	}

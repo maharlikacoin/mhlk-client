@@ -45,11 +45,11 @@
 		name: "DropdownDesktop",
         props: {
 		    logout: String,
-            address: String
+            address: String,
+            etherscanBaseUrl: String
         },
         data() {
 		    return {
-		        etherscanBaseUrl: 'https://etherscan.io/address/',
                 showDropdown: false,
             }
         },
