@@ -1,9 +1,9 @@
 <template>
-    <b-modal ref="transferModal" v-model="$store.getters.isShownTransferModal"
-             hide-header hide-footer no-close-on-backdrop centered>
+    <b-modal ref="transferModal" v-model="showModal" hide-header hide-footer no-close-on-backdrop centered
+             @hidden="onHide">
 
         <!-- close -->
-        <button class="modal-close" @click="closeModal" @reset="resetModal">
+        <button class="modal-close" @click="$refs.transferModal.hide()" @reset="resetModal">
             <em class="ti ti-close"></em>
         </button>
 
@@ -98,14 +98,14 @@
 </template>
 
 <script>
-    import { BForm, BFormInput, BFormTextarea, BButton, BModal, BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue'
+    import { BModal } from 'bootstrap-vue'
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
         name: "TransferModal",
         components: {
             BFormInvalidFeedback,
-            BFormValidFeedback,
+            BModal
             BModal,
             BButton,
             BFormTextarea,
@@ -169,6 +169,8 @@
         },
         data() {
             return {
+                showModal: false,
+
                 decimals: 2,
 
                 chain: 'mainnet',
@@ -226,6 +228,9 @@
             }
         },
         methods: {
+            onHide() {
+                this.$store.dispatch('toggleTransferModal', false)
+            },
             resetStatus() {
                 this.status = 'Status: New Transaction'
             },
@@ -247,10 +252,6 @@
                 this.privateKey = '';
                 this.resetStatus();
                 this.resetButtonLoading();
-            },
-            closeModal() {
-                if(!this.transferrable)
-                    this.$store.dispatch('toggleTransferModal', false)
             },
             getContractAbi() {
                 return axios.get(this.contractAbiUrl)
@@ -377,7 +378,7 @@
                     .then(balance => {
                         this.balances.ether = this.web3.utils.fromWei(balance, 'ether');
                     });
-            }
+            },
         },
         mounted() {
             this.usedConfig = (this.config[this.chain]);
@@ -388,6 +389,12 @@
                 this.getCoinBalance();
                 this.getEtherBalance();
             });
+
+            this.$store.subscribe((mutation, state) => {
+                if(mutation.type === 'TOGGLETRANSFERMODAL' && mutation.payload)
+                    this.showModal = mutation.payload
+
+            })
         },
         watch: {
             privateKey: function(value) {
