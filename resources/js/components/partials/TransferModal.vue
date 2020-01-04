@@ -10,7 +10,7 @@
         <!-- contents -->
         <div class="ath-container m-0">
             <div class="relative text-right mr-5">
-                <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
+                <i class="fas fa-circle live-indicator" :class="[ {'text-green':connected}, 'text-red' ]"></i>
                 <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
             </div>
 
@@ -88,8 +88,8 @@
                         <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
                     </div>
 
-                    <button class="btn btn-grad w-100" :class="{ 'disabled': !submittable || !recaptcha.verified }"
-                            :disabled="!submittable || !recaptcha.verified" v-html="buttonLoading"></button>
+                    <button class="btn btn-grad w-100" :class="{ 'disabled': !submittable}"
+                            :disabled="!submittable" v-html="buttonLoading"></button>
                     <span v-html="status"></span>
                 </v-observer>
             </div>
@@ -114,22 +114,25 @@
             VueRecaptcha,
             BModal
         },
-        props: {
-            address: String
-        },
+        props: ['address'],
         computed: {
             transactionFee() {
                 if (this.submittable &&  !this.isGasLimitZero) return (this.gas.selected/1e18) * this.gas.limit;
                 else return 0;
             },
+            connected() {
+                return this.$store.state.provider
+            },
+            transferrable() {
+                return this.balances.ether > 0 && this.balances.coin > 0;
+            },
             submittable() {
                 if( this.transferrable &&
-                    this.isConnected &&
-                    this.allowedPrivateKeyField &&
-                    this.privateKey !== '' &&
-                    this.web3 !== null &&
-                    this.maharlikaContract !== null ){
-
+                    this.private.address !== '' &&
+                    this.recaptcha.verified &&
+                    this.connected() !== '' &&
+                    this.$store.state.maharlika !== ''
+                ){
                     this.estimateGasLimit(this.web3, this.maharlikaContract());
                     return true;
                 }
@@ -137,36 +140,6 @@
             },
             isGasLimitZero() {
                 return this.gas.limit === 0 || this.gas.limit === null;
-            },
-            isConnected() {
-                return this.web3 !== null;
-            },
-            transferrable() {
-                return this.balances.ether > 0 && this.balances.coin > 0;
-            },
-            allowedPrivateKeyField() {
-                return  this.isValidAmount &&
-                    this.isValidAddress &&
-                    !this.busy &&
-                    this.hasAmount;
-            },
-            isValidPrivateKey() {
-                let key = this.privateKey;
-                return key.length !== 0 && key.length === 64 ;
-            },
-            hasAmount() {
-                return (Number(this.amount) !== 0 || Number(this.amount) !== null);
-            },
-            isValidAmount() {
-                return Number(this.amount) > 0 && Number(this.amount) < this.balances.coin;
-            },
-            isValidAddress() {
-                let transferTo = String(this.transferTo);
-                return !this.isOwnAddress && this.web3 !== null && this.web3.utils.isAddress(transferTo);
-
-            },
-            isOwnAddress() {
-                return String(this.transferTo).toLowerCase() === String(this.address).toLowerCase();
             }
         },
         data() {
@@ -180,7 +153,7 @@
                     isFocused: false,
                 },
                 amount: {
-                    value: 0,
+                    value: '',
                     isFocused: true,
                     options:{
                         digitGroupSeparator: ',',
