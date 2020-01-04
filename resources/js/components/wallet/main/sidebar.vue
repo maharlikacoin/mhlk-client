@@ -13,7 +13,7 @@
         </div>
         <ul class="btn-grp guttar-10px">
             <li><button id="toggle-button" class="btn btn-grad" :class="{ 'disable': !transferrable}"
-                          :disabled="!transferrable" @click="toggleModal">Transfer</button>
+                          :disabled="!transferrable" @click="openModal">Transfer</button>
             </li>
         </ul>
     </div>
@@ -30,19 +30,35 @@
         props: {
             address: String
         },
+        data() {
+            return {
+                balances: {
+                    ether: 0,
+                    coin: 0
+                }
+            }
+        },
         computed: {
             transferrable() {
-                let getters = this.$store.getters;
-                return getters.getEtherBalance > 0 && getters.getCoinBalance > 0;
-            },
+                return this.balances.ether > 0 && this.balances.coin > 0
+            }
         },
         methods: {
+            openModal() {
+                this.$store.dispatch('toggleTransferModal', true)
+            },
             onCopy(e) {
                 alert('Successfully copied: ' + e.text);
             },
             onError(){
                 alert('Failed to copy. Try again.');
             }
+        },
+        mounted() {
+            this.$store.subscribe((mutation) => {
+                if(mutation.type === 'SETETHER') this.balances.ether = mutation.payload;
+                if(mutation.type === 'SETCOIN') this.balances.coin = mutation.payload;
+            });
         }
     }
 </script>
