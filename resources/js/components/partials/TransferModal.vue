@@ -100,7 +100,7 @@
     let Tx = require('ethereumjs-tx').Transaction;
 
     export default {
-        name: "Transfer",
+        name: "TransferModal",
         components: {
             BFormInvalidFeedback,
             BFormValidFeedback,
