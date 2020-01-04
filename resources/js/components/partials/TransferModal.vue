@@ -1,8 +1,9 @@
 <template>
-    <b-modal ref="transferModal" v-model="showModal" hide-header hide-footer no-close-on-backdrop centered>
+    <b-modal ref="transferModal" v-model="$store.getters.isShownTransferModal"
+             hide-header hide-footer no-close-on-backdrop centered>
 
         <!-- close -->
-        <button class="modal-close" @click="showModal = false" @reset="resetModal">
+        <button class="modal-close" @click="closeModal" @reset="resetModal">
             <em class="ti ti-close"></em>
         </button>
 
@@ -25,6 +26,7 @@
                                       name="address" :disabled="busy" class="input-bordered" required
                                       placeholder="Wallet address you want to transfer to">
                         </b-form-input>
+
                         <b-form-invalid-feedback :state="isValidAddress">
                             Only a valid Ethereum wallet address can be entered.
                         </b-form-invalid-feedback>
@@ -221,7 +223,6 @@
                 ethPrice: {
                     usd: 0
                 },
-                showModal: false
             }
         },
         methods: {
@@ -247,9 +248,9 @@
                 this.resetStatus();
                 this.resetButtonLoading();
             },
-            toggleModal() {
+            closeModal() {
                 if(!this.transferrable)
-                    this.$refs.transferModal.toggle('#toggle-button')
+                    this.$store.dispatch('toggleTransferModal', false)
             },
             getContractAbi() {
                 return axios.get(this.contractAbiUrl)
