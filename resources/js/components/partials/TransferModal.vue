@@ -22,7 +22,8 @@
                 <v-observer ref="observerLoginForm" v-slot="{ invalid }"  tag="form" @submit.prevent="onSubmit">
 
                     <!-- To Address -->
-                    <v-provider vid="transferTo" name="Wallet Address" rules="required|ethereumAddress" tag="div"
+                    <v-provider vid="transferTo" name="Wallet Address" tag="div"
+                                :rules="{ required: true, ethereumAddress: address, notOwnedAddress: `${address}`}"
                                 mode="aggressive" v-slot="{ errors, valid }" class="field-item"
                                 :class="{ 'input-focused': transferTo.isFocused }">
                         <input v-model="transferTo.address" id="transferTo" name="transferTo" type="text" class="input-line required"

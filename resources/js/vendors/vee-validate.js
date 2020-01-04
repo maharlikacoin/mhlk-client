@@ -2,6 +2,16 @@ import {  required, min, max, email, alpha, alpha_num, alpha_spaces, regex} from
 import { extend } from 'vee-validate';
 import { utils } from 'ethers';
 
+extend('notOwnedAddress', {
+    validate: (value, {address}) => {
+        console.log(address);
+        console.log(value);
+        return address !== value
+    },
+    params: ['address'],
+    message: '{_value_} should not be your own wallet address'
+});
+
 extend( 'ethereumAddress', {
     validate: (value) => {
         try {
