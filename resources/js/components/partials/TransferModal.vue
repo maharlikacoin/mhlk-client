@@ -117,8 +117,8 @@
         props: ['address'],
         computed: {
             transactionFee() {
-                if (this.submittable &&  !this.isGasLimitZero) return (this.gas.selected/1e18) * this.gas.limit;
-                else return 0;
+                return (this.submittable &&  !this.isGasLimitZero) ?
+                    ((this.gas.selected/1e18) * this.gas.limit): 0;
             },
             connected() {
                 return this.$store.state.provider
