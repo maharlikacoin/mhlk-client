@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex flex-column align-items-center">
         <h6 class="wgs-title text-center">Be a part of our community</h6>
         <div class="wgs-body">
             <ul class="social-links">
