@@ -19,79 +19,78 @@
                     Transfer <span style='color:#a67c00;display: initial;font-weight: bold;'>MHLK</span>
                 </h5>
 
-                <!-- transfer to -->
-                <div class="field-item">
-                    <div class="field-wrap">
-                        <b-form-input v-model="transferTo" :state="isValidAddress" @change="resetStatus()"
-                                      name="address" :disabled="busy" class="input-bordered" required
-                                      placeholder="Wallet address you want to transfer to">
-                        </b-form-input>
+                <v-observer ref="observerLoginForm" v-slot="{ invalid }"  tag="form" @submit.prevent="onSubmit">
 
-                        <b-form-invalid-feedback :state="isValidAddress">
-                            Only a valid Ethereum wallet address can be entered.
-                        </b-form-invalid-feedback>
-                        <b-form-valid-feedback :state="isValidAddress">
-                            Nice!
-                        </b-form-valid-feedback>
-                    </div>
-                </div>
+                    <!-- To Address -->
+                    <v-provider vid="transferTo" name="Wallet Address" rules="required|ethereumAddress" tag="div"
+                                mode="aggressive" v-slot="{ errors, valid }" class="field-item"
+                                :class="{ 'input-focused': transferTo.isFocused }">
+                        <input v-model="transferTo.address" id="transferTo" name="transferTo" type="text" class="input-line required"
+                               :class="{ 'border-danger' : errors.length }" @focus="onFocus(transferTo)" @blur="onBlur(transferTo)"/>
+                        <label for="transferTo" class="field-label field-label-line">Wallet Address (Public Key)</label>
+                        <span class="small text-black-50">
+                            <i class="fas fa-info-circle"></i>
+                            Wallet Address of the person you will send coins to
+                        </span>
+                        <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
+                    </v-provider>
 
-                <!-- amount -->
-                <div class="field-item">
-                    <div class="field-wrap">
-                        <b-form-input v-model="amount" :state="isValidAmount" @change="resetStatus()"
-                                      name="amount" :disabled="busy" type="number" class="input-bordered"
-                                      required placeholder="Amount of MHLK">
-                        </b-form-input>
-                        <b-form-invalid-feedback :state="isValidAmount">
-                            Amount (MHLK) must be greater than 0.
-                        </b-form-invalid-feedback>
-                        <b-form-valid-feedback :state="isValidAmount">
-                            Looks Good.
-                        </b-form-valid-feedback>
-                    </div>
-                </div>
+                    <!-- amount -->
+                    <v-provider vid="amount" name="Amount" tag="div" mode="aggressive"
+                                :rules="{required:true, numeric_decimal: /^[0-9][\.\d]*(,\d+)?$/, greater_than:0}"
+                                v-slot="{ errors, valid }" class="field-item" :class="{ 'input-focused': amount.isFocused }">
+                        <vue-autonumeric :options="amount.options" id="amount" name="amount" class="input-line required"
+                                         :class="{ 'border-danger' : errors.length }" @focus="onFocus(amount)" @blur="onBlur(amount)"
+                                         v-model="amount.value">
+                        </vue-autonumeric>
+                        <label for="amount" class="field-label field-label-line">Amount (MHLK)</label>
+                        <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
+                    </v-provider>
 
-                <!-- private key -->
-                <div class="field-item">
-                    <div class="field-wrap">
-                        <b-form-textarea v-model="privateKey" :state="isValidPrivateKey" class="input-bordered"
-                                         name="address" :disabled="busy" required placeholder="Your private Key">
-                        </b-form-textarea>
-                        <b-form-invalid-feedback :state="isValidPrivateKey">
-                            Private key must contain 64 characters
-                        </b-form-invalid-feedback>
-                        <b-form-valid-feedback :state="isValidPrivateKey">
-                            Perfect.
-                        </b-form-valid-feedback>
-                    </div>
-                </div>
+                    <!-- Private -->
+                    <v-provider vid="privateKey" name="Password" rules="required|min:64" tag="div" mode="aggressive"
+                                v-slot="{ errors, valid }" class="field-item" :class="{ 'input-focused': private.isFocused }">
+                        <input v-model="private.address" id="privateKey" name="privateKey" type="password" class="input-line required"
+                               :class="{ 'border-danger' : errors.length }" @focus="onFocus(private)" @blur="onBlur(private)"/>
+                        <label for="privateKey" class="field-label field-label-line">Wallet Key (Private Key)</label>
+                        <span class="small text-black-50">
+                            <i class="fas fa-info-circle"></i>
+                            Must be at least 64 characters
+                        </span>
+                        <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
+                    </v-provider>
 
-                <!-- estimated cost -->
-                <div class="field-item" v-if="transactionFee">
-                    <a href="#" v-show="!toggleTransactionInfo"
-                       @click="toggleTransactionInfo = !toggleTransactionInfo">
-                        Show more information
-                    </a>
-                    <a href="#" v-show="toggleTransactionInfo"
-                       @click="toggleTransactionInfo = !toggleTransactionInfo">
-                        Hide
-                    </a>
-                    <div v-if="toggleTransactionInfo">
-                        <div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>
-                        <div>Gas Limit: {{ gas.limit }}</div>
+                    <!-- estimated cost -->
+                    <div class="field-item" v-if="transactionFee">
+                        <a href="#" v-show="!toggleTransactionInfo"
+                           @click="toggleTransactionInfo = !toggleTransactionInfo">
+                            Show more information
+                        </a>
+                        <a href="#" v-show="toggleTransactionInfo"
+                           @click="toggleTransactionInfo = !toggleTransactionInfo">
+                            Hide
+                        </a>
+                        <div v-if="toggleTransactionInfo">
+                            <div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>
+                            <div>Gas Limit: {{ gas.limit }}</div>
+                        </div>
+                        <div>
+                            Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH
+                            ( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )
+                        </div>
                     </div>
-                    <div>
-                        Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH
-                        ( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )
-                    </div>
-                </div>
 
-                <!-- transfer button -->
-                <b-button class="btn btn-grad w-100" :class="{ 'disable': !submittable }"
-                          :disabled="!submittable" @click="transfer"
-                          v-html="buttonLoading"></b-button>
-                <span v-html="status"></span>
+                    <!-- recaptcha -->
+                    <div class="pb-4 align-items-center d-flex flex-column">
+                        <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
+                                       ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
+                        <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
+                    </div>
+
+                    <button class="btn btn-grad w-100" :class="{ 'disabled': !submittable || !recaptcha.verified }"
+                            :disabled="!submittable || !recaptcha.verified" v-html="buttonLoading"></button>
+                    <span v-html="status"></span>
+                </v-observer>
             </div>
         </div>
     </b-modal>
@@ -99,18 +98,20 @@
 
 <script>
     import { BModal } from 'bootstrap-vue'
+    import 'vue-autonumeric'
+    import { utils } from 'ethers';
+    import { ValidationObserver, ValidationProvider} from 'vee-validate';
+    import VueRecaptcha from 'vue-recaptcha'
     let Tx = require('ethereumjs-tx').Transaction;
+
+    Vue.component('VObserver', ValidationObserver);
+    Vue.component('VProvider', ValidationProvider);
 
     export default {
         name: "TransferModal",
         components: {
-            BFormInvalidFeedback,
+            VueRecaptcha,
             BModal
-            BModal,
-            BButton,
-            BFormTextarea,
-            BFormInput,
-            BForm
         },
         props: {
             address: String
@@ -169,6 +170,30 @@
         },
         data() {
             return {
+                transferTo: {
+                    address: '',
+                    isFocused: false,
+                },
+                private: {
+                    address: '',
+                    isFocused: false,
+                },
+                amount: {
+                    value: 0,
+                    isFocused: true,
+                    options:{
+                        digitGroupSeparator: ',',
+                        decimalCharacter: '.',
+                        currencySymbol: '  MHLK',
+                        currencySymbolPlacement: 's',
+                        roundingMethod: 'U',
+                        minimumValue: '0'
+                    }
+                },
+                recaptcha: {
+                    verified: false,
+                    message: ''
+                },
                 showModal: false,
 
                 decimals: 2,
@@ -191,10 +216,6 @@
                 usedConfig: null,
                 contractAbiUrl: '/wallet/contract',
                 contractAbi: [],
-
-                transferTo: '',
-                amount: 0,
-                privateKey: '',
 
                 count: 0,
                 buttonLoading: 'Send MHLK',
@@ -231,6 +252,17 @@
             onHide() {
                 this.$store.dispatch('toggleTransferModal', false)
             },
+            onFocus(field) {
+                field.isFocused = true;
+            },
+            onBlur(field){
+                field.hasOwnProperty('address') ? field.isFocused = field.address !== '' : false;
+                field.hasOwnProperty('value') ? field.isFocused = field.value !== '' : false;
+            },
+            verifyRecaptcha() {
+                this.recaptcha.message = '';
+                this.recaptcha.verified = true;
+            },
             resetStatus() {
                 this.status = 'Status: New Transaction'
             },
@@ -264,7 +296,7 @@
             maharlikaContract() {
                 return new this.web3.eth.Contract(this.contractAbi, this.usedConfig.contractAddress, {from: this.address});
             },
-            transfer() {
+            onSubmit() {
                 console.log('Start Transaction');
                 if (!this.submittable) return;
                 this.busy = true;
@@ -397,11 +429,11 @@
             })
         },
         watch: {
-            privateKey: function(value) {
+            'private.address': function(value) {
                 let firstTwoCharacters = value.substring(0, 2);
                 if(firstTwoCharacters === '0x')
-                    this.privateKey = value.slice(2);
-            }
+                    this.private.address = value.slice(2);
+            },
         }
     }
 </script>
