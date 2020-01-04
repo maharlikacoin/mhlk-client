@@ -11,9 +11,6 @@
 <script>
 	export default {
 		name: "ContentsEtherTile",
-        props: {
-            address: String
-        },
         computed: {
 		    balance() {
 		        return this.$store.getters.getEther;
