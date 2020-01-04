@@ -2,13 +2,14 @@
 import WalletIndex from './components/wallet/index';
 import WelcomeIndex from './components/welcome/index';
 
+// vendors
 import numFormat from 'vue-filter-number-format';
 import VueClipboard from 'vue-clipboard2';
 import PerfectScrollbar from "vue2-perfect-scrollbar";
 import VueGtm from 'vue-gtm';
-
 import './vendors/vee-validate';
 import './vendors/vue-sweetalert2'
+import store from './store/ethereum'
 
 window.numeral = require('numeral');
 
@@ -42,6 +43,7 @@ Vue.use(VueClipboard);
 
 new Vue({
     el: '#app',
+    store,
     components: {
         WalletIndex,
         WelcomeIndex,
