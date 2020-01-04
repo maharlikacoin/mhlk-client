@@ -18,7 +18,16 @@
             WalletMain,
             WalletFooter
         },
-		name: "WalletIndex"
+		name: "WalletIndex",
+        mounted() {
+	        let store = this.$store,
+                getters = store.getters,
+                config = getters.getConfiguration,
+                network = getters.getNetwork,
+                usedConfig = config[network];
+
+            store.dispatch('connect', { usedConfig: usedConfig, public_address: this.address});
+        }
 	}
 </script>
 
