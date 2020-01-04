@@ -19,7 +19,7 @@
 
                     <li class="dropdown topbar-action-item topbar-action-user" @clickoutside="hideDropdown">
                         <a href="#" @click="toggleDropdown"> <img class="icon" src="/images/profile.png" alt="thumb"> </a>
-                        <div class="dropdown-menu dropdown-menu-right show" v-show="showDropdown">
+                        <div class="dropdown-menu dropdown-menu-right show border-0" v-show="showDropdown">
                             <div class="user-dropdown-head">
                                 <h6 class="user-name">
                                 </h6>
