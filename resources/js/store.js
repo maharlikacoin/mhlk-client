@@ -27,7 +27,8 @@ export default new Vuex.Store({
         provider: '',
         balances: {
             ether: 0,
-            coin: 0
+            coin: 0,
+            decimals:2
         },
         modal: {
             transfer: false
@@ -67,7 +68,7 @@ export default new Vuex.Store({
         updateCoin({commit, state}, address) {
             let decimals = 2;
             state.maharlika.balanceOf(address)
-                .then((balance) => commit('SETCOIN', 1/10**decimals))
+                .then((balance) => commit('SETCOIN', 1/10**state.balances.decimals))
         },
         toggleTransferModal({commit}, status) { commit('TOGGLETRANSFERMODAL', status) }
     },
