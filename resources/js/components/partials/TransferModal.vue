@@ -1,10 +1,13 @@
 <template>
-    <b-modal ref="transfer-modal" @hide="resetModal" hide-header hide-footer no-close-on-backdrop centered>
-        <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close" @click="toggleModal">
-            <em class="ti ti-close"></em>
-        </a>
-        <div class="ath-container m-0">
+    <b-modal ref="transferModal" v-model="showModal" hide-header hide-footer no-close-on-backdrop centered>
 
+        <!-- close -->
+        <button class="modal-close" @click="showModal = false" @reset="resetModal">
+            <em class="ti ti-close"></em>
+        </button>
+
+        <!-- contents -->
+        <div class="ath-container m-0">
             <div class="relative text-right mr-5">
                 <i class="fas fa-circle live-indicator" :class="[ {  'text-green': isConnected },'text-red']"></i>
                 <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
@@ -218,6 +221,7 @@
                 ethPrice: {
                     usd: 0
                 },
+                showModal: false
             }
         },
         methods: {
