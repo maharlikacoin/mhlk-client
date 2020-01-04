@@ -4,8 +4,6 @@ import { utils } from 'ethers';
 
 extend('notOwnedAddress', {
     validate: (value, {address}) => {
-        console.log(address);
-        console.log(value);
         return address !== value
     },
     params: ['address'],
