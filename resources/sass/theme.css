@@ -128,7 +128,7 @@
     box-shadow: 0 2px 7px 0 rgba(65, 80, 118, 0.2);
     position: absolute;
     will-change: transform;
-    top: 0;
+    top: -20px;
     left: 0;
     transform: translate3d(-225px, 60px, 0px);
 }

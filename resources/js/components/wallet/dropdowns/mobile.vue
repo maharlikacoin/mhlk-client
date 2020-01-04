@@ -12,10 +12,9 @@
 
                 <!-- action -->
                 <div class="dropdown topbar-action-item topbar-action-user">
-                    <a href="#" data-toggle="dropdown" @click="toggleDropdown">
-                        <img class="icon" src="/images/profile.png" alt="thumb">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right show" v-show="showDropdown" x-placement="bottom-end">
+                    <img class="icon my-2" src="/images/profile.png" alt="default" @click="showDropdown = !showDropdown">
+
+                    <div class="border-0 dropdown-menu dropdown-menu-right show" v-show="showDropdown">
                         <div class="user-dropdown">
                             <div class="user-dropdown-head d-flex align-items-center justify-content-center">
                                 <a :href="etherscanBaseUrl + address" target="_blank">{{ address | trimAddress }}</a>
@@ -85,12 +84,6 @@
 		    openTransferModal() {
                 this.$store.dispatch('toggleTransferModal', true)
             },
-		    hideDropdown() {
-		        this.showDropdown = false;
-            },
-            toggleDropdown() {
-                  this.showDropdown = !this.showDropdown;
-            },
 
             onCopy(e) {
                 alert('Successfully copied: ' + e.text);
@@ -135,5 +128,10 @@
     }
     .user-dropdown-links, .user-dropdown-btns {
         border-top: white
+    }
+    .topbar-action-user > img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
     }
 </style>
