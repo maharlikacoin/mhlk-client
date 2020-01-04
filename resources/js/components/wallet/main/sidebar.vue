@@ -12,7 +12,7 @@
             </button>
         </div>
         <ul class="btn-grp guttar-10px">
-            <li><button id="toggle-button" class="btn btn-grad" :class="{ 'disable': !transferrable}"
+            <li><button class="btn btn-grad border-0" :class="{ 'disable': !transferrable}"
                           :disabled="!transferrable" @click="openModal">Transfer</button>
             </li>
         </ul>

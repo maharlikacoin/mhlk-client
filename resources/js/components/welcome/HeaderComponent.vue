@@ -41,7 +41,7 @@
                                     <div class="cpn-action">
                                         <div class="d-flex flex-column alignment-items">
                                             <div class="cpn-btns">
-                                                <a class="btn btn-lg btn-grad grant" href="http://grants.maharlikacoin.com">Grants</a>
+                                                <a class="btn btn-lg btn-grad grant border-0" href="http://grants.maharlikacoin.com">Grants</a>
                                             </div>
 
                                             <login-modal v-if="!isLoggedIn"></login-modal>
