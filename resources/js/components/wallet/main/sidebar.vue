@@ -30,17 +30,17 @@
         props: {
             address: String
         },
+        computed: {
+            transferrable() {
+                return this.balances.ether > 0 && this.balances.coin > 0
+            }
+        },
         data() {
             return {
                 balances: {
                     ether: 0,
                     coin: 0
                 }
-            }
-        },
-        computed: {
-            transferrable() {
-                return this.balances.ether > 0 && this.balances.coin > 0
             }
         },
         methods: {
