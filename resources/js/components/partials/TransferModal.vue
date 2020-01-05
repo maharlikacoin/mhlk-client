@@ -124,7 +124,7 @@
                 return this.$store.state.provider !== '' && this.$store.state.maharlika
             },
             transferrable() {
-                return this.balances.ether > 0 && this.balances.coin > 0;
+                return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin > 0;
             },
             submittable() {
                 if( this.transferrable &&
