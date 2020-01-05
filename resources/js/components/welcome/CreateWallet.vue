@@ -36,7 +36,7 @@
                     </div>
 
                     <!-- Create button -->
-                    <b-button class="btn btn-grad w-100" :class="{ 'disabled': busy || !recaptcha.verified }"
+                    <b-button class="btn btn-grad w-100 border-0" :class="{ 'disabled': busy || !recaptcha.verified }"
                               @click="create" :disabled="busy || !recaptcha.verified"
                               v-html="buttonLoading"></b-button>
 
