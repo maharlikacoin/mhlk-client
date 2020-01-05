@@ -121,7 +121,7 @@
                     ((this.gas.selected/1e18) * this.gas.limit): 0;
             },
             connected() {
-                return this.$store.state.provider
+                return this.$store.state.provider !== '' && this.$store.state.maharlika
             },
             transferrable() {
                 return this.balances.ether > 0 && this.balances.coin > 0;
