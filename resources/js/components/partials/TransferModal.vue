@@ -11,7 +11,7 @@
         <div class="ath-container m-0">
             <div class="relative text-right mr-5">
                 <i class="fas fa-circle live-indicator" :class="[ {'text-green':connected}, 'text-red' ]"></i>
-                <span style="color: rgb(108, 117, 125); float: right;">{{ chain }}</span>
+                <span style="color: rgb(108, 117, 125); float: right;">{{ $store.state.network }}</span>
             </div>
 
             <div class="ath-body">
@@ -22,7 +22,7 @@
                 <v-observer ref="observerLoginForm" v-slot="{ invalid }"  tag="form" @submit.prevent="onSubmit">
 
                     <!-- To Address -->
-                    <v-provider vid="transferTo" name="Wallet Address" tag="div"
+                    <v-provider vid="transferTo" name="Wallet Address" tag="div" autocomplete="off"
                                 :rules="{ required: true, ethereumAddress: address, notOwnedAddress: `${address}`}"
                                 mode="aggressive" v-slot="{ errors, valid }" class="field-item"
                                 :class="{ 'input-focused': transferTo.isFocused }">
@@ -38,11 +38,10 @@
 
                     <!-- amount -->
                     <v-provider vid="amount" name="Amount" tag="div" mode="aggressive"
-                                :rules="{required:true, numeric_decimal: /^[0-9][\.\d]*(,\d+)?$/, greater_than:0}"
-                                v-slot="{ errors, valid }" class="field-item" :class="{ 'input-focused': amount.isFocused }">
+                                rules="required|numeric_decimal|greater_than:0"
+                                v-slot="{ errors, valid }" class="field-item input-focused">
                         <vue-autonumeric :options="amount.options" id="amount" name="amount" class="input-line required"
-                                         :class="{ 'border-danger' : errors.length }" @focus="onFocus(amount)" @blur="onBlur(amount)"
-                                         v-model="amount.value">
+                                         :class="{ 'border-danger' : errors.length }" autocomplete="off" v-model="amount.value">
                         </vue-autonumeric>
                         <label for="amount" class="field-label field-label-line">Amount (MHLK)</label>
                         <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
@@ -51,8 +50,9 @@
                     <!-- Private -->
                     <v-provider vid="privateKey" name="Password" rules="required|min:64" tag="div" mode="aggressive"
                                 v-slot="{ errors, valid }" class="field-item" :class="{ 'input-focused': private.isFocused }">
-                        <input v-model="private.address" id="privateKey" name="privateKey" type="password" class="input-line required"
-                               :class="{ 'border-danger' : errors.length }" @focus="onFocus(private)" @blur="onBlur(private)"/>
+                        <input v-model="private.address" id="privateKey" name="privateKey" type="password"
+                                  class="input-line required" :class="{ 'border-danger' : errors.length }"
+                                  @focus="onFocus(private)" @blur="onBlur(private)"/>
                         <label for="privateKey" class="field-label field-label-line">Wallet Key (Private Key)</label>
                         <span class="small text-black-50">
                             <i class="fas fa-info-circle"></i>
@@ -88,8 +88,8 @@
                         <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
                     </div>
 
-                    <button class="btn btn-grad w-100" :class="{ 'disabled': !submittable}"
-                            :disabled="!submittable" v-html="buttonLoading"></button>
+                    <button class="btn btn-grad w-100" :class="{ 'disabled': !submittable || invalid}"
+                            :disabled="!submittable || invalid" v-html="buttonLoading"></button>
                     <span v-html="status"></span>
                 </v-observer>
             </div>
