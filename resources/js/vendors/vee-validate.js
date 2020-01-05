@@ -1,4 +1,4 @@
-import {  required, min, max, email, alpha, alpha_num, alpha_spaces, regex} from 'vee-validate/dist/rules';
+import {  required, min, max, email, alpha, alpha_num, alpha_spaces} from 'vee-validate/dist/rules';
 import { extend } from 'vee-validate';
 import { utils } from 'ethers';
 
@@ -50,13 +50,16 @@ extend('lengthBetween', {
 });
 
 extend("numeric_decimal", {
-    ...regex,
+    validate: (value) => {
+        let pattern = /^[0-9][\.\d]*(,\d+)?$/;
+        return String(value).match(pattern);
+    },
     message: '{_field_} should be numbers',
 });
 
 extend("greater_than", {
     validate(value, {to}) {
-        return value > to // value not equal to
+        return value > Number(to) // value not equal to
     },
     params: ['to'],
     message: 'The {_field_} must be greater than {to}'
