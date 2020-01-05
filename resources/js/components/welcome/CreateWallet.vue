@@ -128,7 +128,4 @@
     .input-line:focus {
         border-bottom-color: #ffc107;
     }
-    .text-wrap {
-        word-wrap: break-word;
-    }
 </style>
