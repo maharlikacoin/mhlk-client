@@ -127,16 +127,8 @@
                 return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin > 0;
             },
             submittable() {
-                if( this.transferrable &&
-                    this.private.address !== '' &&
-                    this.recaptcha.verified &&
-                    this.connected() !== '' &&
-                    this.$store.state.maharlika !== ''
-                ){
-                    this.estimateGasLimit(this.web3, this.maharlikaContract());
-                    return true;
-                }
-                else return false;
+                return this.transferrable && this.private.address !== '' &&
+                    this.recaptcha.verified && this.connected !== ''
             },
             isGasLimitZero() {
                 return this.gas.limit === 0 || this.gas.limit === null;
@@ -153,8 +145,7 @@
                     isFocused: false,
                 },
                 amount: {
-                    value: '',
-                    isFocused: true,
+                    value: 0,
                     options:{
                         digitGroupSeparator: ',',
                         decimalCharacter: '.',
@@ -169,27 +160,6 @@
                     message: ''
                 },
                 showModal: false,
-
-                decimals: 2,
-
-                chain: 'mainnet',
-                config: {
-                    mainnet: {
-                        provider: 'https://ethshared.bdnodes.net?auth=trtq2YNHtEU2rvJabEwqcV4BEE1M8lnpOrEV6EICHT4',
-                        contractAddress: '0xE3D0a162fCc5c02C9448274D7C58E18e1811385f',
-                    },
-                    ropsten: {
-                        provider: 'https://ropstenshared.bdnodes.net/?auth=M0olBBbNBAhkVrlZLFmlN93AF_BonbAOiHAaFr4wjr0',
-                        contractAddress: '',
-                    },
-                    kovan: {
-                        provider: 'https://kovan.infura.io/v3/befbc2de01464c24b2d9012752e5877e',
-                        contractAddress: '0x66cD341f464d7c7555Cee3305e68F75AfFBb1F96',
-                    }
-                },
-                usedConfig: null,
-                contractAbiUrl: '/wallet/contract',
-                contractAbi: [],
 
                 count: 0,
                 buttonLoading: 'Send MHLK',
@@ -208,11 +178,7 @@
                     },
                     limit: 0
                 },
-                web3: null,
-                balances: {
-                    coin: 0,
-                    ether: 0
-                },
+
                 // chain: 'mainnet',
                 rawTransaction: null,
                 transacting: false,
@@ -237,6 +203,7 @@
                 this.recaptcha.message = '';
                 this.recaptcha.verified = true;
             },
+
             resetStatus() {
                 this.status = 'Status: New Transaction'
             },
@@ -258,17 +225,6 @@
                 this.privateKey = '';
                 this.resetStatus();
                 this.resetButtonLoading();
-            },
-            getContractAbi() {
-                return axios.get(this.contractAbiUrl)
-                    .then(response => this.contractAbi = response.data )
-            },
-            connectToProvider() {
-                let nodeProvider = new Web3.providers.HttpProvider(this.usedConfig.provider);
-                return new Web3(nodeProvider);
-            },
-            maharlikaContract() {
-                return new this.web3.eth.Contract(this.contractAbi, this.usedConfig.contractAddress, {from: this.address});
             },
             onSubmit() {
                 console.log('Start Transaction');
@@ -293,7 +249,7 @@
             },
             transact(web3, contract) {
                 this.transacting = true;
-                let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
+                let hexAmount = web3.utils.toHex(this.amount * 10**this.$store.state.balances.decimals);
                 this.rawTransaction = {
                     "from": this.address,
                     "gasPrice":web3.utils.toHex(this.gas.selected),
@@ -305,8 +261,8 @@
                 };
 
                 //sign transaction
-                let transaction = new Tx(this.rawTransaction, { chain: this.chain, hardfork: 'petersburg' });
-                transaction.sign(new Buffer(this.privateKey, 'hex'));
+                let transaction = new Tx(this.rawTransaction, { chain: this.$store.state.network, hardfork: 'petersburg' });
+                transaction.sign(new Buffer(this.private.address, 'hex'));
 
                 this.sendTransaction(transaction);
 
@@ -322,8 +278,8 @@
                         this.resetButtonLoading();
                         this.resetFields();
 
-                        this.getCoinBalance();
-                        console.log(this.balances.coin);
+                        this.$store.dispatch('updateCoin', this.address);
+                        console.log(this.$store.state.balances.coin);
                     })
                     .catch(err => {
                         console.log(err.message);
@@ -356,7 +312,7 @@
                     })
             },
             estimateGasLimit(web3, contract) {
-                let hexAmount = web3.utils.toHex(this.amount * 10**this.decimals);
+                let hexAmount = web3.utils.toHex(this.amount * 10**this.$store.state.balances.decimals);
 
                 contract.methods
                     .transfer(this.transferTo, hexAmount)
@@ -365,6 +321,8 @@
                         this.gas.limit = limit;
                     })
                     .catch(err => console.log(err));
+
+                return true
             },
             getNonce() {
                 // get transaction count, later will used as nonce
@@ -374,11 +332,6 @@
                         console.log(`nonce: ${this.count}`);
                     });
             },
-            getCoinBalance() {
-                this.maharlikaContract().methods.balanceOf(this.address)
-                    .call().then(coinBalance => this.balances.coin = coinBalance/10**this.decimals);
-
-            },
             getEtherBalance() {
                 this.web3.eth.getBalance(this.address)
                     .then(balance => {
@@ -387,14 +340,12 @@
             },
         },
         mounted() {
-            this.usedConfig = (this.config[this.chain]);
+            this.usedConfig = this.$store.state.config.used;
             this.getDollarPrice();
             this.getGasPrices();
-            this.getContractAbi().then(() => {
-                this.web3 = this.connectToProvider();
-                this.getCoinBalance();
-                this.getEtherBalance();
-            });
+            // this.getContractAbi().then(() => {
+            //     this.web3 = this.connectToProvider();
+            // });
 
             this.$store.subscribe((mutation, state) => {
                 if(mutation.type === 'TOGGLETRANSFERMODAL' && mutation.payload)
