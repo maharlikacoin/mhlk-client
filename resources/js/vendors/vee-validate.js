@@ -1,6 +1,7 @@
 import {  required, min, max, email, alpha, alpha_num, alpha_spaces} from 'vee-validate/dist/rules';
 import { extend } from 'vee-validate';
 import { utils } from 'ethers';
+import store from '../store'
 
 extend('notOwnedAddress', {
     validate: (value, {address}) => {
@@ -47,6 +48,16 @@ extend('lengthBetween', {
     },
     params: ['min', 'max'],
     message: 'The {_field_} length must be between {min} and {max} alphanumeric characters'
+});
+
+extend('not_enough_coin', {
+    validate: (value) => value <= store.state.balances.coin,
+    message: (field, params) => {
+        let amount = params._value_;
+         return amount > 0 ?
+             `You only have ${store.state.balances.coin} MHLK in your wallet`:
+             'You have 0 amount of MHLK'
+    }
 });
 
 extend("numeric_decimal", {
