@@ -3,7 +3,7 @@
              @hidden="onHide">
 
         <!-- close -->
-        <button class="modal-close" @click="$refs.transferModal.hide()" @reset="resetModal">
+        <button class="modal-close" @click="$refs.transferModal.hide()" @reset="reset">
             <em class="ti ti-close"></em>
         </button>
 

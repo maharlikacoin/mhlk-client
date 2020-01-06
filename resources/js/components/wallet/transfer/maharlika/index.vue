@@ -105,9 +105,7 @@
         props: ['connected'],
         components: {
             VueRecaptcha,
-            BModal,
             VueAutonumeric,
-            Maharlika
         },
         computed: {
             fee: {
