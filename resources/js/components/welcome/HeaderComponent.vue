@@ -44,8 +44,8 @@
                                                 <a class="btn btn-lg btn-grad grant border-0" href="http://grants.maharlikacoin.com">Grants</a>
                                             </div>
 
-                                            <login-modal v-if="!isLoggedIn"></login-modal>
-                                            <div class="cpn-btns" v-if="isLoggedIn">
+                                            <login-modal v-if="!this.$store.state.authenticated"></login-modal>
+                                            <div class="cpn-btns" v-if="this.$store.state.authenticated">
                                                 <a class="btn btn-lg btn-grad-transparent" href="/wallet">Your Wallet</a>
                                             </div>
 
@@ -78,10 +78,6 @@
         components: {
             CreateWallet,
             LoginModal
-
-        },
-        props: {
-            isLoggedIn: Boolean
-        },
+        }
     };
 </script>

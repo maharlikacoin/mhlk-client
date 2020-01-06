@@ -1,7 +1,7 @@
 <template>
     <div @contextmenu.prevent="">
         <div class="nk-wrap">
-            <header-component :is-logged-in="isLoggedIn"></header-component>
+            <header-component></header-component>
             <main-component></main-component>
             <footer-component></footer-component>
         </div>
@@ -24,6 +24,9 @@
             HeaderComponent,
             MainComponent,
             FooterComponent,
+        },
+        mounted() {
+		    this.$store.dispatch('setAuth', this.isLoggedIn);
         }
 	}
 </script>

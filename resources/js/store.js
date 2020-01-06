@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        authenticated: false,
         network: 'mainnet',
         config: {
             mainnet: {
@@ -31,7 +32,8 @@ export default new Vuex.Store({
             decimals:2
         },
         modal: {
-            transfer: false
+            transfer: false,
+            login: false
         }
     },
     mutations: {
@@ -41,7 +43,9 @@ export default new Vuex.Store({
         SETPROVIDER(state, provider) { state.provider = provider },
         SETETHER(state, ether) { state.balances.ether = ether },
         SETCOIN(state, coin) { state.balances.coin = coin },
-        TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status}
+        TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
+        SETAUTH: (state, status) => state.authenticated = status,
+        TOGGLELOGIN: (state, status) => state.modal.login = status,
     },
     actions: {
         changeNetwork({commit}, network) {
@@ -70,7 +74,9 @@ export default new Vuex.Store({
             state.maharlika.balanceOf(address)
                 .then((balance) => commit('SETCOIN', 1/10**state.balances.decimals))
         },
-        toggleTransferModal({commit}, status) { commit('TOGGLETRANSFERMODAL', status) }
+        toggleTransferModal: ({commit}, status) => commit('TOGGLETRANSFERMODAL', status),
+        setAuth: ({commit}, status) => commit('SETAUTH', status),
+        toggleLogin: ({commit}, status) => commit('TOGGLELOGIN', status)
     },
     getters: {
         getConfiguration: state => {return state.config},
