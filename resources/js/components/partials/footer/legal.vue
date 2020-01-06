@@ -5,7 +5,7 @@
             <ul class="wgs-links">
                 <li><a href="/terms">Terms & Conditions</a></li>
                 <li><a href="/privacy">Privacy</a></li>
-                <li><a href="/whitepaper" target="_blank">Whitepaper</a></li>
+                <li><a href="/whitepaper" @click.prevent="navigate('/whitepaper')">Whitepaper</a></li>
             </ul>
         </div>
     </div>
@@ -13,7 +13,15 @@
 
 <script>
 	export default {
-		name: "legal"
+		name: "legal",
+        methods: {
+            navigate(url) {
+                if(!this.$store.state.authenticated)
+                    this.$store.dispatch('toggleLogin', true);
+
+                else window.open(url)
+            }
+        }
 	}
 </script>
 
