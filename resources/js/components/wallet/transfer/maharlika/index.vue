@@ -8,7 +8,7 @@
 
             <!-- To Address -->
             <v-provider vid="transferTo" name="Wallet Address" tag="div" autocomplete="off"
-                        :rules="{ required: true, ethereumAddress: address, notOwnedAddress: `${address}`}"
+                        :rules="{ required: true, ethereumAddress: address, notOwnedAddress: `${$store.state.address}`}"
                         mode="aggressive" v-slot="{ errors, valid }" class="field-item"
                         :class="{ 'input-focused': transferTo.isFocused }">
                 <input v-model="transferTo.address" id="transferTo" name="transferTo" type="text" class="input-line required"

@@ -3,7 +3,7 @@
         <wallet-header :address="address"></wallet-header>
         <wallet-main :address="address"></wallet-main>
         <wallet-footer></wallet-footer>
-        <transfer-modal :address="address"></transfer-modal>
+        <transfer-modal></transfer-modal>
     </div>
 </template>
 

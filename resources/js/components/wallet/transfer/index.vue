@@ -25,7 +25,6 @@
 
     export default {
         name: "TransferModal",
-        props: ['address'],
         components: {
             BModal,
             Maharlika
