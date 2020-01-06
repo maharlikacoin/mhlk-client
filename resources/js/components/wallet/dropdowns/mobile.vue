@@ -54,7 +54,7 @@
 </template>
 
 <script>
-    import TransferModal from '../../partials/TransferModal'
+    import TransferModal from '../transfer'
 
     export default {
 		name: "DropdownMobile",

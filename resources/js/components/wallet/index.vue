@@ -12,7 +12,7 @@
     import WalletHeader from './WalletHeader';
     import WalletMain from './main/index';
     import WalletFooter from './FooterComponent';
-    import TransferModal from '../partials/TransferModal'
+    import TransferModal from './transfer'
 
     export default {
         props: ["address"],
