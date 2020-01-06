@@ -1,7 +1,7 @@
 <template>
     <div class="cpn-btns">
-        <button class="btn btn-lg btn-grad-transparent" @click="showModal = true">Access your Wallet</button>
-        <b-modal ref="login-modal" v-model="showModal" centered hide-header hide-footer no-close-on-backdrop>
+        <button class="btn btn-lg btn-grad-transparent" @click="$store.dispatch('toggleLogin', true)">Access your Wallet</button>
+        <b-modal ref="login-modal" v-model="showModal" centered hide-header hide-footer no-close-on-backdrop @hidden="onHide">
             <button class="modal-close"
                     data-dismiss="modal" aria-label="Close" @reset="resetModal" @click="showModal = false">
                 <em class="ti ti-close"></em>
@@ -89,6 +89,9 @@
 		    return initialState()
         },
         methods: {
+		    onHide() {
+		        this.$store.dispatch('toggleLogin', false)
+            },
 		    onFocus(field) {
                 field.isFocused = true;
             },
@@ -133,6 +136,11 @@
                 this.recaptcha.message = '';
                 this.recaptcha.verified = true;
             }
+        },
+        mounted() {
+		    this.$store.subscribe((mutation) => {
+		        this.showModal = (mutation.type === 'TOGGLELOGIN' && mutation.payload)
+            })
         }
 	}
 </script>
