@@ -99,7 +99,7 @@
 
 <script>
     import { BModal } from 'bootstrap-vue'
-    import 'vue-autonumeric'
+    import VueAutonumeric from './VueAutonumeric'
     import { utils } from 'ethers';
     import { ValidationObserver, ValidationProvider} from 'vee-validate';
     import VueRecaptcha from 'vue-recaptcha'
@@ -113,6 +113,7 @@
         components: {
             VueRecaptcha,
             BModal
+            VueAutonumeric
         },
         props: ['address'],
         computed: {
