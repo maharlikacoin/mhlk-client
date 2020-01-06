@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        address: '',
         authenticated: false,
         network: 'mainnet',
         config: {
@@ -46,6 +47,7 @@ export default new Vuex.Store({
         TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
         SETAUTH: (state, status) => state.authenticated = status,
         TOGGLELOGIN: (state, status) => state.modal.login = status,
+        SETADDRESS: (state, address) => state.address = address
     },
     actions: {
         changeNetwork({commit}, network) {
@@ -63,7 +65,9 @@ export default new Vuex.Store({
             dispatch('updateEther', address);
 
             commit('SETCONTRACT', (new Contract(usedConfig.address, MHLK, signer)));
-            dispatch('updateCoin', address)
+            dispatch('updateCoin', address);
+
+            commit('SETADDRESS', address);
         },
         updateEther({commit, state}, address) {
             state.provider.getBalance(address)
