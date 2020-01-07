@@ -42,7 +42,7 @@ export default new Vuex.Store({
         SETCONTRACT(state, contract) { state.maharlika = contract },
         SETBALANCEETHER(state, ether) { state.balances.ether = ether },
         SETPROVIDER(state, provider) { state.provider = provider },
-        SETETHER(state, ether) { state.balances.ether = ether },
+        SETETHER: (state, ether) => state.balances.ether = ether,
         SETCOIN(state, coin) { state.balances.coin = coin },
         TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
         SETAUTH: (state, status) => state.authenticated = status,
@@ -71,7 +71,7 @@ export default new Vuex.Store({
         },
         updateEther({commit, state}, address) {
             state.provider.getBalance(address)
-                .then((balance) => commit('SETETHER', utils.formatEther(balance)));
+                .then((balance) => commit('SETETHER', Number(utils.formatEther(balance)) ) );
         },
         updateCoin({commit, state}, address) {
             let decimals = 2;
