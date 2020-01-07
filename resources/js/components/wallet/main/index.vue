@@ -1,5 +1,5 @@
 <template>
-    <div class="user-wraper flex-grow-1">
+    <div class="user-wraper flex-grow-1 h-75">
         <div class="container">
             <div class="d-flex">
                 <div class="user-sidebar">
