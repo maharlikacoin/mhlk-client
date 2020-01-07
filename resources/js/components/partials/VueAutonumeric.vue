@@ -26,7 +26,7 @@
                     'focus': this.updateVModel,
                     'blur': this.updateVModel,
                     'autoNumeric:rawValueModified': this.updateVModel,
-                },
+                }
             });
         },
 
@@ -80,7 +80,6 @@
             updateVModel(event) {
                 const eventType = event && event.type || {};
                 if (this.anElement !== null) {
-                    // this.$emit('input', this.anElement.getNumber(), event);
                     this.$emit(
                         eventType === 'autoNumeric:rawValueModified'
                             ? 'input'
