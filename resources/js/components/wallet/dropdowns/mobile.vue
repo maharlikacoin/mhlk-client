@@ -14,7 +14,7 @@
                 <div class="dropdown topbar-action-item topbar-action-user">
                     <img class="icon my-2" src="/images/profile.png" alt="default" @click="showDropdown = !showDropdown">
 
-                    <div class="border-0 dropdown-menu dropdown-menu-right show" v-show="showDropdown">
+                    <div class="border-0 dropdown-menu dropdown-menu-right shadow-sm" :class="{'show': showDropdown}">
                         <div class="user-dropdown">
                             <div class="user-dropdown-head d-flex align-items-center justify-content-center">
                                 <a :href="etherscanBaseUrl + address" target="_blank">{{ address | trimAddress }}</a>
