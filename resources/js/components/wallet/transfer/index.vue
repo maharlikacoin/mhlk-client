@@ -57,14 +57,4 @@
     }
 </script>
 <style scoped>
-    #fee.disabled {
-        outline-color: transparent;
-        cursor: pointer;
-        position: relative;
-        z-index: 2;
-        background: rgba(0, 0, 0, 0.1);
-        color: #415076;
-        top: -10px;
-        height: 55px;
-    }
 </style>
