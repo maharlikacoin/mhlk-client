@@ -35,7 +35,7 @@
                         <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
                     </div>
 
-                    <div class="small text-danger pb-5" v-if="account.error">{{ account.message }}</div>
+                    <button class="btn btn-grad w-100 border-0" :class="{ 'disabled': invalid || busy || !recaptcha.verified }"
                     <button class="btn btn-grad w-100" :class="{ 'disabled': invalid || busy || !recaptcha.verified }"
                             :disabled="invalid || busy || !recaptcha.verified" v-html="button"></button>
                 </v-observer>
