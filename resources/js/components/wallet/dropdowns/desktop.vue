@@ -85,6 +85,6 @@
         min-width: 200px;
     }
     .dropdown-menu.dropdown-menu-right.show {
-        transform:  translate3d(-150px, 60px, 0px);
+        transform:  translate3d(-15px, 0px, 0)
     }
 </style>
