@@ -29,7 +29,7 @@
                     </v-provider>
 
                     <!-- recaptcha -->
-                    <div class="pb-4">
+                    <div class="pb-4 d-flex justify-content-center">
                         <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
                                        ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
                         <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
