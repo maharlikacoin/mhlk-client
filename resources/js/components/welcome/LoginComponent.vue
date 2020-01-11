@@ -29,7 +29,7 @@
                     </v-provider>
 
                     <!-- recaptcha -->
-                    <div class="pb-4 d-flex justify-content-center">
+                    <div class="pb-4 d-flex flex-column align-items-center">
                         <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
                                        @expired="expireRecaptcha"
                                        ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
@@ -37,8 +37,8 @@
                     </div>
 
                     <button class="btn btn-grad w-100 border-0" :class="{ 'disabled': invalid || busy || !recaptcha.verified }"
-                    <button class="btn btn-grad w-100" :class="{ 'disabled': invalid || busy || !recaptcha.verified }"
                             :disabled="invalid || busy || !recaptcha.verified" v-html="button"></button>
+                    <div class="small text-danger" v-if="account.error">{{ account.message }}</div>
                 </v-observer>
             </div>
         </b-modal><!-- .modal @e -->
@@ -70,7 +70,7 @@
             isFocused: false,
             account: {
                 error: false,
-                message: 'Try again. Please be cautious, your account may get locked after massive multiple retries'
+                message: ''
             },
             button: 'Access',
             busy: false,
@@ -115,17 +115,31 @@
 
                     if( computed === addr ) {
                         axios.post('/wallet', { address: addr})
-                            .then(response => window.location.href = response.data.url)
+                            .then(response => {
+                                let url = response.data.url;
+                                if(url !== '')
+                                    window.location.href = url;
+
+                                else
+                                    vm.showError('Something went wrong. Please try again.');
+                            })
+                            .catch(err => {
+                                if(err.response.status === 419){
+                                    vm.showError('Please reload your browser.');
+                                }
+
+                            })
                     }
-                    else vm.showError();
+                    else vm.showError('Try again. Please be cautious, your account may get locked after massive multiple retries.');
                 }catch (e) {
-                    vm.showError();
+                    vm.showError('Something went wrong.');
                 }
             }, 100),
-            showError() {
+            showError(message) {
                 // show error then hide after 5sec
                 this.button = 'Access';
                 this.busy = false;
+                this.account.message = message;
                 this.account.error = true;
                 setTimeout(() =>this.account.error = false, 5000)
             },
