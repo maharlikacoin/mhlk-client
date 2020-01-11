@@ -129,9 +129,4 @@
     .user-dropdown-links, .user-dropdown-btns {
         border-top: white
     }
-    .topbar-action-user > img {
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-    }
 </style>
