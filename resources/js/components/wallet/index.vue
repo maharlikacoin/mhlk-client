@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <wallet-header :address="address"></wallet-header>
-        <wallet-main :address="address"></wallet-main>
+    <div class="d-flex mx-auto flex-column h-screen">
+        <main role="main" class="flex-grow-1">
+            <wallet-header :address="address"></wallet-header>
+            <wallet-main :address="address"></wallet-main>
+            <transfer-modal></transfer-modal>
+        </main>
         <wallet-footer></wallet-footer>
-        <transfer-modal></transfer-modal>
     </div>
 </template>
 

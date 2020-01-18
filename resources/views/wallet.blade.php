@@ -15,7 +15,7 @@
 </head>
 
 <body style="background-color: #e9ecef;">
-<div id="app" class="d-flex mx-auto flex-column h-screen">
+<div id="app">
     <wallet-index address="{{ session('authAddress') }}"></wallet-index>
 </div>
 <!-- JavaScript -->
