@@ -8,13 +8,14 @@
                     <a href="/" class="site-brand">
                         <img src="images/logo.png" alt="logo" srcset="images/logo2x.png 2x" style="width:15em;">
                     </a>
-            </div>
+                </div>
 
-                <!-- action -->
-                <div class="dropdown topbar-action-item topbar-action-user">
-                    <img class="icon my-2" src="/images/profile.png" alt="default" @click="showDropdown = !showDropdown">
+                <!-- dropdown -->
+                <dropdown class="dropdown-mobile topbar-action-item topbar-action-user" animation="ani-none-leave"
+                          :visible="visible" @clickout="visible = false" :position='[ "right", "bottom", "right", "top" ]'>
+                    <img class="icon my-2 pointer" src="/images/profile.png" alt="profile" @click="visible = true">
 
-                    <div class="border-0 dropdown-menu dropdown-menu-right shadow-sm" :class="{'show': showDropdown}">
+                    <div slot="dropdown" class="dropdown-menu dropdown-menu-right shadow-sm show border-0">
                         <div class="user-dropdown">
                             <div class="user-dropdown-head d-flex align-items-center justify-content-center">
                                 <a :href="etherscanBaseUrl + address" target="_blank">{{ address | trimAddress }}</a>
@@ -44,7 +45,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </dropdown>
 
                 <!-- .toggle-action -->
             </div><!-- .container -->
@@ -55,11 +56,13 @@
 
 <script>
     import TransferModal from '../transfer'
+    import dropdown from 'vue-my-dropdown'
 
     export default {
 		name: "DropdownMobile",
         components: {
-            TransferModal
+            TransferModal,
+            dropdown
         },
         props: {
 		    logout: String,
@@ -73,7 +76,7 @@
         },
         data() {
             return {
-                showDropdown: false,
+                visible: false,
                 balances: {
                     ether: 0,
                     coin: 0
@@ -97,6 +100,10 @@
                 if(mutation.type === 'SETETHER') this.balances.ether = mutation.payload;
                 if(mutation.type === 'SETCOIN') this.balances.coin = mutation.payload;
             });
+
+            let supportsOrientationChange = "onorientationchange" in window,
+                orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+            window.addEventListener(orientationEvent, ()=> this.visible=false, false);
         }
 	}
 </script>

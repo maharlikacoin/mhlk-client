@@ -17,9 +17,13 @@
                         <a :href="etherscanBaseUrl + address" target="_blank">{{ address }}</a>
                     </li><!-- .topbar-action-item -->
 
-                    <li class="dropdown topbar-action-item topbar-action-user" @clickoutside="hideDropdown">
-                        <img class="icon my-2" src="/images/profile.png" alt="profile" @click="toggleDropdown">
-                        <div class="dropdown-menu dropdown-menu-right show border-0" v-show="showDropdown">
+                    <!-- dropdown -->
+                    <dropdown class="dropdown-desktop topbar-action-item topbar-action-user" animation="ani-slide-y"
+                              :visible="visible" @clickout="visible = false" :position='[ "right", "bottom", "right", "top" ]'>
+                        <img class="icon my-2 pointer" src="/images/profile.png" alt="profile" @click="visible = true"
+                            style="margin-right: 15px;">
+
+                        <div slot="dropdown" class="dropdown-menu dropdown-menu-right shadow-sm show border-0">
                             <div class="user-dropdown-head">
                                 <h6 class="user-name">
                                 </h6>
@@ -31,7 +35,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </li><!-- .topbar-action-item -->
+                    </dropdown>
                 </ul><!-- .topbar-action-list -->
             </div>
         </div><!-- .d-flex -->
@@ -41,25 +45,21 @@
 </template>
 
 <script>
+    import dropdown from 'vue-my-dropdown'
 	export default {
 		name: "DropdownDesktop",
+        components: { dropdown },
         props: {
 		    logout: String,
             address: String,
             etherscanBaseUrl: String
         },
-        data() {
+        data: () => {
 		    return {
-                showDropdown: false,
+		        visible: false
             }
         },
         methods: {
-            hideDropdown() {
-                this.showDropdown = false;
-            },
-            toggleDropdown() {
-		        this.showDropdown = !this.showDropdown;
-		    },
             onCopy(e) {
                 alert('You just copied: ' + e.text)
             },

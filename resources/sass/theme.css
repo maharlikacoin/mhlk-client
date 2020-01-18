@@ -430,7 +430,7 @@ padding-top: 10px !important;
     word-wrap: break-word;
 }
 
-.topbar-action-user > img {
+.topbar-action-user img {
     height: 30px;
     width: 30px;
     border-radius: 50%;
