@@ -74,9 +74,8 @@ export default new Vuex.Store({
                 .then((balance) => commit('SETETHER', Number(utils.formatEther(balance)) ) );
         },
         updateCoin({commit, state}, address) {
-            let decimals = 2;
             state.maharlika.balanceOf(address)
-                .then((balance) => commit('SETCOIN', 1/10**state.balances.decimals))
+                .then((balance) => commit('SETCOIN', balance/10**state.balances.decimals))
         },
         toggleTransferModal: ({commit}, status) => commit('TOGGLETRANSFERMODAL', status),
         setAuth: ({commit}, status) => commit('SETAUTH', status),
