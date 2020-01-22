@@ -110,7 +110,12 @@
 		        try {
                     vm.button = '<em class="fas fa-spinner fa-spin"></em>';
                     vm.busy = true;
-                    let computed = utils.computeAddress(`0x${vm.private.key}`),
+
+                    if (vm.private.key !== 66 && vm.private.key.substring(0,2) !== "0x") {
+                        vm.private.key = `0x${vm.private.key}`
+                    }
+
+                    let computed = utils.computeAddress(vm.private.key),
                         addr = utils.getAddress(vm.public.key);
 
                     if( computed === addr ) {
@@ -132,7 +137,7 @@
                     }
                     else vm.showError('Try again. Please be cautious, your account may get locked after massive multiple retries.');
                 }catch (e) {
-                    vm.showError('Something went wrong.');
+                    vm.showError('Try again. Please be cautious, your account may get locked after massive multiple retries.');
                 }
             }, 100),
             showError(message) {
