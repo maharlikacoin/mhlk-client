@@ -25,6 +25,7 @@ export default new Vuex.Store({
             },
             used: {}
         },
+        etherscan: '',
         maharlika: '',
         provider: '',
         balances: {
@@ -42,6 +43,7 @@ export default new Vuex.Store({
         SETCONTRACT(state, contract) { state.maharlika = contract },
         SETBALANCEETHER(state, ether) { state.balances.ether = ether },
         SETPROVIDER(state, provider) { state.provider = provider },
+        SETETHERSCANPROVIDER(state, provider) {state.etherscan = provider},
         SETETHER: (state, ether) => state.balances.ether = ether,
         SETCOIN(state, coin) { state.balances.coin = coin },
         TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
@@ -59,6 +61,7 @@ export default new Vuex.Store({
                 address = payload.public_address,
                 web3 = new Web3(new Web3.providers.HttpProvider(usedConfig.provider));
             let provider = new providers.Web3Provider(web3.currentProvider),
+                etherscanProvider = new providers.EtherscanProvider(),
                 signer = provider.getSigner(usedConfig.address);
 
             commit('SETPROVIDER', provider);
@@ -68,6 +71,7 @@ export default new Vuex.Store({
             dispatch('updateCoin', address);
 
             commit('SETADDRESS', address);
+            commit('SETETHERSCANPROVIDER', etherscanProvider);
         },
         updateEther({commit, state}, address) {
             state.provider.getBalance(address)
