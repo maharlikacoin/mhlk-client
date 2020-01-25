@@ -28,6 +28,9 @@ export default new Vuex.Store({
         etherscan: '',
         maharlika: '',
         provider: '',
+        prices: {
+            etherInUsd: ''
+        },
         balances: {
             ether: 0,
             coin: 0,
@@ -44,6 +47,7 @@ export default new Vuex.Store({
         SETBALANCEETHER(state, ether) { state.balances.ether = ether },
         SETPROVIDER(state, provider) { state.provider = provider },
         SETETHERSCANPROVIDER(state, provider) {state.etherscan = provider},
+        SETETHERPRICE(state, price) {state.prices.etherInUsd = price},
         SETETHER: (state, ether) => state.balances.ether = ether,
         SETCOIN(state, coin) { state.balances.coin = coin },
         TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
@@ -72,6 +76,7 @@ export default new Vuex.Store({
 
             commit('SETADDRESS', address);
             commit('SETETHERSCANPROVIDER', etherscanProvider);
+            dispatch('updateEtherPrice');
         },
         updateEther({commit, state}, address) {
             state.provider.getBalance(address)
@@ -80,6 +85,10 @@ export default new Vuex.Store({
         updateCoin({commit, state}, address) {
             state.maharlika.balanceOf(address)
                 .then((balance) => commit('SETCOIN', balance/10**state.balances.decimals))
+        },
+        updateEtherPrice({commit, state}) {
+            state.etherscan.getEtherPrice()
+                .then(price => commit("SETETHERPRICE", price))
         },
         toggleTransferModal: ({commit}, status) => commit('TOGGLETRANSFERMODAL', status),
         setAuth: ({commit}, status) => commit('SETAUTH', status),
