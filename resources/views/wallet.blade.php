@@ -11,7 +11,6 @@
     <title>Maharlika Coin (MHLK) - For Humanity, especially the Filipino people</title>
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    @stack('styles')
 </head>
 
 <body style="background-color: #e9ecef;">
@@ -20,6 +19,5 @@
 </div>
 <!-- JavaScript -->
 <script src="{{ mix('/js/app.js') }}"></script>
-@stack('scripts')
 </body>
 </html>
