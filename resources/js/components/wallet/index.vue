@@ -32,6 +32,7 @@
                 network = getters.getNetwork,
                 usedConfig = config[network];
 
+            store.dispatch('setAuth', true);
             store.dispatch('connect', { usedConfig: usedConfig, public_address: this.address});
         }
     }
