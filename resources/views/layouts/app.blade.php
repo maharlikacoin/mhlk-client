@@ -15,7 +15,7 @@
 </head>
 
 <body class="nk-body body-wider bg-light">
-<div class="nk-wrap">
+<div class="nk-wrap" id="app">
     @include('single-pages.header')
 
     @yield('content')

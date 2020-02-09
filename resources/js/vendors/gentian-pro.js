@@ -489,13 +489,13 @@ NioApp = function (NioApp, $, window, document) {
 	NioApp.components.docReady.push(NioApp.OnePageScroll);
 
     //scrollAct @v1.0
-    NioApp.scrollAct = function() {
-        $body.scrollspy({
-            target: '#header-menu',
-            offset: (_headerHT + 2),
-        });
-    };
-	NioApp.components.docReady.push(NioApp.scrollAct);
+    // NioApp.scrollAct = function() {
+    //     $body.scrollspy({
+    //         target: '#header-menu',
+    //         offset: (_headerHT + 2),
+    //     });
+    // };
+	// NioApp.components.docReady.push(NioApp.scrollAct);
 
 	//// Plugins ////
 	/////////////////

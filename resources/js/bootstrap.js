@@ -13,14 +13,14 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    // require('bootstrap');
     // require('owl.carousel');
     // require('./vendors/jquery.countdown.min');
     // require('./vendors/waypoint.min');
     // require('jquery.easing');
     // require('./vendors/form.plugin.min');
     // require('jquery-validation');
-    require('magnific-popup');
+    // require('magnific-popup');
     require('./vendors/particles.min');
     // require('select2');
     // require('chart.js');
