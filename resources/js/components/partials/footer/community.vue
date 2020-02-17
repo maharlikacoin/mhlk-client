@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.reddit.com/user/maharlikacoin" target="_blank">
+                    <a href="https://www.reddit.com/r/maharlikacoin" target="_blank">
                         <i class="fab fa-reddit-square"></i>
                     </a>
                 </li>
