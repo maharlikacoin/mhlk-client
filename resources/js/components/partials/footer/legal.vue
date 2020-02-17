@@ -3,8 +3,8 @@
         <h6 class="wgs-title">Legal</h6>
         <div class="wgs-body">
             <ul class="wgs-links">
-                <li><a href="/terms">Terms & Conditions</a></li>
-                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+                <li><a href="/privacy-policy">Privacy</a></li>
                 <li><a href="/whitepaper" @click.prevent="navigate('/whitepaper')">Whitepaper</a></li>
             </ul>
         </div>
