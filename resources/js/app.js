@@ -2,6 +2,7 @@
 import WalletIndex from './components/wallet/index';
 import WelcomeIndex from './components/welcome/index';
 import TeamIndex from './components/team/index';
+import Whitepaper from './components/partials/whitepaper';
 
 // vendors
 import './vendors/vee-validate'
@@ -16,6 +17,7 @@ new Vue({
     components: {
         WalletIndex,
         WelcomeIndex,
-        TeamIndex
+        TeamIndex,
+        Whitepaper
     },
 });

@@ -29,6 +29,14 @@ Route::get('/privacy-policy', function() {
     return view('privacy');
 })->name('privacy');
 
+Route::get('whitepaper', function() {
+    return view('whitepaper');
+})->name('whitepaper');
+
+Route::get('/file/whitepaper', function() {
+    return response()->file(storage_path('app/whitepaper.pdf'));
+})->name('whitepaper.file');
+
 
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
@@ -42,9 +50,6 @@ Route::middleware('authWallet')->group(function() {
         return view('team');
     })->name('team');
 
-    Route::get('/whitepaper', function() {
-        return response()->file(storage_path('app/whitepaper.pdf'));
-    })->name('whitepaper');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
