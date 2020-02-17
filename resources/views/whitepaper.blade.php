@@ -25,17 +25,5 @@
 @stop
 
 @section('content')
-    <main class="nk-pages">
-        <section class="section section-l bg-light">
-            <div class="container">
-                <div class="nk-block nk-block-blog">
-                    <div class="row">
-                        <div class="col-12">
-                            <whitepaper></whitepaper>
-                        </div><!-- .col -->
-                    </div><!-- .row -->
-                </div><!-- .nk-block -->
-            </div><!-- .container -->
-        </section><!-- .section -->
-    </main>
+    <whitepaper></whitepaper>
 @stop

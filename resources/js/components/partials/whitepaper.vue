@@ -1,10 +1,23 @@
 <template>
-    <div id="pdfvuer">
-        <pdf :src="pdfSource" v-for="i in numPages" :key="i" :id="i" :page="i" :scale.sync="scale"
-             style="width:100%;margin:20px auto;">
-            <template slot="loading">loading content here...</template>
-        </pdf>
-    </div>
+    <main class="nk-pages" @click="preventOpen" @contextmenu="preventOpen">
+        <section class="section section-l bg-light">
+            <div class="container">
+                <div class="nk-block nk-block-blog">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="pdfvuer">
+                                <pdf :src="pdfSource" v-for="i in numPages" :key="i" :id="i" :page="i" :scale.sync="scale"
+                                     style="width:100%;margin:20px auto;">
+                                    <template slot="loading">loading content here...</template>
+                                </pdf>
+                            </div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .nk-block -->
+            </div><!-- .container -->
+        </section><!-- .section -->
+    </main>
+
 </template>
 
 <script>
@@ -49,28 +62,10 @@
                 self.pdfSource = pdfvuer.createLoadingTask('/file/whitepaper');
                 self.pdfSource.then(pdf => {
                     self.numPages = pdf.numPages;
-                    window.onscroll = function() {
-                        changePage();
-                    };
-
-
-                    function changePage () {
-                        let i = 1, count = Number(pdf.numPages);
-                        do {
-                            if(window.pageYOffset >= self.findPos(document.getElementById(i)) &&
-                                window.pageYOffset <= self.findPos(document.getElementById(i+1))) {
-                                self.page = i
-                            }
-                            i++
-                        } while ( i < count);
-                        if (window.pageYOffset >= self.findPos(document.getElementById(i))) {
-                            self.page = i
-                        }
-                    }
                 });
             },
-            findPos(obj) {
-                return obj.offsetTop;
+            preventOpen (e) {
+                e.preventDefault();
             }
         }
 	}
@@ -83,5 +78,8 @@
         -ms-user-select: none;
         -o-user-select: none;
         user-select: none;
+    }
+    #pdfvuer, #pdfvuer div, #pdfvuer img {
+        cursor: not-allowed;
     }
 </style>
