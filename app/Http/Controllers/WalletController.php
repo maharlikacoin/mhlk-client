@@ -29,8 +29,7 @@ class WalletController extends Controller
     }
 
     public function contract() {
-        $contract = json_decode(file('app/documents/MaharlikaCoin.json'));
-        return response()->json($contract->abi);
+        return response()->file(storage_path('app/documents/MaharlikaCoin.json'));
     }
 
     public function wallet() {
