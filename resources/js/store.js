@@ -77,14 +77,17 @@ export default new Vuex.Store({
             dispatch('updateEtherPrice');
         },
         updateEther({commit, state}, address) {
+            if(state.provider !== '')
             state.provider.getBalance(address)
                 .then((balance) => commit('SETETHER', Number(utils.formatEther(balance)) ) );
         },
         updateCoin({commit, state}, address) {
+            if(state.maharlika !== '')
             state.maharlika.balanceOf(address)
                 .then((balance) => commit('SETCOIN', balance/10**state.balances.decimals))
         },
         updateEtherPrice({commit, state}) {
+            if(state.etherscan !== '')
             state.etherscan.getEtherPrice()
                 .then(price => commit("SETETHERPRICE", price))
         },
