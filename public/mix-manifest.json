@@ -1,6 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=ff50b631eba2884731b0",
-    "/css/app.css": "/css/app.css?id=d6301ac2552b3415997f",
+    "/js/app.js": "/js/app.js?id=66a14cce38a51476c8a1",
+    "/css/app.css": "/css/app.css?id=41ff4c33fadcdefc37d8",
+    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js?id=576232abbb19d5569204",
     "/images/favicon.png": "/images/favicon.png?id=e0bce960918bc5364c1c",
     "/images/eth-qr.png": "/images/eth-qr.png?id=5b7d0606e5f687d71977",
     "/images/profile.png": "/images/profile.png?id=83dc6feccf12111b5117",
@@ -9,6 +10,6 @@
     "/images/logo.png": "/images/logo.png?id=620371da6b6d9f5c62e1",
     "/images/logo2x.png": "/images/logo2x.png?id=620371da6b6d9f5c62e1",
     "/images/maharlika-logo-white.png": "/images/maharlika-logo-white.png?id=dad5fa4c6daaf0a660be",
-    "/images/maharlika-coin-gold.png": "/images/maharlika-coin-gold.png?id=1b981e38202a072dda51",
+    "/images/maharlika-coin-gold.png": "/images/maharlika-coin-gold.png?id=dfcbeb9385e8f5cb3f00",
     "/images/fgf-logo.png": "/images/fgf-logo.png?id=e0cd60d36dbfe238fde7"
 }

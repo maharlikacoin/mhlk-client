@@ -12,21 +12,19 @@ const initialdata = () => {
                 value: '',
                 isFocused: false,
                 hasValue: false,
-            },
-            recaptcha: {
-                verified: false,
-                message: ''
-            },
-            numericOptions: {
-                amount: {
+                options: {
                     digitGroupSeparator: ',',
                     decimalCharacter: '.',
                     currencySymbol: '  MHLK',
                     currencySymbolPlacement: 's',
                     roundingMethod: 'U',
                     minimumValue: '0'
-                },
-                fee: {
+                }
+            },
+            fee: {
+                value: '',
+                description: '$0.00',
+                options: {
                     digitGroupSeparator: ',',
                     decimalCharacter: '.',
                     decimalPlaces: 6,
@@ -36,32 +34,46 @@ const initialdata = () => {
                     minimumValue: '0'
                 }
             },
+            recaptcha: {
+                verified: false,
+                message: ''
+            },
 
+            convertFromEth: {
+                toUsd: 0,
+                toEuro: 0,
+                toPeso: 0
+            },
+
+            gas: {
+                selected: '',
+                limits: {
+                    ether: '',
+                    mhlk: ''
+                },
+                costs: {
+                    ether: '',
+                    mhlk: ''
+                },
+                prices: {
+                    fast: '',
+                    average: '',
+                    slow: '',
+                }
+            },
+            currencyIsEther: false,
+            modeIsEther: false,
             count: 0,
             buttonLoading: 'Send MHLK',
             busy: false,
             tries: 0,
             status: 'Status: Idle',
 
-            gas: {
-                selected: null,
-                prices: {
-                    fastest: 0,
-                    fast: 0,
-                    average: 0,
-                    slow: 0,
-                    slowest: 0,
-                },
-                limit: 0
-            },
 
             // chain: 'mainnet',
             rawTransaction: null,
             transacting: false,
             toggleTransactionInfo: false,
-            ethPrice: {
-                usd: 0
-            }
         }
     };
 
