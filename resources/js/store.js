@@ -10,16 +10,16 @@ export default new Vuex.Store({
         network: 'mainnet',
         config: {
             mainnet: {
-                provider: 'https://ethshared.bdnodes.net?auth=trtq2YNHtEU2rvJabEwqcV4BEE1M8lnpOrEV6EICHT4',
-                address: '0xE3D0a162fCc5c02C9448274D7C58E18e1811385f',
+                providerUrl: process.env.MIX_MAINNET,
+                address: process.env.MIX_MAINNET_CONTRACT,
             },
             ropsten: {
-                provider: 'https://ropstenshared.bdnodes.net/?auth=M0olBBbNBAhkVrlZLFmlN93AF_BonbAOiHAaFr4wjr0',
-                address: '',
+                providerUrl: process.env.MIX_ROPSTEN,
+                address: process.env.MIX_ROPSTEN_CONTRACT,
             },
             kovan: {
-                provider: 'https://kovan.infura.io/v3/befbc2de01464c24b2d9012752e5877e',
-                address: '0x66cD341f464d7c7555Cee3305e68F75AfFBb1F96',
+                providerUrl: process.env.MIX_KOVAN,
+                address: process.env.MIX_KOVAN_CONTRACT,
             },
             used: {}
         },
