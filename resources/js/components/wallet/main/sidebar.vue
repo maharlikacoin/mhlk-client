@@ -12,15 +12,17 @@
             </button>
         </div>
         <ul class="btn-grp guttar-10px">
-            <li><button class="btn btn-grad border-0" :class="{ 'disable': !transferrable}"
-                          :disabled="!transferrable" @click="openModal">Transfer</button>
+            <li>
+                <button class="btn btn-grad border-0" :class="{ 'disable': !transferrable}" :disabled="!transferrable" @click="openModal">
+                    Transfer <span style="font-size: x-small;">(Under Maintenance)</span>
+                </button>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
-    import VueQr from 'vue-qr'
+    import VueQr from 'vue-qr';
 
     export default {
         name: "SidebarComponent",
@@ -32,7 +34,8 @@
         },
         computed: {
             transferrable() {
-                return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin
+                // return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin
+                return false;
             }
         },
         methods: {
