@@ -61,15 +61,18 @@ export default new Vuex.Store({
             // connect to provider
             let usedConfig = payload.usedConfig,
                 address = payload.public_address,
-                web3 = new Web3(new Web3.providers.HttpProvider(usedConfig.provider));
-            let provider = new providers.Web3Provider(web3.currentProvider),
-                etherscanProvider = new providers.EtherscanProvider(),
-                signer = provider.getSigner(usedConfig.address);
+                web3 = new Web3(new Web3.providers.HttpProvider(usedConfig.providerUrl));
 
-            commit('SETPROVIDER', provider);
+            let provider = new providers.Web3Provider(web3.currentProvider),
+                httpProvider = new providers.JsonRpcProvider(usedConfig.providerUrl),
+                etherscanProvider = new providers.EtherscanProvider(),
+                signer = httpProvider.getSigner(usedConfig.address),
+                maharlika = (new Contract(usedConfig.address, abi, httpProvider));
+
+            commit('SETPROVIDER', httpProvider);
             dispatch('updateEther', address);
 
-            commit('SETCONTRACT', (new Contract(usedConfig.address, MHLK, signer)));
+            commit('SETCONTRACT', maharlika);
             dispatch('updateCoin', address);
 
             commit('SETADDRESS', address);
