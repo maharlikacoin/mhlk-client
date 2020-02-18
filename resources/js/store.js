@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import MHLK from './core/MaharlikaContract'
+import abi from './core/MaharlikaContract'
 import { utils, providers, Contract } from "ethers";
 
 Vue.use(Vuex);
