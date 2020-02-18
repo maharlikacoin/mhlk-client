@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,8 +10,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix
-    .js([
+mix.js([
         'resources/js/bootstrap.js',
         'resources/js/app.js',
     ], 'public/js/app.js')
@@ -34,7 +32,5 @@ if (mix.inProduction()) {
 }
 
 mix.webpackConfig({
-    stats: {
-        warnings: false
-    }
+    stats: { warnings: false }
 });
