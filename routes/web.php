@@ -29,13 +29,13 @@ Route::get('privacy-policy', function() {
     return view('privacy');
 })->name('privacy');
 
-Route::get('whitepaper', function() {
-    return view('whitepaper');
-})->name('whitepaper');
+Route::get('project-legacy', function() {
+    return view('dossier');
+})->name('project.legacy');
 
-Route::get('/file/whitepaper', function() {
-    return response()->file(storage_path('app/whitepaper.pdf'));
-})->name('whitepaper.file');
+Route::get('dossier', function() {
+    return response()->file(storage_path('app/documents/dossier.pdf'));
+})->name('dossier');
 
 
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
