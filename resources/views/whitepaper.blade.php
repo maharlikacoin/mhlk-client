@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Privacy @stop
+@section('title') Whitepaper @stop
 @section('banner')
     <div class="header-banner bg-theme-grad">
         <div class="nk-banner">
