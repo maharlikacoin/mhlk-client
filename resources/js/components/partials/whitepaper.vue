@@ -5,11 +5,24 @@
                 <div class="nk-block nk-block-blog">
                     <div class="row">
                         <div class="col-12">
-                            <div id="pdfvuer">
-                                <pdf :src="pdfSource" v-for="i in numPages" :key="i" :id="i" :page="i" :scale.sync="scale"
-                                     style="width:100%;margin:20px auto;">
-                                    <template slot="loading">loading content here...</template>
-                                </pdf>
+                            <div id="pdf">
+
+                                <pdf v-for="i in numPages" :key="i" :src="src" :page="i"
+                                    style="display: inline-block; width: 100%"></pdf>
+
+                                <div class="container" v-if="error.exists">
+                                    <div class="bg-black-22 py-5 round shadow text-center text-red">
+                                        <p class="font-weight-bold">
+                                            <i class="fas fa-times-circle"></i>
+                                            {{ error.message }}
+                                        </p>
+                                        <p class="font-italic error-details">"{{ error.details }}"</p>
+                                        <p>Please let us know this problem.</p>
+                                        <p>Send us an email at
+                                            <a href="mailto:support@formulagreencorp.com">support@formulagreencorp.com</a></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div><!-- .col -->
                     </div><!-- .row -->
@@ -21,49 +34,39 @@
 </template>
 
 <script>
-    import pdfvuer from 'pdfvuer'
+    import pdf from './pdf/vuePdfNoSssNoWorker'
 
-	export default {
+    export default {
 		name: "whitepaper",
-        components: { pdf:pdfvuer },
+        components: { pdf },
         data () {
             return {
-                page: 1,
-                numPages: 0,
-                pdfSource: null,
-                errors: [],
-                scale: 'page-width'
+                src: null,
+                numPages: undefined,
+                error: {
+                    exists: false,
+                    message: '',
+                    details: ''
+                }
             }
         },
-        computed: {
-            formattedZoom () {
-                return Number.parseInt(this.scale * 100);
-            },
-        },
         mounted () {
-            this.getPdf()
-        },
-        watch: {
-            show: function (s) {
-                if(s) {
-                    this.getPdf();
-                }
-            },
-            page: function (p) {
-                if( window.pageYOffset <= this.findPos(document.getElementById(p)) || ( document.getElementById(p+1) && window.pageYOffset >= this.findPos(document.getElementById(p+1)) )) {
-                    // window.scrollTo(0,this.findPos(document.getElementById(p)));
-                    document.getElementById(p).scrollIntoView();
-                }
+            try {
+                this.src = pdf.createLoadingTask(process.env.MIX_WHITEPAPER_URL);
+
+                this.src
+                    .then(pdf => this.numPages = pdf.numPages)
+                    .catch(err => {
+                        this.error.exists = true;
+                        this.error.message = 'File does not exist';
+                    });
+            }catch (e) {
+                this.error.exists = true;
+                this.error.message = 'Something went wrong.';
+                this.error.details = e
             }
         },
         methods: {
-            getPdf () {
-                let self = this;
-                self.pdfSource = pdfvuer.createLoadingTask('/file/whitepaper');
-                self.pdfSource.then(pdf => {
-                    self.numPages = pdf.numPages;
-                });
-            },
             preventOpen (e) {
                 e.preventDefault();
             }
@@ -72,14 +75,14 @@
 </script>
 
 <style lang="css" scoped>
-    #pdfvuer {
+    #pdf {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         -o-user-select: none;
         user-select: none;
     }
-    #pdfvuer, #pdfvuer div, #pdfvuer img {
+    #pdf, #pdf div, #pdf img {
         cursor: not-allowed;
     }
 </style>
