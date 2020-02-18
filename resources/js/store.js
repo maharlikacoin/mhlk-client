@@ -1,8 +1,6 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import abi from './core/MaharlikaContract'
-import { utils, providers, Contract } from "ethers";
-
+import { utils, providers, Contract } from 'ethers';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
