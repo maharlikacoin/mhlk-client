@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
 import abi from './core/MaharlikaContract'
-import { utils, providers, Contract } from 'ethers';
+import { utils, providers, Contract, Wallet } from 'ethers';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -37,7 +37,8 @@ export default new Vuex.Store({
         modal: {
             transfer: false,
             login: false
-        }
+        },
+        wallet: ''
     },
     mutations: {
         CHANGENETWORK(state, network) { state.network = network },
@@ -51,7 +52,8 @@ export default new Vuex.Store({
         TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
         SETAUTH: (state, status) => state.authenticated = status,
         TOGGLELOGIN: (state, status) => state.modal.login = status,
-        SETADDRESS: (state, address) => state.address = address
+        SETADDRESS: (state, address) => state.address = address,
+        SETWALLET: (state, wallet) => state.wallet = wallet
     },
     actions: {
         changeNetwork({commit}, network) {
@@ -96,7 +98,11 @@ export default new Vuex.Store({
         },
         toggleTransferModal: ({commit}, status) => commit('TOGGLETRANSFERMODAL', status),
         setAuth: ({commit}, status) => commit('SETAUTH', status),
-        toggleLogin: ({commit}, status) => commit('TOGGLELOGIN', status)
+        toggleLogin: ({commit}, status) => commit('TOGGLELOGIN', status),
+        setWallet: ({commit}, key) => {
+            let wallet = Wallet(key);
+            commit('SETWALLET', wallet)
+        }
     },
     getters: {
         getConfiguration: state => {return state.config},
