@@ -68,8 +68,15 @@ export default new Vuex.Store({
             let provider = new providers.Web3Provider(web3.currentProvider),
                 httpProvider = new providers.JsonRpcProvider(usedConfig.providerUrl),
                 etherscanProvider = new providers.EtherscanProvider(),
+
+                // auto sign for ether transactions
                 signer = httpProvider.getSigner(usedConfig.address),
-                maharlika = (new Contract(usedConfig.address, abi, httpProvider));
+
+                // use signature to all transaction
+                maharlika = (new Contract(usedConfig.address, abi, signer));
+
+                // manual sign
+                // maharlika = (new Contract(usedConfig.address, abi, httpProvider));
 
             commit('SETPROVIDER', httpProvider);
             dispatch('updateEther', address);
