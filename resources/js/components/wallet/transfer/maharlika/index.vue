@@ -15,9 +15,9 @@
                        :class="{ 'border-danger' : errors.length }" @focus="onFocus(transferTo)" @blur="onBlur(transferTo)"/>
                 <label for="transferTo" class="field-label field-label-line">Wallet Address (Public Key)</label>
                 <span class="small text-black-50">
-                            <i class="fas fa-info-circle"></i>
-                            Wallet Address of the person you will send coins to
-                        </span>
+                    <i class="fas fa-info-circle"></i>
+                    Wallet Address of the person you will send coins to
+                </span>
                 <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
             </v-provider>
 
@@ -36,34 +36,19 @@
                     </v-provider>
                 </div>
 
-
                 <!-- transaction fee -->
                 <div class="col-sm">
+                    <div class="container field-label-line pointer position-absolute text-right text-uppercase"
+                         style="top: -6px; font-size: x-small; padding-right: 20px;">
+                            <span v-for="(currency, index) in fee.currencies" :key="index" class="currencies"
+                                  :class="{ 'text-gold': fee.selectedCurrency === currency}"
+                                  @click="setCurrency(fee.ether.value, currency)">
+                                {{ currency }}
+                            </span>
+                    </div>
                     <div class="field-item input-focused">
-                        <vue-autonumeric :options="fee.options" id="fee" name="fee" class="disabled input-line"
-                                         contenteditable="false" readonly disabled="disabled"
-                                         v-model="fee.value">
-                        </vue-autonumeric>
-                        <label for="fee" class="field-label field-label-line">
-                            Transaction Fee ( {{ fee.description }} )
-                        </label>
-                        <span class="position-absolute pointer" v-if="fee.value">Advance</span>
-                        <!--<a href="#" v-show="!toggleTransactionInfo"-->
-                        <!--@click="toggleTransactionInfo = !toggleTransactionInfo">-->
-                        <!--Show more information-->
-                        <!--</a>-->
-                        <!--<a href="#" v-show="toggleTransactionInfo"-->
-                        <!--@click="toggleTransactionInfo = !toggleTransactionInfo">-->
-                        <!--Hide-->
-                        <!--</a>-->
-                        <!--<div v-if="toggleTransactionInfo">-->
-                        <!--<div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>-->
-                        <!--<div>Gas Limit: {{ gas.limit }}</div>-->
-                        <!--</div>-->
-                        <!--<div>-->
-                        <!--Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH-->
-                        <!--( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )-->
-                        <!--</div>-->
+                        <span id="fee" class="disabled input-line">{{ displayFee }}</span>
+                        <label for="fee" class="field-label field-label-line">Transaction Fee</label>
                     </div>
                 </div>
             </div>
@@ -98,14 +83,14 @@
 
 <script>
     import VueAutonumeric from '../../../partials/VueAutonumeric'
-    import { ValidationObserver, ValidationProvider} from 'vee-validate';
+    import {ValidationObserver, ValidationProvider} from 'vee-validate';
     import VueRecaptcha from 'vue-recaptcha'
     import initialData from './initialdata'
     import maharlikaMethods from './methods'
+    import {utils} from 'ethers'
 
     Vue.component('VObserver', ValidationObserver);
     Vue.component('VProvider', ValidationProvider);
-
 
 	export default {
 		name: "maharlika",
@@ -115,66 +100,50 @@
             VueAutonumeric,
         },
         computed: {
-		    // fee: {
-		    //     get: (vm) => {
-		    //         let eth = '',
-            //             usd = '',
-            //             val = '';
-		    //         if( vm.connected !== '' ) {
-            //             eth = (this.gas.selected / 1e18) * this.gas.limit;
-            //             usd = ether * vm.ethToUsd;
-            //
-            //             val = vm.currencyIsEther ? eth : usd;
-            //         }
-            //         return {
-            //             value: val,
-            //             description: vm.currencyIsEther? `${eth} ETH` : `$ ${dollar}`
-		    //         }
-            //     },
-            //     set: (value) => {
-		    //         return value;
-		    //     }
-            // },
             transferrable() {
                 return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin > 0;
             },
-            submittable() {
-                return this.transferrable && this.private.address !== '' &&
-                    this.recaptcha.verified && this.connected !== ''
+            isValidAmount() {
+                return this.amount.value !== undefined && this.amount.value !== '' && this.amount.value > 0
             },
-            isGasLimitZero() {
-                return this.gas.limit === 0 || this.gas.limit === null;
+            submittable() {
+                return this.transferrable && this.private.address !== '' && this.transferTo.isValid
+                    && this.recaptcha.verified && this.connected !== '' && this.isValidAmount
             },
             address() {
                 return this.$store.state.address
             },
+            hasEnoughCoins() {
+                return this.amount.value <= this.$store.state.balances.coin;
+            },
+            displayFee() {
+                let value = this.$options.filters.numberFormat(this.fee.shown.value, this.fee.shown.format),
+                    symbol = this.fee.shown.currencySymbol;
 
+                return this.fee.selectedCurrency !== 'ether' ? `${symbol} ${value}` : ` ${value} ${symbol}`;
+            }
         },
         data: initialData,
         methods: maharlikaMethods,
         mounted() {
-            // this.usedConfig = this.$store.state.config.used;
-
-            // GasPrice - varies from the miner, using ethgasstation.info to get price ranges
-
+            this.updateEtherPrice();
+            this.getGasPrice();
+            this.fee.shown = this.fee.usd;
         },
         watch: {
-		    connected: (isConnected) => {
-		        if( isConnected ){
-                    // this.getEtherPrice() // get ether price (in usd)
-                    //     .getGasPrice() // get gas price (in wei)
-                }
-            },
             'private.address': function(value) {
                 let firstTwoCharacters = value.substring(0, 2);
                 if(firstTwoCharacters === '0x')
                     this.private.address = value.slice(2);
             },
-            'amount.value': function(newValue) {
-                if(newValue === 0 ) this.amount.value = 0;
-            },
             'transferTo.address': function(newValue) {
-
+                this.prepareToComputeFee(this, newValue)
+            },
+            'amount.value': function() {
+                this.prepareToComputeFee(this, this.transferTo.address)
+            },
+            currencyIsEther() {
+                this.prepareToComputeFee(this, this.transferTo.address);
             }
         }
 	}
@@ -182,6 +151,8 @@
 
 <style scoped>
     #fee.disabled {
+        display: inline-block;
+        padding: 26px 0 8px 5px;
         outline-color: transparent;
         position: relative;
         z-index: 1;
@@ -189,7 +160,6 @@
         color: #415076;
         top: -10px;
         height: 55px;
-        padding-left: 5px;
     }
     #fee.disabled~span {
         position: absolute;
@@ -205,5 +175,11 @@
     }
     .input-focused .field-label-line{
         left: 5px;
+    }
+    span.currencies:hover{
+        color: #a67c01;
+    }
+    .text-gold {
+        color: #a67c01;
     }
 </style>

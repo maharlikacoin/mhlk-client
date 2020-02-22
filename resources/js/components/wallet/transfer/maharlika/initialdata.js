@@ -3,6 +3,7 @@ const initialdata = () => {
             transferTo: {
                 address: '',
                 isFocused: false,
+                isValid: false,
             },
             private: {
                 address: '',
@@ -21,19 +22,38 @@ const initialdata = () => {
                     minimumValue: '0'
                 }
             },
+
             fee: {
-                value: '',
-                description: '$0.00',
-                options: {
-                    digitGroupSeparator: ',',
-                    decimalCharacter: '.',
-                    decimalPlaces: 6,
-                    currencySymbol: '  ETH',
-                    currencySymbolPlacement: 's',
-                    roundingMethod: 'U',
-                    minimumValue: '0'
+                currencies: [ 'usd', 'ether', 'php', 'euro' ],
+                shown: {},
+                sub: {},
+                selectedCurrency:'usd',
+                usd: {
+                    value: '0',
+                    currencySymbol: '$',
+                    format: '0,0[.]00a',
+                    rate: 1
+                },
+                ether: {
+                    value: '0',
+                    currencySymbol: 'ETH',
+                    format: '0.[00000000]a',
+                    rate: 1
+                },
+                php: {
+                    value: '0',
+                    currencySymbol: '₱',
+                    format: '0,0[.]00a',
+                    rate: 1
+                },
+                euro: {
+                    value: '0',
+                    currencySymbol: '€',
+                    format: '0,0[.]00a',
+                    rate: 1
                 }
             },
+            conversionURL: 'https://free.currconv.com/api/v7/convert',
             recaptcha: {
                 verified: false,
                 message: ''
@@ -46,31 +66,25 @@ const initialdata = () => {
             },
 
             gas: {
-                selected: '',
-                limits: {
+                limit: {
                     ether: '',
                     mhlk: ''
                 },
-                costs: {
-                    ether: '',
-                    mhlk: ''
-                },
-                prices: {
+                price: {
                     fast: '',
                     average: '',
                     slow: '',
+                    selected: '',
                 }
             },
-            currencyIsEther: false,
-            modeIsEther: false,
+            currencyIsEther: true, // default is showing $ on transaction fee
+            modeIsEther: false, // default is transaction on MHLK
             count: 0,
             buttonLoading: 'Send MHLK',
             busy: false,
             tries: 0,
             status: 'Status: Idle',
 
-
-            // chain: 'mainnet',
             rawTransaction: null,
             transacting: false,
             toggleTransactionInfo: false,

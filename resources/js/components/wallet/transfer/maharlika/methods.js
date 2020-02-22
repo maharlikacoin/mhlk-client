@@ -1,4 +1,4 @@
-import { utils } from 'ethers';
+import { utils, Wallet } from 'ethers';
 
 const maharlikaMethods = {
     onFocus(field) {
@@ -19,55 +19,130 @@ const maharlikaMethods = {
         this.recaptcha.verified = true;
     },
 
-    // GasCost * GasPrice = GWeiPrice/ 1B Gwei = ETH
+    // GWeiPrice = GasCost * GasPrice
+    // ETH = GWeiPrice/ 1B Gwei
 
-    // varies from the data being transact
+    // varies from the mode of transaction
     // required input transferTo address and amount
+    // needs for transaction fee computation
     getGasCost() {
-        // if (this.modeIsEther)
-        //     this.$store.state.provider
-        //         .estimateGas({to: this.transferTo.address, value: utils.parseEther(this.amount.value)})
-        //         .then(gasCost => {
-        //             this.gas.costs.ether = Number(gasCost);
-        //             this.gas.limits.ether = Number(gasCost);
-        //         });
-        // else
-        //     this.$store.state.maharlika
-        //         .estimate.transfer(this.transferTo.address, this.amount.value, {from:this.address})
-        //         .then(gasCost => {
-        //             this.gas.costs.mhlk = Number(gasCost);
-        //             this.gas.limits.mhlk = Number(gasCost);
-        //         })
+        if (this.modeIsEther)
+            // remember to set gasLimit to 21000
+            return this.$store.state.provider
+                .estimateGas({to: this.transferTo.address, value: utils.parseEther(this.amount.value)})
+                .then(gasCost => this.gas.limit.ether = Number(gasCost));
+        else{
+            let convertedValue = utils.hexlify(this.amount.value * (10**this.$store.state.balances.decimals));
+            let transaction = {
+                from: this.address,
+                gasLimit: 55048 + (55048 * 0.2),
+                gasPrice: utils.bigNumberify(this.gas.price.selected),
+                value: utils.parseEther("0")
+            };
+
+            return this.$store.state
+                .maharlika.estimate
+                .transfer(this.transferTo.address, convertedValue, transaction)
+                .then(gasLimit => this.gas.limit.mhlk = Number(gasLimit));
+
+            // All properties are optional
+
+            // this.rawTransaction = {
+            //     "from": this.address,
+            //     "gasPrice":web3.utils.toHex(this.gas.price.selected),
+            //     "gasLimit":web3.utils.toHex(this.gas.limit),
+            //     "to": this.usedConfig.contractAddress,
+            //     "value":"0x0",
+            //     "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
+            //     "nonce":web3.utils.toHex(this.count)
+            // };
+        }
     },
 
     // varies from the miner, using ethgasstation.info to get price ranges
+    // needs for transaction fee computation
     getGasPrice() {
+        // use https://docs.ethers.io/ethers.js/html/api-providers.html?highlight=limit
         // delete axios.defaults.headers.common["X-Requested-With"];
         return axios.get('https://ethgasstation.info/json/ethgasAPI.json') // in GWEI
             .then(response => {
                 let data = response.data;
-                this.gas.prices = {
+                this.gas.price = {
                     fast: data.fast /10,
                     average: data.average /10,
                     slow: data.safeLow /10,
                 };
 
-                this.gas.selected = this.gas.prices.fast;
-            })
+                // set default gas price
+                this.gas.price.selected = this.gas.price.average;
+            });
     },
 
     // EtherPrice - varies. data from etherscan
-    getEtherPrice() {
-        // return new Promise((resolve, reject) => {
-        //     this.$store.dispatch('updateEtherPrice');
-        //     resolve(this.$store.state.prices.etherInUsd);
-        // })
+    // needs for transaction fee computation
+    updateEtherPrice() {
+        this.$store.dispatch('updateEtherPrice');
+        axios.get(`${this.conversionURL}/?q=USD_PHP&compact=ultra&apiKey=${process.env.MIX_CURRENCY_CONVERSION_API}`)
+            .then(res=> this.fee.php.rate = this.$store.state.prices.etherInUsd * res.data.USD_PHP);
+        axios.get(`${this.conversionURL}/?q=USD_EUR&compact=ultra&apiKey=${process.env.MIX_CURRENCY_CONVERSION_API}`)
+            .then(res=> this.fee.euro.rate = this.$store.state.prices.etherInUsd * res.data.USD_EUR);
+        this.fee.usd.rate = this.$store.state.prices.etherInUsd;
     },
 
-    updateTransactionFee() {
-        this.fee.value = (this.submittable && !this.isGasLimitZero)
-            ? ((this.gas.selected / 1e18) * this.gas.limit)
-            : 0;
+    isValidAddress(vm) {
+        try {
+            utils.getAddress(this.transferTo.address);
+            vm.transferTo.isValid = true;
+        }catch(e) {
+            console.log(e);
+            console.log(vm)
+            console.log(vm.transferTo)
+            vm.transferTo.isValid = false
+        }
+    },
+    // will try to update ether price globally, plan is to after last change on either transferTo | amount
+    prepareToComputeFee: _.debounce((vm) => {
+        vm.isValidAddress(vm);
+        vm.computeTransactionFee()
+    }, 300),
+
+    // https://docs.ethers.io/ethers.js/html/notes.html?highlight=gettransactioncount
+    computeTransactionFee() {
+
+        if(this.transferTo.isValid && this.isValidAmount && this.hasEnoughCoins) {
+            this.updateEtherPrice();
+            let allPromises = Promise.all([
+                this.getGasPrice(),
+                this.getGasCost(),
+            ]);
+
+            allPromises.then(() => {
+                // dependent on getGasPrice() & getGasCost()
+                // (gasPrice / 1e18) * gasCost
+                let limit = this.modeIsEther ? this.gas.limit.ether : this.gas.limit.mhlk;
+                let etherValue = (this.gas.price.selected * limit) / 1e9; // in GWEI
+                this.fee.ether.value = etherValue;
+                this.setCurrency(etherValue, this.fee.selectedCurrency);
+            });
+        }
+        else this.setCurrency(0, this.fee.selectedCurrency);
+
+    },
+
+    setCurrency(etherValue, selectedCurrency) {
+        this.fee.selectedCurrency = selectedCurrency;
+        this.fee.shown = this.fee[selectedCurrency];
+        this.fee.shown.value = etherValue * this.fee.shown.rate;
+        // if(this.currencyIsEther)  {
+        //     this.fee.ether.value = etherValue;
+        //     this.fee.ether.currencySymbol = '  ETH';
+        //     this.fee.ether.format= '0.[00000000]a';
+        // }
+        // else {
+        //     this.fee.value = etherValue * this.$store.state.prices.etherInUsd;
+        //     this.fee.usd.currencySymbol = '$ ';
+        //     this.fee.usd.format= '0,0[.]00a';
+        // }
     },
 
     resetStatus() {
@@ -92,60 +167,36 @@ const maharlikaMethods = {
         this.resetStatus();
         this.resetButtonLoading();
     },
+
+    // https://docs.ethers.io/ethers.js/html/api-contract.html?highlight=wallet
     onSubmit() {
         console.log('Start Transaction');
         if (!this.submittable) return;
+
+        // update button
         this.busy = true;
         this.buttonLoading = '<i class="fas fa-spinner fa-spin"></i>';
         this.status = 'Status: <span style="color:#ffc107">transacting...</span>';
 
-        this.getNonce()
-            .then(() => {
-                if(this.transacting) {
-                    console.log('you are still transacting');
-                    return;
-                }
-                this.transact(this.web3, this.maharlikaContract());
-            })
-            .catch(err => {
-                this.status = 'Status: <span style="color:#dc3545">Please check your public and private keys</span>';
-                this.resetButtonLoading();
-                console.log(err.message)
-            });
-    },
-    transact(web3, contract) {
-        // this.transacting = true;
-        // let hexAmount = web3.utils.toHex(this.amount * 10**this.$store.state.balances.decimals);
-        // this.rawTransaction = {
-        //     "from": this.address,
-        //     "gasPrice":web3.utils.toHex(this.gas.selected),
-        //     "gasLimit":web3.utils.toHex(this.gas.limit),
-        //     "to": this.usedConfig.contractAddress,
-        //     "value":"0x0",
-        //     "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
-        //     "nonce":web3.utils.toHex(this.count)
-        // };
-        //
-        // //sign transaction
-        // let transaction = new Tx(this.rawTransaction, { chain: this.$store.state.network, hardfork: 'petersburg' });
-        // transaction.sign(new Buffer(this.private.address, 'hex'));
-        //
-        // this.sendTransaction(transaction);
 
-    },
-    sendTransaction(transaction) {
-        // send transaction
-        this.web3.eth
-            .sendSignedTransaction(`0x${transaction.serialize().toString('hex')}`)
-            .then(response => {
-                console.log('Successfully Transact', response);
+        let state = this.$store.state,
+            wallet = new Wallet(this.private.address, state.provider),
+            signedContract = state.maharlika.connect(wallet),
+            hexAmount = utils.hexlify(this.amount.value * 10**state.balances.decimals);
+
+        // transfer coins
+        signedContract.transfer(this.transferTo.address, hexAmount)
+            .then(res => {
+                console.log(Number(res.gasPrice));
+
+                console.log('Successfully Transact', res);
                 this.status = 'Status: <span style="color:#28a745">Successfully Transferred MHLK</span>';
                 this.count++;
                 this.resetButtonLoading();
-                this.resetFields();
+                // this.resetFields();
 
-                // this.$store.dispatch('updateCoin', this.address);
-                // console.log(this.$store.state.balances.coin);
+                this.$store.dispatch('toggleTransferModal', false);
+                this.$store.dispatch('updateCoin', this.address);
             })
             .catch(err => {
                 console.log(err.message);
@@ -153,15 +204,8 @@ const maharlikaMethods = {
                 this.resetButtonLoading();
             });
     },
-
-
     getNonce() {
-        // get transaction count, later will used as nonce
-        return this.web3.eth.getTransactionCount(this.address)
-            .then((v) => {
-                this.count = v;
-                console.log(`nonce: ${this.count}`);
-            });
+        return this.$store.state.provider.getTransactionCount(this.address)
     },
 };
 
