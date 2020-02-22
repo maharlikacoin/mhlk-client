@@ -13,11 +13,11 @@
                 <!-- value -->
                 <span class="small text-black-50 text-uppercase pointer"
                       v-if="!showWholeEtherValue" @click="showWholeEtherValue = !showWholeEtherValue">
-                    ($ {{ $store.state.balances.ether * $store.state.prices.etherInUsd | numberFormat('0,0.[00]a') }})
+                    (${{ $store.state.balances.ether * $store.state.prices.etherInUsd | numberFormat('0,0.[00]a') }})
                 </span>
                 <span class="small text-black-50 text-uppercase pointer"
                       v-if="showWholeEtherValue" @click="showWholeEtherValue = !showWholeEtherValue">
-                    ($ {{ $store.state.balances.ether * $store.state.prices.etherInUsd | numberFormat('0,0.00') }})
+                    (${{ $store.state.balances.ether * $store.state.prices.etherInUsd | numberFormat('0,0.00') }})
                 </span>
             </div>
         </div>
