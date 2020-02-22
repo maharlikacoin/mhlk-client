@@ -39,7 +39,7 @@
                     && !this.underMaintenance;
             },
             underMaintenance() {
-                return process.env.MIX_SERVICE_MAINTENANCE
+                return (/true/i).test(process.env.MIX_SERVICE_MAINTENANCE);
             }
         },
         methods: {
