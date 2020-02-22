@@ -8,7 +8,7 @@
 
             <!-- To Address -->
             <v-provider vid="transferTo" name="Wallet Address" tag="div" autocomplete="off"
-                        :rules="{ required: true, ethereumAddress: address, notOwnedAddress: `${$store.state.address}`}"
+                        :rules="{ required: true, ethereumAddress: address, notOwnedAddress: `${address}`}"
                         mode="aggressive" v-slot="{ errors, valid }" class="field-item"
                         :class="{ 'input-focused': transferTo.isFocused }">
                 <input v-model="transferTo.address" id="transferTo" name="transferTo" type="text" class="input-line required"
@@ -21,40 +21,50 @@
                 <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
             </v-provider>
 
-            <div class="d-flex justify-content-lg-between">
+            <div class="row">
                 <!-- amount -->
-                <v-provider vid="amount" name="Amount" tag="div" class="field-item mr-1 w-100" ref="transferAmount"
-                            rules="required|numeric_decimal|greater_than:0|not_enough_coin" mode="aggressive"
-                            v-slot="{ errors, valid }" :class="{ 'input-focused': amount.isFocused}">
-                    <vue-autonumeric :options="numericOptions.amount" id="amount" name="amount"
-                                     class="input-line required" @blur="onBlur(amount)" @focus="onFocus(amount)"
-                                     :class="{ 'border-danger':errors.length, 'disabled':busy }"
-                                     autocomplete="off" v-model="amount.value"></vue-autonumeric>
-                    <label for="amount" class="field-label field-label-line">Amount (MHLK)</label>
-                    <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
-                </v-provider>
+                <div class="col-sm">
+                    <v-provider vid="amount" name="Amount" tag="div" class="field-item" ref="transferAmount"
+                                rules="required|numeric_decimal|greater_than:0|not_enough_coin"
+                                mode="aggressive" v-slot="{ errors, valid }" :class="{ 'input-focused': amount.isFocused}">
+                        <vue-autonumeric :options="amount.options" id="amount" name="amount"
+                                         class="input-line required" @blur="onBlur(amount)" @focus="onFocus(amount)"
+                                         :class="{ 'border-danger':errors.length, 'disabled':busy }"
+                                         autocomplete="off" v-model="amount.value"></vue-autonumeric>
+                        <label for="amount" class="field-label field-label-line">Amount (MHLK)</label>
+                        <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
+                    </v-provider>
+                </div>
+
 
                 <!-- transaction fee -->
-                <div class="field-item input-focused ml-1 w-100">
-                    <vue-autonumeric :options="numericOptions.fee" id="fee" name="amount" class="disabled input-line"
-                                     disabled="disabled" v-model="fee"></vue-autonumeric>
-                    <label for="fee" class="field-label field-label-line">Transaction Fee (ETH)</label>
-                    <!--<a href="#" v-show="!toggleTransactionInfo"-->
-                    <!--@click="toggleTransactionInfo = !toggleTransactionInfo">-->
-                    <!--Show more information-->
-                    <!--</a>-->
-                    <!--<a href="#" v-show="toggleTransactionInfo"-->
-                    <!--@click="toggleTransactionInfo = !toggleTransactionInfo">-->
-                    <!--Hide-->
-                    <!--</a>-->
-                    <!--<div v-if="toggleTransactionInfo">-->
-                    <!--<div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>-->
-                    <!--<div>Gas Limit: {{ gas.limit }}</div>-->
-                    <!--</div>-->
-                    <!--<div>-->
-                    <!--Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH-->
-                    <!--( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )-->
-                    <!--</div>-->
+                <div class="col-sm">
+                    <div class="field-item input-focused">
+                        <vue-autonumeric :options="fee.options" id="fee" name="fee" class="disabled input-line"
+                                         contenteditable="false" readonly disabled="disabled"
+                                         v-model="fee.value">
+                        </vue-autonumeric>
+                        <label for="fee" class="field-label field-label-line">
+                            Transaction Fee ( {{ fee.description }} )
+                        </label>
+                        <span class="position-absolute pointer" v-if="fee.value">Advance</span>
+                        <!--<a href="#" v-show="!toggleTransactionInfo"-->
+                        <!--@click="toggleTransactionInfo = !toggleTransactionInfo">-->
+                        <!--Show more information-->
+                        <!--</a>-->
+                        <!--<a href="#" v-show="toggleTransactionInfo"-->
+                        <!--@click="toggleTransactionInfo = !toggleTransactionInfo">-->
+                        <!--Hide-->
+                        <!--</a>-->
+                        <!--<div v-if="toggleTransactionInfo">-->
+                        <!--<div>Gas Price: {{ gas.selected / 1e9 }} GWEI</div>-->
+                        <!--<div>Gas Limit: {{ gas.limit }}</div>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                        <!--Transaction Fee: {{ transactionFee | numberFormat('0.0000') }} ETH-->
+                        <!--( ${{ transactionFee * ethPrice.usd | numberFormat('0,000.00') }} )-->
+                        <!--</div>-->
+                    </div>
                 </div>
             </div>
 
@@ -88,13 +98,10 @@
 
 <script>
     import VueAutonumeric from '../../../partials/VueAutonumeric'
-    import { utils } from 'ethers';
     import { ValidationObserver, ValidationProvider} from 'vee-validate';
     import VueRecaptcha from 'vue-recaptcha'
     import initialData from './initialdata'
     import maharlikaMethods from './methods'
-
-    let Tx = require('ethereumjs-tx').Transaction;
 
     Vue.component('VObserver', ValidationObserver);
     Vue.component('VProvider', ValidationProvider);
@@ -108,16 +115,26 @@
             VueAutonumeric,
         },
         computed: {
-            fee: {
-                get() {
-                    return (this.submittable && !this.isGasLimitZero)
-                        ? ((this.gas.selected / 1e18) * this.gas.limit)
-                        : 0;
-                },
-                set(val) {
-                    return val
-                }
-            },
+		    // fee: {
+		    //     get: (vm) => {
+		    //         let eth = '',
+            //             usd = '',
+            //             val = '';
+		    //         if( vm.connected !== '' ) {
+            //             eth = (this.gas.selected / 1e18) * this.gas.limit;
+            //             usd = ether * vm.ethToUsd;
+            //
+            //             val = vm.currencyIsEther ? eth : usd;
+            //         }
+            //         return {
+            //             value: val,
+            //             description: vm.currencyIsEther? `${eth} ETH` : `$ ${dollar}`
+		    //         }
+            //     },
+            //     set: (value) => {
+		    //         return value;
+		    //     }
+            // },
             transferrable() {
                 return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin > 0;
             },
@@ -127,19 +144,27 @@
             },
             isGasLimitZero() {
                 return this.gas.limit === 0 || this.gas.limit === null;
-            }
+            },
+            address() {
+                return this.$store.state.address
+            },
+
         },
         data: initialData,
         methods: maharlikaMethods,
         mounted() {
-            this.usedConfig = this.$store.state.config.used;
-            this.getDollarPrice();
-            this.getGasPrices();
-            // this.getContractAbi().then(() => {
-            //     this.web3 = this.connectToProvider();
-            // });
+            // this.usedConfig = this.$store.state.config.used;
+
+            // GasPrice - varies from the miner, using ethgasstation.info to get price ranges
+
         },
         watch: {
+		    connected: (isConnected) => {
+		        if( isConnected ){
+                    // this.getEtherPrice() // get ether price (in usd)
+                    //     .getGasPrice() // get gas price (in wei)
+                }
+            },
             'private.address': function(value) {
                 let firstTwoCharacters = value.substring(0, 2);
                 if(firstTwoCharacters === '0x')
@@ -147,11 +172,38 @@
             },
             'amount.value': function(newValue) {
                 if(newValue === 0 ) this.amount.value = 0;
+            },
+            'transferTo.address': function(newValue) {
+
             }
         }
 	}
 </script>
 
 <style scoped>
-
+    #fee.disabled {
+        outline-color: transparent;
+        position: relative;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.1);
+        color: #415076;
+        top: -10px;
+        height: 55px;
+        padding-left: 5px;
+    }
+    #fee.disabled~span {
+        position: absolute;
+        top: -6px;
+        font-size: 0.7rem!important;
+        right: 10px;
+        color: #a67c00;
+        z-index: 2;
+        -webkit-transition: all .5s ease;
+        transition: all .5s ease;
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
+    .input-focused .field-label-line{
+        left: 5px;
+    }
 </style>

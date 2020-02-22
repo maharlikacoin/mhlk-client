@@ -1,3 +1,5 @@
+import { utils } from 'ethers';
+
 const maharlikaMethods = {
     onFocus(field) {
         field.isFocused = true;
@@ -7,7 +9,7 @@ const maharlikaMethods = {
         field.hasOwnProperty('value') ? (field.isFocused = (document.getElementById('amount')).value !== '') : false;
         if(field.hasOwnProperty('value')) {
             let stringValue = (document.getElementById('amount')).value;
-            stringValue = stringValue.replace(this.numericOptions.amount.currencySymbol, "");
+            stringValue = stringValue.replace(this.amount.options.currencySymbol, "");
 
             field.isFocused = stringValue !== ''
         }
@@ -17,6 +19,56 @@ const maharlikaMethods = {
         this.recaptcha.verified = true;
     },
 
+    // GasCost * GasPrice = GWeiPrice/ 1B Gwei = ETH
+
+    // varies from the data being transact
+    // required input transferTo address and amount
+    getGasCost() {
+        // if (this.modeIsEther)
+        //     this.$store.state.provider
+        //         .estimateGas({to: this.transferTo.address, value: utils.parseEther(this.amount.value)})
+        //         .then(gasCost => {
+        //             this.gas.costs.ether = Number(gasCost);
+        //             this.gas.limits.ether = Number(gasCost);
+        //         });
+        // else
+        //     this.$store.state.maharlika
+        //         .estimate.transfer(this.transferTo.address, this.amount.value, {from:this.address})
+        //         .then(gasCost => {
+        //             this.gas.costs.mhlk = Number(gasCost);
+        //             this.gas.limits.mhlk = Number(gasCost);
+        //         })
+    },
+
+    // varies from the miner, using ethgasstation.info to get price ranges
+    getGasPrice() {
+        // delete axios.defaults.headers.common["X-Requested-With"];
+        return axios.get('https://ethgasstation.info/json/ethgasAPI.json') // in GWEI
+            .then(response => {
+                let data = response.data;
+                this.gas.prices = {
+                    fast: data.fast /10,
+                    average: data.average /10,
+                    slow: data.safeLow /10,
+                };
+
+                this.gas.selected = this.gas.prices.fast;
+            })
+    },
+
+    // EtherPrice - varies. data from etherscan
+    getEtherPrice() {
+        // return new Promise((resolve, reject) => {
+        //     this.$store.dispatch('updateEtherPrice');
+        //     resolve(this.$store.state.prices.etherInUsd);
+        // })
+    },
+
+    updateTransactionFee() {
+        this.fee.value = (this.submittable && !this.isGasLimitZero)
+            ? ((this.gas.selected / 1e18) * this.gas.limit)
+            : 0;
+    },
 
     resetStatus() {
         this.status = 'Status: New Transaction'
@@ -62,23 +114,23 @@ const maharlikaMethods = {
             });
     },
     transact(web3, contract) {
-        this.transacting = true;
-        let hexAmount = web3.utils.toHex(this.amount * 10**this.$store.state.balances.decimals);
-        this.rawTransaction = {
-            "from": this.address,
-            "gasPrice":web3.utils.toHex(this.gas.selected),
-            "gasLimit":web3.utils.toHex(this.gas.limit),
-            "to": this.usedConfig.contractAddress,
-            "value":"0x0",
-            "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
-            "nonce":web3.utils.toHex(this.count)
-        };
-
-        //sign transaction
-        let transaction = new Tx(this.rawTransaction, { chain: this.$store.state.network, hardfork: 'petersburg' });
-        transaction.sign(new Buffer(this.private.address, 'hex'));
-
-        this.sendTransaction(transaction);
+        // this.transacting = true;
+        // let hexAmount = web3.utils.toHex(this.amount * 10**this.$store.state.balances.decimals);
+        // this.rawTransaction = {
+        //     "from": this.address,
+        //     "gasPrice":web3.utils.toHex(this.gas.selected),
+        //     "gasLimit":web3.utils.toHex(this.gas.limit),
+        //     "to": this.usedConfig.contractAddress,
+        //     "value":"0x0",
+        //     "data": contract.methods.transfer(this.transferTo, hexAmount).encodeABI(),
+        //     "nonce":web3.utils.toHex(this.count)
+        // };
+        //
+        // //sign transaction
+        // let transaction = new Tx(this.rawTransaction, { chain: this.$store.state.network, hardfork: 'petersburg' });
+        // transaction.sign(new Buffer(this.private.address, 'hex'));
+        //
+        // this.sendTransaction(transaction);
 
     },
     sendTransaction(transaction) {
@@ -92,8 +144,8 @@ const maharlikaMethods = {
                 this.resetButtonLoading();
                 this.resetFields();
 
-                this.$store.dispatch('updateCoin', this.address);
-                console.log(this.$store.state.balances.coin);
+                // this.$store.dispatch('updateCoin', this.address);
+                // console.log(this.$store.state.balances.coin);
             })
             .catch(err => {
                 console.log(err.message);
@@ -101,43 +153,8 @@ const maharlikaMethods = {
                 this.resetButtonLoading();
             });
     },
-    getDollarPrice() {
-        delete axios.defaults.headers.common["X-Requested-With"];
-        axios.get('https://api.etherscan.io/api?module=stats&action=ethprice')
-            .then(response => {
-                this.ethPrice.usd = response.data.result.ethusd;
-                console.log(this.ethPrice.usd)
-            })
-    },
-    getGasPrices() {
-        delete axios.defaults.headers.common["X-Requested-With"];
-        axios.get('https://ethgasstation.info/json/ethgasAPI.json')
-            .then(response => {
-                let data = response.data;
-                this.gas.prices = {
-                    fastest: data.fastest * 1e8,
-                    fast: data.fast * 1e8,
-                    average: data.average * 1e8,
-                    slow: data.safeLow * 1e8,
-                    slowest: data.safeLowWait * 1e8,
-                };
 
-                this.gas.selected = this.gas.prices.fastest;
-            })
-    },
-    estimateGasLimit(web3, contract) {
-        let hexAmount = web3.utils.toHex(this.amount * 10**this.$store.state.balances.decimals);
 
-        contract.methods
-            .transfer(this.transferTo, hexAmount)
-            .estimateGas({ from: this.address})
-            .then(limit => {
-                this.gas.limit = limit;
-            })
-            .catch(err => console.log(err));
-
-        return true
-    },
     getNonce() {
         // get transaction count, later will used as nonce
         return this.web3.eth.getTransactionCount(this.address)
@@ -146,12 +163,6 @@ const maharlikaMethods = {
                 console.log(`nonce: ${this.count}`);
             });
     },
-    getEtherBalance() {
-        this.web3.eth.getBalance(this.address)
-            .then(balance => {
-                this.balances.ether = this.web3.utils.fromWei(balance, 'ether');
-            });
-    }
 };
 
 export default maharlikaMethods

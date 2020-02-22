@@ -14,7 +14,7 @@
         <ul class="btn-grp guttar-10px">
             <li>
                 <button class="btn btn-grad border-0" :class="{ 'disable': !transferrable}" :disabled="!transferrable" @click="openModal">
-                    Transfer <span style="font-size: x-small;">(Under Maintenance)</span>
+                    Transfer <span style="font-size: x-small;" v-if="underMaintenance">(Under Maintenance)</span>
                 </button>
             </li>
         </ul>
@@ -34,8 +34,12 @@
         },
         computed: {
             transferrable() {
-                // return this.$store.state.balances.ether > 0 && this.$store.state.balances.coin
-                return false;
+                return this.$store.state.balances.ether > 0
+                    && this.$store.state.balances.coin
+                    && !this.underMaintenance;
+            },
+            underMaintenance() {
+                return (/true/i).test(process.env.MIX_SERVICE_MAINTENANCE);
             }
         },
         methods: {
