@@ -8,7 +8,7 @@
 
                 <div class="user-content">
                     <div class="user-panel">
-                        <div class="row">
+                        <div class="row align-items-center">
                             <maharlika-tile :address="address"></maharlika-tile>
                             <ether-tile :address="address"></ether-tile>
                         </div><!-- .row -->

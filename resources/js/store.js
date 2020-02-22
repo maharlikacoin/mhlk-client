@@ -7,7 +7,7 @@ export default new Vuex.Store({
     state: {
         address: '',
         authenticated: false,
-        network: 'mainnet',
+        network: process.env.MIX_CHAIN_NETWORK,
         config: {
             mainnet: {
                 providerUrl: process.env.MIX_MAINNET,
