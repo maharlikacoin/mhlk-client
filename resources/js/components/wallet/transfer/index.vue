@@ -50,8 +50,9 @@
         },
         mounted() {
             this.$store.subscribe((mutation) => {
-                if(mutation.type === 'TOGGLETRANSFERMODAL' && mutation.payload)
+                if(mutation.type === 'TOGGLETRANSFERMODAL')
                     this.showModal = mutation.payload
+
             })
         }
     }
