@@ -74,7 +74,7 @@
                 <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
             </div>
 
-            <button class="btn btn-grad w-100" :class="{ 'disabled': !submittable || invalid}"
+            <button class="btn btn-grad w-100 bnt-lg" :class="{ 'disabled': !submittable || invalid}"
                     :disabled="!submittable || invalid" v-html="buttonLoading"></button>
             <span v-html="status"></span>
         </v-observer>
