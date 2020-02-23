@@ -38,7 +38,8 @@ export default new Vuex.Store({
             transfer: false,
             login: false
         },
-        wallet: ''
+        wallet: '',
+        underMaintenance: (/true/i).test(process.env.MIX_SERVICE_MAINTENANCE)
     },
     mutations: {
         CHANGENETWORK(state, network) { state.network = network },

@@ -34,7 +34,7 @@
                                 <li>
                                     <button class="btn btn-grad border-0" :class="{ 'disable': !transferrable}"
                                               :disabled="!transferrable" @click="openTransferModal">
-                                        Transfer <span style="font-size: x-small;">(Under Maintenance)</span>
+                                        Transfer <span style="font-size: x-small;" v-if="$store.state.underMaintenance">(Under Maintenance)</span>
                                     </button>
                                 </li>
                             </ul>
@@ -71,8 +71,9 @@
         },
         computed: {
             transferrable() {
-                // return this.balances.ether > 0 && this.balances.coin > 0
-                return false
+                return this.balances.ether > 0
+                    && this.balances.coin > 0
+                    && !this.$store.state.underMaintenance;
             }
         },
         data() {
