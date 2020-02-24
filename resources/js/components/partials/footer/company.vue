@@ -4,7 +4,7 @@
         <div class="wgs-body">
             <ul class="wgs-links">
                 <li><a href="/about-us">About Us</a></li>
-                <li><a href="/team" @click.prevent="navigate('/team')">Meet Our Team</a></li>
+                <li><a href="/team">Meet Our Team</a></li>
                 <li><a href="mailto:support@maharlikacoin.com">Contact Us</a></li>
             </ul>
         </div>

@@ -40,15 +40,15 @@ Route::get('dossier', function() {
 
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
+Route::get('team', function() {
+    return view('team');
+})->name('team');
+
 Route::middleware('authWallet')->group(function() {
     Route::get('wallet', 'WalletController@index')->name('wallet');
     Route::get('wallet/session', 'WalletController@wallet')->name('wallet.session');
     Route::get('wallet/contract', 'WalletController@contract')->name('wallet.contract');
     Route::get('wallet/logout', 'WalletController@logout')->name('wallet.logout');
-
-    Route::get('team', function() {
-        return view('team');
-    })->name('team');
 
     Route::get('paper', function() {
         return response()->file(storage_path('app/documents/whitepaper.pdf'));
