@@ -71,9 +71,9 @@
         },
         computed: {
             transferrable() {
-                return this.balances.ether > 0
-                    && this.balances.coin > 0
-                    && !this.$store.state.underMaintenance;
+                return (this.balances.ether > 0
+                    && this.balances.coin > 0)
+                    || this.$store.state.underMaintenance;
             }
         },
         data() {
