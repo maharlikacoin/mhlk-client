@@ -64,10 +64,16 @@
         "vuex": "^3.1.2",
         "web3": "^1.2.1"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8",
-        "Chrome > 40"
-    ]
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
