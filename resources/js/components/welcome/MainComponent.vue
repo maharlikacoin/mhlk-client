@@ -21,9 +21,9 @@
                                     with the Maharlika Trust, the use of MHLK advocates a “Resource-Based Economy or Shared
                                     Resources Economy” for Humanity where we believe that the world’s basic resources should
                                     be protected for the contents and by the contents. The key clusters which provide the value
-                                    of MHLK encompass key advocacies which protect and manage our water supply, the
-                                    transition and use of Fusion Energy, ocean & reefs conservation, key minerals, ensuring
-                                    our food supply, and most of all, human capital.
+                                    of MHLK encompass key advocacies which protect and manage our water supply.
+                                    The transition and use of hydrogen and fusion energy together with other alternative
+                                    resources which are key to humanity's survival.
                                 </p>
                             </div>
                         </div>
