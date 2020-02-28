@@ -23,7 +23,7 @@
         <b-modal v-model="show" centered hide-header hide-footer no-close-on-backdrop size="xl">
             <button title="Close" class="mfp-close cursor text-black-50" @click="show = false">×</button>
             <div class="team-popup">
-                <div class="row align-items-start">
+                <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="team-photo">
                             <img :src="'/images/team/'+person.image" :alt="person.name">
