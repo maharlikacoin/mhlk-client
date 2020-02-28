@@ -20,7 +20,7 @@
                                     Cryptocurrency</strong>. Issued by the Swiss-based Formula Green Foundation in partnership
                                     with the Maharlika Trust, the use of MHLK advocates a “Resource-Based Economy or Shared
                                     Resources Economy” for Humanity where we believe that the world’s basic resources should
-                                    be protected for the contents and by the contents. The key clusters which provide the value
+                                    be protected for the people and by the people. The key clusters which provide the value
                                     of MHLK encompass key advocacies which protect and manage our water supply.
                                     The transition and use of hydrogen and fusion energy together with other alternative
                                     resources which are key to humanity's survival.

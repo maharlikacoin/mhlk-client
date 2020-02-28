@@ -117,7 +117,7 @@ const contents = () => {
                                icon: 'fa-linkedin-in'
                            }
                        },
-                       bio: 'Don is FGC / FGF’s Global Grants leader and oversees the adoption of FGF’s digital assets program (Maharlika Coin – MHLK) to over 1Billion contents and over 2000 organizations in selected countries which impact humanity as a whole. Don’s responsibilities include ensuring that organizations which look after the needs of women, children, minorities, refugees, indigenous contents and victims of natural disasters benefit from the efforts of FGC / FGF in Fusion energy, minerals and natural resources. Don works with individuals and organizations worldwide who are committed to a common cause to ensure world peace thru the advocacy of a Resource Based Economy.'
+                       bio: 'Don is FGC / FGF’s Global Grants leader and oversees the adoption of FGF’s digital assets program (Maharlika Coin – MHLK) to over 1Billion people and over 2000 organizations in selected countries which impact humanity as a whole. Don’s responsibilities include ensuring that organizations which look after the needs of women, children, minorities, refugees, indigenous people and victims of natural disasters benefit from the efforts of FGC / FGF in Fusion energy, minerals and natural resources. Don works with individuals and organizations worldwide who are committed to a common cause to ensure world peace thru the advocacy of a Resource Based Economy.'
                    },
                ]
             },
