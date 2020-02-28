@@ -106,7 +106,7 @@ const contents = () => {
                        bio: 'Simon has been a finance professional for the past 30 years. He has a close working relationship with a diverse range of family offices and funds all over the world and specializes in structured finance which includes bonds and fixed income instruments.'
                    },
                    {
-                       name: 'Mr. Donald Sanchies',
+                       name: 'Mr. Donald Sanchez',
                        nickname: 'don',
                        position: 'Director - Global Grants',
                        image: '08-donald.jpg',
