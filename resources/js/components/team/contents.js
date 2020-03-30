@@ -32,20 +32,6 @@ const contents = () => {
                        bio: 'Tasked to head overall corporate development and operations for FGC, Rich has prior interests in technology and consumer good startups. He was behind the development, launch, and distribution of several liquor brands with presence in the Philippines, the Netherlands and the United States. Rich previously held positions with various technology companies in Silicon Valley, CA. He has provided value in organizational structure, product development, partnerships/alliances and has negotiated acquisitions and leveraged buy-outs.'
                    },
                    {
-                       name: 'Mr. Allen Mascenon',
-                       nickname: 'allen',
-                       position: 'Director - Ecosystems',
-                       image: '05-allen.jpg',
-                       nationalities: ['ph'],
-                       social: {
-                           linkedIn: {
-                               url: 'https://www.linkedin.com/in/allenmascenon',
-                               icon: 'fa-linkedin-in'
-                           }
-                       },
-                       bio: 'Allen is FGC’s Ecosystems Leader tasked to ensure that humanity as a whole enjoy a dividend system in this era of advocating a resource based economy. He is behind one of the largest bill payment systems in the Philippines with over 1,500 franchises nationwide and expanding global operations. He has been recognized by the Business Initiative Directions Convention in Geneva, Switzerland for his efforts focused on electronic and mobile commerce.'
-                   },
-                   {
                        name: 'Mr. Denis Lucindo',
                        nickname: 'denis',
                        position: 'Director - Strategic Development',
