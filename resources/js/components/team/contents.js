@@ -32,18 +32,18 @@ const contents = () => {
                        bio: 'Tasked to head overall corporate development and operations for FGC, Rich has prior interests in technology and consumer good startups. He was behind the development, launch, and distribution of several liquor brands with presence in the Philippines, the Netherlands and the United States. Rich previously held positions with various technology companies in Silicon Valley, CA. He has provided value in organizational structure, product development, partnerships/alliances and has negotiated acquisitions and leveraged buy-outs.'
                    },
                    {
-                       name: 'Mr. Denis Lucindo',
-                       nickname: 'denis',
-                       position: 'Director - Strategic Development',
-                       image: '07-dennis.jpg',
-                       nationalities: ['ph'],
+                       name: 'Mr. Donald Sanchez',
+                       nickname: 'don',
+                       position: 'Director - Global Grants',
+                       image: '08-donald.jpg',
+                       nationalities: ['us'],
                        social: {
                            linkedIn: {
-                               url: 'https://www.linkedin.com/in/denis-lucindo-649a117',
+                               url: 'https://www.linkedin.com/in/',
                                icon: 'fa-linkedin-in'
                            }
                        },
-                       bio: 'Denis has been a strategy, business development, and M&A professional for the past 20 years. He was previously with Metro Pacific Investments Corporation, the Philippine arm of Hong Kong listed First Pacific Corporation. He led the acquisition of Philex Mining as well as implementing best practices on several other natural resource and infrastructure investments. He has also held executive positions in food and media companies. Denis is focused on the \'Resource Based Economy\' initiative of FGC in partnership with various institutions worldwide.'
+                       bio: 'Don is FGC / FGF’s Global Grants leader and oversees the adoption of FGF’s digital assets program (Maharlika Coin – MHLK) to over 1Billion people and over 2000 organizations in selected countries which impact humanity as a whole. Don’s responsibilities include ensuring that organizations which look after the needs of women, children, minorities, refugees, indigenous people and victims of natural disasters benefit from the efforts of FGC / FGF in Fusion energy, minerals and natural resources. Don works with individuals and organizations worldwide who are committed to a common cause to ensure world peace thru the advocacy of a Resource Based Economy.'
                    },
                ]
             },
@@ -92,24 +92,6 @@ const contents = () => {
                        bio: 'Simon has been a finance professional for the past 30 years. He has a close working relationship with a diverse range of family offices and funds all over the world and specializes in structured finance which includes bonds and fixed income instruments.'
                    },
                    {
-                       name: 'Mr. Donald Sanchez',
-                       nickname: 'don',
-                       position: 'Director - Global Grants',
-                       image: '08-donald.jpg',
-                       nationalities: ['us'],
-                       social: {
-                           linkedIn: {
-                               url: 'https://www.linkedin.com/in/',
-                               icon: 'fa-linkedin-in'
-                           }
-                       },
-                       bio: 'Don is FGC / FGF’s Global Grants leader and oversees the adoption of FGF’s digital assets program (Maharlika Coin – MHLK) to over 1Billion people and over 2000 organizations in selected countries which impact humanity as a whole. Don’s responsibilities include ensuring that organizations which look after the needs of women, children, minorities, refugees, indigenous people and victims of natural disasters benefit from the efforts of FGC / FGF in Fusion energy, minerals and natural resources. Don works with individuals and organizations worldwide who are committed to a common cause to ensure world peace thru the advocacy of a Resource Based Economy.'
-                   },
-               ]
-            },
-            {
-               team: [
-                   {
                        name: 'Mr. Thomas Schibli',
                        nickname: 'thomas',
                        position: 'Director - Digital Assets',
@@ -123,6 +105,10 @@ const contents = () => {
                        },
                        bio: 'Thomas is FGC’s Digital Assets Leader and oversees the adoption of our digital assets program using the asset-backed cryptocurrency (“Maharlika Coin -MHLK”) worldwide. Thomas handles government relations and compliance with selected countries who have embraced digital assets / currencies and is also tasked to handle relationships with the Formula Green Foundation’s (FGF) custodian banks for digital currencies to ensure that Humanity is the main beneficiary of FGC’s efforts across Fusion Energy, minerals and natural resources. Thomas has handled investments and insurance during his career.'
                    },
+               ]
+            },
+            {
+               team: [
                    {
                        name: 'Mr. Keith Spears',
                        nickname: 'keith',
@@ -152,24 +138,6 @@ const contents = () => {
                        bio: 'David is Formula Green Corporation (FGC) and Formula Green Foundation’s (FGF) Philanthropy Alliances Leader tasked to identify, create and manage key alliances and partners to advocate the use of Fusion Energy and support FGC’s digital assets program. David represents FGC in public speaking engagements and also produces a yearly awards event in conjunction with the United Nations which recognizes the best of human capital which change the world we live in. David is an alumnus of the University of California Berkeley and Harvard University.'
                    },
                    {
-                       name: 'Mr. Christopher H. Cooper',
-                       nickname: 'chris',
-                       position: 'Director - Nanotechnology',
-                       image: '12-cooper.jpg',
-                       nationalities: ['us'],
-                       social: {
-                           linkedIn: {
-                               url: 'https://www.linkedin.com/in/',
-                               icon: 'fa-linkedin-in'
-                           }
-                       },
-                       bio: 'Chris heads the use of nanotechnology with collaborative functions in Artificial Intelligence and Fusion with FGC’s Resource Based Economy (RBE) program. Responsible for inventing multiple patents in the nanotechnology industry for gas / hydrogen related extraction and water purification uses by the US Special Forces, Rural Africa, Disaster Relief and ISS projects, he advocates the use of his patents for the benefit of FGC’s ‘Dividend for Humanity’ program. Chris is also FGC’s government relations lead for defense contracts.'
-                   },
-               ]
-            },
-            {
-               team: [
-                   {
                        name: 'Mr. Alberto D. Santos',
                        nickname: 'talby',
                        position: 'Director - Natural Resources & Environmental Compliance',
@@ -198,8 +166,7 @@ const contents = () => {
                        bio: 'Chris is FGC’s Human Capital Leader which oversees the best and brightest are deployed for the various initiatives of the Formula Green Foundation (FGF) and its global 10million strong Official Maharlika Movement across artificial intelligence (AI), finance, technology, high-tech agriculture, high-tech aquaculture, media & entertainment and security. Chris has spent his career in a senior capacity in executive search and human resources. Chris is bilingual in English and Mandarin and is a representative to the Forbes and World Economic Forum conferences.'
                    }
                ]
-            }
-
+            },
         ]
     }
 };
