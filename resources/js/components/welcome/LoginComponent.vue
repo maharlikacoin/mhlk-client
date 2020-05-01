@@ -1,6 +1,6 @@
 <template>
     <div class="cpn-btns">
-        <button class="btn btn-lg btn-grad-transparent" @click="$store.dispatch('toggleLogin', true)">Access your Wallet</button>
+        <button class="btn btn-lg btn-grad grant border-0" @click="$store.dispatch('toggleLogin', true)">Access your Wallet</button>
         <b-modal ref="login-modal" v-model="showModal" centered hide-header hide-footer no-close-on-backdrop @hidden="onHide">
             <button class="modal-close"
                     data-dismiss="modal" aria-label="Close" @reset="resetModal" @click="showModal = false">
