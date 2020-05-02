@@ -30,16 +30,17 @@
                         <span class="pl-2 small text-success" v-if="keys.private">Tap or Click your Wallet Key to copy</span>
                     </div>
 
-                    <!-- recaptcha -->
+                    <!-- hcaptcha -->
                     <div class="pb-4 d-flex flex-column align-items-center">
-                        <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
-                                       ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
-                        <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
+                        <vue-hcaptcha :sitekey="hcaptcha.siteKey" ref="createHcaptcha"
+                                      @error="onHcaptchaError" @verify="verifyHcaptcha" @expired="onHcaptchaExpire">
+                        </vue-hcaptcha>
+                        <div class="small text-danger" v-if="!hcaptcha.verified">{{ hcaptcha.message }}</div>
                     </div>
 
                     <!-- Create button -->
-                    <b-button class="btn btn-grad w-100 border-0 btn-lg" :class="{ 'disabled': busy || !recaptcha.verified }"
-                              @click="create" :disabled="busy || !recaptcha.verified"
+                    <b-button class="btn btn-grad w-100 border-0 btn-lg" :class="{ 'disabled': busy || !hcaptcha.verified }"
+                              @click="create" :disabled="busy || !hcaptcha.verified"
                               v-html="buttonLoading"></b-button>
 
                     <span v-show="busy" v-html="status"></span>
@@ -52,14 +53,14 @@
 <script>
     import {BModal, BButton} from 'bootstrap-vue';
     import wallet from 'ethereumjs-wallet';
-    import VueRecaptcha from 'vue-recaptcha'
+    import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
     export default {
         name: "CreateWallet",
         components: {
             BModal,
             BButton,
-            VueRecaptcha
+            VueHcaptcha
         },
         data() {
             return {
@@ -71,9 +72,10 @@
                     private: ''
                 },
                 status: 'Please wait ...',
-                recaptcha: {
+                hcaptcha: {
                     verified: false,
-                    message: ''
+                    message: '',
+                    siteKey: process.env.MIX_HCAPTCHA_SITE_KEY
                 }
             }
         },
@@ -89,21 +91,31 @@
                 this.keys.private = '';
             },
             create() {
-                if(!this.recaptcha.verified) {
-                    this.recaptcha.message = 'Please let us know that you are not a Robot.';
+                if(!this.hcaptcha.verified) {
+                    this.hcaptcha.message = 'Please let us know that you are not a Robot.';
                     return;
                 }
 
                 let myWallet = wallet.generate();
                 this.keys.public = myWallet.getAddressString();
                 this.keys.private = myWallet.getPrivateKeyString().substring(2);
-                this.$refs.createRecaptcha.reset();
-                this.recaptcha.message = '';
-                this.recaptcha.verified = false;
+                this.$refs.createHcaptcha.reset();
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = false;
             },
-            verifyRecaptcha() {
-                this.recaptcha.message = '';
-                this.recaptcha.verified = true;
+            verifyHcaptcha() {
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = true;
+            },
+            onHcaptchaExpire() {
+                alert('Captcha Expired. Please answer again');
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = false;
+            },
+            onHcaptchaError() {
+                alert('Captcha Fails.');
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = false;
             }
         }
     }
