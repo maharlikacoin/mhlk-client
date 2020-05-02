@@ -7,7 +7,7 @@
                 <em class="ti ti-close"></em>
             </button>
             <div class="ath-container p-4">
-                <h2 class="pt-2 pb-5 text-center">Welcome to <span class="text-gold">Maharlika Coin</span></h2>
+                <h2 class="pt-2 pb-5 text-center">Welcome to <span style="color:goldenrod">Maharlika Coin</span></h2>
                 <v-observer ref="observerLoginForm" v-slot="{ invalid }"  tag="form" @submit.prevent="access">
 
                     <v-provider vid="publicKey" name="Wallet Address" rules="required|ethereumAddress" tag="div" mode="aggressive"
@@ -28,17 +28,21 @@
                         <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
                     </v-provider>
 
-                    <!-- recaptcha -->
+                    <!-- hcaptcha -->
                     <div class="pb-4 d-flex flex-column align-items-center">
-                        <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
-                                       @expired="expireRecaptcha"
-                                       ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
-                        <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
+                        <vue-hcaptcha :sitekey="hcaptcha.siteKey" ref="createHcaptcha"
+                                      @error="onHcaptchaError" @verify="verifyHcaptcha" @expired="onHcaptchaExpire">
+                        </vue-hcaptcha>
+                        <div class="small text-danger" v-if="!hcaptcha.verified">{{ hcaptcha.message }}</div>
                     </div>
 
-                    <button class="btn btn-grad w-100 border-0 btn-lg" :class="{ 'disabled': invalid || busy || !recaptcha.verified }"
-                            :disabled="invalid || busy || !recaptcha.verified" v-html="button"></button>
+                    <!-- Access Button-->
+                    <button class="btn btn-grad w-100 border-0 btn-lg" :class="{ 'disabled': invalid || busy || !hcaptcha.verified }"
+                            :disabled="invalid || busy || !hcaptcha.verified" v-html="button"></button>
                     <div class="small text-danger" v-if="account.error">{{ account.message }}</div>
+
+                    <!-- Dont have wallet -->
+                    <div class="create small text-muted pointer mt-3" @click="$store.dispatch('toggleLogin', false)">Don't have wallet yet?</div>
                 </v-observer>
             </div>
         </b-modal><!-- .modal @e -->
@@ -51,7 +55,7 @@
     import { BModal } from 'bootstrap-vue';
     import { utils } from 'ethers';
     import { ValidationObserver, ValidationProvider} from 'vee-validate';
-    import VueRecaptcha from 'vue-recaptcha'
+    import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
     Vue.component('VObserver', ValidationObserver);
     Vue.component('VProvider', ValidationProvider);
@@ -74,9 +78,10 @@
             },
             button: 'Access',
             busy: false,
-            recaptcha: {
+            hcaptcha: {
                 verified: false,
-                message: ''
+                message: '',
+                siteKey: process.env.MIX_HCAPTCHA_SITE_KEY
             }
         }
     }
@@ -84,7 +89,7 @@
 		name: "LoginComponent",
         components: {
 		    BModal,
-            VueRecaptcha
+            VueHcaptcha
         },
         data() {
 		    return initialState()
@@ -100,8 +105,8 @@
                 field.isFocused = field.key !== '';
             },
 		    access() {
-                if(!this.recaptcha.verified) {
-                    this.recaptcha.message = 'Please let us know that you are not a Robot.';
+                if(!this.hcaptcha.verified) {
+                    this.hcaptcha.message = 'Please let us know that you are a human.';
                     return;
                 }
 		       this.verify(this)
@@ -152,13 +157,19 @@
                 Object.assign(this.$data, initialState());
                 requestAnimationFrame(() => this.$refs.observer.reset());
             },
-            verifyRecaptcha() {
-                this.recaptcha.message = '';
-                this.recaptcha.verified = true;
+            verifyHcaptcha() {
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = true;
             },
-            expireRecaptcha() {
-                this.recaptcha.message = 'Recaptcha expired, check the checkbox again.';
-                this.recaptcha.verified = false;
+            onHcaptchaExpire() {
+                alert('Captcha Expired. Please answer again');
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = false;
+            },
+            onHcaptchaError() {
+                alert('Captcha Fails.');
+                this.hcaptcha.message = '';
+                this.hcaptcha.verified = false;
             }
         },
         mounted() {
@@ -175,5 +186,8 @@
     }
     .text-gold {
         color: #dcb251;
+    }
+    div.create:hover{
+        color: darkgoldenrod !important;
     }
 </style>
