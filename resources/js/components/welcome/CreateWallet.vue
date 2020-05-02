@@ -9,7 +9,7 @@
             <button class="modal-close" @click="showModal = false">
                 <em class="ti ti-close"></em>
             </button>
-            <div class="ath-container m-0">
+            <div class="ath-container p-4">
 
                 <div class="ath-body pad-0">
                     <h5 class="ath-heading title py-4">Create Wallet</h5>
@@ -19,6 +19,7 @@
                                 v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.public }}
                         </button>
                         <label for="publicKey" class="field-label field-label-line">Wallet Address (Public Key)</label>
+                        <span class="pl-2 small text-success" v-if="keys.public">Tap or Click your Wallet Address to copy</span>
                     </div>
 
                     <div class="field-item input-focused">
@@ -26,6 +27,7 @@
                                 v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.private }}
                         </button>
                         <label for="privateKey" class="field-label field-label-line">Wallet Key (Private Key)</label>
+                        <span class="pl-2 small text-success" v-if="keys.private">Tap or Click your Wallet Key to copy</span>
                     </div>
 
                     <!-- recaptcha -->
@@ -117,12 +119,19 @@
         background: rgba(0, 0, 0, 0.1);
         padding: 30px 15px 15px;
         color: #415076;
+        height: 65px;
+    }
+
+    button.key:hover {
+        background: goldenrod;
+        color: darkred;
     }
 
     button.key + label {
         padding-left: 15px;
         padding-top: 3px;
         top: 0;
+        z-index: 2;
     }
 
     .input-line:focus {

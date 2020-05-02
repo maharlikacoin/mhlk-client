@@ -1,7 +1,7 @@
 <template>
     <div class="col-lg-6">
-        <div class="contact-wrap split split-left split-lg-left bg-white">
-            <h5 class="title title-md">Contact Us</h5>
+        <div class="contact-wrap split split-left split-lg-left bg-white rounded-0 shadow-dark">
+            <h5 class="title title-md" style="color:goldenrod">Contact Us</h5>
             <v-observer ref="observer" v-slot="{ invalid }"  tag="form" @submit.prevent="send" @reset="resetForm">
 
                 <!-- name -->
@@ -40,7 +40,7 @@
 
                 <div class="row">
                     <div class="col-sm-4">
-                        <button class="btn btn-lg btn-grad" :class="{ 'disabled':  invalid && !form.recaptcha.verified}"
+                        <button class="btn btn-lg btn-grad border-0" :class="{ 'disabled':  invalid && !form.recaptcha.verified}"
                                 :disabled="invalid || !form.recaptcha.verified" type="submit" >Submit</button>
                     </div>
                 </div>

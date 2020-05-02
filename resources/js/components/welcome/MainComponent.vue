@@ -4,7 +4,7 @@
             <div class="container">
                 <!-- Block @s -->
                 <div class="nk-block nk-block-about">
-                    <div class="row align-items-center gutter-vr-30px pdb-l">
+                    <div class="row align-items-center gutter-vr-30px px-3 pdb-l">
                         <div class="col-lg-5 order-lg-last">
                             <div class="text-right text-center-sm">
                                 <img src="/images/maharlika-coin-gold.png" alt="MHLK">
@@ -13,11 +13,12 @@
                         <div class="col-lg-7">
                             <div class="nk-block-text">
                                 <h2 class="title title-sm">
-                                    <span class="font-weight-lighter text-about-sm mr-2">About</span> Maharlika Coin
+                                    <span class="font-weight-lighter text-about-sm mr-2">About</span>
+                                    <span style="color:goldenrod">Maharlika Coin</span>
                                 </h2>
                                 <p class="text-justify">
-                                    The Maharlika Coin (MHLK) is <strong>The World’s first Asset-Backed, wealth distribution
-                                    Cryptocurrency</strong>. Issued by the Swiss-based Formula Green Foundation in partnership
+                                    The Maharlika Coin (MHLK) is The World’s first Asset-Backed, wealth distribution
+                                    Cryptocurrency. Issued by the Swiss-based Formula Green Foundation in partnership
                                     with the Maharlika Trust, the use of MHLK advocates a “Resource-Based Economy or Shared
                                     Resources Economy” for Humanity where we believe that the world’s basic resources should
                                     be protected for the people and by the people. The key clusters which provide the value

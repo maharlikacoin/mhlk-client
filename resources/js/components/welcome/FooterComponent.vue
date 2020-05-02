@@ -10,7 +10,7 @@
 
                         <!-- right -->
                         <div class="col-lg-4">
-                            <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light">
+                            <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light rounded-0 shadow-dark">
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <!-- top -->
                                     <ul class="contact-list">
