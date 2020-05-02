@@ -26,6 +26,7 @@
         "worker-loader": "^2.0.0"
     },
     "dependencies": {
+        "@hcaptcha/vue-hcaptcha": "^0.2.1",
         "autonumeric": "^4.5.10",
         "bootstrap-vue": "^2.0.0-rc.28",
         "browserslist": "^4.7.0",
