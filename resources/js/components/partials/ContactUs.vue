@@ -31,17 +31,18 @@
                     <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
                 </v-provider>
 
-                <!-- recaptcha -->
+                <!-- hcaptcha -->
                 <div class="pb-4">
-                    <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
-                                   ref="recaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
-                    <div class="small text-danger" v-if="!form.recaptcha.verified">{{ form.recaptcha.message }}</div>
+                    <vue-hcaptcha :sitekey="form.hcaptcha.siteKey"
+                                  @error="onError" @verify="verifyHcaptcha" @expired="onExpire">
+                    </vue-hcaptcha>
+                    <div class="small text-danger" v-if="!form.hcaptcha.verified">{{ form.hcaptcha.message }}</div>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-4">
-                        <button class="btn btn-lg btn-grad border-0" :class="{ 'disabled':  invalid && !form.recaptcha.verified}"
-                                :disabled="invalid || !form.recaptcha.verified" type="submit" >Submit</button>
+                        <button class="btn btn-lg btn-grad border-0" :class="{ 'disabled':  invalid && !form.hcaptcha.verified}"
+                                :disabled="invalid || !form.hcaptcha.verified" type="submit" >Submit</button>
                     </div>
                 </div>
             </v-observer>
@@ -50,8 +51,8 @@
 </template>
 
 <script>
-    import VueRecaptcha from 'vue-recaptcha'
     import {ValidationObserver, ValidationProvider, setInteractionMode} from 'vee-validate'
+    import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
     setInteractionMode('lazy');
     Vue.component('VObserver', ValidationObserver);
@@ -63,16 +64,17 @@
                 name: '',
                 email: '',
                 message: '',
-                recaptcha: {
+                hcaptcha: {
                     verified: false,
-                    message: ''
+                    message: '',
+                    siteKey: process.env.MIX_HCAPTCHA_SITE_KEY
                 }
             }
         }
     }
 	export default {
 		name: "ContactUs",
-        components: { VueRecaptcha },
+        components: { VueHcaptcha },
         data() {
 		    return initialState()
         },
@@ -80,8 +82,8 @@
             async send() {
                 const isValid = await this.$refs.observer.validate();
 
-                if(!this.form.recaptcha.verified) {
-                    this.form.recaptcha.message = 'Please let us know that you are not a Robot.';
+                if(!this.form.hcaptcha.verified) {
+                    this.form.hcaptcha.message = 'Please let us know that you are not a Robot.';
                     return;
                 }
                 if (!isValid ) return;
@@ -132,12 +134,22 @@
                 Object.assign(this.$data, initialState());
                 requestAnimationFrame(() => {
                     this.$refs.observer.reset();
-                    this.$refs.recaptcha.reset();
+                    this.$refs.hcaptcha.reset();
                 });
             },
-            verifyRecaptcha() {
-                this.form.recaptcha.message = '';
-                this.form.recaptcha.verified = true;
+            verifyHcaptcha() {
+                this.form.hcaptcha.message = '';
+                this.form.hcaptcha.verified = true;
+            },
+            onExpire() {
+                alert('Captcha Expired. Please answer again');
+                this.form.hcaptcha.message = '';
+                this.form.hcaptcha.verified = false;
+            },
+            onError() {
+                alert('Captcha Fails.');
+                this.form.hcaptcha.message = '';
+                this.form.hcaptcha.verified = false;
             }
         }
 	}
