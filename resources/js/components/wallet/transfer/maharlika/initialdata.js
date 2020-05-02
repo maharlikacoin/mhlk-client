@@ -54,10 +54,6 @@ const initialdata = () => {
                 }
             },
             conversionURL: 'https://free.currconv.com/api/v7/convert',
-            recaptcha: {
-                verified: false,
-                message: ''
-            },
 
             convertFromEth: {
                 toUsd: 0,

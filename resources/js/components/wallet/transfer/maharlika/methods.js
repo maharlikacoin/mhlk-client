@@ -14,10 +14,6 @@ const maharlikaMethods = {
             field.isFocused = stringValue !== ''
         }
     },
-    verifyRecaptcha() {
-        this.recaptcha.message = '';
-        this.recaptcha.verified = true;
-    },
 
     // GWeiPrice = GasCost * GasPrice
     // ETH = GWeiPrice/ 1B Gwei

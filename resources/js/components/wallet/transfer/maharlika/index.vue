@@ -67,13 +67,6 @@
                 <div class="small text-danger" v-if="errors.length">{{ errors[0] }}</div>
             </v-provider>
 
-            <!-- recaptcha -->
-            <div class="pb-4 align-items-center d-flex flex-column">
-                <vue-recaptcha sitekey="6LehC8sUAAAAAPClZLOLeTz43VGiK6014b0KpmmQ" @verify="verifyRecaptcha"
-                               ref="createRecaptcha" :loadRecaptchaScript="true"></vue-recaptcha>
-                <div class="small text-danger" v-if="!recaptcha.verified">{{ recaptcha.message }}</div>
-            </div>
-
             <button class="btn btn-grad w-100 btn-lg" :class="{ 'disabled': !submittable || invalid}"
                     :disabled="!submittable || invalid" v-html="buttonLoading"></button>
             <span v-html="status"></span>
@@ -84,7 +77,6 @@
 <script>
     import VueAutonumeric from '../../../partials/VueAutonumeric'
     import {ValidationObserver, ValidationProvider} from 'vee-validate';
-    import VueRecaptcha from 'vue-recaptcha'
     import initialData from './initialdata'
     import maharlikaMethods from './methods'
     import {utils} from 'ethers'
@@ -96,7 +88,6 @@
 		name: "maharlika",
         props: ['connected'],
         components: {
-            VueRecaptcha,
             VueAutonumeric,
         },
         computed: {
@@ -108,7 +99,7 @@
             },
             submittable() {
                 return this.transferrable && this.private.address !== '' && this.transferTo.isValid
-                    && this.recaptcha.verified && this.connected !== '' && this.isValidAmount
+                    && this.connected !== '' && this.isValidAmount
             },
             address() {
                 return this.$store.state.address
