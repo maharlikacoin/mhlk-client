@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::post('contact-us', 'WelcomeController@contactUs')->name('contact-us');
 
 Route::get('about-us', function() {
-    return view('us');
+    return view('welcome');
 })->name('about-us');
 
 Route::get('terms-and-conditions', function() {
@@ -26,11 +26,11 @@ Route::get('terms-and-conditions', function() {
 })->name('terms');
 
 Route::get('privacy-policy', function() {
-    return view('privacy');
+    return view('welcome');
 })->name('privacy');
 
 Route::get('project-legacy', function() {
-    return view('dossier');
+    return view('welcome');
 })->name('project.legacy');
 
 Route::get('dossier', function() {
@@ -41,7 +41,7 @@ Route::get('dossier', function() {
 Route::post('wallet', 'WalletController@login')->name('wallet.login');
 
 Route::get('team', function() {
-    return view('team');
+    return view('welcome');
 })->name('team');
 
 Route::middleware('authWallet')->group(function() {
@@ -55,7 +55,7 @@ Route::middleware('authWallet')->group(function() {
     })->name('paper');
 
     Route::get('whitepaper', function() {
-        return view('whitepaper');
+        return view('welcome');
     })->name('whitepaper');
 });
 

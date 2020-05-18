@@ -15,13 +15,6 @@
                                     <!-- top -->
                                     <ul class="contact-list">
                                         <li>
-                                            <a href="#"><i class="fas fa-building"></i></a>
-                                            <div class="contact-text">
-                                                <h6>Formula Green Foundation</h6>
-                                                <span>Zug, Switzerland</span>
-                                            </div>
-                                        </li>
-                                        <li>
                                             <a href="mailto:support@maharlikacoin.com"><i class="fas fa-envelope-square"></i></a>
 
                                             <div class="contact-text"><span>support@maharlikacoin.com</span></div>

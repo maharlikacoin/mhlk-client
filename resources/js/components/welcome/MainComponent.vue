@@ -18,13 +18,13 @@
                                 </h2>
                                 <p class="text-justify">
                                     The Maharlika Coin (MHLK) is The World’s first Asset-Backed, wealth distribution
-                                    Cryptocurrency. Issued by the Swiss-based Formula Green Foundation in partnership
-                                    with the Maharlika Trust, the use of MHLK advocates a “Resource-Based Economy or Shared
-                                    Resources Economy” for Humanity where we believe that the world’s basic resources should
-                                    be protected for the people and by the people. The key clusters which provide the value
-                                    of MHLK encompass key advocacies which protect and manage our water supply.
-                                    The transition and use of hydrogen and fusion energy together with other alternative
-                                    resources which are key to humanity's survival.
+                                    Cryptocurrency. Issued by the <a href="https://www.mhlkfoundation.com" style="color: goldenrod;">
+                                    MHLK Foundation</a>, the use of MHLK advocates a “Resource-Based Economy or Shared
+                                    Resources Economy” for Humanity where we believe that the world’s basic resources
+                                    should be protected for the people and by the people. The key clusters which provide
+                                    the value of MHLK encompass key advocacies which protect and manage our water
+                                    supply. The transition and use of hydrogen and fusion energy together with other
+                                    alternative resources which are key to humanity's survival.
                                 </p>
                             </div>
                         </div>
@@ -36,9 +36,9 @@
 </template>
 
 <script>
-	export default {
-		name: "MainComponent"
-	}
+    export default {
+        name: "MainComponent"
+    }
 </script>
 
 <style scoped>

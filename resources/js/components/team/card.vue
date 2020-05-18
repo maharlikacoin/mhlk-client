@@ -66,24 +66,5 @@
 </script>
 
 <style scoped>
-    .cursor{
-        cursor: pointer;
-    }
-    .bg-black-70 {
-        background-color:  rgba(0, 0, 0, 0.70);
-    }
-    .team-popup {
-        padding: 0;
-    }
 
-    .modal-content, .modal-body {
-        background: transparent!important;
-    }
-    .modal-content {
-        border: 0;
-        width: auto;
-    }
-    .modal-body {
-        padding: 0;
-    }
 </style>
