@@ -1,6 +1,6 @@
 <template>
     <main class="nk-pages" @click="preventOpen" @contextmenu="preventOpen">
-        <section class="section section-l bg-light">
+        <section class="section section-l bg-black-5">
             <div class="container">
                 <div class="nk-block nk-block-blog">
                     <div class="row">
@@ -11,15 +11,14 @@
                                     style="display: inline-block; width: 100%"></pdf>
 
                                 <div class="container" v-if="error.exists">
-                                    <div class="bg-black-22 py-5 round shadow text-center text-red">
+                                    <div class="bg-white py-5 round shadow text-center text-red">
                                         <p class="font-weight-bold">
                                             <i class="fas fa-times-circle"></i>
                                             {{ error.message }}
                                         </p>
-                                        <p class="font-italic error-details">"{{ error.details }}"</p>
-                                        <p>Please let us know this problem.</p>
-                                        <p>Send us an email at
-                                            <a href="mailto:support@formulagreencorp.com">support@formulagreencorp.com</a></p>
+                                        <p>{{ error.details }}</p>
+                                        <p>Let us know this problem by sending us an email at
+                                            <a href="mailto:support@maharlikacoin.com">support@maharlikacoin.com</a></p>
                                     </div>
                                 </div>
 
@@ -53,12 +52,17 @@
         mounted () {
             try {
                 this.src = pdf.createLoadingTask(process.env.MIX_WHITEPAPER_URL);
+                this.src = pdf.createLoadingTask({
+                    url: `${process.env.MIX_WHITEPAPER_URL}`,
+                    password: `${process.env.MIX_WHITEPAPER_PASSWORD}`
+                });
 
                 this.src
                     .then(pdf => this.numPages = pdf.numPages)
                     .catch(err => {
                         this.error.exists = true;
-                        this.error.message = 'File does not exist';
+                        this.error.message = 'Failed to load PDF file.';
+                        this.error.details = 'Check your internet connection.'
                     });
             }catch (e) {
                 this.error.exists = true;

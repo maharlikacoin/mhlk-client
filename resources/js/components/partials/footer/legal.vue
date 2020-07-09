@@ -5,7 +5,7 @@
             <ul class="wgs-links">
                 <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
                 <li><a href="/privacy-policy">Privacy</a></li>
-                <li><a href="/whitepaper" @click.prevent="navigate('/whitepaper')">Whitepaper</a></li>
+                <li><a href="/whitepaper">Whitepaper</a></li>
             </ul>
         </div>
     </div>
