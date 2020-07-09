@@ -42,7 +42,7 @@
                     <div class="small text-danger" v-if="account.error">{{ account.message }}</div>
 
                     <!-- Dont have wallet -->
-                    <div class="create small text-muted pointer mt-3" @click="$store.dispatch('toggleLogin', false)">Don't have wallet yet?</div>
+                    <div class="create small text-muted pointer mt-3" @click="dontHaveWallet">Don't have wallet yet?</div>
                 </v-observer>
             </div>
         </b-modal><!-- .modal @e -->
@@ -95,6 +95,10 @@
 		    return initialState()
         },
         methods: {
+		    dontHaveWallet() {
+                this.$store.dispatch('toggleLogin', false);
+                setTimeout(()=>this.$store.dispatch('toggleCreate', true),300);
+            },
 		    onHide() {
 		        this.$store.dispatch('toggleLogin', false)
             },

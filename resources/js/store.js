@@ -36,7 +36,8 @@ export default new Vuex.Store({
         },
         modal: {
             transfer: false,
-            login: false
+            login: false,
+            create: false,
         },
         wallet: '',
         underMaintenance: (/true/i).test(process.env.MIX_SERVICE_MAINTENANCE)
@@ -53,6 +54,7 @@ export default new Vuex.Store({
         TOGGLETRANSFERMODAL(state, status) { state.modal.transfer = status},
         SETAUTH: (state, status) => state.authenticated = status,
         TOGGLELOGIN: (state, status) => state.modal.login = status,
+        TOGGLECREATE: (state, status) => state.modal.create = status,
         SETADDRESS: (state, address) => state.address = address,
         SETWALLET: (state, wallet) => state.wallet = wallet
     },
@@ -107,6 +109,7 @@ export default new Vuex.Store({
         toggleTransferModal: ({commit}, status) => commit('TOGGLETRANSFERMODAL', status),
         setAuth: ({commit}, status) => commit('SETAUTH', status),
         toggleLogin: ({commit}, status) => commit('TOGGLELOGIN', status),
+        toggleCreate: ({commit}, status) => commit('TOGGLECREATE', status),
         setWallet: ({commit}, key) => {
             let wallet = Wallet(key);
             commit('SETWALLET', wallet)

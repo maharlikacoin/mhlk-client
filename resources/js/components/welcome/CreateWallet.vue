@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="cpn-btns">
-            <button class="btn btn-lg btn-grad-borderless shadow-none" @click="showModal = !showModal">Create Wallet</button>
+            <button class="btn btn-lg btn-grad-borderless shadow-none" @click="$store.dispatch('toggleCreate', true)">Create Wallet</button>
         </div>
 
-        <b-modal ref="create-wallet-modal" @hide="resetModal" v-model="showModal"
+        <b-modal ref="create-wallet-modal" @hide="resetModal" v-model="showModal" @hidden="onHide"
                  centered hide-header hide-footer no-close-on-backdrop>
             <button class="modal-close" @click="showModal = false">
                 <em class="ti ti-close"></em>
@@ -16,7 +16,8 @@
 
                     <div class="field-item input-focused">
                         <button id="publicKey" class="key input-line text-left text-wrap" v-clipboard:copy="keys.public"
-                                v-clipboard:success="onCopy" v-clipboard:error="onError"> {{ keys.public }}
+                                v-clipboard:success="onCopy" v-clipboard:error="onError" :style="{'color: #e5e5e5': keys.public}">
+                            {{ keys.public }}
                         </button>
                         <label for="publicKey" class="field-label field-label-line">Wallet Address (Public Key)</label>
                         <span class="pl-2 small text-success" v-if="keys.public">Tap or Click your Wallet Address to copy</span>
@@ -80,6 +81,9 @@
             }
         },
         methods: {
+            onHide(){
+                this.$store.dispatch('toggleCreate', false);
+            },
             onCopy(e) {
                 alert('Successfully copied: ' + e.text);
             },
@@ -117,6 +121,11 @@
                 this.hcaptcha.message = '';
                 this.hcaptcha.verified = false;
             }
+        },
+        mounted() {
+            this.$store.subscribe((mutation) => {
+                this.showModal = (mutation.type === 'TOGGLECREATE' && mutation.payload)
+            })
         }
     }
 </script>
