@@ -2,8 +2,11 @@
 import WalletIndex from './components/wallet/index';
 import WelcomeIndex from './components/welcome/index';
 import TeamIndex from './components/team/index';
+import PrivacyIndex from './components/privacy';
+import TermsIndex from './components/terms';
+import AboutUsIndex from './components/about-us';
 import Whitepaper from './components/partials/whitepaper';
-import Dossier from './components/partials/dossier';
+import FooterComponent from './components/welcome/FooterComponent';
 
 // vendors
 import './vendors/vee-validate'
@@ -20,6 +23,9 @@ new Vue({
         WelcomeIndex,
         TeamIndex,
         Whitepaper,
-        Dossier
+        PrivacyIndex,
+        TermsIndex,
+        AboutUsIndex,
+        FooterComponent
     },
 });
