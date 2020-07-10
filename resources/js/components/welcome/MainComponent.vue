@@ -18,7 +18,7 @@
                                 </h2>
                                 <p class="text-justify">
                                     The Maharlika Coin (MHLK) is The World’s first Asset-Backed, wealth distribution
-                                    Cryptocurrency. Issued by the <a href="https://www.mhlkfoundation.com" style="color: goldenrod;">
+                                    Cryptocurrency. Issued by the <a href="https://www.mhlkfoundation.com" style="color: goldenrod;" target="_blank">
                                     MHLK Foundation</a>, the use of MHLK advocates a “Resource-Based Economy or Shared
                                     Resources Economy” for Humanity where we believe that the world’s basic resources
                                     should be protected for the people and by the people. The key clusters which provide
