@@ -357,6 +357,11 @@ box-shadow: 0 2px 15px 0 rgba(128, 0, 0, 0.51);
 .team-show {
 background: rgba(166, 124, 0, 0.27);
 }
+button.mfp-close{
+    width: 25px;
+    line-height: 25px;
+    height: 25px;
+}
 .mfp-close-btn-in .mfp-close:hover {
 color: #dc3545!important;
 }
