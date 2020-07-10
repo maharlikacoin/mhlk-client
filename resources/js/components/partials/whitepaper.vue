@@ -11,14 +11,13 @@
                                     style="display: inline-block; width: 100%"></pdf>
 
                                 <div class="container" v-if="error.exists">
-                                    <div class="bg-white py-5 round shadow text-center text-red">
+                                    <div class="bg-white py-5 round shadow text-center text-muted">
                                         <p class="font-weight-bold">
-                                            <i class="fas fa-times-circle"></i>
+                                            <i class="fas fa-spin fa-spinner"></i>
                                             {{ error.message }}
                                         </p>
                                         <p>{{ error.details }}</p>
-                                        <p>Let us know this problem by sending us an email at
-                                            <a href="mailto:support@maharlikacoin.com">support@maharlikacoin.com</a></p>
+                                        <a href="mailto:support@maharlikacoin.com" class="small text-primary">Having a trouble?</a>
                                     </div>
                                 </div>
 
@@ -61,8 +60,8 @@
                     .then(pdf => this.numPages = pdf.numPages)
                     .catch(err => {
                         this.error.exists = true;
-                        this.error.message = 'Failed to load PDF file.';
-                        this.error.details = 'Check your internet connection.'
+                        this.error.message = 'Retrying to load PDF file...';
+                        this.error.details = 'Please check your internet connection.'
                     });
             }catch (e) {
                 this.error.exists = true;
