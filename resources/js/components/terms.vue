@@ -10,7 +10,7 @@
 
                                     <div class="col-xl-8 col-lg-10">
                                         <ul class="blog-meta">
-                                            <li><a href="#">September 07, 2019</a></li>
+                                            <li><a href="#">May 18, 2020</a></li>
                                             <li><a href="#">Terms And Conditions</a></li>
                                         </ul>
                                         <div class="blog-content height-2em text-justify">
