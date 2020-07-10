@@ -1,18 +1,32 @@
 <template>
     <main class="nk-pages">
-        <team-section v-for="(section, index) in sections" :key="index" :section="section" :section-count="index">
-        </team-section>
+        <team-section v-for="(trustee, index) in trustees"
+                      :key="index" :section="trustee"
+                      :section-count="index" />
+
+        <team-section v-for="(advisor, index) in advisors"
+                      :key="index"
+                      :isTrustee="false"
+                      :section="advisor"
+                      :section-count="index" />
     </main>
 </template>
 
 <script>
     import TeamSection from './section';
-    import contents from './contents';
+    import trustees from './trustees';
+    import advisors from './advisors';
 
 	export default {
 		name: "team",
         components: {TeamSection},
-        data: contents
+        data() {
+		    return {
+                advisors: advisors,
+                trustees: trustees
+            }
+
+        }
 	}
 </script>
 

@@ -3,6 +3,7 @@
         <div class="team">
             <div class="team-photo team-photo-sm">
                 <img :src="'/images/team/'+person.image" class="cursor" :alt="person.name" @click="show = true">
+                <a class="team-show content-popup" @click="show = true"></a>
                 <ul class="team-social">
                     <li>
                         <a :href="person.social.linkedIn.url"
@@ -14,7 +15,6 @@
             </div>
             <h5 class="team-name title title-sm">{{ person.name }}</h5>
             <span class="team-position">{{ person.position }}</span>
-            <br>
             <span v-for="(nationality, index) in person.nationalities" :key="index"
                   :class="[{'ml-1': index!==0 }, `flag-size-md flag-icon flag-icon-${nationality}`]"></span>
         </div>
@@ -29,7 +29,7 @@
                             <img :src="'/images/team/'+person.image" :alt="person.name">
                         </div>
                     </div><!-- .col  -->
-                    <div class="col-md-6 pb-5 px-5">
+                    <div class="col-md-6 pb-5">
                         <div class="team-popup-info pl-md-3">
                             <h3 class="team-name title title-lg pt-4">
                                 {{ person.name }}
