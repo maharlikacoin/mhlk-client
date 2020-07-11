@@ -2,9 +2,9 @@
 <html lang="zxx" class="js">
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Formula Green Foundation">
+    <meta name="author" content="MHLK Foundation">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="For humanity, especially the Filipino people">
+    <meta name="description" content="For The Benefit and Future of Humanity">
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/images/favicon.png">
     <!-- Site Title  -->
