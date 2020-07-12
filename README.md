@@ -1,4 +1,4 @@
-<p align="center"><img src="https://res.cloudinary.com/stardust389/image/upload/v1594531125/Maharlika%20Coin/maharlikacoin-logo-dark_e0qy1k.png" width="400"></p>
+<p align="center"><img src="https://res.cloudinary.com/stardust389/image/upload/c_scale,w_512/v1594532034/Maharlika%20Coin/maharlikacoin-logo-dark_dlfopu.png" width="400"></p>
 
 ## About Maharlika Coin
 
