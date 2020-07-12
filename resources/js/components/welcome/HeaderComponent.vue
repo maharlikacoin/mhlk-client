@@ -20,9 +20,8 @@
                             <div class="col-lg-8 col-sm-10 text-center text-lg-left">
                                 <div class="banner-caption cpn tc-light">
                                     <div class="cpn-head">
-                                        <h1 class="title">
-                                            For The Benefit and<br>
-                                            <strong>Future of Humanity</strong>
+                                        <h1 class="title font-weight-bold">
+                                            For The Benefit and Future of Humanity
                                         </h1>
                                     </div>
 

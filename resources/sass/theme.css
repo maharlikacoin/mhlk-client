@@ -276,11 +276,21 @@ button.modal-close:hover{
     text-align: center !important;
 }
 
+@media only screen and (max-width: 414px) {
+    .cpn-head h1.title{
+        font-size: 2.7rem !important;
+        line-height: 45px !important;
+    }
+}
+
 @media only screen and (max-width: 400px) {
     .header-curved-mask {
         border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
         height: 80em!important;
+    }
+    .cpn-head h1.title{
+        font-size: 2.4rem !important;
     }
 }
 
@@ -301,6 +311,9 @@ button.modal-close:hover{
         border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
         height: 80em!important;
+    }
+    .cpn-head h1.title{
+        font-size: 2.2rem !important;
     }
 }
 
@@ -452,4 +465,9 @@ padding-top: 10px !important;
 .modal-content ,
 .btn-grad:before{
     border-radius:0;
+}
+
+.cpn-head h1.title{
+    font-size: 3.7rem;
+    line-height: 60px;
 }
