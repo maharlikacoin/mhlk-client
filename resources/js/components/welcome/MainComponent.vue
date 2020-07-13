@@ -27,10 +27,6 @@
                                     advanced products for humanity, ownership in companies, and physical assets,
                                     distributing its dividends to its member beneficiaries.
                                 </p>
-                                <p>The Maharlika Coin (MHLK) was created to distribute the value of its intellectual
-                                    property, natural resources, and selected physical assets directly for the benefit
-                                    of humanity. We believe that all people have the right to clean air and water, the
-                                    sustainable use of natural resources, and safe, clean, and abundant energy.</p>
                             </div>
                         </div>
                     </div>
