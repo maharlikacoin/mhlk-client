@@ -5,7 +5,11 @@
                 <a href="./" class="wgs-logo">
                     <img src="/images/logo-full-white.png" style="width:15em;" srcset="/images/logo-full-white2x.png 2x" alt="logo">
                 </a>
-                <p>Copyright {{ new Date().getFullYear() }} © MHLK Foundation<br>All rights reserved. </p>
+                <p>
+                    Copyright {{ new Date().getFullYear() }} ©
+                    <a href="https://www.mhlkfoundation.com" target="_blank">MHLK Foundation Inc.</a>
+                    <br>All rights reserved.
+                </p>
             </div>
         </div>
     </div><!-- .col -->
