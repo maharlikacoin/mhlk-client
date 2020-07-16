@@ -4,12 +4,12 @@
         <div class="wgs-body">
             <ul class="social-links">
                 <li>
-                    <a href="https://www.facebook.com/maharlikacoin" target="_blank">
+                    <a href="https://fb.me/maharlikacoin" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://medium.com/maharlika-coin" target="_blank">
+                    <a href="https://medium.com/maharlikacoin" target="_blank">
                         <i class="fab fa-medium"></i>
                     </a>
                 </li>
@@ -26,7 +26,7 @@
             </ul>
             <ul class="social-links">
                 <li>
-                    <a href="https://www.youtube.com/channel/UCS3wH4WzTQ1_cdFcdK6NphQ" target="_blank">
+                    <a href="https://www.youtube.com/maharlikacoin" target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://linkedin.com/company/maharlika-coin" target="_blank">
+                    <a href="https://linkedin.com/company/maharlikacoin" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </li>
