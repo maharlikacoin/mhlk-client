@@ -35,10 +35,6 @@ Route::get('our-team', function() {
     return view('team');
 })->name('team');
 
-Route::get('paper', function() {
-    return response()->file(storage_path('app/documents/whitepaper.pdf'));
-})->name('paper');
-
 Route::get('whitepaper', function() {
     return view('whitepaper');
 })->name('whitepaper');
