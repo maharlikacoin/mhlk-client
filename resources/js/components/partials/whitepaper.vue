@@ -8,7 +8,7 @@
                             <div id="pdf">
 
                                 <pdf v-for="i in numPages" :key="i" :src="src" :page="i"
-                                    style="display: inline-block; width: 100%"></pdf>
+                                    style="display: inline-block; width: 100%; padding:10px"></pdf>
 
                                 <div class="container" v-if="error.exists">
                                     <div class="bg-white py-5 round shadow text-center text-muted">
@@ -32,7 +32,13 @@
 </template>
 
 <script>
-    import pdf from './pdf/vuePdfNoSssNoWorker'
+    import pdf from 'vue-pdf'
+
+    let srcPdf = pdf.createLoadingTask({
+        url: `${process.env.MIX_WHITEPAPER_URL}`,
+        password: `${process.env.MIX_WHITEPAPER_PASSWORD}`,
+        verbosity: 0,
+    }).promise;
 
     export default {
 		name: "whitepaper",
@@ -49,25 +55,10 @@
             }
         },
         mounted () {
-            try {
-                this.src = pdf.createLoadingTask(process.env.MIX_WHITEPAPER_URL);
-                this.src = pdf.createLoadingTask({
-                    url: `${process.env.MIX_WHITEPAPER_URL}`,
-                    password: `${process.env.MIX_WHITEPAPER_PASSWORD}`
-                });
-
-                this.src
-                    .then(pdf => this.numPages = pdf.numPages)
-                    .catch(err => {
-                        this.error.exists = true;
-                        this.error.message = 'Retrying to load PDF file...';
-                        this.error.details = 'Please check your internet connection.'
-                    });
-            }catch (e) {
-                this.error.exists = true;
-                this.error.message = 'Something went wrong.';
-                this.error.details = e
-            }
+            srcPdf.then(pdf => {
+                this.src = pdf._transport.loadingTask;
+                this.numPages = pdf.numPages
+            });
         },
         methods: {
             preventOpen (e) {
