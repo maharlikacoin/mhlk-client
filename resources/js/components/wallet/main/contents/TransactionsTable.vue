@@ -6,7 +6,7 @@
             <!-- We are using utility class `text-nowrap` to help illustrate horizontal scrolling -->
             <!-- value -->
             <template slot="value" slot-scope="row">
-                <div v-html="$options.filters.reduceSizeDecimal(row.value/100)"></div>
+                <div v-html="$options.filters.reduceSizeDecimal(row.value)"></div>
             </template>
             <!-- from address -->
             <template slot="from" slot-scope="row">
@@ -83,7 +83,7 @@
         },
         methods: {
             reduceSizeDecimal(number) {
-                number = numeral(number).format('0,000.00');
+                number = numeral(number/100).format('0,000.00');
                 let stringNumber = number.toString(),
                     wholeNumber = stringNumber.slice(0, stringNumber.length-3),
                     decimals = stringNumber.slice(stringNumber.length-3, stringNumber.length);
@@ -125,7 +125,7 @@
 
                         this.items = data.map( ({hash, timeStamp, from, to, value}) => {
                             return {
-                                value: value,
+                                value: value/100,
                                 from, from,
                                 to: to,
                                 timeStamp: new Date(timeStamp*1000),

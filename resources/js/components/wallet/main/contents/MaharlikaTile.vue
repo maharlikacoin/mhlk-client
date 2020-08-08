@@ -10,15 +10,6 @@
                 <span class="text-uppercase pointer" v-if="showWholeCoin" @click="showWholeCoin = !showWholeCoin">
                     MHLK {{ $store.state.balances.coin | numberFormat('0,0.00') }}</span>
 
-                <!-- value -->
-                <span class="small text-white-50 text-uppercase pointer"
-                      v-if="!showWholeCoinValue" @click="showWholeCoinValue = !showWholeCoinValue">
-                    (€{{ $store.state.balances.coin | numberFormat('0,0.[00]a') }})
-                </span>
-                <span class="small text-white-50 text-uppercase pointer"
-                      v-if="showWholeCoinValue" @click="showWholeCoinValue = !showWholeCoinValue">
-                    (€{{ $store.state.balances.coin | numberFormat('0,0.00') }})
-                </span>
             </div>
         </div>
     </div>
