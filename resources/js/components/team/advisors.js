@@ -4,6 +4,7 @@ const patricia = 'patricia.jpg';
 const david = 'david.jpg';
 const ern = 'ern.jpg';
 const demitri = 'demitri.jpg';
+const terry = 'terry.jpg';
 
 const advisors = [
   {
@@ -91,6 +92,20 @@ const advisors = [
                   }
               },
               bio: 'Ern Gregorio is one of the youngest member of the Board and is Stardust389\'s Vice President Information Technologies who solicit and anticipate partner needs and keep up with leading practices to create our IT strategy. He also oversees all aspects of technology including digital assets, artificial intelligence, cloud infrastructure and future initiatives of the companies and the foundation.'
+          },
+          {
+              name: 'Terry Mollner',
+              nickname: 'Terry',
+              position: '',
+              image: terry,
+              nationalities: ['us'],
+              social: {
+                  linkedIn: {
+                      url: 'https://www.linkedin.com/in/terry-mollner-9062326',
+                      icon: 'fa-linkedin-in'
+                  }
+              },
+              bio: 'Terry Mollner is one of the pioneers of socially responsible investing as a new asset class in the professional investment community. He is a founder and member of the board of the Calvert Family of Socially Responsible Investment Funds, the largest such family of funds with over $7 billion under management. Dr. Mollner is also the Founder and President of Trusteeship Institute, Inc., a think tank and consulting firm in economic and social development. In existence since 1973, its current focus is on the development of “common good corporations.” These are business corporations where the highest priority is the common good of humanity and nature. This is evidenced by operating as socially responsible companies and having a cap on the return to equity investors based on the risk level of the investment. All excess profit above this each year will be permanently set aside and managed forever for the common good by the company. He believes this is the next stage in the evolution of capitalism'
           },
       ]
   }
