@@ -1,11 +1,11 @@
 <template>
     <main class="nk-pages">
         <team-section v-for="(trustee, index) in trustees"
-                      :key="index" :section="trustee"
+                      :key="`trustee-${index}`" :section="trustee"
                       :section-count="index" />
 
         <team-section v-for="(advisor, index) in advisors"
-                      :key="index"
+                      :key="`advisor-${index}`"
                       :isTrustee="false"
                       :section="advisor"
                       :section-count="index" />

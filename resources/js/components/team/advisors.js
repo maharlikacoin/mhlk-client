@@ -1,6 +1,5 @@
 const bruce = 'bruce.jpg';
 const fred = 'fred.jpg';
-const patricia = 'patricia.jpg';
 const david = 'david.jpg';
 const ern = 'ern.jpg';
 const demitri = 'demitri.jpg';
@@ -36,20 +35,6 @@ const advisors = [
                   }
               },
               bio: 'Bruce Stewart has a lifetime of multi-sector managerial achievements including sales, marketing, finance, compliance and operations. His managerial experience coupled with a history of creating and building successful brands, through identity and message development, gives me a unique vision of how these components should fit together for the whole to fully succeed.'
-          },
-          {
-              name: 'Patricia Bellasalma',
-              nickname: 'Patricia',
-              position: '',
-              image: patricia,
-              nationalities: ['us'],
-              social: {
-                  linkedIn: {
-                      url: 'https://www.linkedin.com/in/patricia-bellasalma-a5586392',
-                      icon: 'fa-linkedin-in'
-                  }
-              },
-              bio: 'Patricia Bellasalma has more than 30 years working at the intersections of law, social science and policy, her public/corporate policy analysis concentrates on identifying and eliminating systemic inequities based on status categories and their intersections.  Her work moves beyond identifying systemic inequities by providing transformative public/corporate policy designed to remove root causes. As founder of Rapid Guardian, a startup technology and service-based company with a social purpose, Patricia developed technology that helps people protect themselves through individual and collective action a process is ignited that changes how we look at personal protection, who we look to in providing protection and how we use technology to increase personal and institutional accountability. She also has extensive experience in the non-profit world both running a domestic women’s rights organization and as General Counsel for West African.'
           },
           {
               name: 'David Traub',
