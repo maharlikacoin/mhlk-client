@@ -686,40 +686,40 @@ NioApp = function (NioApp, $, window, document) {
 		popupInit.content_popup = function () {
 			if ($content_popup.exists()) {
 				$content_popup.each(function(){
-					$(this).magnificPopup({
-						type: 'inline',
-						preloader: true,
-						removalDelay: 400,
-						mainClass: 'mfp-fade content-popup'
-					});
+					// $(this).magnificPopup({
+					// 	type: 'inline',
+					// 	preloader: true,
+					// 	removalDelay: 400,
+					// 	mainClass: 'mfp-fade content-popup'
+					// });
 				});
 			}
 		};
 		popupInit.video_popup = function () {
 			if ($video_popup.exists()) {
 				$video_popup.each(function(){
-					$(this).magnificPopup({
-						type: 'iframe',
-						removalDelay: 160,
-						preloader: true,
-						fixedContentPos: false,
-						callbacks: {
-							beforeOpen: function() {
-								this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-								this.st.mainClass = this.st.el.attr('data-effect');
-							}
-						},
-					});
+					// $(this).magnificPopup({
+					// 	type: 'iframe',
+					// 	removalDelay: 160,
+					// 	preloader: true,
+					// 	fixedContentPos: false,
+					// 	callbacks: {
+					// 		beforeOpen: function() {
+					// 			this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+					// 			this.st.mainClass = this.st.el.attr('data-effect');
+					// 		}
+					// 	},
+					// });
 				});
 			}
 		};
         popupInit.image_popup = function () {
 			if ($image_popup.exists()) {
 				$image_popup.each(function(){
-					$(this).magnificPopup({
-						type: 'image',
-						mainClass: 'mfp-fade image-popup'
-					});
+					// $(this).magnificPopup({
+					// 	type: 'image',
+					// 	mainClass: 'mfp-fade image-popup'
+					// });
 				});
 			}
 		};
