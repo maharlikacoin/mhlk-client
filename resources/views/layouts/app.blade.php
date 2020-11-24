@@ -14,14 +14,14 @@
           content="The Maharlika Coin (MHLK) was created to distribute the value of its intellectual property, natural resources, and selected physical assets directly for the benefit of humanity.">
     <meta name="twitter:creator" content="maharlikacoin">
     <meta name="twitter:image:src"
-          content="https://res.cloudinary.com/stardust389/image/upload/c_scale,w_512/v1594532034/Maharlika%20Coin/maharlikacoin-logo-dark_dlfopu.png">
+          content="https://res.cloudinary.com/stardust389/image/upload/v1606193531/Maharlika%20Coin/maharlikacoin-logo-gold_yqq1cw.png">
     <meta name="twitter:domain" content="maharlikacoin.com">
     <meta property="og:url" content="https://www.maharlikacoin.com">
     <meta property="og:title" content="Maharlika Coin">
     <meta property="og:description"
           content="The Maharlika Coin (MHLK) was created to distribute the value of its intellectual property, natural resources, and selected physical assets directly for the benefit of humanity.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://res.cloudinary.com/stardust389/image/upload/c_scale,w_512/v1594532034/Maharlika%20Coin/maharlikacoin-logo-dark_dlfopu.png">
+    <meta property="og:image" content="https://res.cloudinary.com/stardust389/image/upload/v1606193531/Maharlika%20Coin/maharlikacoin-logo-gold_yqq1cw.png">
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/images/favicon.png">
     <!-- Site Title  -->
