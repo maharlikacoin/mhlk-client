@@ -16,11 +16,7 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
-*-lock.json
-*.lock
-.idea/*
 /public/css/app.css
 /public/js/app.js
 /public/mix-manifest.json
-
 .idea/
