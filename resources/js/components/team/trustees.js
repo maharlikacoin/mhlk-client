@@ -3,7 +3,6 @@ const chris = 'chris.jpg';
 const rich = 'rich.jpg';
 const edwin = 'edwin.jpg';
 const robert = 'robert.jpg';
-const denis = 'denis.jpg';
 const patricia = 'patricia.jpg';
 
 const trustees = [
@@ -93,20 +92,6 @@ const trustees = [
         },
         bio: 'Robert Sison holds a bachelors degree in law from the Ateneo de Manila University, having graduated in 1990. He passed the Philippine Bar in 1991. Prior to appointment as the lead lawyer of ex-congresswoman and former First Lady Imelda Romualdez Marcos, Atty. Sison practiced corporate legal serving as corporate secretary to various corporations including publicly listed companies. Atty. Sison is better known for having successfully argued the acquittal of Mrs. Marcos in the many criminal cases filed against her by the Philippine administrations that succeeded then President Ferdinand Marcos.'
       },
-        {
-            name: 'Denis Lucindo',
-            nickname: 'Denis',
-            position: '',
-            image: denis,
-            nationalities: ['ph'],
-            social: {
-                linkedIn: {
-                    url: 'https://www.linkedin.com/in/denis-lucindo-649a117',
-                    icon: 'fa-linkedin-in'
-                }
-            },
-            bio: 'Denis Lucindo has extensive experience in Mergers, Acquisitions, and Business Development, having spent several years as VP for Business Development for Metro Pacific Investments Corp. There, he led several and participated in several acquisitions and bids, including that for Maynilad Inc., which is the largest water distribution company with concessions covering half of Metro Manila and neighboring provinces. He has also held the role of VP for Investor Relations with Metro Pacific and First Pacific, and Chief Strategist for the Ramcar Food Group. Entrepreneurship is a key advocacy for Denis, stemming from his early days as founding Publisher and then Editor-in-Chief of the Philippine edition of Entrepreneur Magazine.'
-        },
     ]
   }
 ];
