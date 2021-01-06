@@ -18,5 +18,7 @@ Homestead.json
 .phpunit.result.cache
 /public/css/app.css
 /public/js/app.js
+/public/*.worker.js
 /public/mix-manifest.json
 .idea/
+
