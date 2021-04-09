@@ -38,13 +38,13 @@
                                     <!-- actions -->
                                     <div class="cpn-action">
                                         <div class="d-flex flex-column alignment-items">
-                                            <login-modal v-if="!this.$store.state.authenticated"></login-modal>
-                                            <div class="cpn-btns" v-if="this.$store.state.authenticated">
-                                                <a class="btn btn-lg btn-grad grant border-0 d-flex align-items-center"
-                                                   href="/wallet">Your Wallet</a>
-                                            </div>
+                                            <!--<login-modal v-if="!this.$store.state.authenticated"></login-modal>-->
+                                            <!--<div class="cpn-btns" v-if="this.$store.state.authenticated">-->
+                                                <!--<a class="btn btn-lg btn-grad grant border-0 d-flex align-items-center"-->
+                                                   <!--href="/wallet">Your Wallet</a>-->
+                                            <!--</div>-->
 
-                                            <create-wallet></create-wallet>
+                                            <!--<create-wallet></create-wallet>-->
                                         </div>
                                     </div>
                                 </div>
